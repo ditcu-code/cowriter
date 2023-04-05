@@ -57,12 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				0E6A654D29DD25C0003457DF /* cowriterApp.swift */,
-				0E6A654F29DD25C0003457DF /* ContentView.swift */,
-				0E6A655129DD25C1003457DF /* Assets.xcassets */,
-				0E6A655629DD25C1003457DF /* Persistence.swift */,
-				0E6A655B29DD25C1003457DF /* Info.plist */,
-				0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */,
-				0E6A655329DD25C1003457DF /* Preview Content */,
+				0E6A656129DD2783003457DF /* Sources */,
+				0E6A656529DD2803003457DF /* Resources */,
 			);
 			path = cowriter;
 			sourceTree = "<group>";
@@ -72,7 +68,68 @@
 			children = (
 				0E6A655429DD25C1003457DF /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../Preview Content";
+			sourceTree = "<group>";
+		};
+		0E6A656129DD2783003457DF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A656729DD2923003457DF /* Data */,
+				0E6A656229DD2790003457DF /* Models */,
+				0E6A656329DD2798003457DF /* Views */,
+				0E6A656429DD27E1003457DF /* ViewModels */,
+				0E6A656629DD2891003457DF /* Services */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0E6A656229DD2790003457DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0E6A656329DD2798003457DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A654F29DD25C0003457DF /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E6A656429DD27E1003457DF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0E6A656529DD2803003457DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A655329DD25C1003457DF /* Preview Content */,
+				0E6A655129DD25C1003457DF /* Assets.xcassets */,
+				0E6A655B29DD25C1003457DF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0E6A656629DD2891003457DF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0E6A656729DD2923003457DF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A655629DD25C1003457DF /* Persistence.swift */,
+				0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -259,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -285,6 +342,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
