@@ -13,6 +13,10 @@
 		0E6A655529DD25C1003457DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655429DD25C1003457DF /* Preview Assets.xcassets */; };
 		0E6A655729DD25C1003457DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655629DD25C1003457DF /* Persistence.swift */; };
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
+		0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */; };
+		0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */; };
+		0ECC7BFE29DD4EE1002A6B7F /* GrammarActionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */; };
+		0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		0E6A655629DD25C1003457DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0E6A655929DD25C1003457DF /* cowriter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cowriter.xcdatamodel; sourceTree = "<group>"; };
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarView.swift; sourceTree = "<group>"; };
+		0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsView.swift; sourceTree = "<group>"; };
+		0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsVM.swift; sourceTree = "<group>"; };
+		0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,7 @@
 		0E6A656229DD2790003457DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6A654F29DD25C0003457DF /* ContentView.swift */,
+				0ECC7BFA29DD4D5C002A6B7F /* Grammar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 		0E6A656429DD27E1003457DF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -130,6 +141,15 @@
 				0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0ECC7BFA29DD4D5C002A6B7F /* Grammar */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */,
+				0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */,
+			);
+			path = Grammar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,10 +222,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
+				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
 				0E6A655729DD25C1003457DF /* Persistence.swift in Sources */,
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
+				0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
+				0ECC7BFE29DD4EE1002A6B7F /* GrammarActionsVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
