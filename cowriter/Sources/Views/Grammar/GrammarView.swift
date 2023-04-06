@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrammarView: View {
-    @State var words: String = ""
+    @ObservedObject var vm = GrammarVM()
     
     var body: some View {
         GeometryReader { reader in
@@ -17,11 +17,11 @@ struct GrammarView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.white)
-                        .padding(.horizontal)
+                        .padding()
                     
                     ZStack(alignment: .leading) {
                         
-                        if words.isEmpty {
+                        if vm.inputText.isEmpty {
                             VStack {
                                 Text("Write something...")
                                     .padding(.top, 10)
@@ -33,15 +33,11 @@ struct GrammarView: View {
                         }
                         
                         VStack {
-                            TextEditor(text: $words)
-                                .opacity(words.isEmpty ? 0.85 : 1)
+                            TextEditor(text: $vm.inputText)
+                                .opacity(vm.inputText.isEmpty ? 0.85 : 1)
                                 .padding()
-//                            Text("\(reader.size.height) \(reader.size.width)")
-
                             Spacer()
                         }
-                        
-
                         
                     }
                     .frame(minHeight: 200, maxHeight: reader.size.height - 200)
@@ -49,7 +45,37 @@ struct GrammarView: View {
                     
                 }
                 
-                GrammarActionsView()
+                GrammarActionsView(vm: vm)
+                
+                if vm.loading {
+                    CircularLoading()
+                } else {
+
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.white)
+                            .padding()
+                        
+                        ZStack(alignment: .leading) {
+                            
+                            HStack {
+                                VStack(alignment: .leading) {
+                                        Text("\(vm.response?.choices[0].message.content ?? "")")
+                                            .padding(.top, 10)
+                                            .padding(.leading, 6)
+                                            .padding()
+                                        Spacer()
+                                }
+                                Spacer()
+                            }
+                            
+                            
+                        }
+                        .frame(minHeight: 0, maxHeight: reader.size.height - 200)
+                        .padding()
+                        
+                    }.animation(.default, value: vm.loading)
+                }
                 
             }
         }
@@ -63,5 +89,3 @@ struct GrammarView_Previews: PreviewProvider {
         GrammarView()
     }
 }
-
-

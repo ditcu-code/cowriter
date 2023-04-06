@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct GrammarActionsView: View {
+    @StateObject var vm: GrammarVM
+    
     var body: some View {
         HStack {
             Button {
-                print("check")
             } label: {
                 Label("Check", systemImage: "checkmark.square")
             }
             Button {
-                print("check")
+                vm.check()
             } label: {
                 Text("Rephrase")
             }
@@ -26,6 +27,6 @@ struct GrammarActionsView: View {
 
 struct GrammarActionsView_Previews: PreviewProvider {
     static var previews: some View {
-        GrammarActionsView()
+        GrammarActionsView(vm: GrammarVM())
     }
 }

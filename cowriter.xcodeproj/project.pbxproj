@@ -15,8 +15,14 @@
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
 		0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */; };
 		0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */; };
-		0ECC7BFE29DD4EE1002A6B7F /* GrammarActionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */; };
+		0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */; };
 		0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */; };
+		0ECC7C0329DD921A002A6B7F /* ChatCompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */; };
+		0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */; };
+		0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0729DDBC92002A6B7F /* Keychain.swift */; };
+		0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */; };
+		0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */; };
+		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +36,14 @@
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarView.swift; sourceTree = "<group>"; };
 		0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsView.swift; sourceTree = "<group>"; };
-		0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsVM.swift; sourceTree = "<group>"; };
+		0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarVM.swift; sourceTree = "<group>"; };
 		0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsModel.swift; sourceTree = "<group>"; };
+		0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionsModel.swift; sourceTree = "<group>"; };
+		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		0ECC7C0729DDBC92002A6B7F /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 				0E6A656329DD2798003457DF /* Views */,
 				0E6A656429DD27E1003457DF /* ViewModels */,
 				0E6A656629DD2891003457DF /* Services */,
+				0ECC7C0929DEA6CF002A6B7F /* Utilities */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -96,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */,
+				0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -103,6 +117,7 @@
 		0E6A656329DD2798003457DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC7C0E29DEC309002A6B7F /* Shared */,
 				0E6A654F29DD25C0003457DF /* ContentView.swift */,
 				0ECC7BFA29DD4D5C002A6B7F /* Grammar */,
 			);
@@ -112,7 +127,7 @@
 		0E6A656429DD27E1003457DF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0ECC7BFD29DD4EE1002A6B7F /* GrammarActionsVM.swift */,
+				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -130,6 +145,9 @@
 		0E6A656629DD2891003457DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */,
+				0ECC7C0729DDBC92002A6B7F /* Keychain.swift */,
+				0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -150,6 +168,22 @@
 				0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */,
 			);
 			path = Grammar;
+			sourceTree = "<group>";
+		};
+		0ECC7C0929DEA6CF002A6B7F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0ECC7C0E29DEC309002A6B7F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ECC7C0329DD921A002A6B7F /* ChatCompletionsModel.swift in Sources */,
+				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
+				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
+				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
 				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
@@ -229,7 +267,9 @@
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
 				0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
-				0ECC7BFE29DD4EE1002A6B7F /* GrammarActionsVM.swift in Sources */,
+				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
+				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
+				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +401,7 @@
 				DEVELOPMENT_TEAM = 474XANH3RF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = cowriter/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -391,7 +431,7 @@
 				DEVELOPMENT_TEAM = 474XANH3RF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = cowriter/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
