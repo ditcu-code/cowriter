@@ -13,7 +13,8 @@ struct cowriterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            GrammarView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
