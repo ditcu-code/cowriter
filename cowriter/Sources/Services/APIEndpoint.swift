@@ -11,4 +11,5 @@ struct APIEndpoint {
     static let baseURL = URL(string: "https://api.openai.com/v1")!
     
     static let chatCompletions = baseURL.appendingPathComponent("/chat/completions")
+    static let completions = baseURL.appendingPathComponent("/completions")
 }

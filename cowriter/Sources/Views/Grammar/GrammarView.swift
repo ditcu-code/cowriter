@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GrammarView: View {
     @ObservedObject var vm = GrammarVM()
+    @State var isRephrase: Bool = false
     
     var body: some View {
         GeometryReader { reader in
@@ -34,8 +35,15 @@ struct GrammarView: View {
                         
                         VStack {
                             TextEditor(text: $vm.inputText)
+                                .submitLabel(.done)
+                                .onChange(of: vm.inputText, perform: { newValue in
+                                    vm.inputText = String(newValue.prefix(1000))
+                                })
                                 .opacity(vm.inputText.isEmpty ? 0.85 : 1)
                                 .padding()
+ 
+                            Text("\(Utils.detectLanguage(for: vm.inputText))")
+                            Text("\(vm.inputText.count)/1000")
                             Spacer()
                         }
                         
@@ -45,12 +53,12 @@ struct GrammarView: View {
                     
                 }
                 
-                GrammarActionsView(vm: vm)
+                GrammarActionsView(vm: vm, isRephrase: $isRephrase)
                 
                 if vm.loading {
                     CircularLoading()
                 } else {
-
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
@@ -60,11 +68,11 @@ struct GrammarView: View {
                             
                             HStack {
                                 VStack(alignment: .leading) {
-                                        Text("\(vm.response?.choices[0].message.content ?? "")")
-                                            .padding(.top, 10)
-                                            .padding(.leading, 6)
-                                            .padding()
-                                        Spacer()
+                                    Text("\(Utils.removeNewlineAtBeginning(!isRephrase ? vm.responseCompletion?.choices[0].text ?? "" : vm.responseChat?.choices[0].message.content ?? ""))")
+                                        .padding(.top, 10)
+                                        .padding(.leading, 6)
+                                        .padding()
+                                    Spacer()
                                 }
                                 Spacer()
                             }

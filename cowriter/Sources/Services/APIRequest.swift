@@ -11,12 +11,12 @@ import Combine
 
 class APIRequest {
     static func postRequestWithToken<T: Codable>(
+        url: URL,
         dataModel: T.Type,
         body: [String: Any],
         completion: @escaping (Result<T, Error>) -> Void
     ) {
         
-        let url = APIEndpoint.chatCompletions
         let token = Keychain.getApiKey() ?? ""
         var request = URLRequest(url: url)
         
@@ -27,13 +27,14 @@ class APIRequest {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: body)
             request.httpBody = jsonData
+            print(body)
         } catch {
             completion(.failure(error))
             return
         }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-
+            
             if let error = error {
                 completion(.failure(error))
                 return

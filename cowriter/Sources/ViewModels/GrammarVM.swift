@@ -10,22 +10,53 @@ import Foundation
 class GrammarVM: ObservableObject {
     @Published var inputText: String = ""
     @Published var texts: [UserText] = []
-    @Published var response: ChatResponse? = nil
+    @Published var responseCompletion: ChatResponseCompletion? = nil
+    @Published var responseChat: ChatResponseChat? = nil
     @Published var loading: Bool = false
+    
+    func insertGrammarText(_ text: String) -> String {
+        return "Correct this to standard English: [\(text)]"
+    }
+    
+    func insertRephraseText(_ text: String) -> String {
+        return "Rephrase this sentence: [\(text)]"
+    }
     
     func check() {
         loading = true
-        let raw = ChatCompletionReq(messages: [ChatMessage(role: "user", content: inputText)])
+        let raw = CompletionRequest(prompt: insertGrammarText(inputText))
         let dictionary = Utils.toDictionary(raw)
         
-        APIRequest.postRequestWithToken(dataModel: ChatResponse.self, body: dictionary) { result in
+        APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: ChatResponseCompletion.self, body: dictionary) { result in
             DispatchQueue.main.async {
-            switch result {
+                switch result {
                 case .success(let data):
                     print("Success! Response data: \(data)")
                     
                     self.loading.toggle()
-                    self.response = data.self
+                    self.responseCompletion = data.self
+                    
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    self.loading.toggle()
+                }
+            }
+        }
+    }
+    
+    func rephrase() {
+        loading = true
+        let raw = ChatRequest(messages: [ChatMessage(role: "user", content: insertRephraseText(inputText))])
+        let dictionary = Utils.toDictionary(raw)
+        
+        APIRequest.postRequestWithToken(url: APIEndpoint.chatCompletions, dataModel: ChatResponseChat.self, body: dictionary) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    print("Success! Response data: \(data)")
+                    
+                    self.loading.toggle()
+                    self.responseChat = data.self
                     
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")

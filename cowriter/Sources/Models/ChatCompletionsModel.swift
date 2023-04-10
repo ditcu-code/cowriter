@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum GPTModel: String, Codable {
+    case threePointFive = "gpt-3.5-turbo"
+    case curie = "text-curie-001"
+}
+
 enum ChatRole: String, Codable   {
     case user = "user"
     case system = "system"
@@ -14,33 +19,49 @@ enum ChatRole: String, Codable   {
 }
 
 struct ChatMessage: Codable {
-    var role: String
-    var content: String
+    var role, content: String
 }
 
-struct ChatCompletionReq {
-    var model = "gpt-3.5-turbo-0301"
+struct ChatRequest {
+    var model: String = GPTModel.threePointFive.rawValue
     var messages: [ChatMessage]
     var temperature: Double = 0.2
 }
 
-struct ChatUsage: Codable {
-    var promptTokens: Int
-    var completionTokens: Int
-    var totalTokens: Int
+struct CompletionRequest {
+    var model: String = GPTModel.curie.rawValue
+    var prompt: String
+    var temperature: Double = 0
+    var max_tokens: Int = 1000
 }
 
-struct ChatChoices: Codable {
+struct ChatUsage: Codable {
+    var promptTokens, completionTokens, totalTokens: Int
+}
+
+struct ChatChoicesChat: Codable {
     var message: ChatMessage
     var finishReason: String
     var index: Int
 }
 
-struct ChatResponse: Codable {
-    var id: String
-    var object: String
+struct ChatChoicesCompletion: Codable {
+    var text: String
+    var logprobs: Int?
+    var finishReason: String?
+    var index: Int
+}
+
+class ChatResponseChat: Codable {
+    var id, object, model: String
     var created: Int
-    var model: String
     var usage: ChatUsage
-    var choices: [ChatChoices]
+    var choices: [ChatChoicesChat]
+}
+
+class ChatResponseCompletion: Codable {
+    var id, object, model: String
+    var created: Int
+    var usage: ChatUsage
+    var choices: [ChatChoicesCompletion]
 }
