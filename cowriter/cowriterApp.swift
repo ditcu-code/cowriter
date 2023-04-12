@@ -10,11 +10,10 @@ import SwiftUI
 @main
 struct cowriterApp: App {
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            GrammarView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

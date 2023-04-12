@@ -41,8 +41,7 @@ struct GrammarView: View {
                                 })
                                 .opacity(vm.inputText.isEmpty ? 0.85 : 1)
                                 .padding()
- 
-                            Text("\(Utils.detectLanguage(for: vm.inputText))")
+                            Text(vm.textLang)
                             Text("\(vm.inputText.count)/1000")
                             Spacer()
                         }
@@ -56,7 +55,7 @@ struct GrammarView: View {
                 GrammarActionsView(vm: vm, isRephrase: $isRephrase)
                 
                 if vm.loading {
-                    CircularLoading()
+//                    ThreeDots(loading: $vm.loading)
                 } else {
                     
                     ZStack {
@@ -83,6 +82,23 @@ struct GrammarView: View {
                         .padding()
                         
                     }.animation(.default, value: vm.loading)
+                    
+                    Button(action: {
+                        // button action here
+                    }, label: {
+                        ZStack {
+                            Image(systemName: "character.bubble.hi")
+                                .offset(x: -5, y: 5)
+                            Image(systemName: "character.bubble.fill")
+                                .offset(x: -5, y: -5)
+                                .scaleEffect(x: -1, y: 1)
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                    })
+                    
                 }
                 
             }
@@ -92,8 +108,41 @@ struct GrammarView: View {
     }
 }
 
-struct GrammarView_Previews: PreviewProvider {
+//struct GrammarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GrammarView()
+//    }
+//}
+
+struct ThreeDots: View {
+    @State var loading = false
+    
+    var body: some View {
+        HStack(spacing: 20) {
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 10, height: 10)
+                .scaleEffect(loading ? 1.5 : 0.5)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: loading)
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 10, height: 10)
+                .scaleEffect(loading ? 1.5 : 0.5)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true).delay(0.2), value: loading)
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 10, height: 10)
+                .scaleEffect(loading ? 1.5 : 0.5)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true).delay(0.4), value: loading)
+        }
+        .onAppear() {
+            self.loading = true
+        }
+    }
+}
+
+struct ThreeDots_Previews: PreviewProvider {
     static var previews: some View {
-        GrammarView()
+        ThreeDots()
     }
 }
