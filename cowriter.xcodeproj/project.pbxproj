@@ -23,6 +23,7 @@
 		0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */; };
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
+		0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
+		0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotsLoading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */,
+				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* ChatCompletionsModel.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
