@@ -13,6 +13,7 @@ class GrammarVM: ObservableObject {
     @Published var responseCompletion: ChatResponseCompletion? = nil
     @Published var responseChat: ChatResponseChat? = nil
     @Published var loading: Bool = false
+    @Published var textLang: String = ""
     
     func insertGrammarText(_ text: String) -> String {
         return "Correct this to standard English: [\(text)]"
@@ -24,6 +25,7 @@ class GrammarVM: ObservableObject {
     
     func check() {
         loading = true
+        textLang = Utils.detectLanguage(for: inputText)
         let raw = CompletionRequest(prompt: insertGrammarText(inputText))
         let dictionary = Utils.toDictionary(raw)
         
@@ -46,6 +48,7 @@ class GrammarVM: ObservableObject {
     
     func rephrase() {
         loading = true
+        textLang = Utils.detectLanguage(for: inputText)
         let raw = ChatRequest(messages: [ChatMessage(role: "user", content: insertRephraseText(inputText))])
         let dictionary = Utils.toDictionary(raw)
         
