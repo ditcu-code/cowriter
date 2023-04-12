@@ -12,11 +12,23 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
-        NavigationView {
+        TabView {
+            CowriterView()
+                .tabItem {
+                    Label("Cowriter", systemImage: "timelapse")
+                }
+            
             GrammarView()
+                .tabItem {
+                    Label("Grammar", systemImage: "checkmark.circle")
+                }
+            
+            HistoryView()
+                .tabItem {
+                    Label("History", systemImage: "clock.arrow.circlepath")
+                }
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
