@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrammarView: View {
-    @ObservedObject var vm = GrammarVM()
+    @ObservedObject var vm: GrammarVM = GrammarVM()
     @State var isRephrase: Bool = false
     
     var body: some View {

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SendButton: View {
+    @StateObject var vm: CowriterVM
+
     var body: some View {
         Button(action: {
-            // button action here
+            
         }, label: {
             Image(systemName: "paperplane.fill")
                 .font(.footnote)
@@ -19,11 +21,6 @@ struct SendButton: View {
                 .background(.orange)
                 .clipShape(Circle())
         })
-    }
-}
-
-struct SendButton_Previews: PreviewProvider {
-    static var previews: some View {
-        SendButton()
+        .disabled(vm.loading)
     }
 }

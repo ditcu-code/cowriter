@@ -10,8 +10,13 @@ import SwiftUI
 
 extension View {
     func customFont() -> some View {
-        self.modifier(CustomFontModifier(font: Font.custom("Gill Sans", size: 17, relativeTo: .body)))
+        self.modifier(CustomFontModifier(font: Font.custom("Georgia", size: 17, relativeTo: .body)))
     }
+}
+
+extension Color {
+    static let font = Color("Font")
+    
 }
 
 struct CustomFontModifier: ViewModifier {
@@ -20,5 +25,6 @@ struct CustomFontModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(font)
+            .foregroundColor(Color.font)
     }
 }
