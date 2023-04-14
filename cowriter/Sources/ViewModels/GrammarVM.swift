@@ -10,8 +10,8 @@ import Foundation
 class GrammarVM: ObservableObject {
     @Published var inputText: String = ""
     @Published var texts: [UserText] = []
-    @Published var responseCompletion: ChatResponseCompletion? = nil
-    @Published var responseChat: ChatResponseChat? = nil
+    @Published var responseCompletion: CompletionResponseType? = nil
+    @Published var responseChat: ChatResponseChatType? = nil
     @Published var loading: Bool = false
     @Published var textLang: String = ""
     
@@ -26,10 +26,10 @@ class GrammarVM: ObservableObject {
     func check() {
         loading = true
         textLang = Utils.detectLanguage(for: inputText)
-        let raw = CompletionRequest(prompt: insertGrammarText(inputText))
+        let raw = CompletionRequestType(prompt: insertGrammarText(inputText))
         let dictionary = Utils.toDictionary(raw)
         
-        APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: ChatResponseCompletion.self, body: dictionary) { result in
+        APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -49,10 +49,10 @@ class GrammarVM: ObservableObject {
     func rephrase() {
         loading = true
         textLang = Utils.detectLanguage(for: inputText)
-        let raw = ChatRequest(messages: [ChatMessage(role: "user", content: insertRephraseText(inputText))])
+        let raw = ChatRequestType(messages: [ChatMessageType(role: "user", content: insertRephraseText(inputText))])
         let dictionary = Utils.toDictionary(raw)
         
-        APIRequest.postRequestWithToken(url: APIEndpoint.chatCompletions, dataModel: ChatResponseChat.self, body: dictionary) { result in
+        APIRequest.postRequestWithToken(url: APIEndpoint.chatCompletions, dataModel: ChatResponseChatType.self, body: dictionary) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):

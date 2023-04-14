@@ -10,6 +10,7 @@
 		0E0A9D5429E9BBD700D7BEC5 /* PromptHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */; };
 		0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
+		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
@@ -19,8 +20,8 @@
 		0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */; };
 		0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */; };
 		0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */; };
-		0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */; };
-		0ECC7C0329DD921A002A6B7F /* ChatCompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */; };
+		0ECC7C0029DD4F1D002A6B7F /* GrammarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFF29DD4F1D002A6B7F /* GrammarModel.swift */; };
+		0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */; };
 		0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */; };
 		0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0729DDBC92002A6B7F /* Keychain.swift */; };
 		0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */; };
@@ -38,6 +39,7 @@
 		0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHint.swift; sourceTree = "<group>"; };
 		0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterLogo.swift; sourceTree = "<group>"; };
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
+		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,8 +51,8 @@
 		0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarView.swift; sourceTree = "<group>"; };
 		0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsView.swift; sourceTree = "<group>"; };
 		0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarVM.swift; sourceTree = "<group>"; };
-		0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsModel.swift; sourceTree = "<group>"; };
-		0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCompletionsModel.swift; sourceTree = "<group>"; };
+		0ECC7BFF29DD4F1D002A6B7F /* GrammarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarModel.swift; sourceTree = "<group>"; };
+		0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionsModel.swift; sourceTree = "<group>"; };
 		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		0ECC7C0729DDBC92002A6B7F /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -117,8 +119,9 @@
 		0E6A656229DD2790003457DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0ECC7BFF29DD4F1D002A6B7F /* GrammarActionsModel.swift */,
-				0ECC7C0229DD921A002A6B7F /* ChatCompletionsModel.swift */,
+				0ECC7BFF29DD4F1D002A6B7F /* GrammarModel.swift */,
+				0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */,
+				0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,7 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
-				0ECC7C0329DD921A002A6B7F /* ChatCompletionsModel.swift in Sources */,
+				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
@@ -305,10 +308,11 @@
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
+				0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */,
 				0E6A655729DD25C1003457DF /* Persistence.swift in Sources */,
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
 				0E0A9D5429E9BBD700D7BEC5 /* PromptHint.swift in Sources */,
-				0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */,
+				0ECC7C0029DD4F1D002A6B7F /* GrammarModel.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
