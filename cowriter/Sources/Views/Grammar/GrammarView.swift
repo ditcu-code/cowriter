@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GrammarView: View {
-    @ObservedObject var vm = GrammarVM()
+    @ObservedObject var vm: GrammarVM = GrammarVM()
     @State var isRephrase: Bool = false
     
     var body: some View {
@@ -41,8 +41,7 @@ struct GrammarView: View {
                                 })
                                 .opacity(vm.inputText.isEmpty ? 0.85 : 1)
                                 .padding()
- 
-                            Text("\(Utils.detectLanguage(for: vm.inputText))")
+                            Text(vm.textLang)
                             Text("\(vm.inputText.count)/1000")
                             Spacer()
                         }
@@ -56,7 +55,7 @@ struct GrammarView: View {
                 GrammarActionsView(vm: vm, isRephrase: $isRephrase)
                 
                 if vm.loading {
-                    CircularLoading()
+                    ThreeDotsLoading()
                 } else {
                     
                     ZStack {
@@ -83,6 +82,23 @@ struct GrammarView: View {
                         .padding()
                         
                     }.animation(.default, value: vm.loading)
+                    
+                    Button(action: {
+                        // button action here
+                    }, label: {
+                        ZStack {
+                            Image(systemName: "character.bubble.hi")
+                                .offset(x: -5, y: 5)
+                            Image(systemName: "character.bubble.fill")
+                                .offset(x: -5, y: -5)
+                                .scaleEffect(x: -1, y: 1)
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                    })
+                    
                 }
                 
             }
@@ -92,8 +108,9 @@ struct GrammarView: View {
     }
 }
 
-struct GrammarView_Previews: PreviewProvider {
-    static var previews: some View {
-        GrammarView()
-    }
-}
+//struct GrammarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GrammarView()
+//    }
+//}
+

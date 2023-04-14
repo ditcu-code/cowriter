@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import SwiftUI
-import Combine
+import Alamofire
 
 class APIRequest {
     static func postRequestWithToken<T: Codable>(
@@ -16,44 +15,78 @@ class APIRequest {
         body: [String: Any],
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        
         let token = Keychain.getApiKey() ?? ""
-        var request = URLRequest(url: url)
         
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Content-Type": "application/json"
+        ]
         
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: body)
-            request.httpBody = jsonData
-            print(body)
-        } catch {
-            completion(.failure(error))
-            return
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: body,
+                   encoding: JSONEncoding.prettyPrinted,
+                   headers: headers)
+        .validate()
+        .responseDecodable(of: dataModel, decoder: decoder) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NSError(domain: "No data returned", code: 0, userInfo: nil)))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let responseObject = try decoder.decode(T.self, from: data)
-                completion(.success(responseObject))
-            } catch {
-                completion(.failure(error))
-            }
-        }.resume()
     }
-    
 }
+
+//class APIRequest {
+//    static func postRequestWithToken<T: Codable>(
+//        url: URL,
+//        dataModel: T.Type,
+//        body: [String: Any],
+//        completion: @escaping (Result<T, Error>) -> Void
+//    ) {
+//
+//        let token = Keychain.getApiKey() ?? ""
+//        var request = URLRequest(url: url)
+//
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//
+//        do {
+//            let jsonData = try JSONSerialization.data(withJSONObject: body)
+//            request.httpBody = jsonData
+//            print(body)
+//        } catch {
+//            completion(.failure(error))
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//            if let error = error {
+//                completion(.failure(error))
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion(.failure(NSError(domain: "No data returned", code: 0, userInfo: nil)))
+//                return
+//            }
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let responseObject = try decoder.decode(T.self, from: data)
+//                completion(.success(responseObject))
+//            } catch {
+//                completion(.failure(error))
+//            }
+//        }.resume()
+//    }
+//
+//}
