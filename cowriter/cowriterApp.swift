@@ -15,7 +15,6 @@ struct cowriterApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .customFont()
         }
     }
 }

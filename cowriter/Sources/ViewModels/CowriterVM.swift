@@ -9,4 +9,5 @@ import Foundation
 
 class CowriterVM: ObservableObject {
     @Published var loading: Bool = false
+    @Published var textPrompt: String = ""
 }

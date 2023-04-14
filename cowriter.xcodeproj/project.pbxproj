@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0A9D5429E9BBD700D7BEC5 /* PromptHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */; };
+		0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */; };
+		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHint.swift; sourceTree = "<group>"; };
+		0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterLogo.swift; sourceTree = "<group>"; };
+		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,7 +195,8 @@
 			children = (
 				0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */,
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
-				0EE49E0929E6D5060058DB14 /* SendButton.swift */,
+				0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */,
+				0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -198,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				0EE49E0429E6C0600058DB14 /* CowriterView.swift */,
+				0EE49E0929E6D5060058DB14 /* SendButton.swift */,
+				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
 			);
 			path = Cowriter;
 			sourceTree = "<group>";
@@ -294,15 +303,18 @@
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
+				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
 				0E6A655729DD25C1003457DF /* Persistence.swift in Sources */,
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
+				0E0A9D5429E9BBD700D7BEC5 /* PromptHint.swift in Sources */,
 				0ECC7C0029DD4F1D002A6B7F /* GrammarActionsModel.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
 				0EE49E0A29E6D5060058DB14 /* SendButton.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
+				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* HistoryView.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
 			);
