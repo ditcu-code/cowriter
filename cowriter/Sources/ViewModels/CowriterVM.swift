@@ -11,7 +11,6 @@ import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
 class CowriterVM: ObservableObject {
-    @Published var loading: Bool = false
     @Published var textPrompt: String = ""
     
     @Published var text: String = ""

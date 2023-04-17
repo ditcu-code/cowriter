@@ -23,15 +23,15 @@ struct Prompter: View {
 //                        vm.loading = true
                         vm.request(userMessage: vm.textPrompt)
                     }
-                    .disabled(vm.loading)
-                if vm.loading {
+                    .disabled(vm.isLoading)
+                if vm.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
                         .padding(.horizontal, 10)
                 } else {
                     SendButton(vm: vm).padding(.horizontal, 5)
                 }
-            }.animation(.linear, value: vm.loading)
+            }.animation(.linear, value: vm.isLoading)
         }.padding()
     }
 }

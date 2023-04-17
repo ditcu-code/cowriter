@@ -21,6 +21,6 @@ struct SendButton: View {
                 .background(.orange)
                 .clipShape(Circle())
         })
-        .disabled(vm.loading)
+        .disabled(vm.isLoading)
     }
 }

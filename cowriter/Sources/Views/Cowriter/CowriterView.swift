@@ -15,14 +15,15 @@ struct CowriterView: View {
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
-                VStack() {
+                
+                VStack {
                     
                     if textToDisplay.isEmpty {
                         CowriterLogo()
                     } else {
                         ScrollView {
                             Spacer()
-                            ResultCard(prevPrompt: vm.textPrompt, result: textToDisplay)
+                            ResultCard(prevPrompt: vm.text, result: textToDisplay)
                         }
                     }
                     
