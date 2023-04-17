@@ -9,32 +9,35 @@ import SwiftUI
 
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
-    @State var textToDisplay = ""
-    
+
     var body: some View {
+        let isActive = vm.history.isEmpty
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
-                VStack() {
-                    
-                    if textToDisplay.isEmpty {
-                        CowriterLogo()
+                
+                VStack {
+                    if isActive {
+                        CowriterLogo().padding(.top, 100)
                     } else {
                         ScrollView {
                             Spacer()
-                            ResultCard(prevPrompt: vm.textPrompt, result: textToDisplay)
+                            ForEach(vm.history) {item in
+                                let isLastItem = vm.history.last == item 
+                                ResultCard(prevPrompt: item.prompt, result: isLastItem ? vm.text : item.result, isLoading: isLastItem && vm.isLoading)
+                            }
                         }
                     }
                     
                     Prompter(vm: vm)
                     
-                    if textToDisplay.isEmpty {
+                    if isActive {
                         PromptHint(vm: vm)
                     }
                     
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(textToDisplay.isEmpty ? "" : "Cowriter")
+                .navigationTitle(vm.text.isEmpty ? "" : "Cowriter")
             }
             .toolbar {
                 Button {
@@ -46,7 +49,7 @@ struct CowriterView: View {
         }
         .onReceive(vm.$text.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
             withAnimation {
-                self.textToDisplay = output
+                vm.text = output
             }
         }
         .customFont()

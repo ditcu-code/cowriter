@@ -16,22 +16,24 @@ struct Prompter: View {
                 .fill(.background)
                 .frame(height: 38)
             HStack {
-                TextField("Tell cowriter to...", text: $vm.textPrompt)
+                TextField("Tell cowriter to...", text: $vm.userMessage)
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-//                        vm.loading = true
-                        vm.request(userMessage: vm.textPrompt)
+                        vm.request()
                     }
-                    .disabled(vm.loading)
-                if vm.loading {
+                    .disabled(vm.isLoading)
+                if vm.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
                         .padding(.horizontal, 10)
                 } else {
                     SendButton(vm: vm).padding(.horizontal, 5)
                 }
-            }.animation(.linear, value: vm.loading)
-        }.padding()
+            }.animation(.linear, value: vm.isLoading)
+        }
+        .padding(.horizontal)
+        .padding(.top, 4)
+        .padding(.bottom, 12)
     }
 }
