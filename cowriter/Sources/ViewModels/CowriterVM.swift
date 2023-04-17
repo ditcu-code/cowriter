@@ -10,11 +10,6 @@ import SwiftUI
 import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
-struct Prompts: Identifiable, Equatable {
-    var id: UUID = UUID()
-    var prompt, result: String
-}
-
 class CowriterVM: ObservableObject {
     @Published var userMessage: String = "" // prompt
     @Published var text: String = "" // result
