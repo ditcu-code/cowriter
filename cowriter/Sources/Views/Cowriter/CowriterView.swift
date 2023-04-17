@@ -66,6 +66,7 @@ struct CowriterView: View {
                     Label("Hello", systemImage: "gearshape")
                 }
             }
+            .animation(.linear, value: isActive)
         }
         .onReceive(vm.$text.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
             withAnimation {
