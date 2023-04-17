@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
+        "version" : "5.6.4"
+      }
+    },
+    {
+      "identity" : "alamofireeventsource",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JuniperPhoton/AlamofireEventSource",
+      "state" : {
+        "revision" : "fb2064e4907f6f38debaa5cc136f390722c33f22",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "photonopenaikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JuniperPhoton/PhotonOpenAIKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "914459ebaac721c4b0cc1795bd261439ffd4064e"
+      }
+    }
+  ],
+  "version" : 2
+}
