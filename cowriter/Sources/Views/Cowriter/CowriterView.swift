@@ -34,7 +34,9 @@ struct CowriterView: View {
                         PromptHint(vm: vm)
                     }
                     
-                }.navigationBarTitleDisplayMode(.inline)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(textToDisplay.isEmpty ? "" : "Cowriter")
             }
             .toolbar {
                 Button {
