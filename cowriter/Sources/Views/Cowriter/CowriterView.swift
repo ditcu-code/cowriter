@@ -9,24 +9,39 @@ import SwiftUI
 
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
-
+    @State private var scrollProxy: ScrollViewProxy? = nil
+    
     var body: some View {
         let isActive = vm.history.isEmpty
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
                 
+                if !vm.errorMessage.isEmpty {
+                    Text(vm.errorMessage).padding()
+                }
+                
                 VStack {
                     if isActive {
                         CowriterLogo().padding(.top, 100)
                     } else {
-                        ScrollView {
-                            Spacer()
-                            ForEach(vm.history) {item in
-                                let isLastItem = vm.history.last == item 
-                                ResultCard(prevPrompt: item.prompt, result: isLastItem ? vm.text : item.result, isLoading: isLastItem && vm.isLoading)
+                        ScrollViewReader { scrollView in
+                            ScrollView {
+                                ForEach(vm.history, id: \.id) {item in
+                                    let isLastItem = vm.history.last == item
+                                    ResultCard(
+                                        prevPrompt: item.prompt,
+                                               result: isLastItem ? vm.text : item.result,
+                                               isLoading: isLastItem && vm.isLoading
+                                    )
+                                    .id(item.id)
+                                }
+                                .onAppear {
+                                    scrollProxy = scrollView
+                                }
                             }
                         }
+
                     }
                     
                     Prompter(vm: vm)
@@ -39,6 +54,11 @@ struct CowriterView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(vm.text.isEmpty ? "" : "Cowriter")
             }
+            .onChange(of: vm.text, perform: { _ in
+                withAnimation {
+                    scrollProxy?.scrollTo(vm.history.last?.id, anchor: .bottom)
+                }
+            })
             .toolbar {
                 Button {
                     print("")

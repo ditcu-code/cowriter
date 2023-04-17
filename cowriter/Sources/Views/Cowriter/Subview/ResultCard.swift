@@ -22,7 +22,7 @@ struct ResultCard: View {
             }.padding(.horizontal, 5)
             Divider()
             Text(result)
-                .customFont(24, .darkGrayFont)
+                .customFont(20, .darkGrayFont)
                 .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .transition(.scale)
