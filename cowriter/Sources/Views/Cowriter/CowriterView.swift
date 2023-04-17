@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CowriterView: View {
-    @State var text: String = ""
     @ObservedObject var vm: CowriterVM = CowriterVM()
-    
     @State var textToDisplay = ""
     
     var body: some View {
@@ -56,7 +54,6 @@ struct CowriterView: View {
 }
 
 struct CowriterView_Previews: PreviewProvider {
-    
     static var previews: some View {
         CowriterView()
     }
