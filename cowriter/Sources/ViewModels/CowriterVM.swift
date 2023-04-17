@@ -14,9 +14,6 @@ class CowriterVM: ObservableObject {
     @Published var userMessage: String = "" // prompt
     @Published var text: String = "" // result
     
-    @Published var prevPrompt: String = ""
-    @Published var prevResult: String = ""
-    
     @Published var errorMessage: String = ""
     @Published var isLoading = false
     
