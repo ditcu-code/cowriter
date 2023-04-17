@@ -30,7 +30,11 @@ struct PromptHint: View {
         VStack(spacing: 5) {
             ForEach(prompts, id: \.self) {prompt in
                 Button {
-                    vm.userMessage = prompt
+                    vm.userMessage = prompt.replacingOccurrences(of: "..", with: " ")
+                    
+                    if !hasTrailingDot(prompt) {
+                        vm.request()
+                    }
                 } label: {
                     HStack() {
                         Circle()
