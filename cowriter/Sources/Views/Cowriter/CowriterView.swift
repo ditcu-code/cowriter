@@ -11,14 +11,29 @@ struct CowriterView: View {
     @State var text: String = ""
     @ObservedObject var vm: CowriterVM = CowriterVM()
     
+    @State var textToDisplay = ""
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
                 VStack() {
-                    CowriterLogo()
+                    
+                    if textToDisplay.isEmpty {
+                        CowriterLogo()
+                    } else {
+                        ScrollView {
+                            Spacer()
+                            ResultCard(prevPrompt: vm.textPrompt, result: textToDisplay)
+                        }
+                    }
+                    
                     Prompter(vm: vm)
-                    PromptHint(vm: vm)
+                    
+                    if textToDisplay.isEmpty {
+                        PromptHint(vm: vm)
+                    }
+                    
                 }.navigationBarTitleDisplayMode(.inline)
             }
             .toolbar {
@@ -27,6 +42,11 @@ struct CowriterView: View {
                 } label: {
                     Label("Hello", systemImage: "gearshape")
                 }
+            }
+        }
+        .onReceive(vm.$text.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
+            withAnimation {
+                self.textToDisplay = output
             }
         }
         .customFont()

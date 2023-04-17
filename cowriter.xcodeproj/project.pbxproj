@@ -16,6 +16,8 @@
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
 		0E6A655729DD25C1003457DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655629DD25C1003457DF /* Persistence.swift */; };
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
+		0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */; };
+		0EB8ABFD29ED276F00B882DA /* ResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8ABFC29ED276F00B882DA /* ResultCard.swift */; };
 		0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */; };
 		0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */; };
 		0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */; };
@@ -47,6 +49,7 @@
 		0E6A655629DD25C1003457DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0E6A655929DD25C1003457DF /* cowriter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cowriter.xcdatamodel; sourceTree = "<group>"; };
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EB8ABFC29ED276F00B882DA /* ResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCard.swift; sourceTree = "<group>"; };
 		0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterVM.swift; sourceTree = "<group>"; };
 		0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarView.swift; sourceTree = "<group>"; };
 		0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarActionsView.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
+				0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +145,8 @@
 		0E6A656429DD27E1003457DF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 				0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */,
+				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -200,6 +204,7 @@
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */,
 				0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */,
+				0EB8ABFC29ED276F00B882DA /* ResultCard.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			name = cowriter;
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
+				0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
@@ -271,6 +277,7 @@
 			mainGroup = 0E6A654129DD25C0003457DF;
 			packageReferences = (
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -321,6 +328,7 @@
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* HistoryView.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
+				0EB8ABFD29ED276F00B882DA /* ResultCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -431,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -457,7 +465,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -487,7 +495,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,6 +533,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JuniperPhoton/PhotonOpenAIKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -536,6 +552,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;
+			productName = PhotonOpenAIKit;
+		};
 		0EE49DFF29E482060058DB14 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */;
