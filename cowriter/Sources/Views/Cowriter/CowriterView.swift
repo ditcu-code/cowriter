@@ -24,7 +24,7 @@ struct CowriterView: View {
                             Spacer()
                             ForEach(vm.history) {item in
                                 let isLastItem = vm.history.last == item 
-                                ResultCard(prevPrompt: item.prompt, result: isLastItem ? vm.text : item.result)
+                                ResultCard(prevPrompt: item.prompt, result: isLastItem ? vm.text : item.result, isLoading: isLastItem && vm.isLoading)
                             }
                         }
                     }

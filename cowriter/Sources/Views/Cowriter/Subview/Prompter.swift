@@ -31,6 +31,9 @@ struct Prompter: View {
                     SendButton(vm: vm).padding(.horizontal, 5)
                 }
             }.animation(.linear, value: vm.isLoading)
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
+        .padding(.top, 4)
+        .padding(.bottom, 12)
     }
 }

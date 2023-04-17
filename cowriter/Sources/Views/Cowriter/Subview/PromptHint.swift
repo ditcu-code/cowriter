@@ -46,7 +46,7 @@ struct PromptHint: View {
                     )
                 }
             }
-        }.padding(.vertical)
+        }.padding(.top, 5)
     }
 }
 
