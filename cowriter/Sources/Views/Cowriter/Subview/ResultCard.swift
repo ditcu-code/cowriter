@@ -28,7 +28,7 @@ struct ResultCard: View {
         }
         .padding(22)
         .background(RoundedRectangle(cornerRadius: 12).fill(.background).shadow(radius: 1))
-        .padding()
+        .padding(.horizontal)
     }
 }
 

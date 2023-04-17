@@ -30,7 +30,7 @@ struct PromptHint: View {
         VStack(spacing: 5) {
             ForEach(prompts, id: \.self) {prompt in
                 Button {
-                    vm.textPrompt = prompt
+                    vm.userMessage = prompt
                 } label: {
                     HStack() {
                         Circle()
@@ -46,7 +46,7 @@ struct PromptHint: View {
                     )
                 }
             }
-        }
+        }.padding(.vertical)
     }
 }
 

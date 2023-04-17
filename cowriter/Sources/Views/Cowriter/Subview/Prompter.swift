@@ -16,12 +16,11 @@ struct Prompter: View {
                 .fill(.background)
                 .frame(height: 38)
             HStack {
-                TextField("Tell cowriter to...", text: $vm.textPrompt)
+                TextField("Tell cowriter to...", text: $vm.userMessage)
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-//                        vm.loading = true
-                        vm.request(userMessage: vm.textPrompt)
+                        vm.request()
                     }
                     .disabled(vm.isLoading)
                 if vm.isLoading {
@@ -32,6 +31,6 @@ struct Prompter: View {
                     SendButton(vm: vm).padding(.horizontal, 5)
                 }
             }.animation(.linear, value: vm.isLoading)
-        }.padding()
+        }.padding(.horizontal)
     }
 }
