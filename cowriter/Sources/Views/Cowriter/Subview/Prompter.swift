@@ -20,7 +20,8 @@ struct Prompter: View {
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-                        vm.loading = true
+//                        vm.loading = true
+                        vm.request(userMessage: vm.textPrompt)
                     }
                     .disabled(vm.loading)
                 if vm.loading {

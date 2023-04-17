@@ -8,18 +8,33 @@
 import SwiftUI
 
 struct CowriterView: View {
-    @State var text: String = ""
     @ObservedObject var vm: CowriterVM = CowriterVM()
+    @State var textToDisplay = ""
     
     var body: some View {
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
                 VStack() {
-                    CowriterLogo()
+                    
+                    if textToDisplay.isEmpty {
+                        CowriterLogo()
+                    } else {
+                        ScrollView {
+                            Spacer()
+                            ResultCard(prevPrompt: vm.textPrompt, result: textToDisplay)
+                        }
+                    }
+                    
                     Prompter(vm: vm)
-                    PromptHint(vm: vm)
-                }.navigationBarTitleDisplayMode(.inline)
+                    
+                    if textToDisplay.isEmpty {
+                        PromptHint(vm: vm)
+                    }
+                    
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(textToDisplay.isEmpty ? "" : "Cowriter")
             }
             .toolbar {
                 Button {
@@ -29,12 +44,16 @@ struct CowriterView: View {
                 }
             }
         }
+        .onReceive(vm.$text.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
+            withAnimation {
+                self.textToDisplay = output
+            }
+        }
         .customFont()
     }
 }
 
 struct CowriterView_Previews: PreviewProvider {
-    
     static var previews: some View {
         CowriterView()
     }

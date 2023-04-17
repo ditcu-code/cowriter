@@ -10,10 +10,8 @@ import SwiftUI
 struct CowriterLogo: View {
     var body: some View {
         HStack(spacing: -5) {
-            Text("cowriter").font(.custom("Gill Sans", size: 48))
-            Text(".")
-                .font(.custom("Gill Sans", size: 48))
-                .foregroundColor(.orange)
+            Text("cowriter").customFont(48, .grayFont)
+            Text(".").customFont(48, .orange)
         }
     }
 }

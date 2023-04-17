@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-func hasTrailingDot(_ str: String) -> Bool {
-    if let lastChar = str.last {
-        return lastChar == "."
-    } else {
-        return false
-    }
-}
-
 struct PromptHint: View {
     @StateObject var vm: CowriterVM
     
@@ -35,7 +27,6 @@ struct PromptHint: View {
     }
     
     var body: some View {
-        
         VStack(spacing: 5) {
             ForEach(prompts, id: \.self) {prompt in
                 Button {
@@ -43,19 +34,17 @@ struct PromptHint: View {
                 } label: {
                     HStack() {
                         Circle()
-                            .frame(width: 9)
+                            .frame(width: 9, height: 9)
                             .foregroundColor(hasTrailingDot(prompt) ? .yellow : .orange)
-                        Text(prompt)
-                            .font(.footnote)
+                        Text(prompt).customFont(14, .grayFont)
                     }
                     .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.white)
-                            .shadow(color: .gray.opacity(0.3), radius: 2, x: 0, y:1)
+                            .fill(.background)
                             .frame(height: 23)
                     )
-                }.customFont()
+                }
             }
         }
     }
