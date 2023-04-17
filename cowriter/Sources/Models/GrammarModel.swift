@@ -7,10 +7,8 @@
 
 import Foundation
 
-struct UserText: Codable {
-    let id: UUID
+struct UserText: Identifiable {
+    let id = UUID()
     let text: String
     let date: Date
-    let score: Int
-    let prevID: UUID?
 }

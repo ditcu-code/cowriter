@@ -8,24 +8,29 @@
 import SwiftUI
 
 struct GrammarActionsView: View {
+    @StateObject var vm: GrammarVM
+    @Binding var isRephrase: Bool
+    
     var body: some View {
         HStack {
             Button {
-                print("check")
+                vm.check()
+                isRephrase = false
             } label: {
                 Label("Check", systemImage: "checkmark.square")
-            }
+            }.disabled(vm.loading)
             Button {
-                print("check")
+                vm.rephrase()
+                isRephrase = true
             } label: {
                 Text("Rephrase")
-            }
+            }.disabled(vm.loading)
         }.buttonStyle(.borderedProminent).font(.title2)
     }
 }
 
-struct GrammarActionsView_Previews: PreviewProvider {
-    static var previews: some View {
-        GrammarActionsView()
-    }
-}
+//struct GrammarActionsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GrammarActionsView(vm: GrammarVM())
+//    }
+//}
