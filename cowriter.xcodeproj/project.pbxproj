@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */; };
+		0E0A637229ED9F3C00DB7540 /* MagicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A637129ED9F3C00DB7540 /* MagicButton.swift */; };
 		0E0A9D5429E9BBD700D7BEC5 /* PromptHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */; };
 		0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
+		0E0A637129ED9F3C00DB7540 /* MagicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicButton.swift; sourceTree = "<group>"; };
 		0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHint.swift; sourceTree = "<group>"; };
 		0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterLogo.swift; sourceTree = "<group>"; };
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 			children = (
 				0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */,
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
+				0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */,
+				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
+				0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */,
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
 				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
@@ -335,6 +342,7 @@
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
+				0E0A637229ED9F3C00DB7540 /* MagicButton.swift in Sources */,
 				0EE49E0A29E6D5060058DB14 /* SendButton.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,

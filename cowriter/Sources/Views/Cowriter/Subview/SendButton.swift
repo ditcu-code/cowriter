@@ -12,7 +12,7 @@ struct SendButton: View {
 
     var body: some View {
         Button(action: {
-            
+            vm.request()
         }, label: {
             Image(systemName: "paperplane.fill")
                 .font(.footnote)

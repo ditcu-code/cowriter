@@ -11,9 +11,10 @@ struct ResultCard: View {
     var prevPrompt: String
     var result: String
     var isLoading: Bool
+    @State var showButtons: Bool = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 12) {
                 Circle().fill(isLoading ? .orange : .gray).opacity(0.5).frame(width: 12)
                 Text(prevPrompt)
@@ -26,11 +27,21 @@ struct ResultCard: View {
                 .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .transition(.scale)
+                .onTapGesture {
+                    showButtons.toggle()
+                }
+            if showButtons {
+                HStack(spacing: 15) {
+                    RefreshButton()
+                    MagicButton(act: print(""))
+                }
+            }
         }
         .padding(22)
         .background(RoundedRectangle(cornerRadius: 12).fill(.background).shadow(radius: 1))
         .padding(.horizontal)
         .padding(.bottom, 5)
+        .animation(.linear, value: showButtons)
     }
 }
 
