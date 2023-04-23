@@ -9,15 +9,13 @@ import SwiftUI
 
 struct ResultCard: View {
     var chat: ChatType
-    //    var chat: ChatModel
-    //    var results: [ResultType]
-    var isLastChat: Bool
     @StateObject var vm: CowriterVM
     
     @State var selectedResultId: String = ""
     
     var body: some View {
-        let isLoading = isLastChat && vm.isLoading
+        let isActiveChat = vm.currentChat == chat
+        let isLoading = isActiveChat && vm.isLoading
         
         VStack(alignment: .leading, spacing: 20) {
             ForEach(chat.resultsArray) { result in
@@ -48,15 +46,11 @@ struct ResultCard: View {
                 AnswerText(
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
-                    chatId: chat.wrappedId.uuidString,
                     chat: chat,
-                    answerStream: isLastChat && isLastResult ? vm.textToDisplay : result.wrappedAnswer,
+                    answerStream: isActiveChat && isLastResult ? vm.textToDisplay : result.wrappedAnswer,
                     vm: vm
                 )
-                .customFont(
-                    isSelectedAnswer ? 22 : 18,
-                    isSelectedAnswer ? .darkGrayFont : .defaultFont
-                )
+                .customFont(18, isSelectedAnswer ? .darkGrayFont : .defaultFont)
                 
             }
         }
@@ -69,6 +63,9 @@ struct ResultCard: View {
         .padding(.horizontal)
         .padding(.bottom, 5)
         .animation(.easeOut(duration: 0.2), value: selectedResultId)
+        .onTapGesture {
+            print(chat.resultsArray)
+        }
     }
 }
 
@@ -111,7 +108,6 @@ struct PromptText: View {
 struct AnswerText: View {
     @Binding var selectedResultId: String
     var resultId: String
-    var chatId: String
     var chat: ChatType
     var answerStream: String
     @StateObject var vm: CowriterVM

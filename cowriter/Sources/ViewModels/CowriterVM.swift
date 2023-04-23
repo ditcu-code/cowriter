@@ -19,6 +19,7 @@ class CowriterVM: ObservableObject {
     @Published var isLoading = false
     
     @Published var oldChats: [ChatType] = []
+    @Published var currentChat: ChatType?
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
@@ -47,7 +48,6 @@ class CowriterVM: ObservableObject {
         cancel()
         task = Task {
             let context = PersistenceController.viewContext
-            var currentChat: ChatType?
             var currentResult: ResultType?
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
@@ -78,6 +78,7 @@ class CowriterVM: ObservableObject {
                 currentResult = newResult
                 chat.addToResults(newResult)
                 currentChat = chat
+                PersistenceController.save()
             } else {
                 let newResult = createResult()
                 currentResult = newResult
@@ -97,7 +98,8 @@ class CowriterVM: ObservableObject {
             defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
                 withAnimation {
                     self.isLoading = false
-                    userMessage = ""
+                    self.userMessage = ""
+//                    self.textToDisplay = ""
                 }
             }
 

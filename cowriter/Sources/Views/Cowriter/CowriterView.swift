@@ -28,14 +28,7 @@ struct CowriterView: View {
                         ScrollViewReader { scrollView in
                             ScrollView {
                                 ForEach(vm.oldChats, id: \.id) {chat in
-                                    let isLastChat = vm.oldChats.last == chat
-                                    
-                                    ResultCard(
-                                        chat: chat,
-//                                        results: chat.results,
-                                        isLastChat: isLastChat,
-                                        vm: vm
-                                    ).id(chat.id)
+                                    ResultCard(chat: chat, vm: vm).id(chat.id)
                                 }
                                 .onAppear {
                                     scrollProxy = scrollView
