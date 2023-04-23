@@ -18,7 +18,7 @@ struct PromptHint: View {
         "Write an email to.."
     ]
     
-    func hasTrailingDot(_ str: String) -> Bool {
+    private func hasTrailingDot(_ str: String) -> Bool {
         if let lastChar = str.last {
             return lastChar == "."
         } else {
@@ -33,7 +33,7 @@ struct PromptHint: View {
                     vm.userMessage = prompt.replacingOccurrences(of: "..", with: " ")
                     
                     if !hasTrailingDot(prompt) {
-                        vm.request()
+                        vm.request(nil)
                     }
                 } label: {
                     HStack() {

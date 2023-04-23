@@ -12,7 +12,7 @@ struct CowriterView: View {
     @State private var scrollProxy: ScrollViewProxy? = nil
     
     var body: some View {
-        let isActive = vm.history.isEmpty
+        let isActive = vm.histories.isEmpty
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
@@ -27,14 +27,15 @@ struct CowriterView: View {
                     } else {
                         ScrollViewReader { scrollView in
                             ScrollView {
-                                ForEach(vm.history, id: \.id) {item in
-                                    let isLastItem = vm.history.last == item
+                                ForEach(vm.histories, id: \.id) {chat in
+                                    let isLastChat = vm.histories.last == chat
+                                    
                                     ResultCard(
-                                        prevPrompt: item.prompt,
-                                               result: isLastItem ? vm.text : item.result,
-                                               isLoading: isLastItem && vm.isLoading
-                                    )
-                                    .id(item.id)
+                                        chat: chat,
+//                                        results: chat.results,
+                                        isLastChat: isLastChat,
+                                        vm: vm
+                                    ).id(chat.id)
                                 }
                                 .onAppear {
                                     scrollProxy = scrollView
@@ -52,26 +53,26 @@ struct CowriterView: View {
                     
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(vm.text.isEmpty ? "" : "Cowriter")
+                .navigationTitle(vm.textToDisplay.isEmpty ? "" : "Cowriter")
             }
-            .onChange(of: vm.text, perform: { _ in
+            .onChange(of: vm.textToDisplay, perform: { _ in
                 withAnimation {
                     scrollProxy?.scrollTo(vm.history.last?.id, anchor: .bottom)
                 }
             })
             .toolbar {
                 Button {
-                    print("")
+                    print("setting")
                 } label: {
                     Label("Hello", systemImage: "gearshape")
                 }
             }
             .animation(.linear, value: isActive)
         }
-        .onReceive(vm.$text.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
-            withAnimation {
-                vm.text = output
-            }
+        .onReceive(vm.$textToDisplay.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
+//            withAnimation {
+                vm.textToDisplay = output
+//            }
         }
         .customFont()
     }
