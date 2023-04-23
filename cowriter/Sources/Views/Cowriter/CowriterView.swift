@@ -9,10 +9,10 @@ import SwiftUI
 
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
-    @State private var scrollProxy: ScrollViewProxy? = nil
+    @State private var scrollProxy: ScrollViewProxy?
     
     var body: some View {
-        let isActive = vm.histories.isEmpty
+        let isActive = vm.oldChats.isEmpty
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
@@ -27,8 +27,8 @@ struct CowriterView: View {
                     } else {
                         ScrollViewReader { scrollView in
                             ScrollView {
-                                ForEach(vm.histories, id: \.id) {chat in
-                                    let isLastChat = vm.histories.last == chat
+                                ForEach(vm.oldChats, id: \.id) {chat in
+                                    let isLastChat = vm.oldChats.last == chat
                                     
                                     ResultCard(
                                         chat: chat,
@@ -57,7 +57,7 @@ struct CowriterView: View {
             }
             .onChange(of: vm.textToDisplay, perform: { _ in
                 withAnimation {
-                    scrollProxy?.scrollTo(vm.history.last?.id, anchor: .bottom)
+                    scrollProxy?.scrollTo(vm.oldChats.last?.id, anchor: .bottom)
                 }
             })
             .toolbar {

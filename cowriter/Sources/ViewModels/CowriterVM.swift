@@ -5,7 +5,6 @@
 //  Created by Aditya Cahyo on 13/04/23.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 import CoreData
@@ -19,8 +18,7 @@ class CowriterVM: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var isLoading = false
     
-    @Published var history: [ChatModel] = []
-    @Published var histories: [ChatType] = []
+    @Published var oldChats: [ChatType] = []
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
@@ -41,24 +39,31 @@ class CowriterVM: ObservableObject {
     }
     
     func getAllChats() {
-        histories = ChatType.getAll()
+        oldChats = ChatType.getAll()
     }
     
     @MainActor
-    func request(_ id: UUID?) {
+    func request(_ chat: ChatType?) {
         cancel()
         task = Task {
-            
-            let isNew = id == nil
-            let newChatId = UUID()
             let context = PersistenceController.viewContext
+            var currentChat: ChatType?
+            var currentResult: ResultType?
+            var messages: [ChatCompletion.Request.Message] = [
+                .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
+            ]
             
-            if userMessage.isEmpty {
-                return
+            func createResult() -> ResultType {
+                let result = ResultType(context: context)
+                result.id = UUID()
+                result.date = Date()
+                result.prompt = userMessage
+                result.answer = ""
+                
+                return result
             }
             
-            guard let client = client else {
-                errorMessage = "Please configure with API Key"
+            if userMessage.isEmpty {
                 return
             }
             
@@ -66,61 +71,41 @@ class CowriterVM: ObservableObject {
                 self.isLoading = true
             }
             
+            self.textToDisplay = ""
+            
+            if let chat = chat {
+                let newResult = createResult()
+                currentResult = newResult
+                chat.addToResults(newResult)
+                currentChat = chat
+            } else {
+                let newResult = createResult()
+                currentResult = newResult
+                let newChat = ChatType(context: context)
+                newChat.id = UUID()
+                newChat.userId = ""
+                newChat.results = [newResult]
+                currentChat = newChat
+                PersistenceController.save()
+            }
+            
+            guard let client = client else {
+                errorMessage = "Please configure with API Key"
+                return
+            }
+            
             defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
                 withAnimation {
                     self.isLoading = false
                     userMessage = ""
                 }
-                print(histories)
             }
-            
-            self.textToDisplay = ""
 
-            
-            func saveChat(_ newId: UUID) {
-                let result = ResultType(context: context)
-                result.id = UUID()
-                result.date = Date()
-                result.prompt = userMessage
-                result.answer = ""
-
-                let chat = ChatType(context: context)
-                chat.id = newId
-                chat.userId = ""
-                chat.results = [result]
-                
-                PersistenceController.save()
-            }
-            
-            if isNew {
-                saveChat(newChatId)
-            } else if histories.filter({ $0.id == id }).first != nil {
-                let result = ResultType(context: context)
-                result.id = UUID()
-                result.date = Date()
-                result.prompt = userMessage
-                result.answer = ""
-                
-                let asf = histories.filter({ $0.id == id }).first!
-                asf.addToResults(result)
-            }
-            
-            var messages: [ChatCompletion.Request.Message] = [
-                .init(role: "system", content: "I'm a writing assistant. I'm not allowed to answer questions"),
-            ]
-
-            if isNew {
+            if let chat = chat {
+                messages += chat.resultsArray.map { .init(role: "user", content: $0.wrappedPrompt) }
+                messages += chat.resultsArray.map { .init(role: "assistant", content: $0.wrappedAnswer) }
+            } else {
                 messages.append(.init(role: "user", content: userMessage))
-            } else if histories.filter({ $0.id == id }).first != nil {
-                print("2")
-                histories.filter({ $0.id == id }).first!.resultsArray.map {$0.wrappedPrompt}.forEach { item in
-                    messages.append(.init(role: "user", content: item))
-                }
-                
-                histories.filter({ $0.id == id }).first!.resultsArray.map {$0.wrappedAnswer}.forEach { item in
-                    messages.append(.init(role: "assistant", content: item))
-                }
-                
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
@@ -133,17 +118,19 @@ class CowriterVM: ObservableObject {
                 for try await result in stream {
                     self.textToDisplay += result
                 }
-                if isNew {
-                    let currentChat = ChatType.getById(with: newChatId)
-                    if currentChat != nil {
-                        currentChat!.resultsArray[currentChat!.resultsArray.count - 1].answer = textToDisplay
-                    }
-                } else if histories.filter({ $0.id == id }).first != nil {
-                    let asf = histories.filter({ $0.id == id }).first!
-                    asf.resultsArray[asf.resultsArray.count - 1].answer = textToDisplay
-                    PersistenceController.save()
+                if let chat = chat ?? currentChat,
+                    let lastResult = chat.resultsArray.last {
+                        lastResult.answer = textToDisplay
+                        PersistenceController.save()
                 }
             } catch {
+                if let currentChat = currentChat {
+//                   if currentChat.resultsArray.count == 1 {
+//                       context.delete(currentChat)
+//                   } else if let currentResult = currentResult {
+//                       currentChat.removeFromResults(currentResult)
+//                   }
+                }
                 print("error \(error)")
                 self.errorMessage = String(describing: error)
             }

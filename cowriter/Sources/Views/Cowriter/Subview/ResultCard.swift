@@ -49,6 +49,7 @@ struct ResultCard: View {
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
                     chatId: chat.wrappedId.uuidString,
+                    chat: chat,
                     answerStream: isLastChat && isLastResult ? vm.textToDisplay : result.wrappedAnswer,
                     vm: vm
                 )
@@ -111,6 +112,7 @@ struct AnswerText: View {
     @Binding var selectedResultId: String
     var resultId: String
     var chatId: String
+    var chat: ChatType
     var answerStream: String
     @StateObject var vm: CowriterVM
     
@@ -131,8 +133,7 @@ struct AnswerText: View {
                 HStack(spacing: 15) {
                     RefreshButton {
                         vm.userMessage = "Create another"
-                        print("chatId", chatId)
-                        vm.request(UUID(uuidString: chatId))
+                        vm.request(chat)
                     }
 //                    MagicButton(act: print("magicbutton"))
                 }
