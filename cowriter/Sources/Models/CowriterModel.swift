@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct Prompts: Identifiable, Equatable {
+struct ResultModel: Equatable {
     var id: UUID = UUID()
-    var prompt, result: String
+    var date: Date = Date()
+    var prompt, answer: String
+}
+
+struct ChatModel: Identifiable, Equatable {
+    var id: UUID = UUID()
+    var userId: String = ""
+    var results: [ResultModel]
 }
