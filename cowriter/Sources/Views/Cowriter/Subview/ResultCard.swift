@@ -19,7 +19,6 @@ struct ResultCard: View {
         
         VStack(alignment: .leading, spacing: 20) {
             ForEach(chat.resultsArray) { result in
-                
                 let isLastResult = result == chat.resultsArray.last
                 let isFirstResult = result == chat.resultsArray.first
                 let isSelectedAnswer = (selectedResultId == result.wrappedId.uuidString) ||
@@ -47,7 +46,7 @@ struct ResultCard: View {
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
                     chat: chat,
-                    answerStream: isActiveChat && isLastResult ? vm.textToDisplay : result.wrappedAnswer,
+                    answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer,
                     vm: vm
                 )
                 .customFont(18, isSelectedAnswer ? .darkGrayFont : .defaultFont)
@@ -113,19 +112,21 @@ struct AnswerText: View {
     @StateObject var vm: CowriterVM
     
     var body: some View {
+        let isSelected = selectedResultId == resultId
+        
         Group {
             Text(answerStream)
                 .textSelection(.enabled)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .transition(.scale)
                 .onTapGesture {
-                    if selectedResultId == resultId {
+                    if isSelected {
                         selectedResultId = ""
                     } else {
                         selectedResultId = resultId
                     }
                 }
-            if resultId == selectedResultId {
+            if isSelected {
                 HStack(spacing: 15) {
                     RefreshButton {
                         vm.userMessage = "Create another"
@@ -136,6 +137,6 @@ struct AnswerText: View {
             }
         }
         .animation(.easeOut, value: selectedResultId)
-        .animation(.linear(duration: 1), value: answerStream)
+        .animation(.linear, value: answerStream)
     }
 }

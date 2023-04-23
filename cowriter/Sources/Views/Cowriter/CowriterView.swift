@@ -35,7 +35,7 @@ struct CowriterView: View {
                                 }
                             }
                         }
-
+                        
                     }
                     
                     Prompter(vm: vm)
@@ -46,7 +46,7 @@ struct CowriterView: View {
                     
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(vm.textToDisplay.isEmpty ? "" : "Cowriter")
+                .navigationTitle(vm.oldChats.isEmpty ? "" : "Cowriter")
             }
             .onChange(of: vm.textToDisplay, perform: { _ in
                 withAnimation {
@@ -63,9 +63,7 @@ struct CowriterView: View {
             .animation(.linear, value: isActive)
         }
         .onReceive(vm.$textToDisplay.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
-//            withAnimation {
-                vm.textToDisplay = output
-//            }
+            vm.textToDisplay = output
         }
         .customFont()
     }

@@ -127,11 +127,12 @@ class CowriterVM: ObservableObject {
                 }
             } catch {
                 if let currentChat = currentChat {
-//                   if currentChat.resultsArray.count == 1 {
-//                       context.delete(currentChat)
-//                   } else if let currentResult = currentResult {
-//                       currentChat.removeFromResults(currentResult)
-//                   }
+                   if currentChat.resultsArray.count == 1 {
+                       context.delete(currentChat)
+                       PersistenceController.save()
+                   } else if let currentResult = currentResult {
+                       currentChat.removeFromResults(currentResult)
+                   }
                 }
                 print("error \(error)")
                 self.errorMessage = String(describing: error)
