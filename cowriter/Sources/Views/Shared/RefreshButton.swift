@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct RefreshButton: View {
-    var act: Void
+    let action: () -> Void
+    
     var body: some View {
-        Button(action: {
-            act
-        }, label: {
+        Button(action: action) {
             Image(systemName: "arrow.clockwise")
                 .font(.callout)
                 .padding(8)
@@ -21,12 +20,14 @@ struct RefreshButton: View {
                 .background(.background)
                 .clipShape(Circle())
                 .shadow(radius: 1)
-        }).customFont()
+        }.customFont()
     }
 }
 
 struct RefreshButton_Previews: PreviewProvider {
     static var previews: some View {
-        RefreshButton(act: print(""))
+        RefreshButton {
+            print("any")
+        }
     }
 }

@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct MagicButton: View {
-    var act: Void
+    var action: () -> Void
     
     var body: some View {
-        Button(action: {
-            act
-        }, label: {
+        Button(action: action) {
             Image(systemName: "wand.and.stars")
                 .font(.callout)
                 .padding(8)
@@ -22,12 +20,12 @@ struct MagicButton: View {
                 .background(.background)
                 .clipShape(Circle())
                 .shadow(radius: 1)
-        }).customFont()
+        }.customFont()
     }
 }
 
-struct MagicButton_Previews: PreviewProvider {
-    static var previews: some View {
-        MagicButton(act: print(""))
-    }
-}
+//struct MagicButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MagicButton(act: print("magicbutton"))
+//    }
+//}
