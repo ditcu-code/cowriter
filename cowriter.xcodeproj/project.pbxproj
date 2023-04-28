@@ -18,6 +18,8 @@
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
 		0E6A655729DD25C1003457DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655629DD25C1003457DF /* Persistence.swift */; };
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
+		0E7C414029F95CE50075B638 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* Chat.swift */; };
+		0E7C414229FA147F0075B638 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C414129FA147F0075B638 /* RoundedCorner.swift */; };
 		0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */; };
 		0EB8ABFD29ED276F00B882DA /* ResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8ABFC29ED276F00B882DA /* ResultCard.swift */; };
 		0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8ABFF29ED6DEE00B882DA /* CowriterModel.swift */; };
@@ -58,6 +60,8 @@
 		0E6A655629DD25C1003457DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0E6A655929DD25C1003457DF /* cowriter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cowriter.xcdatamodel; sourceTree = "<group>"; };
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E7C413F29F95CE50075B638 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		0E7C414129FA147F0075B638 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		0EB8ABFC29ED276F00B882DA /* ResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCard.swift; sourceTree = "<group>"; };
 		0EB8ABFF29ED6DEE00B882DA /* CowriterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterModel.swift; sourceTree = "<group>"; };
 		0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterVM.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 		0EB8ABFE29ED46DC00B882DA /* Subview */ = {
 			isa = PBXGroup;
 			children = (
+				0E7C413F29F95CE50075B638 /* Chat.swift */,
 				0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */,
 				0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
@@ -235,6 +240,7 @@
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */,
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
+				0E7C414129FA147F0075B638 /* RoundedCorner.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
 				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
+				0E7C414229FA147F0075B638 /* RoundedCorner.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
@@ -361,6 +368,7 @@
 				0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */,
 				0EE49E0A29E6D5060058DB14 /* SendButton.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
+				0E7C414029F95CE50075B638 /* Chat.swift in Sources */,
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* HistoryView.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,

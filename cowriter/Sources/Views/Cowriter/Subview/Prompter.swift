@@ -20,7 +20,7 @@ struct Prompter: View {
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-                        vm.request(nil)
+                        vm.request(vm.currentChat)
                     }
                     .disabled(vm.isLoading)
                 if vm.isLoading {

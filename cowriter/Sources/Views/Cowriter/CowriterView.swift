@@ -25,17 +25,7 @@ struct CowriterView: View {
                     if isActive {
                         CowriterLogo().padding(.top, 100)
                     } else {
-                        ScrollViewReader { scrollView in
-                            ScrollView {
-                                ForEach(vm.oldChats, id: \.id) {chat in
-                                    ResultCard(chat: chat, vm: vm).id(chat.id)
-                                }
-                                .onAppear {
-                                    scrollProxy = scrollView
-                                }
-                            }
-                        }
-                        
+                        Chat(vm: vm)
                     }
                     
                     Prompter(vm: vm)
@@ -43,16 +33,10 @@ struct CowriterView: View {
                     if isActive {
                         PromptHint(vm: vm)
                     }
-                    
                 }
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(vm.oldChats.isEmpty ? "" : "Cowriter")
+                .navigationTitle(vm.oldChats.isEmpty ? "" : vm.currentChat!.wrappedTitle)
             }
-            .onChange(of: vm.textToDisplay, perform: { _ in
-                withAnimation {
-                    scrollProxy?.scrollTo(vm.oldChats.last?.id, anchor: .bottom)
-                }
-            })
             .toolbar {
                 Button {
                     print("setting")
@@ -61,11 +45,7 @@ struct CowriterView: View {
                 }
             }
             .animation(.linear, value: isActive)
-        }
-        .onReceive(vm.$textToDisplay.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)) { output in
-            vm.textToDisplay = output
-        }
-        .customFont()
+        }.customFont()
     }
 }
 

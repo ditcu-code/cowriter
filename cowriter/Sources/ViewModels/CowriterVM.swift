@@ -96,10 +96,15 @@ class CowriterVM: ObservableObject {
             }
             
             defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
+                if let chat = currentChat, chat.title == nil {
+                    self.getTitle(results: chat.resultsArray, completion: { string in
+                        chat.title = Utils.removeNewlineAtBeginning(string ?? "Cowriter").capitalized
+                        PersistenceController.save()
+                    })
+                }
                 withAnimation {
                     self.isLoading = false
                     self.userMessage = ""
-//                    self.textToDisplay = ""
                 }
             }
 
@@ -111,7 +116,7 @@ class CowriterVM: ObservableObject {
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
-            
+                        
             let stream = client.chatCompletion.stream(request: chatRequest) { response in
                 response.choices.first?.delta.content ?? ""
             }
@@ -139,4 +144,32 @@ class CowriterVM: ObservableObject {
             }
         }
     }
+    
+    func getTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
+        var title = ""
+        var message = ""
+
+        if let result = results.first, let prompt = result.prompt, let answer = result.answer {
+            let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
+            message = resultString
+        }
+        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message)
+        let dictionary = Utils.toDictionary(raw)
+
+        APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    print("Success! Response data: \(data)")
+                    print(data.choices)
+                    title = data.choices[0].text
+                    completion(title)
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            }
+        }
+    }
+
 }

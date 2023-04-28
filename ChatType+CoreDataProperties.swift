@@ -16,9 +16,14 @@ extension ChatType {
         return NSFetchRequest<ChatType>(entityName: "ChatType")
     }
 
+    @NSManaged public var title: String?
     @NSManaged public var userId: String?
     @NSManaged public var id: UUID?
     @NSManaged public var results: NSSet?
+    
+    public var wrappedTitle: String {
+        title ?? "Cowriter"
+    }
     
     public var wrappedUserId: String {
         userId ?? "Unknown UserId"
