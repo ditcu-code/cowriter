@@ -97,14 +97,16 @@ class CowriterVM: ObservableObject {
             
             defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
                 if let chat = currentChat, chat.title == nil {
-                    self.getTitle(results: chat.resultsArray, completion: { string in
+                    self.getChatTitle(results: chat.resultsArray, completion: { string in
                         chat.title = Utils.removeNewlineAtBeginning(string ?? "Cowriter").capitalized
                         PersistenceController.save()
                     })
                 }
                 withAnimation {
                     self.isLoading = false
-                    self.userMessage = ""
+                    if self.errorMessage.isEmpty {
+                        self.userMessage = ""
+                    }
                 }
             }
             
@@ -130,7 +132,7 @@ class CowriterVM: ObservableObject {
                     lastResult.answer = textToDisplay
                     PersistenceController.save()
                 }
-                if !self.errorMessage.isEmpty {
+                if !self.errorMessage.isEmpty { /// delete prev error message if last req is success
                     withAnimation {
                         errorMessage = ""
                     }
@@ -144,15 +146,18 @@ class CowriterVM: ObservableObject {
                         currentChat.removeFromResults(currentResult)
                     }
                 }
-                print("error \(error)")
-                withAnimation(.easeInOut) {
-                    self.errorMessage = String(describing: error)
+                if String(describing: error).contains("429") {
+                    self.errorMessage = "Uh oh, it seems like you're firing off too many requests too quickly! Hang tight for a bit and try again later, okay? "
+                } else {
+                    withAnimation(.easeInOut) {
+                        self.errorMessage = String(describing: error)
+                    }
                 }
             }
         }
     }
     
-    func getTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
+    func getChatTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
         var title = ""
         var message = ""
         
@@ -160,7 +165,7 @@ class CowriterVM: ObservableObject {
             let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
             message = resultString
         }
-        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message)
+        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 20)
         let dictionary = Utils.toDictionary(raw)
         
         APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
