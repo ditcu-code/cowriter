@@ -165,7 +165,7 @@ class CowriterVM: ObservableObject {
             let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
             message = resultString
         }
-        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 20)
+        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 10)
         let dictionary = Utils.toDictionary(raw)
         
         APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in

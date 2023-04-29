@@ -17,17 +17,23 @@ struct Chat: View {
             ScrollView {
                 ForEach(vm.currentChat?.resultsArray ?? []) { result in
                     let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
+                    
                     BubbleChat(prompt: result.wrappedPrompt)
-                    BubbleChat(answer: isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer)
+                        .transition(.move(edge: .bottom))
+                    BubbleChat(answer:
+                                (isLastResult && vm.errorMessage.isEmpty) ? vm.textToDisplay : result.wrappedAnswer
+                    ).transition(.move(edge: .leading))
+                    
                     if isLastResult {
                         Spacer().id(bottomID)
                     }
-                }
+                }.animation(.linear, value: vm.currentChat?.resultsArray.count)
             }
             .gesture(DragGesture().onChanged{ value in
                 isScrolled = true
             })
             .onChange(of: vm.textToDisplay) { newValue in
+                isScrolled = false
                 if !isScrolled {
                     withAnimation {
                         scrollView.scrollTo(bottomID)
@@ -72,8 +78,6 @@ struct BubbleChat: View {
             if !isUser {
                 Spacer(minLength: 50)
             }
-        }
-        .animation(.linear, value: answer)
-        .padding(.horizontal)
+        }.padding(.horizontal)
     }
 }
