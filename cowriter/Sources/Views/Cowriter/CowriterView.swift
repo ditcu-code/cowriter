@@ -10,7 +10,7 @@ import SwiftUI
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
     @State private var scrollProxy: ScrollViewProxy?
-    @State private var isShowing: Bool = true
+    @State private var isShowing: Bool = false
     private var sideViewWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
@@ -31,10 +31,6 @@ struct CowriterView: View {
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
-                
-                if !vm.errorMessage.isEmpty {
-                    Text(vm.errorMessage).padding()
-                }
                 
                 HStack {
                     if isShowing {
@@ -88,6 +84,17 @@ struct CowriterView: View {
                             CowriterLogo().padding(.top, 100)
                         } else {
                             Chat(vm: vm)
+                        }
+                        
+                        if !vm.errorMessage.isEmpty {
+                            Text(vm.errorMessage)
+                                .foregroundColor(.pink.opacity(0.75))
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.pink.opacity(0.1))
+                                )
+                                .transition(.move(edge: .bottom))
                         }
                         
                         Prompter(vm: vm, isActive: isActive)

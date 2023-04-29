@@ -107,7 +107,7 @@ class CowriterVM: ObservableObject {
                     self.userMessage = ""
                 }
             }
-
+            
             if let chat = chat {
                 messages += chat.resultsArray.map { .init(role: "user", content: $0.wrappedPrompt) }
                 messages += chat.resultsArray.map { .init(role: "assistant", content: $0.wrappedAnswer) }
@@ -116,7 +116,7 @@ class CowriterVM: ObservableObject {
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
-                        
+            
             let stream = client.chatCompletion.stream(request: chatRequest) { response in
                 response.choices.first?.delta.content ?? ""
             }
@@ -126,21 +126,28 @@ class CowriterVM: ObservableObject {
                     self.textToDisplay += result
                 }
                 if let chat = chat ?? currentChat,
-                    let lastResult = chat.resultsArray.last {
-                        lastResult.answer = textToDisplay
-                        PersistenceController.save()
+                   let lastResult = chat.resultsArray.last {
+                    lastResult.answer = textToDisplay
+                    PersistenceController.save()
+                }
+                if !self.errorMessage.isEmpty {
+                    withAnimation {
+                        errorMessage = ""
+                    }
                 }
             } catch {
                 if let currentChat = currentChat {
-                   if currentChat.resultsArray.count == 1 {
-                       context.delete(currentChat)
-                       PersistenceController.save()
-                   } else if let currentResult = currentResult {
-                       currentChat.removeFromResults(currentResult)
-                   }
+                    if currentChat.resultsArray.count == 1 {
+                        context.delete(currentChat)
+                        PersistenceController.save()
+                    } else if let currentResult = currentResult {
+                        currentChat.removeFromResults(currentResult)
+                    }
                 }
                 print("error \(error)")
-                self.errorMessage = String(describing: error)
+                withAnimation(.easeInOut) {
+                    self.errorMessage = String(describing: error)
+                }
             }
         }
     }
@@ -148,14 +155,14 @@ class CowriterVM: ObservableObject {
     func getTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
         var title = ""
         var message = ""
-
+        
         if let result = results.first, let prompt = result.prompt, let answer = result.answer {
             let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
             message = resultString
         }
         let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message)
         let dictionary = Utils.toDictionary(raw)
-
+        
         APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -171,5 +178,5 @@ class CowriterVM: ObservableObject {
             }
         }
     }
-
+    
 }
