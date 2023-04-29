@@ -40,9 +40,10 @@ struct CowriterView: View {
                     if isShowing {
                         ZStack(alignment: .topLeading) {
                             Rectangle()
-                                .fill(.white)
+                                .fill(.background)
                                 .cornerRadius(16, corners: [.bottomRight])
                                 .edgesIgnoringSafeArea(.top)
+                            
                             VStack(alignment: .leading) {
                                 Text("Chats")
                                 List(vm.allChats) { item in
@@ -73,6 +74,7 @@ struct CowriterView: View {
                                         .foregroundColor(.grayFont)
                                     Spacer()
                                 }.buttonStyle(.bordered)
+                                
                             }.padding()
                         }
                         .transition(.move(edge: .leading))
@@ -81,6 +83,7 @@ struct CowriterView: View {
                     }
                     VStack {
                         Spacer()
+                        
                         if isActive {
                             CowriterLogo().padding(.top, 100)
                         } else {
@@ -92,6 +95,7 @@ struct CowriterView: View {
                         if isActive {
                             PromptHint(vm: vm)
                         }
+                        
                         Spacer()
                     }
                     .contentShape(Rectangle())
