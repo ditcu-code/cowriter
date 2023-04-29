@@ -10,12 +10,12 @@ import SwiftUI
 struct HamburgerToClose: View {
     @Binding var isOpened: Bool
 
-    var width: CGFloat = 22
-    var height: CGFloat = 2
-    var degrees: Double = 45
+    private var width: CGFloat = 22
+    private var height: CGFloat = 2
+    private var degrees: Double = 45
     
     var body: some View {
-        VStack(spacing: 5.5){
+        VStack(spacing: 5.5) {
             RoundedRectangle(cornerRadius: 5) // top
                 .frame(width: width, height: height)
                 .rotationEffect(.degrees(isOpened ? degrees : 0), anchor: .leading)
