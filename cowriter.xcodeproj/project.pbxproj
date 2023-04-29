@@ -40,6 +40,8 @@
 		0EE49E0829E6C0FA0058DB14 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0729E6C0FA0058DB14 /* HistoryView.swift */; };
 		0EE49E0A29E6D5060058DB14 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0929E6D5060058DB14 /* SendButton.swift */; };
 		0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */; };
+		0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */; };
+		0EEC231329FCF6910052AA05 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC231229FCF6910052AA05 /* Sidebar.swift */; };
 		0EF164B529F2EC8700CC35B1 /* ChatType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B129F2EC8700CC35B1 /* ChatType+CoreDataClass.swift */; };
 		0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B229F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift */; };
 		0EF164B729F2EC8700CC35B1 /* ResultType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B329F2EC8700CC35B1 /* ResultType+CoreDataClass.swift */; };
@@ -80,6 +82,8 @@
 		0EE49E0729E6C0FA0058DB14 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		0EE49E0929E6D5060058DB14 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerToClose.swift; sourceTree = "<group>"; };
+		0EEC231229FCF6910052AA05 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		0EF164B129F2EC8700CC35B1 /* ChatType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ChatType+CoreDataClass.swift"; path = "cowriter/Sources/Data/ChatType+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		0EF164B229F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ChatType+CoreDataProperties.swift"; path = "cowriter/Sources/Data/ChatType+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		0EF164B329F2EC8700CC35B1 /* ResultType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ResultType+CoreDataClass.swift"; path = "cowriter/Sources/Data/ResultType+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -211,6 +215,7 @@
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
 				0EE49E0929E6D5060058DB14 /* SendButton.swift */,
 				0EB8ABFC29ED276F00B882DA /* ResultCard.swift */,
+				0EEC231229FCF6910052AA05 /* Sidebar.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */,
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
 				0E7C414129FA147F0075B638 /* RoundedCorner.swift */,
+				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				0EF164B729F2EC8700CC35B1 /* ResultType+CoreDataClass.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
+				0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */,
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
@@ -372,6 +379,7 @@
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* HistoryView.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
+				0EEC231329FCF6910052AA05 /* Sidebar.swift in Sources */,
 				0EB8ABFD29ED276F00B882DA /* ResultCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
