@@ -8,21 +8,19 @@
 import SwiftUI
 
 struct Chat: View {
-    @StateObject var vm: CowriterVM
-    @Namespace var bottomID
+    @StateObject var vm: CowriterVM = CowriterVM()
+    @Namespace private var bottomID
     @State private var isScrolled = false
     
     var body: some View {
         ScrollViewReader { scrollView in
             ScrollView {
-                ForEach(vm.oldChats, id: \.id) { chat in
-                    ForEach(chat.resultsArray) { result in
-                        let isLastResult = result.wrappedId == chat.resultsArray.last?.wrappedId
-                        BubbleChat(prompt: result.wrappedPrompt)
-                        BubbleChat(answer: isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer)
-                        if isLastResult {
-                            Spacer().id(bottomID)
-                        }
+                ForEach(vm.currentChat?.resultsArray ?? []) { result in
+                    let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
+                    BubbleChat(prompt: result.wrappedPrompt)
+                    BubbleChat(answer: isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer)
+                    if isLastResult {
+                        Spacer().id(bottomID)
                     }
                 }
             }

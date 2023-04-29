@@ -9,10 +9,10 @@ import SwiftUI
 
 struct HamburgerToClose: View {
     @Binding var isOpened: Bool
-
-    private var width: CGFloat = 22
-    private var height: CGFloat = 2
-    private var degrees: Double = 45
+    
+    var width: CGFloat = 22
+    var height: CGFloat = 2
+    var degrees: Double = 45
     
     var body: some View {
         VStack(spacing: 5.5) {

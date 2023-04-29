@@ -10,8 +10,8 @@ import SwiftUI
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
     @State private var scrollProxy: ScrollViewProxy?
-    @State private var isShowing: Bool = false
-    var sideViewWidth: CGFloat = UIScreen.screenWidth - 100
+    @State private var isShowing: Bool = true
+    private var sideViewWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
@@ -20,8 +20,14 @@ struct CowriterView: View {
         ]
     }
     
+    private func closeSideBar() {
+        withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
+            isShowing = false
+        }
+    }
+    
     var body: some View {
-        let isActive = vm.oldChats.isEmpty
+        let isActive = vm.currentChat == nil
         NavigationView {
             ZStack {
                 Color.gray.opacity(0.2).ignoresSafeArea()
@@ -35,16 +41,38 @@ struct CowriterView: View {
                         ZStack(alignment: .topLeading) {
                             Rectangle()
                                 .fill(.white)
-                                .cornerRadius(30, corners: [.bottomRight])
+                                .cornerRadius(16, corners: [.bottomRight])
                                 .edgesIgnoringSafeArea(.top)
-                            
-                            VStack {
-                                List(vm.oldChats) { item in
-                                    Text("hellossdadsdas")
+                            VStack(alignment: .leading) {
+                                Text("Chats")
+                                List(vm.allChats) { item in
+                                    let isActiveChat = vm.currentChat == item
+                                    HStack {
+                                        Text(item.wrappedTitle)
+                                            .lineLimit(1)
+                                            .foregroundColor(.grayFont)
+                                            .onTapGesture {
+                                                vm.currentChat = item
+                                                closeSideBar()
+                                            }
+                                        if isActiveChat {
+                                            Spacer()
+                                            Circle()
+                                                .frame(width: 9, height: 9)
+                                                .foregroundColor(.orange)
+                                        }
+                                    }
                                 }.listStyle(.plain)
-                                Button("New Chat") {
-                                    print("")
-                                }
+                                
+                                Button {
+                                    vm.currentChat = nil
+                                    closeSideBar()
+                                } label: {
+                                    Spacer()
+                                    Label("New chat", systemImage: "plus")
+                                        .foregroundColor(.grayFont)
+                                    Spacer()
+                                }.buttonStyle(.bordered)
                             }.padding()
                         }
                         .transition(.move(edge: .leading))
@@ -59,7 +87,7 @@ struct CowriterView: View {
                             Chat(vm: vm)
                         }
                         
-                        Prompter(vm: vm)
+                        Prompter(vm: vm, isActive: isActive)
                         
                         if isActive {
                             PromptHint(vm: vm)
@@ -69,9 +97,7 @@ struct CowriterView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if isShowing {
-                            withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
-                                isShowing.toggle()
-                            }
+                            closeSideBar()
                         }
                     }
                     .frame(width: isShowing ? UIScreen.screenWidth : nil)
@@ -80,14 +106,14 @@ struct CowriterView: View {
                 
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(vm.currentChat?.wrappedTitle ?? "")
+            .navigationTitle(isShowing ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         print("setting")
                     } label: {
                         Label("Hello", systemImage: "gearshape")
-                    }
+                    }.offset(x: isShowing ? sideViewWidth / 2 : 0)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     HamburgerToClose(isOpened: $isShowing)

@@ -18,7 +18,7 @@ class CowriterVM: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var isLoading = false
     
-    @Published var oldChats: [ChatType] = []
+    @Published var allChats: [ChatType] = []
     @Published var currentChat: ChatType?
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
@@ -40,7 +40,7 @@ class CowriterVM: ObservableObject {
     }
     
     func getAllChats() {
-        oldChats = ChatType.getAll()
+        allChats = ChatType.getAll()
     }
     
     @MainActor

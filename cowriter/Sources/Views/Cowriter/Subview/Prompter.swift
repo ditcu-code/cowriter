@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Prompter: View {
     @StateObject var vm: CowriterVM
+    var isActive: Bool
     
     var body: some View {
         ZStack {
@@ -20,7 +21,12 @@ struct Prompter: View {
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-                        vm.request(vm.currentChat)
+                        if isActive {
+                            vm.request(nil)
+                        } else {
+                            vm.request(vm.currentChat)
+                        }
+                        
                     }
                     .disabled(vm.isLoading)
                 if vm.isLoading {
