@@ -9,21 +9,14 @@ import SwiftUI
 
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
-    @State private var scrollProxy: ScrollViewProxy?
     @State private var isShowing: Bool = false
-    private var sideViewWidth: CGFloat = UIScreen.screenWidth - 100
+    private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
             .font : UIFont(name: "Gill Sans", size: 18)!,
             .foregroundColor: UIColor.systemGray
         ]
-    }
-    
-    private func closeSideBar() {
-        withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
-            isShowing = false
-        }
     }
     
     var body: some View {
@@ -34,48 +27,7 @@ struct CowriterView: View {
                 
                 HStack {
                     if isShowing {
-                        ZStack(alignment: .topLeading) {
-                            Rectangle()
-                                .fill(.background)
-                                .cornerRadius(16, corners: [.bottomRight])
-                                .edgesIgnoringSafeArea(.top)
-                            
-                            VStack(alignment: .leading) {
-                                Text("Chats")
-                                List(vm.allChats) { item in
-                                    let isActiveChat = vm.currentChat == item
-                                    HStack {
-                                        Text(item.wrappedTitle)
-                                            .lineLimit(1)
-                                            .foregroundColor(.grayFont)
-                                            .onTapGesture {
-                                                vm.currentChat = item
-                                                closeSideBar()
-                                            }
-                                        if isActiveChat {
-                                            Spacer()
-                                            Circle()
-                                                .frame(width: 9, height: 9)
-                                                .foregroundColor(.orange)
-                                        }
-                                    }
-                                }.listStyle(.plain)
-                                
-                                Button {
-                                    vm.currentChat = nil
-                                    closeSideBar()
-                                } label: {
-                                    Spacer()
-                                    Label("New chat", systemImage: "plus")
-                                        .foregroundColor(.grayFont)
-                                    Spacer()
-                                }.buttonStyle(.bordered)
-                                
-                            }.padding()
-                        }
-                        .transition(.move(edge: .leading))
-                        .frame(width: sideViewWidth)
-                        .offset(x: isShowing ? sideViewWidth / 2 : 0)
+                        SideBarView(vm: vm, isShowing: $isShowing, width: sideBarWidth)
                     }
                     VStack {
                         Spacer()
@@ -83,7 +35,7 @@ struct CowriterView: View {
                         if isActive {
                             CowriterLogo().padding(.top, 100)
                         } else {
-                            Chat(vm: vm)
+                            ChatView(vm: vm)
                         }
                         
                         if !vm.errorMessage.isEmpty {
@@ -101,11 +53,11 @@ struct CowriterView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if isShowing {
-                            closeSideBar()
+                            closeSideBar($isShowing)
                         }
                     }
                     .frame(width: isShowing ? UIScreen.screenWidth : nil)
-                    .offset(x: isShowing ? sideViewWidth / 2 : 0)
+                    .offset(x: isShowing ? sideBarWidth / 2 : 0)
                 }
                 
             }
@@ -114,10 +66,10 @@ struct CowriterView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        print("setting")
+//                        print(vm.currentChat?.resultsArray)
                     } label: {
-                        Label("Hello", systemImage: "gearshape")
-                    }.offset(x: isShowing ? sideViewWidth / 2 : 0)
+                        Label("Setting", systemImage: "gearshape")
+                    }.offset(x: isShowing ? sideBarWidth / 2 : 0)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     HamburgerToClose(isOpened: $isShowing)
@@ -125,6 +77,63 @@ struct CowriterView: View {
             }
             .animation(.linear, value: isActive)
         }.customFont()
+    }
+}
+
+struct SideBarView: View {
+    @StateObject var vm: CowriterVM
+    @Binding var isShowing: Bool
+    var width: CGFloat
+    
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            Rectangle()
+                .fill(.background)
+                .cornerRadius(16, corners: [.bottomRight])
+                .edgesIgnoringSafeArea(.top)
+            
+            VStack(alignment: .leading) {
+                Text("Chats")
+                List(vm.allChats) { item in
+                    let isActiveChat = vm.currentChat == item
+                    HStack {
+                        Text(item.wrappedTitle)
+                            .lineLimit(1)
+                            .foregroundColor(.grayFont)
+                            .onTapGesture {
+                                vm.currentChat = item
+                                closeSideBar($isShowing)
+                            }
+                        if isActiveChat {
+                            Spacer()
+                            Circle()
+                                .frame(width: 9, height: 9)
+                                .foregroundColor(.orange)
+                        }
+                    }
+                }.listStyle(.plain)
+                
+                Button {
+                    vm.currentChat = nil
+                    closeSideBar($isShowing)
+                } label: {
+                    Spacer()
+                    Label("New chat", systemImage: "plus")
+                        .foregroundColor(.grayFont)
+                    Spacer()
+                }.buttonStyle(.bordered)
+                
+            }.padding()
+        }
+        .transition(.move(edge: .leading))
+        .frame(width: width)
+        .offset(x: isShowing ? width / 2 : 0)
+    }
+}
+
+fileprivate func closeSideBar(_ isShowing: Binding<Bool>) {
+    withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
+        isShowing.wrappedValue = false
     }
 }
 

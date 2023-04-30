@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Chat: View {
-    @StateObject var vm: CowriterVM = CowriterVM()
+struct ChatView: View {
+    @StateObject var vm: CowriterVM
     @Namespace private var bottomID
     @State private var isScrolled = false
     
@@ -18,10 +18,11 @@ struct Chat: View {
                 ForEach(vm.currentChat?.resultsArray ?? []) { result in
                     let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
                     
-                    BubbleChat(prompt: result.wrappedPrompt)
+                    BubbleChatView(prompt: result.wrappedPrompt)
                         .transition(.move(edge: .bottom))
-                    BubbleChat(answer:
-                                (isLastResult && vm.errorMessage.isEmpty) ? vm.textToDisplay : result.wrappedAnswer
+                    BubbleChatView(answer:
+                                (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
+                               vm.textToDisplay : result.wrappedAnswer
                     ).transition(.move(edge: .leading))
                     
                     if isLastResult {
@@ -33,13 +34,17 @@ struct Chat: View {
                 isScrolled = true
             })
             .onChange(of: vm.textToDisplay) { newValue in
-                isScrolled = false
                 if !isScrolled {
                     withAnimation {
                         scrollView.scrollTo(bottomID)
                     }
                 }
             }
+            .onChange(of: vm.isLoading, perform: { newValue in
+                if isScrolled == true {
+                    isScrolled = !newValue
+                }
+            })
             .onReceive(vm.$textToDisplay.throttle(for: 0.5, scheduler: DispatchQueue.main, latest: true)) { output in
                 vm.textToDisplay = output
             }
@@ -47,13 +52,7 @@ struct Chat: View {
     }
 }
 
-struct Chat_Previews: PreviewProvider {
-    static var previews: some View {
-        Chat(vm: CowriterVM())
-    }
-}
-
-struct BubbleChat: View {
+struct BubbleChatView: View {
     var prompt: String?
     var answer: String?
     
@@ -81,5 +80,11 @@ struct BubbleChat: View {
         }
         .padding(.horizontal)
         .animation(.linear, value: answer)
+    }
+}
+
+struct ChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatView(vm: CowriterVM())
     }
 }
