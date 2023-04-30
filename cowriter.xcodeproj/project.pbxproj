@@ -206,6 +206,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		0EB86DD929FEE037005B5EE1 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				0EB8ABFC29ED276F00B882DA /* ResultCard.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		0EB8ABFE29ED46DC00B882DA /* Subview */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +222,6 @@
 				0E0A9D5329E9BBD700D7BEC5 /* PromptHint.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
 				0EE49E0929E6D5060058DB14 /* SendButton.swift */,
-				0EB8ABFC29ED276F00B882DA /* ResultCard.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -222,6 +229,7 @@
 		0ECC7BFA29DD4D5C002A6B7F /* Grammar */ = {
 			isa = PBXGroup;
 			children = (
+				0EB86DD929FEE037005B5EE1 /* SubView */,
 				0ECC7BF829DD3DD0002A6B7F /* GrammarView.swift */,
 				0ECC7BFB29DD4D7D002A6B7F /* GrammarActionsView.swift */,
 			);

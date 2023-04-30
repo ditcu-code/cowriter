@@ -11,7 +11,7 @@ struct ResultCard: View {
     var chat: ChatType
     @StateObject var vm: CowriterVM
     
-    @State var selectedResultId: String = ""
+    @State private var selectedResultId: String = ""
     
     var body: some View {
         let isActiveChat = vm.currentChat == chat
@@ -38,11 +38,11 @@ struct ResultCard: View {
                 } else {
                     ZStack {
                         Divider()
-                        PromptText(prompt: result.wrappedPrompt, isLoading: isLastResult && isLoading)
+                        PromptTextView(prompt: result.wrappedPrompt, isLoading: isLastResult && isLoading)
                     }
                 }
 
-                AnswerText(
+                AnswerTextView(
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
                     chat: chat,
@@ -78,7 +78,7 @@ struct ResultCard: View {
 //    }
 //}
 
-struct PromptText: View {
+struct PromptTextView: View {
     var prompt: String
     var isLoading: Bool
     
@@ -104,7 +104,7 @@ struct PromptText: View {
     }
 }
 
-struct AnswerText: View {
+struct AnswerTextView: View {
     @Binding var selectedResultId: String
     var resultId: String
     var chat: ChatType
