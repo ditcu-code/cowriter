@@ -87,14 +87,7 @@ struct CowriterView: View {
                         }
                         
                         if !vm.errorMessage.isEmpty {
-                            Text(vm.errorMessage)
-                                .foregroundColor(.pink.opacity(0.75))
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.pink.opacity(0.1))
-                                )
-                                .transition(.move(edge: .bottom))
+                            ErrorMessageView(message: vm.errorMessage)
                         }
                         
                         Prompter(vm: vm, isActive: isActive)

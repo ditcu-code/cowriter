@@ -20,6 +20,7 @@
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
 		0E7C414029F95CE50075B638 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* Chat.swift */; };
 		0E7C414229FA147F0075B638 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C414129FA147F0075B638 /* RoundedCorner.swift */; };
+		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
 		0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */; };
 		0EB8ABFD29ED276F00B882DA /* ResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8ABFC29ED276F00B882DA /* ResultCard.swift */; };
 		0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB8ABFF29ED6DEE00B882DA /* CowriterModel.swift */; };
@@ -63,6 +64,7 @@
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E7C413F29F95CE50075B638 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		0E7C414129FA147F0075B638 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		0EB8ABFC29ED276F00B882DA /* ResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCard.swift; sourceTree = "<group>"; };
 		0EB8ABFF29ED6DEE00B882DA /* CowriterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterModel.swift; sourceTree = "<group>"; };
 		0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterVM.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
 				0E7C414129FA147F0075B638 /* RoundedCorner.swift */,
 				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
+				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				0EF164B729F2EC8700CC35B1 /* ResultType+CoreDataClass.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
+				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
 				0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */,

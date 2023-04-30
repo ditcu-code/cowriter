@@ -78,6 +78,8 @@ struct BubbleChat: View {
             if !isUser {
                 Spacer(minLength: 50)
             }
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
+        .animation(.linear, value: answer)
     }
 }
