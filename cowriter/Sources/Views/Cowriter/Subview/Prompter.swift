@@ -21,14 +21,14 @@ struct Prompter: View {
                     .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
                     .padding(.horizontal)
                     .onSubmit {
-                        if isActive {
-                            vm.request(nil)
-                        } else {
-                            vm.request(vm.currentChat)
+                        if !vm.isLoading {
+                            if isActive {
+                                vm.request(nil)
+                            } else {
+                                vm.request(vm.currentChat)
+                            }
                         }
-                        
                     }
-                    .disabled(vm.isLoading)
                 if vm.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
@@ -40,6 +40,6 @@ struct Prompter: View {
         }
         .padding(.horizontal)
         .padding(.top, 4)
-        .padding(.bottom, 12)
+        .padding(.bottom, 10)
     }
 }
