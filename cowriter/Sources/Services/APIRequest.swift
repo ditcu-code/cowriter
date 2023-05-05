@@ -29,7 +29,8 @@ class APIRequest {
                    method: .post,
                    parameters: body,
                    encoding: JSONEncoding.prettyPrinted,
-                   headers: headers)
+                   headers: headers
+        )
         .validate()
         .responseDecodable(of: dataModel, decoder: decoder) { response in
             switch response.result {

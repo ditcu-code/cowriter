@@ -18,6 +18,11 @@ struct ContentView: View {
                     Label("Cowriter", systemImage: "timelapse")
                 }
             
+            AsisstView()
+                .tabItem {
+                    Label("Assist", systemImage: "rectangle.and.pencil.and.ellipsis")
+                }
+            
             GrammarView()
                 .tabItem {
                     Label("Grammar", systemImage: "checkmark.circle")
@@ -27,7 +32,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("History", systemImage: "clock.arrow.circlepath")
                 }
-        }
+        }.foregroundColor(.orange)
     }
 }
 

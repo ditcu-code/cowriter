@@ -18,7 +18,7 @@ struct Prompter: View {
                 .frame(height: 38)
             HStack {
                 TextField("Tell cowriter to...", text: $vm.userMessage)
-                    .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
+                    .customFont(17)
                     .padding(.horizontal)
                     .onSubmit {
                         if !vm.isLoading {
@@ -40,6 +40,6 @@ struct Prompter: View {
         }
         .padding(.horizontal)
         .padding(.top, 4)
-        .padding(.bottom, 10)
+        .padding(.bottom, 8)
     }
 }
