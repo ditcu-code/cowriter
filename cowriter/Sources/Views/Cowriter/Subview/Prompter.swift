@@ -10,6 +10,7 @@ import SwiftUI
 struct Prompter: View {
     @StateObject var vm: CowriterVM
     var isActive: Bool
+    @FocusState var isFocused: Bool
     
     var body: some View {
         ZStack {
@@ -19,6 +20,7 @@ struct Prompter: View {
             HStack {
                 TextField("Tell cowriter to...", text: $vm.userMessage)
                     .customFont(17)
+                    .focused($isFocused)
                     .padding(.horizontal)
                     .onSubmit {
                         if !vm.isLoading {
@@ -28,6 +30,10 @@ struct Prompter: View {
                                 vm.request(vm.currentChat)
                             }
                         }
+                    }
+                    .disabled(vm.isLoading)
+                    .onChange(of: vm.userMessage) { newValue in
+                        isFocused = true
                     }
                 if vm.isLoading {
                     ProgressView()
