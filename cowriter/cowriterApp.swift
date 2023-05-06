@@ -15,6 +15,8 @@ struct cowriterApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .dynamicTypeSize(.small...)
+                .dynamicTypeSize(...DynamicTypeSize.large)
         }
     }
 }

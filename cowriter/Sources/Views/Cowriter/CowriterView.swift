@@ -65,11 +65,12 @@ struct CowriterView: View {
             .navigationTitle(isShowing ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-//                        print(vm.currentChat?.resultsArray)
+                    NavigationLink {
+                        SettingView()
                     } label: {
                         Label("Setting", systemImage: "gearshape")
-                    }.offset(x: isShowing ? sideBarWidth / 2 : 0)
+                            .offset(x: isShowing ? sideBarWidth / 2 : 0)
+                    }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     HamburgerToClose(isOpened: $isShowing)
