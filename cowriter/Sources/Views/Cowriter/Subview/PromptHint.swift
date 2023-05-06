@@ -54,8 +54,8 @@ struct PromptHint: View {
     }
 }
 
-//struct PromptHint_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PromptHint()
-//    }
-//}
+struct PromptHint_Previews: PreviewProvider {
+    static var previews: some View {
+        PromptHint(vm: CowriterVM())
+    }
+}

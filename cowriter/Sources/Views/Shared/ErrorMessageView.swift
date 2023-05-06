@@ -26,3 +26,9 @@ struct ErrorMessageView: View {
         .transition(.move(edge: .bottom))
     }
 }
+
+struct ErrorMessageView_Previews: PreviewProvider {
+    static var previews: some View {
+        ErrorMessageView(message: "Error")
+    }
+}

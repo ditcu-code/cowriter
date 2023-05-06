@@ -24,8 +24,10 @@ struct MagicButton: View {
     }
 }
 
-//struct MagicButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MagicButton(act: print("magicbutton"))
-//    }
-//}
+struct MagicButton_Previews: PreviewProvider {
+    static var previews: some View {
+        MagicButton {
+            print("any magic button")
+        }
+    }
+}

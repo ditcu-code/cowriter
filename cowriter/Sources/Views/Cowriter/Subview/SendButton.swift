@@ -24,3 +24,9 @@ struct SendButton: View {
         .disabled(vm.isLoading)
     }
 }
+
+struct SendButton_Previews: PreviewProvider {
+    static var previews: some View {
+        SendButton(vm: CowriterVM())
+    }
+}

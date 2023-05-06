@@ -49,3 +49,9 @@ struct Prompter: View {
         .padding(.bottom, 8)
     }
 }
+
+struct PrompterView_Previews: PreviewProvider {
+    static var previews: some View {
+        Prompter(vm: CowriterVM(), isActive: true)
+    }
+}

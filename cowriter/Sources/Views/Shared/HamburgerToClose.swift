@@ -39,8 +39,8 @@ struct HamburgerToClose: View {
     }
 }
 
-//struct HamburgerToClose_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HamburgerToClose()
-//    }
-//}
+struct HamburgerToClose_Previews: PreviewProvider {
+    static var previews: some View {
+        HamburgerToClose(isOpened: .constant(true))
+    }
+}
