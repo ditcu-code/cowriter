@@ -39,15 +39,17 @@ struct SideBarView: View {
                     }
                 }.listStyle(.plain)
                 
-                Button {
-                    vm.currentChat = nil
-                    vm.closeSideBar()
-                } label: {
-                    Spacer()
-                    Label("New chat", systemImage: "plus")
-                        .foregroundColor(.grayFont)
-                    Spacer()
-                }.buttonStyle(.bordered)
+                if vm.currentChat != nil {
+                    Button {
+                        vm.currentChat = nil
+                        vm.closeSideBar()
+                    } label: {
+                        Spacer()
+                        Label("New chat", systemImage: "plus")
+                            .foregroundColor(.grayFont)
+                        Spacer()
+                    }.buttonStyle(.bordered)
+                }
                 
             }.padding()
         }

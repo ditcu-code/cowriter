@@ -55,8 +55,15 @@ struct CowriterView: View {
                         if vm.showSideBar {
                             vm.closeSideBar()
                         }
-                        isFocusOnPrompt = false
+                        if isFocusOnPrompt {
+                            isFocusOnPrompt = false
+                        }
                     }
+                    .onChange(of: isActive, perform: { newValue in
+                        if isFocusOnPrompt {
+                            isFocusOnPrompt = false
+                        }
+                    })
                     .frame(width: vm.showSideBar ? UIScreen.screenWidth : nil)
                     .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
                 }
