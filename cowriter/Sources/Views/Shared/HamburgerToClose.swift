@@ -35,7 +35,6 @@ struct HamburgerToClose: View {
             }
         }
         .padding(5)
-        .foregroundColor(.defaultFont)
     }
 }
 
