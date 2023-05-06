@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
-    @State private var isShowing: Bool = false
     private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
@@ -26,8 +25,8 @@ struct CowriterView: View {
                 Color.gray.opacity(0.2).ignoresSafeArea()
                 
                 HStack {
-                    if isShowing {
-                        SideBarView(vm: vm, isShowing: $isShowing, width: sideBarWidth)
+                    if vm.showSideBar {
+                        SideBarView(vm: vm, width: sideBarWidth)
                     }
                     VStack {
                         Spacer()
@@ -52,89 +51,32 @@ struct CowriterView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if isShowing {
-                            closeSideBar($isShowing)
+                        if vm.showSideBar {
+                            vm.closeSideBar()
                         }
                     }
-                    .frame(width: isShowing ? UIScreen.screenWidth : nil)
-                    .offset(x: isShowing ? sideBarWidth / 2 : 0)
+                    .frame(width: vm.showSideBar ? UIScreen.screenWidth : nil)
+                    .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
                 }
                 
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(isShowing ? "" : vm.currentChat?.wrappedTitle ?? "")
+            .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         SettingView()
                     } label: {
                         Label("Setting", systemImage: "gearshape")
-                            .offset(x: isShowing ? sideBarWidth / 2 : 0)
+                            .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    HamburgerToClose(isOpened: $isShowing)
+                    HamburgerToClose(isOpened: $vm.showSideBar)
                 }
             }
             .animation(.linear, value: isActive)
         }.customFont()
-    }
-}
-
-struct SideBarView: View {
-    @StateObject var vm: CowriterVM
-    @Binding var isShowing: Bool
-    var width: CGFloat
-    
-    var body: some View {
-        ZStack(alignment: .topLeading) {
-            Rectangle()
-                .fill(.background)
-                .cornerRadius(16, corners: [.bottomRight])
-                .edgesIgnoringSafeArea(.top)
-            
-            VStack(alignment: .leading) {
-                Text("Chats")
-                List(vm.allChats) { item in
-                    let isActiveChat = vm.currentChat == item
-                    HStack {
-                        Text(item.wrappedTitle)
-                            .lineLimit(1)
-                            .foregroundColor(.grayFont)
-                            .onTapGesture {
-                                vm.currentChat = item
-                                closeSideBar($isShowing)
-                            }
-                        if isActiveChat {
-                            Spacer()
-                            Circle()
-                                .frame(width: 9, height: 9)
-                                .foregroundColor(.orange)
-                        }
-                    }
-                }.listStyle(.plain)
-                
-                Button {
-                    vm.currentChat = nil
-                    closeSideBar($isShowing)
-                } label: {
-                    Spacer()
-                    Label("New chat", systemImage: "plus")
-                        .foregroundColor(.grayFont)
-                    Spacer()
-                }.buttonStyle(.bordered)
-                
-            }.padding()
-        }
-        .transition(.move(edge: .leading))
-        .frame(width: width)
-        .offset(x: isShowing ? width / 2 : 0)
-    }
-}
-
-fileprivate func closeSideBar(_ isShowing: Binding<Bool>) {
-    withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
-        isShowing.wrappedValue = false
     }
 }
 

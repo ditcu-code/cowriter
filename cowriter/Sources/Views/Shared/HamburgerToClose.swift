@@ -22,7 +22,7 @@ struct HamburgerToClose: View {
             
             RoundedRectangle(cornerRadius: 5)  // middle
                 .frame(width: width, height: height)
-                .scaleEffect(isOpened ? 0 : 1, anchor: isOpened ? .trailing: .leading)
+                .scaleEffect(isOpened ? 0.0001 : 1, anchor: isOpened ? .trailing: .leading)
                 .opacity(isOpened ? 0 : 1)
             
             RoundedRectangle(cornerRadius: 5) // bottom

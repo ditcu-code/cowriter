@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isShowSheet: Bool = true
+    @State private var isShowSheet: Bool = false
     @State private var selectedPlan: PlanEnum = PlanEnum.annual
+    @State private var key: String = ""
     
     var body: some View {
         List {
@@ -17,7 +18,15 @@ struct SettingView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Free Plan").bold().tracking(0.5)
-                        Text("Limited messages").font(.footnote)
+                        Text("Limited chats").font(.footnote)
+                        Divider()
+                        Button {
+                            isShowSheet.toggle()
+                        } label: {
+                            Text("Upgrade to Pro")
+                                .font(.footnote)
+                                .foregroundColor(.orange)
+                        }
                     }
                     .padding(.vertical, 5)
                     .foregroundColor(.darkGrayFont)
@@ -28,12 +37,29 @@ struct SettingView: View {
                     isShowSheet.toggle()
                 }
             }
-            .navigationTitle("Setting")
+            
+            Section("Test", content: {
+                TextField("Test", text: $key)
+                Button("Submit") {
+                    let yes = Keychain.saveApiKey(apiKey: key)
+                    print(yes)
+                }
+            })
+            
         }
-        
+        .navigationTitle("Setting")
         .sheet(isPresented: $isShowSheet) {
             
-            SubscriptionView(isShowSheet: $isShowSheet)
+            if #available(iOS 16.0, *) {
+                SubscriptionView(isShowSheet: $isShowSheet)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            } else {
+                VStack {
+                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SubscriptionView(isShowSheet: $isShowSheet)
+                }
+            }
             
         }
     }

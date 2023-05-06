@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct CowriterLogo: View {
+    var isPro: Bool = false
+    
     var body: some View {
-        HStack(spacing: -5) {
+        HStack(spacing: isPro ? 0 : -5) {
             Text("cowriter").customFont(48, .grayFont)
-            Text(".").customFont(48, .orange)
+            Text(isPro ? "pro" : ".").customFont(48, .orange)
         }
     }
 }
 
 struct CowriterLogo_Previews: PreviewProvider {
     static var previews: some View {
-        CowriterLogo()
+        CowriterLogo(isPro: true)
     }
 }

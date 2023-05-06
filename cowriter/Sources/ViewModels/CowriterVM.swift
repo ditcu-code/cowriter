@@ -21,6 +21,8 @@ class CowriterVM: ObservableObject {
     @Published var allChats: [ChatType] = []
     @Published var currentChat: ChatType?
     
+    @Published var showSideBar: Bool = false
+    
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
     
@@ -181,6 +183,12 @@ class CowriterVM: ObservableObject {
                     completion(nil)
                 }
             }
+        }
+    }
+    
+    func closeSideBar() {
+        withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
+            self.showSideBar = false
         }
     }
     
