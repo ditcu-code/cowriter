@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @State private var isShowSheet: Bool = false
     @State private var selectedPlan: PlanEnum = PlanEnum.annual
+    @State private var key: String = ""
     
     var body: some View {
         List {
@@ -36,9 +37,17 @@ struct SettingView: View {
                     isShowSheet.toggle()
                 }
             }
-            .navigationTitle("Setting")
+            
+            Section("Test", content: {
+                TextField("Test", text: $key)
+                Button("Submit") {
+                    let yes = Keychain.saveApiKey(apiKey: key)
+                    print(yes)
+                }
+            })
+            
         }
-        
+        .navigationTitle("Setting")
         .sheet(isPresented: $isShowSheet) {
             
             if #available(iOS 16.0, *) {
