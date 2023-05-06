@@ -49,7 +49,6 @@ struct ItemPlanView: View {
                             .overlay(
                                 Label("", systemImage: "percent")
                                     .font(.footnote)
-                                    .bold()
                                     .foregroundColor(.white)
                                     .offset(x: 12, y: -12)
                             )

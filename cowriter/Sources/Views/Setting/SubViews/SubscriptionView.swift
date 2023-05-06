@@ -14,23 +14,14 @@ struct SubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 3) {
-                HStack {
-                    Text("Upgrade to Pro")
-                        .font(.title)
-                        .padding(.top, 5)
-                    Spacer()
-                    Button {
-                        isShowSheet.toggle()
-                    } label: {
-                        Label("", systemImage: "xmark")
-                            .customFont(18, .gray.opacity(0.5))
-                            .offset(x: 5, y: -5)
-                    }
-                }
+                Text("Upgrade to Pro")
+                    .bold()
+                    .font(.title)
+                    .padding(.top, 5)
                 Text("Unlimited chats")
                     .font(.footnote)
                     .foregroundColor(.grayFont)
-            }.bold().padding()
+            }.padding()
             
             VStack(spacing: 10) {
                 ItemPlanView(plan: PlanEnum.annual, selectedPlan: $selectedPlan)
@@ -43,7 +34,8 @@ struct SubscriptionView: View {
                     print("continue")
                 } label: {
                     Spacer()
-                    Text("Continue").padding(.vertical, 5).bold()
+                    Text("Continue").bold()
+                        .padding(.vertical, 5)
                     Spacer()
                 }.buttonStyle(.borderedProminent).tint(.orange)
                 
@@ -63,9 +55,9 @@ struct SubscriptionView: View {
                     .foregroundColor(.defaultFont)
                 
             }.padding()
-        }
-        .dynamicTypeSize(.medium)
-        .presentationDetents([.medium])
+            
+            Spacer()
+        }.dynamicTypeSize(.medium)
     }
 }
 
