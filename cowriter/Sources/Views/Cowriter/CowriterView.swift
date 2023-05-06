@@ -10,6 +10,7 @@ import SwiftUI
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
     private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
+    @FocusState var isFocusOnPrompt: Bool
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
@@ -41,7 +42,7 @@ struct CowriterView: View {
                             ErrorMessageView(message: vm.errorMessage)
                         }
                         
-                        Prompter(vm: vm, isActive: isActive)
+                        Prompter(vm: vm, isActive: isActive, isFocused: _isFocusOnPrompt)
                         
                         if isActive {
                             PromptHint(vm: vm)
@@ -54,6 +55,7 @@ struct CowriterView: View {
                         if vm.showSideBar {
                             vm.closeSideBar()
                         }
+                        isFocusOnPrompt = false
                     }
                     .frame(width: vm.showSideBar ? UIScreen.screenWidth : nil)
                     .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
