@@ -39,8 +39,6 @@ struct Prompter: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
                         .padding(.horizontal, 10)
-                } else {
-                    SendButton(vm: vm).padding(.horizontal, 5)
                 }
             }.animation(.linear, value: vm.isLoading)
         }
