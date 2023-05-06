@@ -18,7 +18,7 @@ struct PromptHint: View {
         "Write an email to.."
     ]
     
-    func hasTrailingDot(_ str: String) -> Bool {
+    private func hasTrailingDot(_ str: String) -> Bool {
         if let lastChar = str.last {
             return lastChar == "."
         } else {
@@ -30,7 +30,11 @@ struct PromptHint: View {
         VStack(spacing: 5) {
             ForEach(prompts, id: \.self) {prompt in
                 Button {
-                    vm.userMessage = prompt
+                    vm.userMessage = prompt.replacingOccurrences(of: "..", with: " ")
+                    
+                    if !hasTrailingDot(prompt) {
+                        vm.request(nil)
+                    }
                 } label: {
                     HStack() {
                         Circle()
@@ -50,8 +54,8 @@ struct PromptHint: View {
     }
 }
 
-//struct PromptHint_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PromptHint()
-//    }
-//}
+struct PromptHint_Previews: PreviewProvider {
+    static var previews: some View {
+        PromptHint(vm: CowriterVM())
+    }
+}

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Prompter: View {
     @StateObject var vm: CowriterVM
+    var isActive: Bool
+    @FocusState var isFocused: Bool
     
     var body: some View {
         ZStack {
@@ -17,12 +19,22 @@ struct Prompter: View {
                 .frame(height: 38)
             HStack {
                 TextField("Tell cowriter to...", text: $vm.userMessage)
-                    .font(.custom("Gill Sans", size: 17, relativeTo: .headline))
+                    .customFont(17)
+                    .focused($isFocused)
                     .padding(.horizontal)
                     .onSubmit {
-                        vm.request()
+                        if !vm.isLoading {
+                            if isActive {
+                                vm.request(nil)
+                            } else {
+                                vm.request(vm.currentChat)
+                            }
+                        }
                     }
                     .disabled(vm.isLoading)
+                    .onChange(of: vm.userMessage) { newValue in
+                        isFocused = true
+                    }
                 if vm.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
@@ -34,6 +46,12 @@ struct Prompter: View {
         }
         .padding(.horizontal)
         .padding(.top, 4)
-        .padding(.bottom, 12)
+        .padding(.bottom, 8)
+    }
+}
+
+struct PrompterView_Previews: PreviewProvider {
+    static var previews: some View {
+        Prompter(vm: CowriterVM(), isActive: true)
     }
 }

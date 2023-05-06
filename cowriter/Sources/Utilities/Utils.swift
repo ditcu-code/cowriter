@@ -40,7 +40,7 @@ class Utils {
         
         return dictionary
     }
-
+    
     static func removeNewlineAtBeginning(_ str: String) -> String {
         var result = str
         while result.first == "\n" {
@@ -49,6 +49,5 @@ class Utils {
         return result
     }
     
-
 }
 

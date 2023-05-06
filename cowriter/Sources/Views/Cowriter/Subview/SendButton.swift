@@ -12,7 +12,7 @@ struct SendButton: View {
 
     var body: some View {
         Button(action: {
-            
+            vm.request(nil)
         }, label: {
             Image(systemName: "paperplane.fill")
                 .font(.footnote)
@@ -22,5 +22,11 @@ struct SendButton: View {
                 .clipShape(Circle())
         })
         .disabled(vm.isLoading)
+    }
+}
+
+struct SendButton_Previews: PreviewProvider {
+    static var previews: some View {
+        SendButton(vm: CowriterVM())
     }
 }
