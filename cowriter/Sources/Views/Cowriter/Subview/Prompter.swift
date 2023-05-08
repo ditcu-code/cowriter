@@ -13,35 +13,36 @@ struct Prompter: View {
     @FocusState var isFocused: Bool
     
     var body: some View {
-        ZStack {
+        HStack {
+            TextField("Tell cowriter to...", text: $vm.userMessage)
+                .customFont(17)
+                .focused($isFocused)
+                .padding(.horizontal)
+                .onSubmit {
+                    if !vm.isLoading {
+                        if isActive {
+                            vm.request(nil)
+                        } else {
+                            vm.request(vm.currentChat)
+                        }
+                    }
+                }
+                .disabled(vm.isLoading)
+                .onChange(of: vm.userMessage) { newValue in
+                    isFocused = true
+                }
+            if vm.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+                    .padding(.horizontal, 10)
+            }
+        }
+        .animation(.linear, value: vm.isLoading)
+        .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(.background)
                 .frame(height: 38)
-            HStack {
-                TextField("Tell cowriter to...", text: $vm.userMessage)
-                    .customFont(17)
-                    .focused($isFocused)
-                    .padding(.horizontal)
-                    .onSubmit {
-                        if !vm.isLoading {
-                            if isActive {
-                                vm.request(nil)
-                            } else {
-                                vm.request(vm.currentChat)
-                            }
-                        }
-                    }
-                    .disabled(vm.isLoading)
-                    .onChange(of: vm.userMessage) { newValue in
-                        isFocused = true
-                    }
-                if vm.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .orange))
-                        .padding(.horizontal, 10)
-                }
-            }.animation(.linear, value: vm.isLoading)
-        }
+        )
         .padding(.horizontal)
         .padding(.top, 4)
         .padding(.bottom, 8)
