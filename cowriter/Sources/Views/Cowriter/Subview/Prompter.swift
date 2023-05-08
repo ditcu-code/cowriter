@@ -14,7 +14,7 @@ struct Prompter: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20.0)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(.background)
                 .frame(height: 38)
             HStack {
