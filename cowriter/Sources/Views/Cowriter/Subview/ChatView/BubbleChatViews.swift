@@ -29,18 +29,8 @@ struct BubblePromptView: View {
                 )
                 .contentShape(.contextMenuPreview, shape)
                 .contextMenu {
-                    Button {
-                        // Add this item to a list of favorites.
-                    } label: {
-                        Label("Add to Favorites", systemImage: "heart")
-                    }
-                    Button {
-                        // Open Maps and center it on this item.
-                    } label: {
-                        Label("Show in Maps", systemImage: "mappin")
-                    }
+                    ChatContextMenu()
                 }
-            
         }
         .padding(.horizontal)
         .padding(.trailing)
@@ -66,16 +56,7 @@ struct BubbleAnswerView: View {
                 .foregroundColor(.darkGrayFont)
                 .contentShape(.contextMenuPreview, shape)
                 .contextMenu {
-                    Button {
-                        // Add this item to a list of favorites.
-                    } label: {
-                        Label("Add to Favorites", systemImage: "heart")
-                    }
-                    Button {
-                        // Open Maps and center it on this item.
-                    } label: {
-                        Label("Show in Maps", systemImage: "mappin")
-                    }
+                    ChatContextMenu()
                 }
             Spacer(minLength: 50)
         }
@@ -91,6 +72,29 @@ struct BubbleChatViews_Previews: PreviewProvider {
         VStack {
             BubblePromptView(prompt: "Hello")
             BubbleAnswerView(answer: "Hello")
+        }
+    }
+}
+
+struct ChatContextMenu: View {
+    var body: some View {
+        Group {
+            Button {
+                // Add this item to a list of favorites.
+            } label: {
+                Label("Copy", systemImage: "doc.on.doc")
+            }
+            Button {
+                // Open Maps and center it on this item.
+            } label: {
+                Label("Share", systemImage: "square.and.arrow.up")
+            }
+            Divider()
+            Button {
+                // Open Maps and center it on this item.
+            } label: {
+                Label("Regenerate", systemImage: "arrow.clockwise")
+            }
         }
     }
 }

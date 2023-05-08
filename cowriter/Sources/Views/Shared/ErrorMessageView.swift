@@ -23,7 +23,7 @@ struct ErrorMessageView: View {
                 .fill(Color.pink.opacity(0.1))
         )
         .padding(.horizontal)
-        .padding(.vertical, 5)
+        .padding(.vertical, 10)
         .transition(.move(edge: .bottom))
     }
 }
