@@ -16,8 +16,8 @@ struct BubblePromptView: View {
             Spacer(minLength: 50)
             Text(prompt)
                 .textSelection(.enabled)
-                .padding(.horizontal)
-                .padding(.vertical, 12)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
                 .font(Font.system(.body, design: .serif))
                 .foregroundColor(.white)
                 .background(
@@ -49,8 +49,8 @@ struct BubbleAnswerView: View {
         HStack {
             Text(answer)
                 .textSelection(.enabled)
-                .padding(.horizontal)
-                .padding(.vertical, 12)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
                 .background(
                     shape.fill(Color.answerBubble)
                 )
@@ -58,7 +58,7 @@ struct BubbleAnswerView: View {
                 .foregroundColor(.darkGrayFont)
                 .contentShape(.contextMenuPreview, shape)
                 .contextMenu {
-                    ChatContextMenu()
+                    ChatContextMenu(answer: answer)
                 }
             Spacer(minLength: 50)
         }
@@ -74,28 +74,33 @@ struct BubbleChatViews_Previews: PreviewProvider {
         VStack {
             BubblePromptView(prompt: "Hello")
             BubbleAnswerView(answer: "Hello")
-        }
+            Spacer()
+        }.background(.gray)
     }
 }
 
 struct ChatContextMenu: View {
+    var answer: String?
+    
     var body: some View {
         Group {
             Button {
-                // Add this item to a list of favorites.
+                
             } label: {
                 Label("Copy", systemImage: "doc.on.doc")
             }
             Button {
-                // Open Maps and center it on this item.
+                
             } label: {
-                Label("Share", systemImage: "square.and.arrow.up")
+                Label("Favorite", systemImage: "star")
             }
-            Divider()
-            Button {
-                // Open Maps and center it on this item.
-            } label: {
-                Label("Regenerate", systemImage: "arrow.clockwise")
+            if answer != nil {
+                Divider()
+                Button {
+                    
+                } label: {
+                    Label("Regenerate", systemImage: "arrow.clockwise")
+                }
             }
         }
     }
