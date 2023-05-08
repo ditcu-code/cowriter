@@ -44,7 +44,6 @@ struct CowriterToolbarView: ToolbarContent {
                 )
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        print(DispatchTime.now())
                         toolbarShow.toggle()
                     }
                 }

@@ -19,10 +19,11 @@ struct ErrorMessageView: View {
         .foregroundColor(.pink.opacity(0.75))
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(Color.pink.opacity(0.1))
         )
         .padding(.horizontal)
+        .padding(.vertical, 5)
         .transition(.move(edge: .bottom))
     }
 }

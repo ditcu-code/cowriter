@@ -45,7 +45,7 @@ struct Prompter: View {
         )
         .padding(.horizontal)
         .padding(.top, 4)
-        .padding(.bottom, 8)
+        .padding(.bottom, 20)
     }
 }
 
