@@ -150,11 +150,14 @@ class CowriterVM: ObservableObject {
                         currentChat.removeFromResults(currentResult)
                     }
                 }
-                if String(describing: error).contains("429") {
-                    self.errorMessage = "Uh oh, it seems like you're firing off too many requests too quickly! Hang tight for a bit and try again later, okay? "
-                } else {
+                switch String(describing: error) {
+                case let errorStr where errorStr.contains("429"):
+                    errorMessage = "Uh oh, you're sending too many requests! Take a breather and try again later, okay?"
+                case let errorStr where errorStr.contains("-1"):
+                    errorMessage = "Oops! It seems like you're having connection issues. Please check your internet connection and try again later."
+                default:
                     withAnimation(.easeInOut) {
-                        self.errorMessage = String(describing: error)
+                        errorMessage = String(describing: error)
                     }
                 }
             }
