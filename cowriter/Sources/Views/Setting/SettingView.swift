@@ -24,8 +24,10 @@ struct SettingView: View {
                             isShowSheet.toggle()
                         } label: {
                             Text("Upgrade to Pro")
+                                .bold()
                                 .font(.footnote)
                                 .foregroundColor(.blue)
+                                .padding(.top, 5)
                         }
                     }
                     .customFont()
