@@ -13,7 +13,8 @@ struct CowriterView: View {
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
-            .font : UIFont(name: CowriterFont.helvetica.desc, size: 16)!,
+            .font: UIFont(descriptor: UIFontDescriptor(name: CowriterFont.helvetica.desc, size: 16)
+                .withSymbolicTraits(.traitBold)!, size: 16),
             .foregroundColor: UIColor.systemGray
         ]
     }
