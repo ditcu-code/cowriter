@@ -25,9 +25,10 @@ struct SettingView: View {
                         } label: {
                             Text("Upgrade to Pro")
                                 .font(.footnote)
-                                .foregroundColor(.orange)
+                                .foregroundColor(.blue)
                         }
                     }
+                    .customFont()
                     .padding(.vertical, 5)
                     .foregroundColor(.darkGrayFont)
                     Spacer()

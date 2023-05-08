@@ -18,7 +18,9 @@ struct SideBarView: View {
                 .edgesIgnoringSafeArea(.top)
             
             VStack(alignment: .leading) {
-                Text("Chats")
+                if !vm.allChats.isEmpty {
+                    Text("Chats")
+                }
                 List(vm.allChats) { item in
                     let isActiveChat = vm.currentChat == item
                     HStack {
@@ -33,7 +35,7 @@ struct SideBarView: View {
                             Spacer()
                             Circle()
                                 .frame(width: 9, height: 9)
-                                .foregroundColor(.orange)
+                                .foregroundColor(.blue)
                         }
                     }
                 }.listStyle(.plain)

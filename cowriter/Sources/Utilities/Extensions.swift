@@ -23,7 +23,7 @@ enum CowriterFont: String {
 
 extension View {
     
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont, _ font: CowriterFont = CowriterFont.gill) -> some View {
+    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont, _ font: CowriterFont = CowriterFont.helvetica) -> some View {
         switch font {
         case .helvetica:
             return self.modifier(FontModifier(font: Font.custom(CowriterFont.helvetica.desc, size: size, relativeTo: .body), color: color))
