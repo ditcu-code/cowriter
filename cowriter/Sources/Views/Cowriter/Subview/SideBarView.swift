@@ -13,9 +13,8 @@ struct SideBarView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Rectangle()
+            CustomRoundedRectangle(bottomRight: 12)
                 .fill(.background)
-                .cornerRadius(16, corners: [.bottomRight])
                 .edgesIgnoringSafeArea(.top)
             
             VStack(alignment: .leading) {
