@@ -20,6 +20,8 @@ struct SideBarView: View {
             VStack(alignment: .leading) {
                 if !vm.allChats.isEmpty {
                     Text("Chats")
+                } else {
+                    EmptyChatView()
                 }
                 List(vm.allChats) { item in
                     let isActiveChat = vm.currentChat == item
@@ -40,20 +42,21 @@ struct SideBarView: View {
                     }
                 }.listStyle(.plain)
                 
-                if vm.currentChat != nil {
+                
+                if vm.currentChat != nil || vm.allChats.isEmpty {
                     Button {
                         vm.currentChat = nil
                         vm.closeSideBar()
                     } label: {
                         Spacer()
                         Label("New chat", systemImage: "plus")
-                            .foregroundColor(.grayFont)
                         Spacer()
                     }.buttonStyle(.bordered)
                 }
                 
             }.padding()
         }
+        .customFont()
         .transition(.move(edge: .leading))
         .frame(width: width)
         .offset(x: vm.showSideBar ? width / 2 : 0)
@@ -63,5 +66,23 @@ struct SideBarView: View {
 struct SideBarView_Previews: PreviewProvider {
     static var previews: some View {
         SideBarView(vm: CowriterVM(), width: UIScreen.screenWidth - 100)
+    }
+}
+
+struct EmptyChatView: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            VStack {
+                Spacer()
+                Image(systemName: "tray")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 75)
+                Text("No Chats Yet!").font(.headline)
+                Spacer()
+            }.foregroundColor(.gray.opacity(0.7))
+            Spacer()
+        }
     }
 }
