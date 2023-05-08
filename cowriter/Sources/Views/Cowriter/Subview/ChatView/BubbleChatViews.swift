@@ -22,10 +22,13 @@ struct BubblePromptView: View {
                 .foregroundColor(.white)
                 .background(
                     shape.fill(LinearGradient(
-                            gradient: Gradient(colors: [.black.opacity(0.8), .black.opacity(0.7)]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ))
+                        gradient: Gradient(colors: [
+                            Color.init(red: 0.3, green: 0.5, blue: 0.7),
+                            Color.init(red: 0.1, green: 0.3, blue: 0.5)
+                        ]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ))
                 )
                 .contentShape(.contextMenuPreview, shape)
                 .contextMenu {
@@ -33,7 +36,6 @@ struct BubblePromptView: View {
                 }
         }
         .padding(.horizontal)
-        .padding(.trailing)
         .transition(.move(edge: .bottom))
     }
 }

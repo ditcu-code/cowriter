@@ -11,6 +11,7 @@ struct ItemPlanView: View {
     var plan: PlanEnum
     @Binding var selectedPlan: PlanEnum
     
+    
     var body: some View {
         let isSelected = selectedPlan == plan
         let outerShape = RoundedRectangle(cornerRadius: 8)

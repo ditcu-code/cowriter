@@ -22,6 +22,7 @@
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
 		0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */; };
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
+		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
 		0EB86DDC29FEE107005B5EE1 /* AsisstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DDB29FEE107005B5EE1 /* AsisstView.swift */; };
 		0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */; };
@@ -109,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E91DD362A092213005041BA /* iTextField in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
 				0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */,
 			);
@@ -122,6 +124,7 @@
 			children = (
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
+				0E91DD342A092213005041BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,6 +233,13 @@
 				0E7C413F29F95CE50075B638 /* ChatView.swift */,
 			);
 			path = ChatView;
+			sourceTree = "<group>";
+		};
+		0E91DD342A092213005041BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0EB86DD929FEE037005B5EE1 /* SubView */ = {
@@ -348,6 +358,7 @@
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */,
+				0E91DD352A092213005041BA /* iTextField */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
@@ -380,6 +391,7 @@
 			packageReferences = (
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
+				0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -663,6 +675,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/benjaminsage/iTextField";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JuniperPhoton/PhotonOpenAIKit";
@@ -682,6 +702,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E91DD352A092213005041BA /* iTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */;
+			productName = iTextField;
+		};
 		0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;

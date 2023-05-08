@@ -21,7 +21,9 @@ class CowriterVM: ObservableObject {
     @Published var allChats: [ChatType] = []
     @Published var currentChat: ChatType?
     
+    // UI
     @Published var showSideBar: Bool = false
+    @Published var isFocusOnPrompter: Bool = false
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
@@ -174,8 +176,7 @@ class CowriterVM: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    print("Success! Response data: \(data)")
-                    print(data.choices)
+                    //                    print("Success! Response data: \(data)")
                     title = data.choices[0].text
                     completion(title)
                 case .failure(let error):
@@ -186,9 +187,19 @@ class CowriterVM: ObservableObject {
         }
     }
     
+    // UI
+    
     func closeSideBar() {
-        withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
-            self.showSideBar = false
+        if showSideBar {
+            withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
+                self.showSideBar = false
+            }
+        }
+    }
+    
+    func removePrompterFocus() {
+        if isFocusOnPrompter {
+            self.isFocusOnPrompter = false
         }
     }
     

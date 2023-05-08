@@ -10,7 +10,6 @@ import SwiftUI
 struct CowriterView: View {
     @ObservedObject var vm: CowriterVM = CowriterVM()
     private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
-    @FocusState var isFocusOnPrompt: Bool
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
@@ -24,16 +23,22 @@ struct CowriterView: View {
         
         NavigationView {
             ZStack {
+                LinearGradient(
+                    colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                ).ignoresSafeArea()
+                
                 HStack {
                     if vm.showSideBar {
                         SideBarView(vm: vm, width: sideBarWidth)
                     }
+                    
                     VStack {
                         Spacer()
                         
                         if isActive {
-                            GreetingView().padding(.horizontal)
-                            //                            CowriterLogo().padding(.top, 100)
+                            GreetingView()
                         } else {
                             ChatView(vm: vm)
                         }
@@ -43,37 +48,22 @@ struct CowriterView: View {
                         }
                         Spacer()
                         
-                        Prompter(vm: vm, isActive: isActive, isFocused: _isFocusOnPrompt)
-                        
-                        //                        if isActive {
-                        //                            PromptHint(vm: vm)
-                        //                        }
-                        
+                        Prompter(vm: vm)
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if vm.showSideBar {
-                            vm.closeSideBar()
-                        }
-                        if isFocusOnPrompt {
-                            isFocusOnPrompt = false
-                        }
+                        vm.closeSideBar()
+                        vm.removePrompterFocus()
                     }
                     .onChange(of: isActive, perform: { newValue in
-                        if isFocusOnPrompt {
-                            isFocusOnPrompt = false
+                        if newValue {
+                            vm.removePrompterFocus()
                         }
                     })
                     .frame(width: vm.showSideBar ? UIScreen.screenWidth : nil)
                     .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
                 }
-                
             }
-            .background(.linearGradient(
-                colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
-                startPoint: .top,
-                endPoint: .bottom
-            ))
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {

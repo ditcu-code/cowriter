@@ -34,7 +34,6 @@ class GrammarVM: ObservableObject {
                 switch result {
                 case .success(let data):
                     print("Success! Response data: \(data)")
-                    
                     self.loading.toggle()
                     self.responseCompletion = data.self
                     
@@ -57,7 +56,6 @@ class GrammarVM: ObservableObject {
                 switch result {
                 case .success(let data):
                     print("Success! Response data: \(data)")
-                    
                     self.loading.toggle()
                     self.responseChat = data.self
                     

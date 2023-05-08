@@ -6,34 +6,37 @@
 //
 
 import SwiftUI
+import iTextField
 
 struct Prompter: View {
     @StateObject var vm: CowriterVM
-    var isActive: Bool
-    @FocusState var isFocused: Bool
     
     var body: some View {
         HStack {
-            TextField("Tell cowriter to...", text: $vm.userMessage)
-                .customFont(17)
-                .focused($isFocused)
-                .padding(.horizontal)
-                .onSubmit {
-                    if !vm.isLoading {
-                        if isActive {
-                            vm.request(nil)
-                        } else {
-                            vm.request(vm.currentChat)
-                        }
+            iTextField(
+                "Tell cowriter to...",
+                text: $vm.userMessage,
+                isEditing: $vm.isFocusOnPrompter
+            )
+            .onReturn {
+                if !vm.isLoading {
+                    if vm.currentChat == nil {
+                        vm.request(nil)
+                    } else {
+                        vm.request(vm.currentChat)
                     }
                 }
-                .disabled(vm.isLoading)
-                .onChange(of: vm.userMessage) { newValue in
-                    isFocused = true
-                }
+                vm.isFocusOnPrompter = true
+            }
+            .fontFromUIFont(UIFont(
+                descriptor: UIFont.systemFont(ofSize: 15).fontDescriptor.withDesign(.serif)!,
+                size: 15
+            ))
+            .foregroundColor(.darkGrayFont)
+            .padding(.horizontal)
             if vm.isLoading {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                     .padding(.horizontal, 10)
             }
         }
@@ -43,14 +46,12 @@ struct Prompter: View {
                 .fill(.background)
                 .frame(height: 38)
         )
-        .padding(.horizontal)
-        .padding(.top, 4)
-        .padding(.bottom, 20)
+        .padding()
     }
 }
 
 struct PrompterView_Previews: PreviewProvider {
     static var previews: some View {
-        Prompter(vm: CowriterVM(), isActive: true)
+        Prompter(vm: CowriterVM())
     }
 }

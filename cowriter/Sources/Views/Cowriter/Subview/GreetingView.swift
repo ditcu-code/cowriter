@@ -31,6 +31,7 @@ struct GreetingView: View {
             Spacer()
         }
         .padding()
+        .padding(.horizontal)
         .animation(.interpolatingSpring(stiffness: 50, damping: 15), value: [text1, text2])
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
