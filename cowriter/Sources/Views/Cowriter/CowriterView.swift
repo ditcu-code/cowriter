@@ -32,7 +32,7 @@ struct CowriterView: View {
                         Spacer()
                         
                         if isActive {
-                            GreetingView().padding(.horizontal).border(.blue)
+                            GreetingView().padding(.horizontal)
                             //                            CowriterLogo().padding(.top, 100)
                         } else {
                             ChatView(vm: vm)
@@ -50,7 +50,6 @@ struct CowriterView: View {
                         //                        }
                         
                     }
-                    .border(.red)
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if vm.showSideBar {
@@ -90,86 +89,3 @@ struct CowriterView_Previews: PreviewProvider {
         CowriterView()
     }
 }
-
-struct GreetingView: View {
-    @State private var text1: String? = nil
-    @State private var text2: String? = nil
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                if let unwrappedText: String = text1 {
-                    Text(unwrappedText).bold()
-                        .transition(.moveAndFade)
-                        .font(Font.system(.title3, design: .serif))
-                        .foregroundColor(.grayFont)
-                }
-                
-                if let unwrappedText: String = text2 {
-                    Text(unwrappedText).bold()
-                        .transition(.moveAndFade)
-                        .font(Font.system(.title2, design: .serif))
-                        .foregroundColor(.darkGrayFont)
-                }
-            }
-            Spacer()
-        }
-        .padding()
-        .animation(.interpolatingSpring(stiffness: 50, damping: 15), value: [text1, text2])
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                text1 = "Hello!"
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                text2 = "How can I assist you with your writing today?"
-            }
-        }
-    }
-}
-
-struct CowriterToolbarView: ToolbarContent {
-    @StateObject var vm: CowriterVM
-    var width: CGFloat
-    
-    @State private var toolbarShow: Bool = false
-    
-    var body: some ToolbarContent {
-        Group {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    SettingView()
-                } label: {
-                    if toolbarShow {
-                        Label("Setting", systemImage: "gearshape")
-                            .offset(x: vm.showSideBar ? width / 2 : 0)
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
-                }
-                .animation(
-                    .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: toolbarShow
-                )
-            }
-            
-            ToolbarItem(placement: .navigationBarLeading) {
-                ZStack {
-                    if toolbarShow {
-                        HamburgerToClose(isOpened: $vm.showSideBar)
-                            .transition(.move(edge: .leading).combined(with: .opacity))
-                    }
-                }
-                .animation(
-                    .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: toolbarShow
-                )
-                .onAppear{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        print(DispatchTime.now())
-                        toolbarShow.toggle()
-                    }
-                }
-            }
-        }
-    }
-}
-
