@@ -23,11 +23,11 @@ class CowriterVM: ObservableObject {
     
     // UI
     @Published var showSideBar: Bool = false
+    @Published var showToolbar: Bool = false
     @Published var isFocusOnPrompter: Bool = false
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
-    
     private var cancellable: AnyCancellable?
     
     init() {

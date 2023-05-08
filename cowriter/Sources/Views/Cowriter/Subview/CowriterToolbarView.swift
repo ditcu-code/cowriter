@@ -11,15 +11,13 @@ struct CowriterToolbarView: ToolbarContent {
     @StateObject var vm: CowriterVM
     var width: CGFloat
     
-    @State private var toolbarShow: Bool = false
-    
     var body: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     SettingView()
                 } label: {
-                    if toolbarShow {
+                    if vm.showToolbar {
                         Label("Setting", systemImage: "gearshape")
                             .offset(x: vm.showSideBar ? width / 2 : 0)
                             .transition(.move(edge: .trailing).combined(with: .opacity))
@@ -27,24 +25,24 @@ struct CowriterToolbarView: ToolbarContent {
                 }
                 .animation(
                     .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: toolbarShow
+                    value: vm.showToolbar
                 )
             }
             
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
-                    if toolbarShow {
+                    if vm.showToolbar {
                         HamburgerToClose(isOpened: $vm.showSideBar)
                             .transition(.move(edge: .leading).combined(with: .opacity))
                     }
                 }
                 .animation(
                     .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: toolbarShow
+                    value: vm.showToolbar
                 )
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        toolbarShow.toggle()
+                        vm.showToolbar = true
                     }
                 }
             }
