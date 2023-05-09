@@ -11,7 +11,7 @@ import StoreKit
 struct TestStoreKit: View {
     @EnvironmentObject
     private var purchaseManager: PurchaseManager
-    
+
     var body: some View {
         VStack(spacing: 20) {
             if purchaseManager.hasUnlockedPro {
@@ -34,6 +34,18 @@ struct TestStoreKit: View {
                             .background(.blue)
                             .clipShape(Capsule())
                     }
+                }
+
+                Button {
+                    _ = Task<Void, Never> {
+                        do {
+                            try await AppStore.sync()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                } label: {
+                    Text("Restore Purchases")
                 }
             }
         }.task {
