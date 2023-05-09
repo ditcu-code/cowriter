@@ -13,6 +13,10 @@
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
+		0E5CB96B2A09FAF8000A0B94 /* MainConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */; };
+		0E5CB96D2A0A01B1000A0B94 /* TestStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */; };
+		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
+		0E5CB9712A0A0BAD000A0B94 /* TestSubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
@@ -63,6 +67,10 @@
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = MainConfiguration.storekit; path = cowriter/MainConfiguration.storekit; sourceTree = "<group>"; };
+		0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoreKit.swift; sourceTree = "<group>"; };
+		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubs.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
+				0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
 				0E91DD342A092213005041BA /* Frameworks */,
@@ -335,6 +344,9 @@
 			children = (
 				0EE845F82A0667BC0025060F /* SubscriptionView.swift */,
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
+				0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */,
+				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
+				0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -407,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5CB96B2A09FAF8000A0B94 /* MainConfiguration.storekit in Resources */,
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +437,7 @@
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
 				0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */,
+				0E5CB96D2A0A01B1000A0B94 /* TestStoreKit.swift in Sources */,
 				0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */,
 				0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
@@ -431,11 +445,13 @@
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
 				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
+				0E5CB9712A0A0BAD000A0B94 /* TestSubs.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */,
+				0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */,
 				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
 				0EE845FB2A0669740025060F /* ItemPlanView.swift in Sources */,
 				0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */,
