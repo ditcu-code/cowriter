@@ -10,11 +10,14 @@ import StoreKit
 
 struct TestStoreKit: View {
     @EnvironmentObject
+    private var entitlementManager: EntitlementManager
+    
+    @EnvironmentObject
     private var purchaseManager: PurchaseManager
-
+    
     var body: some View {
         VStack(spacing: 20) {
-            if purchaseManager.hasUnlockedPro {
+            if entitlementManager.hasPro {
                 Text("Thank you for purchasing pro!")
             } else {
                 Text("Products")
@@ -35,7 +38,7 @@ struct TestStoreKit: View {
                             .clipShape(Capsule())
                     }
                 }
-
+                
                 Button {
                     _ = Task<Void, Never> {
                         do {

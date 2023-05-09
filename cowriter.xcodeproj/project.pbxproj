@@ -17,6 +17,7 @@
 		0E5CB96D2A0A01B1000A0B94 /* TestStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */; };
 		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
 		0E5CB9712A0A0BAD000A0B94 /* TestSubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */; };
+		0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStoreKit.swift; sourceTree = "<group>"; };
 		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubs.swift; sourceTree = "<group>"; };
+		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
 				0E5CB96C2A0A01B1000A0B94 /* TestStoreKit.swift */,
 				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
+				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 				0E5CB9702A0A0BAD000A0B94 /* TestSubs.swift */,
 			);
 			path = SubViews;
@@ -468,6 +471,7 @@
 				0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
+				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
 				0EE845FF2A066A960025060F /* _Shapes.swift in Sources */,
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
 				0E7C414029F95CE50075B638 /* ChatView.swift in Sources */,

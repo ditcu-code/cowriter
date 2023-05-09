@@ -18,19 +18,17 @@ class PurchaseManager: ObservableObject {
     @Published
     private(set) var purchasedProductIDs = Set<String>()
     
+    private let entitlementManager: EntitlementManager
     private var productsLoaded = false
     private var updates: Task<Void, Never>? = nil
     
-    init() {
+    init(entitlementManager: EntitlementManager) {
+        self.entitlementManager = entitlementManager
         self.updates = observeTransactionUpdates()
     }
     
     deinit {
         self.updates?.cancel()
-    }
-    
-    var hasUnlockedPro: Bool {
-        return !self.purchasedProductIDs.isEmpty
     }
     
     func loadProducts() async throws {
@@ -75,6 +73,8 @@ class PurchaseManager: ObservableObject {
                 self.purchasedProductIDs.remove(transaction.productID)
             }
         }
+        
+        self.entitlementManager.hasPro = !self.purchasedProductIDs.isEmpty
     }
     
     private func observeTransactionUpdates() -> Task<Void, Never> {
