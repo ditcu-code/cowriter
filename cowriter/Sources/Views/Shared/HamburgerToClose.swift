@@ -13,19 +13,20 @@ struct HamburgerToClose: View {
     var width: CGFloat = 22
     var height: CGFloat = 2
     var degrees: Double = 45
+    var corner: CGFloat = 2
     
     var body: some View {
         VStack(spacing: 5.5) {
-            RoundedRectangle(cornerRadius: 5) // top
+            RoundedRectangle(cornerRadius: corner) // top
                 .frame(width: width, height: height)
                 .rotationEffect(.degrees(isOpened ? degrees : 0), anchor: .leading)
             
-            RoundedRectangle(cornerRadius: 5)  // middle
+            RoundedRectangle(cornerRadius: corner)  // middle
                 .frame(width: width, height: height)
                 .scaleEffect(isOpened ? 0.0001 : 1, anchor: isOpened ? .trailing: .leading)
                 .opacity(isOpened ? 0 : 1)
             
-            RoundedRectangle(cornerRadius: 5) // bottom
+            RoundedRectangle(cornerRadius: corner) // bottom
                 .frame(width: width, height: height)
                 .rotationEffect(.degrees(isOpened ? -degrees : 0), anchor: .leading)
         }
@@ -35,12 +36,11 @@ struct HamburgerToClose: View {
             }
         }
         .padding(5)
-        .foregroundColor(.defaultFont)
     }
 }
 
 struct HamburgerToClose_Previews: PreviewProvider {
     static var previews: some View {
-        HamburgerToClose(isOpened: .constant(true))
+        HamburgerToClose(isOpened: .constant(false))
     }
 }

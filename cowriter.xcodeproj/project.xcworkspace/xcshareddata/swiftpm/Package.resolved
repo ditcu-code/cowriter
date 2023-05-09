@@ -19,12 +19,21 @@
       }
     },
     {
+      "identity" : "itextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/benjaminsage/iTextField",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1064f3ecb3fb36fc2e38b24d4986299d193b4951"
+      }
+    },
+    {
       "identity" : "photonopenaikit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JuniperPhoton/PhotonOpenAIKit",
       "state" : {
         "branch" : "main",
-        "revision" : "914459ebaac721c4b0cc1795bd261439ffd4064e"
+        "revision" : "b0e02df225291c803162855087ff4d805e97ef32"
       }
     }
   ],

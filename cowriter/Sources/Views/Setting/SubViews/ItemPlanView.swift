@@ -11,6 +11,7 @@ struct ItemPlanView: View {
     var plan: PlanEnum
     @Binding var selectedPlan: PlanEnum
     
+    
     var body: some View {
         let isSelected = selectedPlan == plan
         let outerShape = RoundedRectangle(cornerRadius: 8)
@@ -18,7 +19,7 @@ struct ItemPlanView: View {
         VStack {
             HStack {
                 Label("", systemImage: isSelected ? "record.circle.fill" : "circle")
-                    .foregroundColor(isSelected ? .orange : .gray.opacity(0.5))
+                    .foregroundColor(isSelected ? .blue : .gray.opacity(0.5))
                 VStack(alignment: .leading, spacing: 5) {
                     Text(plan.rawValue.uppercased())
                         .tracking(2)
@@ -44,7 +45,7 @@ struct ItemPlanView: View {
                     Spacer()
                     if plan.discount != nil {
                         Triangle()
-                            .fill(isSelected ? .orange : .gray.opacity(0.5))
+                            .fill(isSelected ? .blue : .gray.opacity(0.5))
                             .frame(width: 40, height: 40)
                             .overlay(
                                 Label("", systemImage: "percent")
@@ -59,7 +60,7 @@ struct ItemPlanView: View {
         )
         .overlay(
             outerShape
-                .stroke(isSelected ? .orange : .gray.opacity(0.2), lineWidth: isSelected ? 2 : 1)
+                .stroke(isSelected ? .blue : .gray.opacity(0.2), lineWidth: isSelected ? 2 : 1)
         )
         .onTapGesture {
             selectedPlan = plan

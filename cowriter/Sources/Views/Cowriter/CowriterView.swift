@@ -13,26 +13,33 @@ struct CowriterView: View {
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
-            .font : UIFont(name: "Gill Sans", size: 18)!,
+            .font: UIFont(descriptor: UIFontDescriptor(name: CowriterFont.helvetica.desc, size: 16)
+                .withSymbolicTraits(.traitBold)!, size: 16),
             .foregroundColor: UIColor.systemGray
         ]
     }
     
     var body: some View {
         let isActive = vm.currentChat == nil
+        
         NavigationView {
             ZStack {
-                Color.gray.opacity(0.2).ignoresSafeArea()
+                LinearGradient(
+                    colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                ).ignoresSafeArea()
                 
                 HStack {
                     if vm.showSideBar {
                         SideBarView(vm: vm, width: sideBarWidth)
                     }
+                    
                     VStack {
                         Spacer()
                         
                         if isActive {
-                            CowriterLogo().padding(.top, 100)
+                            GreetingView()
                         } else {
                             ChatView(vm: vm)
                         }
@@ -40,43 +47,31 @@ struct CowriterView: View {
                         if !vm.errorMessage.isEmpty {
                             ErrorMessageView(message: vm.errorMessage)
                         }
-                        
-                        Prompter(vm: vm, isActive: isActive)
-                        
-                        if isActive {
-                            PromptHint(vm: vm)
-                        }
-                        
                         Spacer()
+                        
+                        Prompter(vm: vm)
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if vm.showSideBar {
-                            vm.closeSideBar()
-                        }
+                        vm.closeSideBar()
+                        vm.removePrompterFocus()
                     }
+                    .onChange(of: isActive, perform: { newValue in
+                        if newValue {
+                            vm.removePrompterFocus()
+                        }
+                    })
                     .frame(width: vm.showSideBar ? UIScreen.screenWidth : nil)
                     .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
                 }
-                
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        SettingView()
-                    } label: {
-                        Label("Setting", systemImage: "gearshape")
-                            .offset(x: vm.showSideBar ? sideBarWidth / 2 : 0)
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HamburgerToClose(isOpened: $vm.showSideBar)
-                }
+                CowriterToolbarView(vm: vm, width: sideBarWidth)
             }
             .animation(.linear, value: isActive)
-        }.customFont()
+        }
     }
 }
 

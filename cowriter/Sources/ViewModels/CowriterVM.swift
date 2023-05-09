@@ -21,11 +21,13 @@ class CowriterVM: ObservableObject {
     @Published var allChats: [ChatType] = []
     @Published var currentChat: ChatType?
     
+    // UI
     @Published var showSideBar: Bool = false
+    @Published var showToolbar: Bool = false
+    @Published var isFocusOnPrompter: Bool = false
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
-    
     private var cancellable: AnyCancellable?
     
     init() {
@@ -148,11 +150,14 @@ class CowriterVM: ObservableObject {
                         currentChat.removeFromResults(currentResult)
                     }
                 }
-                if String(describing: error).contains("429") {
-                    self.errorMessage = "Uh oh, it seems like you're firing off too many requests too quickly! Hang tight for a bit and try again later, okay? "
-                } else {
+                switch String(describing: error) {
+                case let errorStr where errorStr.contains("429"):
+                    errorMessage = "Uh oh, you're sending too many requests! Take a breather and try again later, okay?"
+                case let errorStr where errorStr.contains("-1"):
+                    errorMessage = "Oops! It seems like you're having connection issues. Please check your internet connection and try again later."
+                default:
                     withAnimation(.easeInOut) {
-                        self.errorMessage = String(describing: error)
+                        errorMessage = String(describing: error)
                     }
                 }
             }
@@ -174,8 +179,7 @@ class CowriterVM: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    print("Success! Response data: \(data)")
-                    print(data.choices)
+                    //                    print("Success! Response data: \(data)")
                     title = data.choices[0].text
                     completion(title)
                 case .failure(let error):
@@ -186,9 +190,19 @@ class CowriterVM: ObservableObject {
         }
     }
     
+    // UI
+    
     func closeSideBar() {
-        withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
-            self.showSideBar = false
+        if showSideBar {
+            withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
+                self.showSideBar = false
+            }
+        }
+    }
+    
+    func removePrompterFocus() {
+        if isFocusOnPrompter {
+            self.isFocusOnPrompter = false
         }
     }
     

@@ -37,7 +37,7 @@ struct SubscriptionView: View {
                     Text("Continue").bold()
                         .padding(.vertical, 5)
                     Spacer()
-                }.buttonStyle(.borderedProminent).tint(.orange)
+                }.buttonStyle(.borderedProminent).tint(.blue)
                 
                 Button {
                     print("restore")

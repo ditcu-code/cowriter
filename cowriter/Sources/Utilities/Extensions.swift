@@ -8,15 +8,30 @@
 import Foundation
 import SwiftUI
 
+enum CowriterFont: String {
+    case helvetica, gill
+    
+    var desc: String {
+        switch self {
+        case .helvetica:
+            return "Helvetica Neue"
+        case .gill:
+            return "Gill Sans"
+        }
+    }
+}
+
 extension View {
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
-        self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
-        //        self.modifier(FontModifier(font: Font.system(size: size), color: color))
+    
+    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont, _ font: CowriterFont = CowriterFont.helvetica) -> some View {
+        switch font {
+        case .helvetica:
+            return self.modifier(FontModifier(font: Font.custom(CowriterFont.helvetica.desc, size: size, relativeTo: .body), color: color))
+        case .gill:
+            return self.modifier(FontModifier(font: Font.custom(CowriterFont.gill.desc, size: size, relativeTo: .body), color: color))
+        }
     }
     
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape( RoundedCorner(radius: radius, corners: corners) )
-    }
 }
 
 extension UIScreen{
@@ -29,7 +44,16 @@ extension Color {
     static let defaultFont = Color("DefaultFont")
     static let darkGrayFont = Color("DarkGrayFont")
     static let grayFont = Color("GrayFont")
-    
+    static let answerBubble = Color("AnswerBubble")
+}
+
+extension AnyTransition {
+    static var moveAndFade: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: .bottom).combined(with: .opacity),
+            removal: .move(edge: .top).combined(with: .opacity)
+        )
+    }
 }
 
 struct FontModifier: ViewModifier {
