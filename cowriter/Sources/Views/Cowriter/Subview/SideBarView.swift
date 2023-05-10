@@ -15,6 +15,7 @@ struct SideBarView: View {
     
     var body: some View {
         let hasReachedLimit = vm.allChats.count >= 3
+        let isPro = entitlementManager.hasPro
         
         ZStack(alignment: .topLeading) {
             CustomRoundedRectangle(bottomRight: 12)
@@ -49,11 +50,12 @@ struct SideBarView: View {
                 
                 if vm.currentChat != nil || vm.allChats.isEmpty {
                     Button {
-                        if hasReachedLimit {
+                        if hasReachedLimit && !isPro {
                             showSubscriptionSheet.toggle()
                         } else {
                             vm.currentChat = nil
                             vm.closeSideBar()
+                            vm.errorMessage = ""
                         }
                     } label: {
                         Spacer()
