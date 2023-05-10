@@ -29,7 +29,6 @@ struct cowriterApp: App {
                 .environmentObject(entitlementManager)
                 .environmentObject(purchaseManager)
                 .task {
-                    print("1")
                     await purchaseManager.updatePurchasedProducts()
                 }
         }

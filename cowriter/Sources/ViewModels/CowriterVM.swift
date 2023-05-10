@@ -193,6 +193,7 @@ class CowriterVM: ObservableObject {
     // UI
     
     func closeSideBar() {
+        print(showSideBar.description)
         if showSideBar {
             withAnimation(.interpolatingSpring(stiffness: 150, damping: 20)){
                 self.showSideBar = false

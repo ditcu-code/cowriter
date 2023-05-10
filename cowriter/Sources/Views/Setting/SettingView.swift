@@ -53,7 +53,7 @@ struct SettingView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    isShowSheet.toggle()
+                    isPro ? nil : isShowSheet.toggle()
                 }
             }
             

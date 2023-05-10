@@ -32,8 +32,11 @@ struct CowriterToolbarView: ToolbarContent {
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
                     if vm.showToolbar {
-                        HamburgerToClose(isOpened: $vm.showSideBar)
-                            .transition(.move(edge: .leading).combined(with: .opacity))
+                        HamburgerToClose(vm: vm)
+                            .transition(
+                                .move(edge: .leading)
+                                .combined(with: .opacity)
+                            )
                     }
                 }
                 .animation(

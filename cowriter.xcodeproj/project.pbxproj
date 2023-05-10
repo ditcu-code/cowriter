@@ -131,7 +131,6 @@
 				0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
-				0E91DD342A092213005041BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,13 +241,6 @@
 			path = ChatView;
 			sourceTree = "<group>";
 		};
-		0E91DD342A092213005041BA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		0EB86DD929FEE037005B5EE1 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				0E91DD2A2A08D3CC005041BA /* ChatView */,
+				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
 				0E380FBA2A069420002F0B2E /* SideBarView.swift */,
 				0E91DD2F2A08D517005041BA /* GreetingView.swift */,
 				0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */,
@@ -304,7 +297,6 @@
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */,
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
-				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
 			);
