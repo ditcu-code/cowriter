@@ -12,8 +12,8 @@ struct CowriterLogo: View {
     
     var body: some View {
         HStack(spacing: isPro ? 0 : -5) {
-            Text("cowriter").customFont(48, .grayFont)
-            Text(isPro ? "pro" : ".").customFont(48, .orange)
+            Text("cowriter").customFont(48, .grayFont, .gill)
+            Text(isPro ? "pro" : ".").customFont(48, .blue, .gill)
         }
     }
 }
