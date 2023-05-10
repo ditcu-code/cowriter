@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
-        "version" : "5.6.4"
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
       }
     },
     {
@@ -16,6 +16,15 @@
       "state" : {
         "revision" : "fb2064e4907f6f38debaa5cc136f390722c33f22",
         "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "gpt3-tokenizer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aespinilla/GPT3-Tokenizer.git",
+      "state" : {
+        "revision" : "cadab0d19a1602cc505493990a9fc4810d8e3070",
+        "version" : "0.1.2"
       }
     },
     {
