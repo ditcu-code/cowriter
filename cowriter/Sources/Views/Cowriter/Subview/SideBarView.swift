@@ -28,28 +28,33 @@ struct SideBarView: View {
                 } else {
                     EmptyChatView()
                 }
-                List(vm.allChats) { item in
-                    let isActiveChat = vm.currentChat == item
-                    HStack {
-                        Text(item.wrappedTitle)
-                            .lineLimit(1)
-                            .foregroundColor(.grayFont)
-                            .font(Font.system(.body, design: .serif))
-                            .onTapGesture {
-                                vm.currentChat = item
-                                vm.closeSideBar()
-                            }
-                        if isActiveChat {
+                List {
+                    ForEach(vm.allChats, id: \.self) { item in
+                        let isActiveChat = vm.currentChat == item
+                        HStack {
+                            Text(item.wrappedTitle)
+                                .lineLimit(1)
+                                .foregroundColor(.grayFont)
+                                .font(Font.system(.body, design: .serif))
                             Spacer()
-                            Circle()
-                                .frame(width: 9, height: 9)
-                                .foregroundColor(.blue)
+                            if isActiveChat {
+                                Circle()
+                                    .frame(width: 9, height: 9)
+                                    .foregroundColor(.blue)
+                            }
                         }
-                    }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.currentChat = item
+                            vm.closeSideBar()
+                        }
+//                        Divider()
+                    }.onDelete(perform: vm.removeChat)
                 }.listStyle(.plain)
                 
                 
                 if vm.currentChat != nil || vm.allChats.isEmpty {
+                    Spacer()
                     Button {
                         if hasReachedLimit && !isPro {
                             showSubscriptionSheet.toggle()

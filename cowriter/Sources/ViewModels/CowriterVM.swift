@@ -31,6 +31,7 @@ class CowriterVM: ObservableObject {
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
     private let gpt3Tokenizer = GPT3Tokenizer()
+    private let context = PersistenceController.viewContext
     
     init() {
         getAllChats()
@@ -53,7 +54,6 @@ class CowriterVM: ObservableObject {
     func request(_ chat: ChatType?) {
         cancel()
         task = Task {
-            let context = PersistenceController.viewContext
             let currentResult: ResultType? = nil
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
@@ -185,6 +185,19 @@ class CowriterVM: ObservableObject {
                     completion(ChatTitle(title: title, token: self.gpt3Tokenizer.encoder.enconde(text: message).count))
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func removeChat(at offsets: IndexSet) {
+        for index in offsets {
+            Task {
+                let chat = self.allChats[index]
+                PersistenceController.viewContext.delete(chat)
+                DispatchQueue.main.async {
+                    self.getAllChats()
+                    self.currentChat = nil
                 }
             }
         }
