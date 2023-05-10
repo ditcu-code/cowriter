@@ -10,6 +10,13 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    
+    @EnvironmentObject
+    private var purchaseManager: PurchaseManager
+    
+    init() {
+//        print(purchaseManager)
+    }
 
     var body: some View {
 //        TabView {

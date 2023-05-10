@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class EntitlementManager: ObservableObject {
+class EntitlementManager: ObservableObject { /// can be shared across extensions
     static let userDefaults = UserDefaults(suiteName: "group.ditcu.cowriter")!
     
     @AppStorage("hasPro", store: userDefaults)

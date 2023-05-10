@@ -10,13 +10,12 @@ import StoreKit
 
 @MainActor
 class PurchaseManager: ObservableObject {
+    private let productIds = PlanEnum.allCases.map { plan in
+        plan.rawValue
+    }
     
-    private let productIds = ["pro.monthly.sub.test", "pro.annual.sub.test"]
-    
-    @Published
-    private(set) var products: [Product] = []
-    @Published
-    private(set) var purchasedProductIDs = Set<String>()
+    @Published private(set) var products: [Product] = []
+    @Published private(set) var purchasedProductIDs = Set<String>()
     
     private let entitlementManager: EntitlementManager
     private var productsLoaded = false
@@ -46,6 +45,7 @@ class PurchaseManager: ObservableObject {
             await transaction.finish()
             await self.updatePurchasedProducts()
         case let .success(.unverified(_, error)):
+            print(error)
             // Successful purchase but transaction/receipt can't be verified
             // Could be a jailbroken phone
             break
@@ -86,4 +86,35 @@ class PurchaseManager: ObservableObject {
             }
         }
     }
+    
+    func loadProducts() {
+        _ = Task<Void, Never> {
+            do {
+                try await self.loadProducts()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func purchaseProduct(_ product: Product) {
+        _ = Task<Void, Never> {
+            do {
+                try await self.purchase(product)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func restorePurchases() {
+        _ = Task<Void, Never> {
+            do {
+                try await AppStore.sync()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
 }

@@ -23,7 +23,7 @@
   "settings" : {
     "_applicationInternalID" : "6447877850",
     "_developerTeamID" : "474XANH3RF",
-    "_lastSynchronizedDate" : 705300237.17943203
+    "_lastSynchronizedDate" : 705341734.767923
   },
   "subscriptionGroups" : [
     {
@@ -40,14 +40,14 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "99.99",
+          "displayPrice" : "89.99",
           "familyShareable" : false,
-          "groupNumber" : 2,
+          "groupNumber" : 1,
           "internalID" : "6448935775",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Unlimited Chats for A Year",
+              "description" : "Unlimited chats for a year",
               "displayName" : "CowriterPro (1 Year)",
               "locale" : "en_US"
             }
@@ -67,18 +67,18 @@
           ],
           "displayPrice" : "8.99",
           "familyShareable" : false,
-          "groupNumber" : 1,
+          "groupNumber" : 2,
           "internalID" : "6448935439",
           "introductoryOffer" : {
-            "internalID" : "609531BE",
+            "internalID" : "0CC081E7",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
           "localizations" : [
             {
-              "description" : "Unlimited chats",
-              "displayName" : "CowriterPro (Monthly)",
+              "description" : "Unlimited chats for a month",
+              "displayName" : "CowriterPro (1 Month)",
               "locale" : "en_US"
             }
           ],
