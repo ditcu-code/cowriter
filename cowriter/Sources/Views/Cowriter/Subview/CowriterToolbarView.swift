@@ -13,22 +13,6 @@ struct CowriterToolbarView: ToolbarContent {
     
     var body: some ToolbarContent {
         Group {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    SettingView()
-                } label: {
-                    if vm.showToolbar {
-                        Label("Setting", systemImage: "gearshape")
-                            .offset(x: vm.showSideBar ? width / 2 : 0)
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
-                }
-                .animation(
-                    .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: vm.showToolbar
-                )
-            }
-            
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
                     if vm.showToolbar {
@@ -48,6 +32,38 @@ struct CowriterToolbarView: ToolbarContent {
                         vm.showToolbar = true
                     }
                 }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    FavoritesView()
+                } label: {
+                    if vm.showToolbar {
+                        Label("Favorites", systemImage: "star")
+                            .offset(x: vm.showSideBar ? width / 2 : 0)
+                            .transition(.move(edge: .trailing).combined(with: .opacity))
+                    }
+                }
+                .animation(
+                    .interpolatingSpring(stiffness: 30, damping: 15),
+                    value: vm.showToolbar
+                )
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SettingView()
+                } label: {
+                    if vm.showToolbar {
+                        Label("Setting", systemImage: "gearshape")
+                            .offset(x: vm.showSideBar ? width / 2 : 0)
+                            .transition(.move(edge: .trailing).combined(with: .opacity))
+                    }
+                }
+                .animation(
+                    .interpolatingSpring(stiffness: 30, damping: 15),
+                    value: vm.showToolbar
+                )
             }
         }
     }
