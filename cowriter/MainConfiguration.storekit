@@ -23,7 +23,7 @@
   "settings" : {
     "_applicationInternalID" : "6447877850",
     "_developerTeamID" : "474XANH3RF",
-    "_lastSynchronizedDate" : 705341734.767923
+    "_lastSynchronizedDate" : 705406836.11231196
   },
   "subscriptionGroups" : [
     {
@@ -70,7 +70,7 @@
           "groupNumber" : 2,
           "internalID" : "6448935439",
           "introductoryOffer" : {
-            "internalID" : "0CC081E7",
+            "internalID" : "839A13AF",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"

@@ -180,9 +180,9 @@
 		0E6A656329DD2798003457DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0EE845F42A0528E60025060F /* Setting */,
 				0E6A654F29DD25C0003457DF /* ContentView.swift */,
 				0ECC7C0E29DEC309002A6B7F /* Shared */,
+				0EE845F42A0528E60025060F /* Setting */,
 				0EE49E0329E6C04C0058DB14 /* Cowriter */,
 				0EB86DDA29FEE0D6005B5EE1 /* Assist */,
 				0ECC7BFA29DD4D5C002A6B7F /* Grammar */,
@@ -665,7 +665,7 @@
 				0E6A655D29DD25C1003457DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */ = {
 			isa = XCConfigurationList;
@@ -674,7 +674,7 @@
 				0E6A656029DD25C1003457DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

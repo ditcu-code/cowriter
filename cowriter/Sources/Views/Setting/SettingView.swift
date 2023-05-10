@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isShowSheet: Bool = false
+    @State private var showSubscriptionSheet: Bool = false
     @State private var selectedPlan: PlanEnum = PlanEnum.annual
     @State private var key: String = ""
     
@@ -31,11 +31,11 @@ struct SettingView: View {
                         Text("\(isPro ? "Unlimited" : "Limited") chats")
                             .font(.footnote)
                             .foregroundColor(.defaultFont)
-
+                        
                         if !isPro {
                             Divider()
                             Button {
-                                isShowSheet.toggle()
+                                showSubscriptionSheet.toggle()
                             } label: {
                                 Text("Upgrade to Pro")
                                     .bold()
@@ -53,30 +53,21 @@ struct SettingView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    isPro ? nil : isShowSheet.toggle()
+                    isPro ? nil : showSubscriptionSheet.toggle()
                 }
             }
-            
-            Section("Test", content: {
-                TextField("Test", text: $key)
-                Button("Submit") {
-                    let yes = Keychain.saveApiKey(apiKey: key)
-                    print(yes)
-                }
-            })
-            
         }
         .navigationTitle("Setting")
-        .sheet(isPresented: $isShowSheet) {
+        .sheet(isPresented: $showSubscriptionSheet) {
             
             if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $isShowSheet)
+                SubscriptionView(isShowSheet: $showSubscriptionSheet)
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
                     CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $isShowSheet)
+                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
                 }
             }
             
