@@ -13,6 +13,10 @@
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
+		0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */; };
+		0E5CB96B2A09FAF8000A0B94 /* MainConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */; };
+		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
+		0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
@@ -63,6 +67,9 @@
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = MainConfiguration.storekit; path = cowriter/MainConfiguration.storekit; sourceTree = "<group>"; };
+		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +120,7 @@
 				0E91DD362A092213005041BA /* iTextField in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
 				0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */,
+				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +130,9 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
+				0E5CB96A2A09FAF8000A0B94 /* MainConfiguration.storekit */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
-				0E91DD342A092213005041BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,9 +182,9 @@
 		0E6A656329DD2798003457DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0EE845F42A0528E60025060F /* Setting */,
 				0E6A654F29DD25C0003457DF /* ContentView.swift */,
 				0ECC7C0E29DEC309002A6B7F /* Shared */,
+				0EE845F42A0528E60025060F /* Setting */,
 				0EE49E0329E6C04C0058DB14 /* Cowriter */,
 				0EB86DDA29FEE0D6005B5EE1 /* Assist */,
 				0ECC7BFA29DD4D5C002A6B7F /* Grammar */,
@@ -235,13 +243,6 @@
 			path = ChatView;
 			sourceTree = "<group>";
 		};
-		0E91DD342A092213005041BA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		0EB86DD929FEE037005B5EE1 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				0E91DD2A2A08D3CC005041BA /* ChatView */,
+				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
 				0E380FBA2A069420002F0B2E /* SideBarView.swift */,
 				0E91DD2F2A08D517005041BA /* GreetingView.swift */,
 				0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */,
@@ -297,7 +299,6 @@
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0E0A636F29ED9E1400DB7540 /* RefreshButton.swift */,
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
-				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
 			);
@@ -335,6 +336,8 @@
 			children = (
 				0EE845F82A0667BC0025060F /* SubscriptionView.swift */,
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
+				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
+				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */,
 				0E91DD352A092213005041BA /* iTextField */,
+				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
@@ -392,6 +396,7 @@
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 				0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */,
+				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -407,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5CB96B2A09FAF8000A0B94 /* MainConfiguration.storekit in Resources */,
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +442,7 @@
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */,
+				0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */,
 				0ECC7BF929DD3DD0002A6B7F /* GrammarView.swift in Sources */,
 				0EE845FB2A0669740025060F /* ItemPlanView.swift in Sources */,
 				0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */,
@@ -452,6 +459,7 @@
 				0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
+				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
 				0EE845FF2A066A960025060F /* _Shapes.swift in Sources */,
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
 				0E7C414029F95CE50075B638 /* ChatView.swift in Sources */,
@@ -661,7 +669,7 @@
 				0E6A655D29DD25C1003457DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */ = {
 			isa = XCConfigurationList;
@@ -670,11 +678,19 @@
 				0E6A656029DD25C1003457DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aespinilla/GPT3-Tokenizer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/benjaminsage/iTextField";
@@ -702,6 +718,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
+		};
 		0E91DD352A092213005041BA /* iTextField */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */;

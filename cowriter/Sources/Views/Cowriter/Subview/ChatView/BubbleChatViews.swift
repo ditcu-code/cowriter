@@ -36,7 +36,7 @@ struct BubblePromptView: View {
                 }
         }
         .padding(.horizontal)
-        .transition(.move(edge: .bottom))
+        .transition(.upAndLeft)
     }
 }
 
@@ -80,12 +80,13 @@ struct BubbleChatViews_Previews: PreviewProvider {
 }
 
 struct ChatContextMenu: View {
+    var prompt: String?
     var answer: String?
     
     var body: some View {
         Group {
             Button {
-                
+                UIPasteboard.general.setValue(answer ?? prompt ?? "", forPasteboardType: "public.plain-text")
             } label: {
                 Label("Copy", systemImage: "doc.on.doc")
             }

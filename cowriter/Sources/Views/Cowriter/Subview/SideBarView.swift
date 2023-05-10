@@ -9,9 +9,14 @@ import SwiftUI
 
 struct SideBarView: View {
     @StateObject var vm: CowriterVM
+    @State private var showSubscriptionSheet: Bool = false
+    @EnvironmentObject private var entitlementManager: EntitlementManager
     var width: CGFloat
     
     var body: some View {
+        let hasReachedLimit = vm.allChats.count >= 3
+        let isPro = entitlementManager.hasPro
+        
         ZStack(alignment: .topLeading) {
             CustomRoundedRectangle(bottomRight: 12)
                 .fill(.background)
@@ -45,8 +50,13 @@ struct SideBarView: View {
                 
                 if vm.currentChat != nil || vm.allChats.isEmpty {
                     Button {
-                        vm.currentChat = nil
-                        vm.closeSideBar()
+                        if hasReachedLimit && !isPro {
+                            showSubscriptionSheet.toggle()
+                        } else {
+                            vm.currentChat = nil
+                            vm.closeSideBar()
+                            vm.errorMessage = ""
+                        }
                     } label: {
                         Spacer()
                         Label("New chat", systemImage: "plus")
@@ -60,6 +70,20 @@ struct SideBarView: View {
         .transition(.move(edge: .leading))
         .frame(width: width)
         .offset(x: vm.showSideBar ? width / 2 : 0)
+        .sheet(isPresented: $showSubscriptionSheet) {
+            
+            if #available(iOS 16.0, *) {
+                SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            } else {
+                VStack {
+                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                }
+            }
+            
+        }
     }
 }
 

@@ -54,6 +54,13 @@ extension AnyTransition {
             removal: .move(edge: .top).combined(with: .opacity)
         )
     }
+    
+    static var upAndLeft: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: .bottom).combined(with: .opacity),
+            removal: .move(edge: .trailing).combined(with: .opacity)
+        )
+    }
 }
 
 struct FontModifier: ViewModifier {
@@ -64,5 +71,11 @@ struct FontModifier: ViewModifier {
         content
             .font(font)
             .foregroundColor(color)
+    }
+}
+
+extension String {
+    func removeNewLines(_ delimiter: String = "") -> String {
+        self.replacingOccurrences(of: "\n", with: delimiter)
     }
 }

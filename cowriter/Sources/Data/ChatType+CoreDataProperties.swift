@@ -19,10 +19,15 @@ extension ChatType {
     @NSManaged public var title: String?
     @NSManaged public var userId: String?
     @NSManaged public var id: UUID?
+    @NSManaged public var usage: Int32
     @NSManaged public var results: NSSet?
     
     public var wrappedTitle: String {
         title ?? "Cowriter"
+    }
+    
+    public var wrappedUsage: Int {
+        Int(usage)
     }
     
     public var wrappedUserId: String {

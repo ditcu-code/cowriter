@@ -7,15 +7,25 @@
 
 import Foundation
 
-enum PlanEnum: String {
-    case annual, monthly
+enum PlanEnum: String, CaseIterable {
+    case annual = "pro.annual.sub.test"
+    case monthly = "pro.monthly.sub.test"
+    
+    var recurring: String {
+        switch self {
+        case .annual:
+            return "annual"
+        case .monthly:
+            return "monthly"
+        }
+    }
     
     var desc: String {
         switch self {
         case .annual:
-            return "Rp82.500 / month, billed annualy"
+            return "/ month, billed annualy"
         case .monthly:
-            return "Rp99.000 / month after 1 week"
+            return "/ month after 1 week"
         }
     }
     

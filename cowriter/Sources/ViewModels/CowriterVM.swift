@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import CoreData
+import GPT3_Tokenizer
 import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
@@ -29,6 +30,7 @@ class CowriterVM: ObservableObject {
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
+    private let gpt3Tokenizer = GPT3Tokenizer()
     
     init() {
         getAllChats()
@@ -52,7 +54,7 @@ class CowriterVM: ObservableObject {
         cancel()
         task = Task {
             let context = PersistenceController.viewContext
-            var currentResult: ResultType?
+            let currentResult: ResultType? = nil
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
             ]
@@ -78,20 +80,15 @@ class CowriterVM: ObservableObject {
             self.textToDisplay = ""
             
             if let chat = chat {
-                let newResult = createResult()
-                currentResult = newResult
-                chat.addToResults(newResult)
+                chat.addToResults(createResult())
                 currentChat = chat
-                PersistenceController.save()
             } else {
-                let newResult = createResult()
-                currentResult = newResult
                 let newChat = ChatType(context: context)
                 newChat.id = UUID()
                 newChat.userId = ""
-                newChat.results = [newResult]
+                newChat.results = [createResult()]
+                newChat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count) + 10 /// token count for system message
                 currentChat = newChat
-                PersistenceController.save()
             }
             
             guard let client = client else {
@@ -101,9 +98,9 @@ class CowriterVM: ObservableObject {
             
             defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
                 if let chat = currentChat, chat.title == nil {
-                    self.getChatTitle(results: chat.resultsArray, completion: { string in
-                        chat.title = Utils.removeNewlineAtBeginning(string ?? "Cowriter").capitalized
-                        PersistenceController.save()
+                    self.getChatTitle(results: chat.resultsArray, completion: { result in
+                        chat.title = result.title.removeNewLines()
+                        chat.usage += Int32(result.token)
                     })
                 }
                 withAnimation {
@@ -134,6 +131,7 @@ class CowriterVM: ObservableObject {
                 if let chat = chat ?? currentChat,
                    let lastResult = chat.resultsArray.last {
                     lastResult.answer = textToDisplay
+                    chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: textToDisplay).count)
                     PersistenceController.save()
                 }
                 if !self.errorMessage.isEmpty { /// delete prev error message if last req is success
@@ -142,13 +140,16 @@ class CowriterVM: ObservableObject {
                     }
                 }
             } catch {
-                if let currentChat = currentChat {
-                    if currentChat.resultsArray.count == 1 {
-                        context.delete(currentChat)
-                        PersistenceController.save()
+                if let chat = currentChat {
+                    if chat.resultsArray.count == 1 {
+                        context.delete(chat)
+                        currentChat = nil
+                        //                        PersistenceController.save()
                     } else if let currentResult = currentResult {
-                        currentChat.removeFromResults(currentResult)
+                        chat.removeFromResults(currentResult)
+                        //                        PersistenceController.save()
                     }
+                    PersistenceController.save()
                 }
                 switch String(describing: error) {
                 case let errorStr where errorStr.contains("429"):
@@ -164,7 +165,7 @@ class CowriterVM: ObservableObject {
         }
     }
     
-    func getChatTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
+    func getChatTitle(results: [ResultType], completion: @escaping (ChatTitle) -> Void) {
         var title = ""
         var message = ""
         
@@ -172,19 +173,18 @@ class CowriterVM: ObservableObject {
             let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
             message = resultString
         }
-        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 10)
+        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 8)
         let dictionary = Utils.toDictionary(raw)
         
         APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    //                    print("Success! Response data: \(data)")
-                    title = data.choices[0].text
-                    completion(title)
+//                    print("Success! Response data: \(data.choices)")
+                    title = data.choices.first?.text ?? "A chat"
+                    completion(ChatTitle(title: title, token: self.gpt3Tokenizer.encoder.enconde(text: message).count))
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
-                    completion(nil)
                 }
             }
         }
@@ -206,4 +206,9 @@ class CowriterVM: ObservableObject {
         }
     }
     
+}
+
+struct ChatTitle {
+    var title: String
+    var token: Int
 }
