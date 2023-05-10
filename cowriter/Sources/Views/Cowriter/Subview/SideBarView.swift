@@ -24,7 +24,7 @@ struct SideBarView: View {
             
             VStack(alignment: .leading) {
                 if !vm.allChats.isEmpty {
-                    Text("Chats")
+                    Text("Chats").bold()
                 } else {
                     EmptyChatView()
                 }
@@ -34,6 +34,7 @@ struct SideBarView: View {
                         Text(item.wrappedTitle)
                             .lineLimit(1)
                             .foregroundColor(.grayFont)
+                            .font(Font.system(.body, design: .serif))
                             .onTapGesture {
                                 vm.currentChat = item
                                 vm.closeSideBar()
@@ -59,14 +60,13 @@ struct SideBarView: View {
                         }
                     } label: {
                         Spacer()
-                        Label("New chat", systemImage: "plus")
+                        Label("New chat", systemImage: "plus").font(.headline)
                         Spacer()
                     }.buttonStyle(.bordered)
                 }
                 
             }.padding()
         }
-        .customFont()
         .transition(.move(edge: .leading))
         .frame(width: width)
         .offset(x: vm.showSideBar ? width / 2 : 0)

@@ -79,7 +79,7 @@ class PurchaseManager: ObservableObject {
     
     private func observeTransactionUpdates() -> Task<Void, Never> {
         Task(priority: .background) {
-            for await verificationResult in Transaction.updates {
+            for await _ in Transaction.updates {
                 // Using verificationResult directly would be better
                 // but this way works for this tutorial
                 await self.updatePurchasedProducts()

@@ -46,7 +46,6 @@ struct SettingView: View {
                         }
                     }
                     .animation(.linear, value: isPro)
-                    .customFont()
                     .padding(.vertical, 5)
                     .foregroundColor(.darkGrayFont)
                     Spacer()

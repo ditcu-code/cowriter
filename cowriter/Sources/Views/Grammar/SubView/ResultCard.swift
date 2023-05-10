@@ -31,7 +31,6 @@ struct ResultCard: View {
                             .opacity(0.5)
                             .frame(width: 12)
                         Text(result.wrappedPrompt)
-                            .customFont(16)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }.padding(.horizontal, 5)
                     Divider()
@@ -49,7 +48,6 @@ struct ResultCard: View {
                     answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer,
                     vm: vm
                 )
-                .customFont(18, isSelectedAnswer ? .darkGrayFont : .defaultFont)
                 
             }
         }
@@ -90,7 +88,6 @@ struct PromptTextView: View {
                 .opacity(0.5)
             Text(prompt)
                 .lineLimit(2)
-                .customFont(14, .defaultFont)
         }
         .padding(.vertical, 2)
         .padding(.horizontal)
