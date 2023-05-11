@@ -39,7 +39,7 @@ struct CowriterToolbarView: ToolbarContent {
                     Button {
                         vm.favoriteFilterIsOn.toggle()
                     } label: {
-                        Label("Favorites", systemImage: vm.favoriteFilterIsOn ? "star.fill" : "star")
+                        Label("Favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
                             .labelStyle(.iconOnly)
                             .offset(x: vm.showSideBar ? width / 2 : 0)
                             .transition(.move(edge: .trailing).combined(with: .opacity))

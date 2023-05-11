@@ -48,6 +48,7 @@
 		0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* CowriterView.swift */; };
 		0EE49E0829E6C0FA0058DB14 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */; };
 		0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */; };
+		0EE546DB2A0D05F00036C0EB /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */; };
 		0EE845F62A0529020025060F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845F52A0529020025060F /* SettingView.swift */; };
 		0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845F82A0667BC0025060F /* SubscriptionView.swift */; };
 		0EE845FB2A0669740025060F /* ItemPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FA2A0669740025060F /* ItemPlanView.swift */; };
@@ -100,6 +101,7 @@
 		0EE49E0429E6C0600058DB14 /* CowriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterView.swift; sourceTree = "<group>"; };
 		0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
 		0EE845F52A0529020025060F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0EE845F82A0667BC0025060F /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		0EE845FA2A0669740025060F /* ItemPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPlanView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */,
+				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 			);
 			path = ViewModels;
@@ -440,6 +443,7 @@
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,
 				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
+				0EE546DB2A0D05F00036C0EB /* FavoritesVM.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */,
 				0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */,

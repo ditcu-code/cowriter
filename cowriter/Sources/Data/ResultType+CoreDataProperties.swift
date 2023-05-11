@@ -38,5 +38,13 @@ extension ResultType {
 }
 
 extension ResultType : Identifiable {
+    
+    static func getFavoritesResult() -> [ResultType]? {
+        let context = PersistenceController.viewContext
+        let request = ResultType.fetchRequest()
+        request.predicate = NSPredicate(format: "isFavorite == true")
+        guard let items = try? context.fetch(request) else { return nil }
+        return items
+    }
 
 }

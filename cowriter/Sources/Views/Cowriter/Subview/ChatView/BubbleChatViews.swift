@@ -101,7 +101,7 @@ struct BubbleContextMenu: View {
             } label: {
                 Label(
                     result.isFavorite ? "Unfavorite" : "Favorite",
-                    systemImage: result.isFavorite ? "star.fill" : "star"
+                    systemImage: result.isFavorite ? "star.slash.fill" : "star"
                 )
             }
             if !result.isPrompt {
