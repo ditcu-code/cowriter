@@ -48,7 +48,6 @@ struct SideBarView: View {
                             vm.currentChat = item
                             vm.closeSideBar()
                         }
-//                        Divider()
                     }.onDelete(perform: vm.removeChat)
                 }.listStyle(.plain)
                 
@@ -62,6 +61,7 @@ struct SideBarView: View {
                             vm.currentChat = nil
                             vm.closeSideBar()
                             vm.errorMessage = ""
+                            vm.favoriteFilterIsOn = false
                         }
                     } label: {
                         Spacer()
@@ -75,6 +75,11 @@ struct SideBarView: View {
         .transition(.move(edge: .leading))
         .frame(width: width)
         .offset(x: vm.showSideBar ? width / 2 : 0)
+        .onChange(of: vm.currentChat, perform: { newValue in
+            if vm.favoriteFilterIsOn {
+                vm.favoriteFilterIsOn.toggle()
+            }
+        })
         .sheet(isPresented: $showSubscriptionSheet) {
             
             if #available(iOS 16.0, *) {

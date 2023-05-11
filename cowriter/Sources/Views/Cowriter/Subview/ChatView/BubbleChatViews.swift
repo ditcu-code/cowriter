@@ -42,6 +42,7 @@ struct BubblePromptView: View {
                 }
         }
         .padding(.horizontal)
+        .animation(.linear, value: prompt)
         .transition(.upAndLeft)
     }
 }

@@ -39,8 +39,8 @@ extension AnyTransition {
     
     static var upAndLeft: AnyTransition {
         .asymmetric(
-            insertion: .move(edge: .bottom).combined(with: .opacity),
-            removal: .move(edge: .trailing).combined(with: .opacity)
+            insertion: .move(edge: .bottom),
+            removal: .move(edge: .trailing)
         )
     }
 }

@@ -15,24 +15,29 @@ struct ChatView: View {
     var body: some View {
         ScrollViewReader { scrollView in
             ScrollView {
-                ForEach(vm.currentChat?.resultsArray ?? []) { result in
-                    let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
-                    let isPrompt = result.isPrompt
+                if let list = vm.currentChat?.resultsArray {
+                    let filteredList = list.filter { $0.isFavorite }
+                    let activeList = vm.favoriteFilterIsOn ? filteredList : list
                     
-                    if isPrompt {
-                        BubblePromptView(result: result, prompt: result.wrappedMessage)
-                    } else {
-                        BubbleAnswerView(
-                            result: result,
-                            answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
-                            vm.textToDisplay : result.wrappedMessage
-                        )
-                    }
-                    
-                    if isLastResult {
-                        Spacer().id(bottomID)
-                    }
-                }.animation(.linear, value: vm.currentChat?.resultsArray.count)
+                    ForEach(activeList) { result in
+                        let isLastResult = result.wrappedId == list.last?.wrappedId
+                        let isPrompt = result.isPrompt
+                        
+                        if isPrompt {
+                            BubblePromptView(result: result, prompt: result.wrappedMessage)
+                        } else {
+                            BubbleAnswerView(
+                                result: result,
+                                answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
+                                vm.textToDisplay : result.wrappedMessage
+                            )
+                        }
+                        
+                        if isLastResult {
+                            Spacer().id(bottomID)
+                        }
+                    }.animation(.linear, value: activeList.count)
+                }
             }
             
             .gesture(DragGesture().onChanged{ value in
