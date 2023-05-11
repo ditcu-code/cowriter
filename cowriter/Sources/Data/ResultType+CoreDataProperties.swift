@@ -16,22 +16,19 @@ extension ResultType {
         return NSFetchRequest<ResultType>(entityName: "ResultType")
     }
 
-    @NSManaged public var answer: String?
+    @NSManaged public var message: String?
+    @NSManaged public var isFavorite: Bool
+    @NSManaged public var isPrompt: Bool
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
-    @NSManaged public var prompt: String?
     @NSManaged public var chat: ChatType?
     
     public var wrappedId: UUID {
         id ?? UUID()
     }
     
-    public var wrappedAnswer: String {
-        answer ?? "Unknown answer"
-    }
-    
-    public var wrappedPrompt: String {
-        prompt ?? "Unknown prompt"
+    public var wrappedMessage: String {
+        message ?? "Unknown message"
     }
     
     public var wrappedDate: Date {

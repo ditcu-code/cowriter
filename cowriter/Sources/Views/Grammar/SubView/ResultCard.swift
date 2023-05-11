@@ -21,8 +21,8 @@ struct ResultCard: View {
             ForEach(chat.resultsArray) { result in
                 let isLastResult = result == chat.resultsArray.last
                 let isFirstResult = result == chat.resultsArray.first
-                let isSelectedAnswer = (selectedResultId == result.wrappedId.uuidString) ||
-                ((selectedResultId == "") && isLastResult)
+//                let isSelectedAnswer = (selectedResultId == result.wrappedId.uuidString) ||
+//                ((selectedResultId == "") && isLastResult)
 
                 if isFirstResult {
                     HStack(spacing: 12) {
@@ -30,14 +30,14 @@ struct ResultCard: View {
                             .fill(isLastResult && isLoading ? .orange : .gray)
                             .opacity(0.5)
                             .frame(width: 12)
-                        Text(result.wrappedPrompt)
+                        Text(result.wrappedMessage)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }.padding(.horizontal, 5)
                     Divider()
                 } else {
                     ZStack {
                         Divider()
-                        PromptTextView(prompt: result.wrappedPrompt, isLoading: isLastResult && isLoading)
+                        PromptTextView(prompt: result.wrappedMessage, isLoading: isLastResult && isLoading)
                     }
                 }
 
@@ -45,7 +45,7 @@ struct ResultCard: View {
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
                     chat: chat,
-                    answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedAnswer,
+                    answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedMessage,
                     vm: vm
                 )
                 

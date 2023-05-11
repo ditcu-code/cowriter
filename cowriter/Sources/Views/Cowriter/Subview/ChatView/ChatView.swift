@@ -17,18 +17,23 @@ struct ChatView: View {
             ScrollView {
                 ForEach(vm.currentChat?.resultsArray ?? []) { result in
                     let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
+                    let isPrompt = result.isPrompt
                     
-                    BubblePromptView(prompt: result.wrappedPrompt)
-                    BubbleAnswerView(
-                        answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
-                        vm.textToDisplay : result.wrappedAnswer
-                    )
+                    if isPrompt {
+                        BubblePromptView(prompt: isPrompt ? result.wrappedMessage : "")
+                    } else {
+                        BubbleAnswerView(
+                            answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
+                            vm.textToDisplay : result.wrappedMessage
+                        )
+                    }
                     
                     if isLastResult {
                         Spacer().id(bottomID)
                     }
                 }.animation(.linear, value: vm.currentChat?.resultsArray.count)
             }
+            
             .gesture(DragGesture().onChanged{ value in
                 isScrolled = true
             })

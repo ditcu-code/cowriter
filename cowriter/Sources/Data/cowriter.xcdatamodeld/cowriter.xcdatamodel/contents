@@ -8,10 +8,11 @@
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultType" inverseName="chat" inverseEntity="ResultType"/>
     </entity>
     <entity name="ResultType" representedClassName="ResultType" syncable="YES">
-        <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="prompt" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPrompt" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
         <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatType" inverseName="results" inverseEntity="ChatType"/>
     </entity>
 </model>

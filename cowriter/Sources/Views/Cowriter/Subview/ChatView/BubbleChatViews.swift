@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BubblePromptView: View {
     var prompt: String
-    var shape = CustomRoundedRectangle(topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12)
+    private let shape = CustomRoundedRectangle(topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12)
     
     var body: some View {
         HStack {
@@ -42,7 +42,9 @@ struct BubblePromptView: View {
 
 struct BubbleAnswerView: View {
     var answer: String
-    var shape = CustomRoundedRectangle(topLeft: 3, topRight: 12, bottomLeft: 12, bottomRight: 12)
+    private let shape = CustomRoundedRectangle(
+        topLeft: 3, topRight: 12, bottomLeft: 12, bottomRight: 12
+    )
     
     var body: some View {
         
