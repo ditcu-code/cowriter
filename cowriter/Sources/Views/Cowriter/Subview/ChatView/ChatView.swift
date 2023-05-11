@@ -20,9 +20,10 @@ struct ChatView: View {
                     let isPrompt = result.isPrompt
                     
                     if isPrompt {
-                        BubblePromptView(prompt: isPrompt ? result.wrappedMessage : "")
+                        BubblePromptView(result: result, prompt: result.wrappedMessage)
                     } else {
                         BubbleAnswerView(
+                            result: result,
                             answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
                             vm.textToDisplay : result.wrappedMessage
                         )

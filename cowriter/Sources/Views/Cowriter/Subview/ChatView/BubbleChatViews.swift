@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BubblePromptView: View {
+    @StateObject var result: ResultType
     var prompt: String
     private let shape = CustomRoundedRectangle(
         topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
@@ -31,9 +32,13 @@ struct BubblePromptView: View {
                         endPoint: .bottomTrailing
                     ))
                 )
+                .overlay(
+                    BubbleFavoriteFlag(isFavorite: result.isFavorite, isPrompt: result.isPrompt)
+                )
                 .contentShape(.contextMenuPreview, shape)
+                .clipShape(shape)
                 .contextMenu {
-                    ChatContextMenu()
+                    BubbleContextMenu(result: result)
                 }
         }
         .padding(.horizontal)
@@ -42,13 +47,13 @@ struct BubblePromptView: View {
 }
 
 struct BubbleAnswerView: View {
+    @StateObject var result: ResultType
     var answer: String
     private let shape = CustomRoundedRectangle(
         topLeft: 3, topRight: 12, bottomLeft: 12, bottomRight: 12
     )
     
     var body: some View {
-        
         HStack {
             Text(answer)
                 .padding(.horizontal, 14)
@@ -60,14 +65,19 @@ struct BubbleAnswerView: View {
                 .overlay(
                     answer.isEmpty ? ThreeDotsLoading().scaleEffect(0.5) : nil
                 )
+                .overlay(
+                    BubbleFavoriteFlag(isFavorite: result.isFavorite, isPrompt: result.isPrompt)
+                )
                 .font(Font.system(.body, design: .serif))
                 .foregroundColor(.darkGrayFont)
                 .contentShape(.contextMenuPreview, shape)
+                .clipShape(shape)
                 .contextMenu {
-                    ChatContextMenu(answer: answer)
+                    BubbleContextMenu(result: result)
                 }
             Spacer(minLength: 50)
         }
+        .badge(10)
         .padding(.horizontal)
         .padding(.trailing)
         .animation(.linear, value: answer)
@@ -75,33 +85,25 @@ struct BubbleAnswerView: View {
     }
 }
 
-struct BubbleChatViews_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            BubblePromptView(prompt: "Hello")
-            BubbleAnswerView(answer: "")
-            Spacer()
-        }.background(.gray)
-    }
-}
-
-struct ChatContextMenu: View {
-    var prompt: String?
-    var answer: String?
+struct BubbleContextMenu: View {
+    @StateObject var result: ResultType
     
     var body: some View {
         Group {
             Button {
-                UIPasteboard.general.setValue(answer ?? prompt ?? "", forPasteboardType: "public.plain-text")
+                UIPasteboard.general.setValue(result.message ?? "", forPasteboardType: "public.plain-text")
             } label: {
                 Label("Copy", systemImage: "doc.on.doc")
             }
             Button {
-                
+                result.isFavorite.toggle()
             } label: {
-                Label("Favorite", systemImage: "star")
+                Label(
+                    result.isFavorite ? "Unfavorite" : "Favorite",
+                    systemImage: result.isFavorite ? "star.fill" : "star"
+                )
             }
-            if answer != nil {
+            if !result.isPrompt {
                 Divider()
                 Button {
                     
@@ -112,3 +114,37 @@ struct ChatContextMenu: View {
         }
     }
 }
+
+struct BubbleFavoriteFlag: View {
+    var isFavorite: Bool = false
+    var isPrompt: Bool
+    
+    var body: some View {
+        VStack {
+            HStack {
+                if !isPrompt {
+                    Spacer()
+                }
+                Triangle()
+                    .fill(isFavorite ? (isPrompt ? .white : .blue) : .clear)
+                    .opacity(0.75)
+                    .frame(width: 23, height: 23)
+                    .rotationEffect(.degrees(isPrompt ? -90 : .zero))
+                if isPrompt {
+                    Spacer()
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
+//struct BubbleChatViews_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack {
+//            BubblePromptView(result: ResultType(), prompt: "Hello")
+//            BubbleAnswerView(result: ResultType(), answer: "")
+//            Spacer()
+//        }.background(.gray)
+//    }
+//}
