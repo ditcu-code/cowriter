@@ -14,38 +14,59 @@ struct ChatView: View {
     
     var body: some View {
         ScrollViewReader { scrollView in
-            ScrollView {
-                ForEach(vm.currentChat?.resultsArray ?? []) { result in
-                    let isLastResult = result.wrappedId == vm.currentChat?.resultsArray.last?.wrappedId
-                    
-                    BubblePromptView(prompt: result.wrappedPrompt)
-                    BubbleAnswerView(
-                        answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
-                        vm.textToDisplay : result.wrappedAnswer
-                    )
-                    
-                    if isLastResult {
-                        Spacer().id(bottomID)
-                    }
-                }.animation(.linear, value: vm.currentChat?.resultsArray.count)
-            }
-            .gesture(DragGesture().onChanged{ value in
-                isScrolled = true
-            })
-            .onChange(of: vm.textToDisplay) { newValue in
-                if !isScrolled {
-                    withAnimation {
-                        scrollView.scrollTo(bottomID)
+            
+            if let list = vm.currentChat?.resultsArray {
+                let filteredList = list.filter { $0.isFavorite }
+                let activeList = vm.favoriteFilterIsOn ? filteredList : list
+                
+                if activeList.isEmpty {
+                    HStack {
+                        Spacer()
+                        Text("No favorites in this chat")
+                            .foregroundColor(.defaultFont)
+                            .padding(.vertical, 100)
+                        Spacer()
                     }
                 }
-            }
-            .onChange(of: vm.isLoading, perform: { newValue in
-                if isScrolled == true {
-                    isScrolled = !newValue
+                
+                ScrollView {
+                    ForEach(activeList) { result in
+                        let isLastResult = result.wrappedId == list.last?.wrappedId
+                        let isPrompt = result.isPrompt
+                        
+                        if isPrompt {
+                            BubblePromptView(result: result, prompt: result.wrappedMessage)
+                        } else {
+                            BubbleAnswerView(
+                                result: result,
+                                answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
+                                vm.textToDisplay : result.wrappedMessage
+                            )
+                        }
+                        
+                        if isLastResult {
+                            Spacer().id(bottomID)
+                        }
+                    }.animation(.linear, value: activeList.count)
                 }
-            })
-            .onReceive(vm.$textToDisplay.throttle(for: 0.2, scheduler: DispatchQueue.main, latest: true)) { output in
-                vm.textToDisplay = output
+                .gesture(DragGesture().onChanged{ value in
+                    isScrolled = true
+                })
+                .onChange(of: vm.textToDisplay) { newValue in
+                    if !isScrolled {
+                        withAnimation {
+                            scrollView.scrollTo(bottomID)
+                        }
+                    }
+                }
+                .onChange(of: vm.isLoading, perform: { newValue in
+                    if isScrolled == true {
+                        isScrolled = !newValue
+                    }
+                })
+                .onReceive(vm.$textToDisplay.throttle(for: 0.2, scheduler: DispatchQueue.main, latest: true)) { output in
+                    vm.textToDisplay = output
+                }
             }
         }
     }

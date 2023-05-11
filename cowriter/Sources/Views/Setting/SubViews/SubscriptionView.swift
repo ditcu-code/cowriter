@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SubscriptionView: View {
     @Binding var isShowSheet: Bool
-    @State private var selectedPlan: PlanEnum = PlanEnum.annual
+    @State private var selectedProduct: Product?
+    
+    @EnvironmentObject private var purchaseManager: PurchaseManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -18,20 +21,20 @@ struct SubscriptionView: View {
                     .bold()
                     .font(.title)
                     .padding(.top, 5)
-                Text("Unlimited chats")
+                Text("Unlimited chats. Anytime")
                     .font(.footnote)
                     .foregroundColor(.grayFont)
             }.padding()
             
-            VStack(spacing: 10) {
-                ItemPlanView(plan: PlanEnum.annual, selectedPlan: $selectedPlan)
-                ItemPlanView(plan: PlanEnum.monthly, selectedPlan: $selectedPlan)
-            }.padding(.horizontal)
+            ItemPlanView(selectedProduct: $selectedProduct)
             
             VStack(spacing: 0) {
                 
                 Button {
-                    print("continue")
+                    if let product = selectedProduct {
+                        purchaseManager.purchaseProduct(product)
+                        isShowSheet.toggle()
+                    }
                 } label: {
                     Spacer()
                     Text("Continue").bold()
@@ -40,7 +43,7 @@ struct SubscriptionView: View {
                 }.buttonStyle(.borderedProminent).tint(.blue)
                 
                 Button {
-                    print("restore")
+                    purchaseManager.restorePurchases()
                 } label: {
                     Text("Restore purchase")
                         .font(.footnote)
@@ -49,7 +52,7 @@ struct SubscriptionView: View {
                 .padding(.vertical, 10)
                 .tint(.darkGrayFont)
                 
-                Text("Your monthly or annual subscription will automatically renew until you choose to cancel it. Cancel any time in the App Store at no additional cost; your subscription will then cease at the end of the current term.")
+                Text("Your annual or monthly subscription will automatically renew until you choose to cancel it. Cancel any time in the App Store at no additional cost; your subscription will then cease at the end of the current term.")
                     .font(.caption2)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.defaultFont)
@@ -57,12 +60,17 @@ struct SubscriptionView: View {
             }.padding()
             
             Spacer()
-        }.dynamicTypeSize(.medium)
+        }
+        .dynamicTypeSize(.medium)
+        .task {
+            purchaseManager.loadProducts()
+        }
+        
     }
 }
 
-struct SubscriptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubscriptionView(isShowSheet: .constant(true))
-    }
-}
+//struct SubscriptionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SubscriptionView(isShowSheet: .constant(true))
+//    }
+//}

@@ -8,12 +8,13 @@
 import SwiftUI
 import Combine
 import CoreData
+import GPT3_Tokenizer
 import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
 class CowriterVM: ObservableObject {
-    @Published var userMessage: String = "" // prompt
-    @Published var textToDisplay: String = "" // result
+    @Published var userMessage: String = "" /// prompt
+    @Published var textToDisplay: String = "" /// result
     
     @Published var errorMessage: String = ""
     @Published var isLoading = false
@@ -25,10 +26,13 @@ class CowriterVM: ObservableObject {
     @Published var showSideBar: Bool = false
     @Published var showToolbar: Bool = false
     @Published var isFocusOnPrompter: Bool = false
+    @Published var favoriteFilterIsOn: Bool = false
     
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
+    private let gpt3Tokenizer = GPT3Tokenizer()
+    private let context = PersistenceController.viewContext
     
     init() {
         getAllChats()
@@ -51,18 +55,20 @@ class CowriterVM: ObservableObject {
     func request(_ chat: ChatType?) {
         cancel()
         task = Task {
-            let context = PersistenceController.viewContext
-            var currentResult: ResultType?
+            var currentResult: ResultType? = nil
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
             ]
             
-            func createResult() -> ResultType {
+            func createResult(
+                _ message: String = self.userMessage,
+                isPrompt: Bool = true
+            ) -> ResultType {
                 let result = ResultType(context: context)
                 result.id = UUID()
                 result.date = Date()
-                result.prompt = userMessage
-                result.answer = ""
+                result.message = message
+                result.isPrompt = isPrompt
                 
                 return result
             }
@@ -82,16 +88,16 @@ class CowriterVM: ObservableObject {
                 currentResult = newResult
                 chat.addToResults(newResult)
                 currentChat = chat
-                PersistenceController.save()
             } else {
+                let newChat = ChatType(context: context)
                 let newResult = createResult()
                 currentResult = newResult
-                let newChat = ChatType(context: context)
                 newChat.id = UUID()
                 newChat.userId = ""
                 newChat.results = [newResult]
+                // token count for system message
+                newChat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count) + 10
                 currentChat = newChat
-                PersistenceController.save()
             }
             
             guard let client = client else {
@@ -99,11 +105,12 @@ class CowriterVM: ObservableObject {
                 return
             }
             
-            defer { /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
+            /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
+            defer {
                 if let chat = currentChat, chat.title == nil {
-                    self.getChatTitle(results: chat.resultsArray, completion: { string in
-                        chat.title = Utils.removeNewlineAtBeginning(string ?? "Cowriter").capitalized
-                        PersistenceController.save()
+                    self.getChatTitle(results: chat.resultsArray, completion: { result in
+                        chat.title = result.title.removeNewLines()
+                        chat.usage += Int32(result.token)
                     })
                 }
                 withAnimation {
@@ -115,8 +122,7 @@ class CowriterVM: ObservableObject {
             }
             
             if let chat = chat {
-                messages += chat.resultsArray.map { .init(role: "user", content: $0.wrappedPrompt) }
-                messages += chat.resultsArray.map { .init(role: "assistant", content: $0.wrappedAnswer) }
+                messages += chat.resultsArray.map { .init(role: $0.isPrompt ? "user" : "assistant", content: $0.wrappedMessage) }
             } else {
                 messages.append(.init(role: "user", content: userMessage))
             }
@@ -128,27 +134,44 @@ class CowriterVM: ObservableObject {
             }
             
             do {
-                for try await result in stream {
-                    self.textToDisplay += result
-                }
-                if let chat = chat ?? currentChat,
-                   let lastResult = chat.resultsArray.last {
-                    lastResult.answer = textToDisplay
+                if let chat = chat ?? currentChat {
+                    // create empty result prompt as container to accomodate future completed result
+                    let newResult = createResult("", isPrompt: false)
+                    currentResult = newResult
+                    chat.addToResults(newResult)
+                    
+                    for try await result in stream {
+                        self.textToDisplay += result
+                    }
+                    
+                    // add future completed result
+                    if let lastResult = chat.resultsArray.last {
+                        lastResult.message = textToDisplay
+                    }
+                    
+                    chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: textToDisplay).count)
                     PersistenceController.save()
                 }
-                if !self.errorMessage.isEmpty { /// delete prev error message if last req is success
+                
+                // delete prev error message if last req is success
+                if !self.errorMessage.isEmpty {
                     withAnimation {
                         errorMessage = ""
                     }
                 }
+                
             } catch {
-                if let currentChat = currentChat {
-                    if currentChat.resultsArray.count == 1 {
-                        context.delete(currentChat)
-                        PersistenceController.save()
+                if let chat = currentChat {
+                    if chat.resultsArray.count == 1 {
+                        context.delete(chat)
+                        currentChat = nil
                     } else if let currentResult = currentResult {
-                        currentChat.removeFromResults(currentResult)
+                        chat.removeFromResults(currentResult)
+                        if let last = chat.resultsArray.last {
+                            chat.removeFromResults(last)
+                        }
                     }
+                    PersistenceController.save()
                 }
                 switch String(describing: error) {
                 case let errorStr where errorStr.contains("429"):
@@ -164,27 +187,39 @@ class CowriterVM: ObservableObject {
         }
     }
     
-    func getChatTitle(results: [ResultType], completion: @escaping (String?) -> Void) {
+    func getChatTitle(results: [ResultType], completion: @escaping (ChatTitle) -> Void) {
         var title = ""
         var message = ""
         
-        if let result = results.first, let prompt = result.prompt, let answer = result.answer {
+        if let prompt = results.first?.message, let answer = results[1].message {
             let resultString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
             message = resultString
         }
-        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 10)
+        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 8)
         let dictionary = Utils.toDictionary(raw)
         
         APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    //                    print("Success! Response data: \(data)")
-                    title = data.choices[0].text
-                    completion(title)
+                    //                    print("Success! Response data: \(data.choices)")
+                    title = data.choices.first?.text ?? "A chat"
+                    completion(ChatTitle(title: title, token: self.gpt3Tokenizer.encoder.enconde(text: message).count))
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
-                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    func removeChat(at offsets: IndexSet) {
+        for index in offsets {
+            Task {
+                let chat = self.allChats[index]
+                PersistenceController.viewContext.delete(chat)
+                DispatchQueue.main.async {
+                    self.getAllChats()
+                    self.currentChat = nil
                 }
             }
         }
@@ -206,4 +241,9 @@ class CowriterVM: ObservableObject {
         }
     }
     
+}
+
+struct ChatTitle {
+    var title: String
+    var token: Int
 }

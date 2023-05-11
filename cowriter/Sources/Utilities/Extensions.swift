@@ -8,28 +8,10 @@
 import Foundation
 import SwiftUI
 
-enum CowriterFont: String {
-    case helvetica, gill
-    
-    var desc: String {
-        switch self {
-        case .helvetica:
-            return "Helvetica Neue"
-        case .gill:
-            return "Gill Sans"
-        }
-    }
-}
-
 extension View {
     
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont, _ font: CowriterFont = CowriterFont.helvetica) -> some View {
-        switch font {
-        case .helvetica:
-            return self.modifier(FontModifier(font: Font.custom(CowriterFont.helvetica.desc, size: size, relativeTo: .body), color: color))
-        case .gill:
-            return self.modifier(FontModifier(font: Font.custom(CowriterFont.gill.desc, size: size, relativeTo: .body), color: color))
-        }
+    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
+            return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
     }
     
 }
@@ -54,6 +36,13 @@ extension AnyTransition {
             removal: .move(edge: .top).combined(with: .opacity)
         )
     }
+    
+    static var upAndLeft: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: .bottom),
+            removal: .move(edge: .trailing)
+        )
+    }
 }
 
 struct FontModifier: ViewModifier {
@@ -64,5 +53,11 @@ struct FontModifier: ViewModifier {
         content
             .font(font)
             .foregroundColor(color)
+    }
+}
+
+extension String {
+    func removeNewLines(_ delimiter: String = "") -> String {
+        self.replacingOccurrences(of: "\n", with: delimiter)
     }
 }
