@@ -9,13 +9,14 @@ import SwiftUI
 
 struct BubblePromptView: View {
     var prompt: String
-    private let shape = CustomRoundedRectangle(topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12)
+    private let shape = CustomRoundedRectangle(
+        topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
+    )
     
     var body: some View {
         HStack {
             Spacer(minLength: 50)
             Text(prompt)
-                .textSelection(.enabled)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .font(Font.system(.body, design: .serif))
@@ -50,11 +51,14 @@ struct BubbleAnswerView: View {
         
         HStack {
             Text(answer)
-                .textSelection(.enabled)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
+                .frame(minWidth: 70)
                 .background(
                     shape.fill(Color.answerBubble)
+                )
+                .overlay(
+                    answer.isEmpty ? ThreeDotsLoading().scaleEffect(0.5) : nil
                 )
                 .font(Font.system(.body, design: .serif))
                 .foregroundColor(.darkGrayFont)
@@ -75,7 +79,7 @@ struct BubbleChatViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             BubblePromptView(prompt: "Hello")
-            BubbleAnswerView(answer: "Hello")
+            BubbleAnswerView(answer: "")
             Spacer()
         }.background(.gray)
     }
