@@ -20,7 +20,7 @@ struct MagicButton: View {
                 .background(.background)
                 .clipShape(Circle())
                 .shadow(radius: 1)
-        }.customFont()
+        }
     }
 }
 

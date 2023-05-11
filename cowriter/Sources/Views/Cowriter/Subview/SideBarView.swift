@@ -24,31 +24,36 @@ struct SideBarView: View {
             
             VStack(alignment: .leading) {
                 if !vm.allChats.isEmpty {
-                    Text("Chats")
+                    Text("Chats").bold()
                 } else {
                     EmptyChatView()
                 }
-                List(vm.allChats) { item in
-                    let isActiveChat = vm.currentChat == item
-                    HStack {
-                        Text(item.wrappedTitle)
-                            .lineLimit(1)
-                            .foregroundColor(.grayFont)
-                            .onTapGesture {
-                                vm.currentChat = item
-                                vm.closeSideBar()
-                            }
-                        if isActiveChat {
+                List {
+                    ForEach(vm.allChats, id: \.self) { item in
+                        let isActiveChat = vm.currentChat == item
+                        HStack {
+                            Text(item.wrappedTitle)
+                                .lineLimit(1)
+                                .foregroundColor(.grayFont)
+                                .font(Font.system(.body, design: .serif))
                             Spacer()
-                            Circle()
-                                .frame(width: 9, height: 9)
-                                .foregroundColor(.blue)
+                            if isActiveChat {
+                                Circle()
+                                    .frame(width: 9, height: 9)
+                                    .foregroundColor(.blue)
+                            }
                         }
-                    }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            vm.currentChat = item
+                            vm.closeSideBar()
+                        }
+                    }.onDelete(perform: vm.removeChat)
                 }.listStyle(.plain)
                 
                 
                 if vm.currentChat != nil || vm.allChats.isEmpty {
+                    Spacer()
                     Button {
                         if hasReachedLimit && !isPro {
                             showSubscriptionSheet.toggle()
@@ -56,20 +61,25 @@ struct SideBarView: View {
                             vm.currentChat = nil
                             vm.closeSideBar()
                             vm.errorMessage = ""
+                            vm.favoriteFilterIsOn = false
                         }
                     } label: {
                         Spacer()
-                        Label("New chat", systemImage: "plus")
+                        Label("New chat", systemImage: "plus").font(.headline)
                         Spacer()
                     }.buttonStyle(.bordered)
                 }
                 
             }.padding()
         }
-        .customFont()
         .transition(.move(edge: .leading))
         .frame(width: width)
         .offset(x: vm.showSideBar ? width / 2 : 0)
+        .onChange(of: vm.currentChat, perform: { newValue in
+            if vm.favoriteFilterIsOn {
+                vm.favoriteFilterIsOn.toggle()
+            }
+        })
         .sheet(isPresented: $showSubscriptionSheet) {
             
             if #available(iOS 16.0, *) {

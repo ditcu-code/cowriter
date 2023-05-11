@@ -29,9 +29,10 @@ struct ItemPlanView: View {
                         VStack(alignment: .leading, spacing: 5) {
                             Text(plan.recurring.uppercased())
                                 .tracking(2)
-                                .customFont(14, .defaultFont)
+                                .font(.footnote)
+                                .foregroundColor(.defaultFont)
                             HStack {
-                                Text(isMonthlyPlan ? plan.title : product.displayPrice).bold()
+                                Text(isMonthlyPlan ? plan.title : product.displayPrice).font(.headline)
                                 if let disc = monthlyTotal, !isMonthlyPlan {
                                     Text(product.priceFormatStyle.format(disc))
                                         .font(.footnote)
@@ -40,7 +41,8 @@ struct ItemPlanView: View {
                                 }
                             }
                             Text("\(isMonthlyPlan ? product.displayPrice : product.priceFormatStyle.format(product.price / 12)) \(plan.desc)")
-                                .customFont(14, .grayFont)
+                                .font(.subheadline)
+                                .foregroundColor(.grayFont)
                         }
                         Spacer()
                     }

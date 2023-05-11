@@ -13,22 +13,6 @@ struct CowriterToolbarView: ToolbarContent {
     
     var body: some ToolbarContent {
         Group {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    SettingView()
-                } label: {
-                    if vm.showToolbar {
-                        Label("Setting", systemImage: "gearshape")
-                            .offset(x: vm.showSideBar ? width / 2 : 0)
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
-                }
-                .animation(
-                    .interpolatingSpring(stiffness: 30, damping: 15),
-                    value: vm.showToolbar
-                )
-            }
-            
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
                     if vm.showToolbar {
@@ -49,6 +33,62 @@ struct CowriterToolbarView: ToolbarContent {
                     }
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if vm.currentChat != nil {
+                    Button {
+                        vm.favoriteFilterIsOn.toggle()
+                    } label: {
+                        Label("Favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
+                            .labelStyle(.iconOnly)
+                            .offset(x: vm.showSideBar ? width / 2 : 0)
+                            .transition(.move(edge: .trailing).combined(with: .opacity))
+                    }.animation(
+                        .interpolatingSpring(stiffness: 30, damping: 15),
+                        value: vm.showToolbar
+                    )
+                } else {
+                    ToolbarTrailing(
+                        vm: vm,
+                        width: width,
+                        destinationView: FavoritesView(),
+                        labelView: Label("Favorites", systemImage: "star")
+                    )
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarTrailing(
+                    vm: vm,
+                    width: width,
+                    destinationView: SettingView(),
+                    labelView: Label("Setting", systemImage: "gearshape")
+                )
+            }
         }
+    }
+}
+
+fileprivate struct ToolbarTrailing<T: View, U: View>: View {
+    @StateObject var vm: CowriterVM
+    var width: CGFloat
+    let destinationView: T
+    let labelView: U
+    
+    var body: some View {
+        NavigationLink {
+            destinationView
+        } label: {
+            if vm.showToolbar {
+                labelView
+                    .labelStyle(.iconOnly)
+                    .offset(x: vm.showSideBar ? width / 2 : 0)
+                    .transition(.move(edge: .trailing).combined(with: .opacity))
+            }
+        }
+        .animation(
+            .interpolatingSpring(stiffness: 30, damping: 15),
+            value: vm.showToolbar
+        )
     }
 }
