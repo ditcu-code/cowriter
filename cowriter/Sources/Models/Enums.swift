@@ -7,6 +7,22 @@
 
 import Foundation
 
+enum AppearanceMode: String, CaseIterable, Codable {
+    case light, dark, system
+    var id: Self { self }
+    
+    var icon: String {
+        switch self {
+        case .light:
+            return "sun.min"
+        case .dark:
+            return "moon.circle"
+        case .system:
+            return "globe"
+        }
+    }
+}
+
 enum PlanEnum: String, CaseIterable {
     case annual = "pro.annual.sub.test"
     case monthly = "pro.monthly.sub.test"
