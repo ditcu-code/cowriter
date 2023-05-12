@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SideBarView: View {
-    @StateObject var vm: CowriterVM
+    @ObservedObject var vm: CowriterVM
     @State private var showSubscriptionSheet: Bool = false
     @EnvironmentObject private var entitlementManager: EntitlementManager
     var width: CGFloat

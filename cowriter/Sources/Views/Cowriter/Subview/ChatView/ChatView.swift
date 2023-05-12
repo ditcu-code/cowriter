@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
-    @StateObject var vm: CowriterVM
+    @ObservedObject var vm: CowriterVM
     @Namespace private var bottomID
     @State private var isScrolled: Bool = false
     

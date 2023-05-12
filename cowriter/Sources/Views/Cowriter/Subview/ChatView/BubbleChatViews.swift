@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BubblePromptView: View {
-    @StateObject var result: ResultType
+    @ObservedObject var result: ResultType
     var prompt: String
     private let shape = CustomRoundedRectangle(
         topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
