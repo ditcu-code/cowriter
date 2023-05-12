@@ -87,6 +87,8 @@ class CowriterVM: ObservableObject {
                 let newResult = createResult()
                 currentResult = newResult
                 chat.addToResults(newResult)
+                // token count for userMessage
+                chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count)
                 currentChat = chat
             } else {
                 let newChat = ChatType(context: context)
@@ -95,7 +97,7 @@ class CowriterVM: ObservableObject {
                 newChat.id = UUID()
                 newChat.userId = ""
                 newChat.results = [newResult]
-                // token count for system message
+                // initial token count for userMessage + system message
                 newChat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count) + 10
                 currentChat = newChat
             }
@@ -148,7 +150,6 @@ class CowriterVM: ObservableObject {
                     if let lastResult = chat.resultsArray.last {
                         lastResult.message = textToDisplay
                     }
-                    
                     chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: textToDisplay).count)
                     PersistenceController.save()
                 }
