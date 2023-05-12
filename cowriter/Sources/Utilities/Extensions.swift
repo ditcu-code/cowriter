@@ -33,7 +33,7 @@ extension AnyTransition {
     static var moveAndFade: AnyTransition {
         .asymmetric(
             insertion: .move(edge: .bottom).combined(with: .opacity),
-            removal: .move(edge: .top).combined(with: .opacity)
+            removal: .move(edge: .bottom).combined(with: .opacity)
         )
     }
     

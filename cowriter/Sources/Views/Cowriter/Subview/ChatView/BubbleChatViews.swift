@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BubblePromptView: View {
-    @StateObject var result: ResultType
+    @ObservedObject var result: ResultType
     var prompt: String
     private let shape = CustomRoundedRectangle(
         topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
@@ -17,7 +17,7 @@ struct BubblePromptView: View {
     var body: some View {
         HStack {
             Spacer(minLength: 50)
-            Text(prompt)
+            Text(.init(prompt))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .font(Font.system(.body, design: .serif))
@@ -56,7 +56,7 @@ struct BubbleAnswerView: View {
     
     var body: some View {
         HStack {
-            Text(answer)
+            Text(.init(answer))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .frame(minWidth: 70)

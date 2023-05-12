@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CowriterView: View {
-    @ObservedObject var vm: CowriterVM = CowriterVM()
+    @StateObject var vm: CowriterVM = CowriterVM()
     private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {

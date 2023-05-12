@@ -15,8 +15,8 @@
         }
       ],
       "color" : {
-        "platform" : "universal",
-        "reference" : "secondaryLabelColor"
+        "platform" : "ios",
+        "reference" : "systemGray2Color"
       },
       "idiom" : "universal"
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SettingView: View {
     @State private var showSubscriptionSheet: Bool = false
@@ -15,10 +16,50 @@ struct SettingView: View {
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
+    @ObservedObject var appData = AppData()
+    private let mode = ["light", "dark", "system"]
+    
     var body: some View {
+        List {
+            subscriptionSection
+            
+            Section("Preference") {
+                Picker(selection: appData.$preferredColorScheme) {
+                    ForEach(AppearanceMode.allCases, id: \.self) { item in
+                        Label(item.rawValue.capitalized, systemImage: item.icon)
+                            .labelStyle(.iconOnly)
+                            .tag(item)
+                    }
+                } label: {
+                    Text("Theme")
+                }
+            }
+            
+        }
+        .navigationTitle("Setting")
+        .sheet(isPresented: $showSubscriptionSheet) {
+            
+            if #available(iOS 16.0, *) {
+                SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            } else {
+                VStack {
+                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                }
+            }
+            
+        }
+        .task {
+            purchaseManager.loadProducts()
+        }
+    }
+    
+    private var subscriptionSection: some View {
         let isPro = entitlementManager.hasPro
         
-        List {
+        return (
             Section("Subscription") {
                 HStack {
                     isPro ? Spacer() : nil
@@ -32,7 +73,7 @@ struct SettingView: View {
                             .font(.footnote)
                             .foregroundColor(.defaultFont)
                         
-                        if !isPro {
+                        if !isPro && !purchaseManager.products.isEmpty {
                             Divider()
                             Button {
                                 showSubscriptionSheet.toggle()
@@ -54,24 +95,9 @@ struct SettingView: View {
                 .onTapGesture {
                     isPro ? nil : showSubscriptionSheet.toggle()
                 }
-            }
-        }
-        .navigationTitle("Setting")
-        .sheet(isPresented: $showSubscriptionSheet) {
-            
-            if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $showSubscriptionSheet)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            } else {
-                VStack {
-                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
-                }
-            }
-            
-        }
+            })
     }
+    
 }
 
 struct SettingView_Previews: PreviewProvider {

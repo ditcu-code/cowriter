@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CowriterToolbarView: ToolbarContent {
-    @StateObject var vm: CowriterVM
+    @ObservedObject var vm: CowriterVM
     var width: CGFloat
     
     var body: some ToolbarContent {

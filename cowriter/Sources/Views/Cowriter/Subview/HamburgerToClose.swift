@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HamburgerToClose: View {
-    @StateObject var vm: CowriterVM
+    @ObservedObject var vm: CowriterVM
     
     var width: CGFloat = 22
     var height: CGFloat = 1.5

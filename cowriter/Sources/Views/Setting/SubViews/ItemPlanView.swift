@@ -34,13 +34,13 @@ struct ItemPlanView: View {
                             HStack {
                                 Text(isMonthlyPlan ? plan.title : product.displayPrice).font(.headline)
                                 if let disc = monthlyTotal, !isMonthlyPlan {
-                                    Text(product.priceFormatStyle.format(disc))
+                                    Text(disc.formatted(product.priceFormatStyle))
                                         .font(.footnote)
                                         .strikethrough()
                                         .foregroundColor(.defaultFont)
                                 }
                             }
-                            Text("\(isMonthlyPlan ? product.displayPrice : product.priceFormatStyle.format(product.price / 12)) \(plan.desc)")
+                            Text("\(isMonthlyPlan ? product.displayPrice : (product.price / 12).formatted(product.priceFormatStyle)) \(plan.desc)")
                                 .font(.subheadline)
                                 .foregroundColor(.grayFont)
                         }
