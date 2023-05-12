@@ -17,7 +17,7 @@ struct BubblePromptView: View {
     var body: some View {
         HStack {
             Spacer(minLength: 50)
-            Text(prompt)
+            Text(.init(prompt))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .font(Font.system(.body, design: .serif))
@@ -56,7 +56,7 @@ struct BubbleAnswerView: View {
     
     var body: some View {
         HStack {
-            Text(answer)
+            Text(.init(answer))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)
                 .frame(minWidth: 70)
