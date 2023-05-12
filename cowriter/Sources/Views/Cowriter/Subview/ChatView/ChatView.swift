@@ -52,20 +52,18 @@ struct ChatView: View {
                 .gesture(DragGesture().onChanged{ value in
                     isScrolled = true
                 })
-                .onChange(of: vm.textToDisplay) { newValue in
-                    if !isScrolled {
-                        withAnimation {
-                            scrollView.scrollTo(bottomID)
-                        }
-                    }
-                }
                 .onChange(of: vm.isLoading, perform: { newValue in
                     if isScrolled == true {
                         isScrolled = !newValue
                     }
                 })
-                .onReceive(vm.$textToDisplay.throttle(for: 0.2, scheduler: DispatchQueue.main, latest: true)) { output in
+                .onReceive(vm.$textToDisplay.throttle(for: 0.25, scheduler: DispatchQueue.main, latest: true)) { output in
                     vm.textToDisplay = output
+                    if !isScrolled {
+                        withAnimation {
+                            scrollView.scrollTo(bottomID, anchor: .bottom)
+                        }
+                    }
                 }
             }
         }
