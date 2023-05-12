@@ -43,6 +43,7 @@ struct ItemPlanView: View {
                             Text("\(isMonthlyPlan ? product.displayPrice : product.priceFormatStyle.format(product.price / 12)) \(plan.desc)")
                                 .font(.subheadline)
                                 .foregroundColor(.grayFont)
+                            Text(product.priceFormatStyle.currencyCode)
                         }
                         Spacer()
                     }

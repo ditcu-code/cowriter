@@ -71,6 +71,9 @@ struct SettingView: View {
             }
             
         }
+        .task {
+            purchaseManager.loadProducts()
+        }
     }
 }
 
