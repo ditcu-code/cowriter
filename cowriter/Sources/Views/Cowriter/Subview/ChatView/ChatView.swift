@@ -15,7 +15,7 @@ struct ChatView: View {
     var body: some View {
         ScrollViewReader { scrollView in
             
-            if let list = vm.currentChat?.resultsArray {
+            if let list = vm.currentChat?.wrappedMessages {
                 let filteredList = list.filter { $0.isFavorite }
                 let activeList = vm.favoriteFilterIsOn ? filteredList : list
                 
@@ -30,21 +30,21 @@ struct ChatView: View {
                 }
                 
                 ScrollView {
-                    ForEach(activeList) { result in
-                        let isLastResult = result.wrappedId == list.last?.wrappedId
-                        let isPrompt = result.isPrompt
+                    ForEach(activeList) { message in
+                        let isLastMessage = message.wrappedId == list.last?.wrappedId
+                        let isPrompt = message.isPrompt
                         
                         if isPrompt {
-                            BubblePromptView(result: result, prompt: result.wrappedMessage)
+                            BubblePromptView(message: message, prompt: message.wrappedContent)
                         } else {
                             BubbleAnswerView(
-                                result: result,
-                                answer: (isLastResult && vm.errorMessage.isEmpty && vm.isLoading) ?
-                                vm.textToDisplay : result.wrappedMessage
+                                message: message,
+                                answer: (isLastMessage && vm.errorMessage.isEmpty && vm.isLoading) ?
+                                vm.textToDisplay : message.wrappedContent
                             )
                         }
                         
-                        if isLastResult {
+                        if isLastMessage {
                             Spacer().id(bottomID)
                         }
                     }.animation(.linear, value: activeList.count)

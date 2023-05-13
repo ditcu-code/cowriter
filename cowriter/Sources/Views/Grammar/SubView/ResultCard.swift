@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResultCard: View {
-    var chat: ChatType
+    var chat: Chat
     @StateObject var vm: CowriterVM
     
     @State private var selectedResultId: String = ""
@@ -18,9 +18,9 @@ struct ResultCard: View {
         let isLoading = isActiveChat && vm.isLoading
         
         VStack(alignment: .leading, spacing: 20) {
-            ForEach(chat.resultsArray) { result in
-                let isLastResult = result == chat.resultsArray.last
-                let isFirstResult = result == chat.resultsArray.first
+            ForEach(chat.wrappedMessages) { result in
+                let isLastResult = result == chat.wrappedMessages.last
+                let isFirstResult = result == chat.wrappedMessages.first
 //                let isSelectedAnswer = (selectedResultId == result.wrappedId.uuidString) ||
 //                ((selectedResultId == "") && isLastResult)
 
@@ -30,14 +30,14 @@ struct ResultCard: View {
                             .fill(isLastResult && isLoading ? .orange : .gray)
                             .opacity(0.5)
                             .frame(width: 12)
-                        Text(result.wrappedMessage)
+                        Text(result.wrappedContent)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }.padding(.horizontal, 5)
                     Divider()
                 } else {
                     ZStack {
                         Divider()
-                        PromptTextView(prompt: result.wrappedMessage, isLoading: isLastResult && isLoading)
+                        PromptTextView(prompt: result.wrappedContent, isLoading: isLastResult && isLoading)
                     }
                 }
 
@@ -45,7 +45,7 @@ struct ResultCard: View {
                     selectedResultId: $selectedResultId,
                     resultId: result.wrappedId.uuidString,
                     chat: chat,
-                    answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedMessage,
+                    answerStream: isActiveChat && isLastResult && vm.errorMessage.isEmpty ? vm.textToDisplay : result.wrappedContent,
                     vm: vm
                 )
                 
@@ -61,7 +61,7 @@ struct ResultCard: View {
         .padding(.bottom, 5)
         .animation(.easeOut(duration: 0.2), value: selectedResultId)
         .onTapGesture {
-            print(chat.resultsArray)
+            print(chat.wrappedMessages)
         }
     }
 }
@@ -104,7 +104,7 @@ struct PromptTextView: View {
 struct AnswerTextView: View {
     @Binding var selectedResultId: String
     var resultId: String
-    var chat: ChatType
+    var chat: Chat
     var answerStream: String
     @StateObject var vm: CowriterVM
     

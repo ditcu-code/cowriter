@@ -56,10 +56,10 @@
 		0EE845FD2A0669F70025060F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FC2A0669F70025060F /* Enums.swift */; };
 		0EE845FF2A066A960025060F /* _Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FE2A066A960025060F /* _Shapes.swift */; };
 		0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */; };
-		0EF164B529F2EC8700CC35B1 /* ChatType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B129F2EC8700CC35B1 /* ChatType+CoreDataClass.swift */; };
-		0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B229F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift */; };
-		0EF164B729F2EC8700CC35B1 /* ResultType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B329F2EC8700CC35B1 /* ResultType+CoreDataClass.swift */; };
-		0EF164B829F2EC8700CC35B1 /* ResultType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B429F2EC8700CC35B1 /* ResultType+CoreDataProperties.swift */; };
+		0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */; };
+		0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */; };
+		0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */; };
+		0EF164B829F2EC8700CC35B1 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B429F2EC8700CC35B1 /* Message+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,10 +110,10 @@
 		0EE845FC2A0669F70025060F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0EE845FE2A066A960025060F /* _Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Shapes.swift; sourceTree = "<group>"; };
 		0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerToClose.swift; sourceTree = "<group>"; };
-		0EF164B129F2EC8700CC35B1 /* ChatType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ChatType+CoreDataClass.swift"; path = "cowriter/Sources/Data/ChatType+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		0EF164B229F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ChatType+CoreDataProperties.swift"; path = "cowriter/Sources/Data/ChatType+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		0EF164B329F2EC8700CC35B1 /* ResultType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ResultType+CoreDataClass.swift"; path = "cowriter/Sources/Data/ResultType+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		0EF164B429F2EC8700CC35B1 /* ResultType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ResultType+CoreDataProperties.swift"; path = "cowriter/Sources/Data/ResultType+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataClass.swift"; path = "cowriter/Sources/Data/Chat+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataProperties.swift"; path = "cowriter/Sources/Data/Chat+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Message+CoreDataClass.swift"; path = "cowriter/Sources/Data/Message+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0EF164B429F2EC8700CC35B1 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Message+CoreDataProperties.swift"; path = "cowriter/Sources/Data/Message+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,10 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				0EE546DC2A0E787E0036C0EB /* AppData.swift */,
-				0EF164B129F2EC8700CC35B1 /* ChatType+CoreDataClass.swift */,
-				0EF164B229F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift */,
-				0EF164B329F2EC8700CC35B1 /* ResultType+CoreDataClass.swift */,
-				0EF164B429F2EC8700CC35B1 /* ResultType+CoreDataProperties.swift */,
+				0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */,
+				0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */,
+				0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */,
+				0EF164B429F2EC8700CC35B1 /* Message+CoreDataProperties.swift */,
 				0E6A655629DD25C1003457DF /* Persistence.swift */,
 				0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */,
 			);
@@ -432,7 +432,7 @@
 			files = (
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
-				0EF164B729F2EC8700CC35B1 /* ResultType+CoreDataClass.swift in Sources */,
+				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
@@ -460,11 +460,11 @@
 				0ECC7C0029DD4F1D002A6B7F /* GrammarModel.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
-				0EF164B529F2EC8700CC35B1 /* ChatType+CoreDataClass.swift in Sources */,
+				0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
 				0E0A637229ED9F3C00DB7540 /* MagicButton.swift in Sources */,
-				0EF164B829F2EC8700CC35B1 /* ResultType+CoreDataProperties.swift in Sources */,
-				0EF164B629F2EC8700CC35B1 /* ChatType+CoreDataProperties.swift in Sources */,
+				0EF164B829F2EC8700CC35B1 /* Message+CoreDataProperties.swift in Sources */,
+				0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,

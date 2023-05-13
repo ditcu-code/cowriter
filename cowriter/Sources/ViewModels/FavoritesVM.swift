@@ -8,13 +8,13 @@
 import Foundation
 
 class FavoritesVM: ObservableObject {
-    @Published var allFavorites: [ResultType]?
+    @Published var allFavorites: [Message]?
     
     init() {
         getAllFavorites()
     }
     
     func getAllFavorites() {
-        allFavorites = ResultType.getFavoritesResult()
+        allFavorites = Message.getFavoritesResult()
     }
 }
