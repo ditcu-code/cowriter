@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CowriterView: View {
     @StateObject var vm: CowriterVM = CowriterVM()
+    @EnvironmentObject private var purchaseManager: PurchaseManager
     private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
@@ -67,6 +68,9 @@ struct CowriterView: View {
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
                 CowriterToolbarView(vm: vm, width: sideBarWidth)
+            }
+            .task {
+                purchaseManager.loadProducts()
             }
             .animation(.linear, value: isActive)
         }

@@ -51,9 +51,6 @@ struct SettingView: View {
             }
             
         }
-        .task {
-            purchaseManager.loadProducts()
-        }
     }
     
     private var subscriptionSection: some View {

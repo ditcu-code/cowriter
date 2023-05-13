@@ -14,7 +14,7 @@ struct SideBarView: View {
     var width: CGFloat
     
     var body: some View {
-        let hasReachedLimit = vm.allChats.count >= 3
+        let hasReachedLimit = vm.allChats.count >= 1
         let isPro = entitlementManager.hasPro
         
         ZStack(alignment: .topLeading) {
@@ -52,23 +52,21 @@ struct SideBarView: View {
                 }.listStyle(.plain)
                 
                 
-                if vm.currentChat != nil || vm.allChats.isEmpty {
+                Spacer()
+                Button {
+                    if hasReachedLimit && !isPro {
+                        showSubscriptionSheet.toggle()
+                    } else {
+                        vm.currentChat = nil
+                        vm.closeSideBar()
+                        vm.errorMessage = ""
+                        vm.favoriteFilterIsOn = false
+                    }
+                } label: {
                     Spacer()
-                    Button {
-                        if hasReachedLimit && !isPro {
-                            showSubscriptionSheet.toggle()
-                        } else {
-                            vm.currentChat = nil
-                            vm.closeSideBar()
-                            vm.errorMessage = ""
-                            vm.favoriteFilterIsOn = false
-                        }
-                    } label: {
-                        Spacer()
-                        Label("New chat", systemImage: "plus").font(.headline)
-                        Spacer()
-                    }.buttonStyle(.bordered)
-                }
+                    Label("New chat", systemImage: "plus").font(.headline)
+                    Spacer()
+                }.buttonStyle(.bordered)
                 
             }.padding()
         }
