@@ -61,7 +61,7 @@ extension String {
         self.replacingOccurrences(of: "\n", with: delimiter)
     }
     
-    func containsOnlyOneWord() -> Bool {
+    func containsOneWord() -> Bool {
         let components = self.components(separatedBy: .whitespaces)
         return components.count == 1
     }
@@ -79,7 +79,18 @@ extension String {
         return result
     }
     
-    func detectLanguage() -> String {
+    func locale() -> Locale {
+        let detector = NLLanguageRecognizer()
+        detector.processString(self)
+        
+        guard let languageCode = detector.dominantLanguage?.rawValue else {
+            return Locale.current
+        }
+        
+        return Locale(identifier: languageCode)
+    }
+    
+    func language() -> String {
         let detector = NLLanguageRecognizer()
         detector.processString(self)
         
@@ -91,14 +102,8 @@ extension String {
         return localizedString
     }
     
-    func getLocaleFromText() -> Locale {
-        let detector = NLLanguageRecognizer()
-        detector.processString(self)
-        
-        guard let languageCode = detector.dominantLanguage?.rawValue else {
-            return Locale.current
-        }
-        
-        return Locale(identifier: languageCode)
+    func capitalizedByLanguage() -> String {
+        let local = self.locale()
+        return self.capitalized(with: local)
     }
 }

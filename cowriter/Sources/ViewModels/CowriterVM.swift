@@ -108,7 +108,7 @@ class CowriterVM: ObservableObject {
             defer {
                 if let chat = currentChat, let message = chat.wrappedMessages.first?.content, chat.title == nil {
                     self.getChatTitle(prompt: message, completion: { result in
-                        chat.title = result.title.removeNewLines()
+                        chat.title = result.title.capitalized.removeNewLines()
                         chat.tokenUsage += Int32(result.token)
                     })
                 }
@@ -186,7 +186,7 @@ class CowriterVM: ObservableObject {
     }
     
     func getChatTitle(prompt: String, completion: @escaping (ChatTitle) -> Void) {
-        guard prompt.containsOnlyOneWord() else {
+        guard prompt.containsOneWord() else {
             let message = "He: \"\(prompt)\"\n\n\nHe asked for "
             let rawRequest = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, temperature: 0, max_tokens: 8)
             let dictionaryRequest = Utils.toDictionary(rawRequest)

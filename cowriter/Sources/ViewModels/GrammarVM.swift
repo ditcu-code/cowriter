@@ -25,7 +25,7 @@ class GrammarVM: ObservableObject {
     
     func check() {
         loading = true
-        textLang = inputText.detectLanguage()
+        textLang = inputText.language()
         let raw = CompletionRequestType(prompt: insertGrammarText(inputText))
         let dictionary = Utils.toDictionary(raw)
         
@@ -47,7 +47,7 @@ class GrammarVM: ObservableObject {
     
     func rephrase() {
         loading = true
-        textLang = inputText.detectLanguage()
+        textLang = inputText.language()
         let raw = ChatRequestType(messages: [ChatMessageType(role: "user", content: insertRephraseText(inputText))])
         let dictionary = Utils.toDictionary(raw)
         
