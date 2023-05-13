@@ -10,8 +10,37 @@ import SwiftUI
 struct GreetingView: View {
     @State private var greeting1: String? = nil
     @State private var greeting2: String? = nil
+    @ObservedObject var appData = AppData()
     
-    private var firstGreetings: [String] = [
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                if let unwrappedText: String = greeting1 {
+                    Text(unwrappedText).bold()
+                        .font(Font.system(.title3, design: .serif))
+                        .foregroundColor(.defaultFont)
+                        .transition(.moveAndFade)
+                }
+                
+                if let unwrappedText: String = greeting2 {
+                    Text(unwrappedText).bold()
+                        .font(Font.system(.title2, design: .serif))
+                        .foregroundColor(.grayFont)
+                        .transition(.moveAndFade)
+                }
+                Spacer()
+            }.frame(maxHeight: 130)
+            Spacer()
+        }
+        .padding()
+        .padding(.horizontal)
+        .animation(.interpolatingSpring(stiffness: 60, damping: 12), value: [greeting1, greeting2])
+        .onAppear {
+            startGreetingsAnimation()
+        }
+    }
+    
+    private let firstGreetings: [String] = [
         "Good day!",
         "Hi there!",
         "Hello!",
@@ -20,7 +49,7 @@ struct GreetingView: View {
         "Welcome!"
     ]
     
-    private var greetings: [String] = [
+    private let greetings: [String] = [
         "How can I assist you with your writing today?",
         "Your pair programming here",
         "Need any help with editing or proofreading your writing?",
@@ -29,7 +58,7 @@ struct GreetingView: View {
         "Ready to take your productivity to the next level?"
     ]
     
-    private var lastGreetings: [String] = [
+    private let lastGreetings: [String] = [
         "Is there anything I can help you with?",
         "What can I do for you today?",
         "What brings you here today?",
@@ -39,49 +68,38 @@ struct GreetingView: View {
         "Let's get started!"
     ]
     
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                if let unwrappedText: String = greeting1 {
-                    Text(unwrappedText).bold()
-                        .transition(.moveAndFade)
-                        .font(Font.system(.title3, design: .serif))
-                        .foregroundColor(.defaultFont)
-                }
-                
-                if let unwrappedText: String = greeting2 {
-                    Text(unwrappedText).bold()
-                        .transition(.moveAndFade)
-                        .font(Font.system(.title2, design: .serif))
-                        .foregroundColor(.grayFont)
-                }
-                Spacer()
-            }.frame(maxHeight: 150)
-            Spacer()
+    private func startGreetingsAnimation() {
+        guard !appData.greetingViewIsAnimating else { return }
+        AppData.setGreetingViewIsAnimating(true)
+        
+        let dispatchGroup = DispatchGroup()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            greeting1 = firstGreetings.randomElement()!
         }
-        .padding()
-        .padding(.horizontal)
-        .animation(.interpolatingSpring(stiffness: 50, damping: 15), value: [greeting1, greeting2])
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                greeting1 = firstGreetings.randomElement()!
-            }
+        
+        var randomGreetings: [String] = Array(Set(greetings.shuffled().prefix(2)))
+        randomGreetings.append(lastGreetings.randomElement()!)
+        
+        randomGreetings.enumerated().forEach { index, greeting in
+            dispatchGroup.enter()
             
-            var randomGreetings: [String] = Array(Set(greetings.shuffled().prefix(2)))
-            randomGreetings.append(lastGreetings.randomElement()!)
-            
-            randomGreetings.enumerated().forEach { index, greeting in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3 + Double(index * 5) ) {
-                    /// 3 10 17 24
-                    greeting2 = greeting
-                    if randomGreetings.last != greeting {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-                            greeting2 = nil
-                        }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3 + Double(index * 5) ) {
+                /// 3 10 17 24
+                greeting2 = greeting
+                if randomGreetings.last != greeting {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+                        greeting2 = nil
+                        dispatchGroup.leave()
                     }
+                } else {
+                    dispatchGroup.leave()
                 }
-                
             }
+        }
+        
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            AppData.setGreetingViewIsAnimating(false)
         }
     }
 }
