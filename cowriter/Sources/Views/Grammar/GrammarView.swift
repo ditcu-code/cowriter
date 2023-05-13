@@ -67,7 +67,8 @@ struct GrammarView: View {
                             
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("\(Utils.removeNewlineAtBeginning(!isRephrase ? vm.responseCompletion?.choices[0].text ?? "" : vm.responseChat?.choices[0].message.content ?? ""))")
+                                    let text = !isRephrase ? vm.responseCompletion?.choices[0].text ?? "" : vm.responseChat?.choices[0].message.content ?? ""
+                                    Text("\(text.removeNewlineAtBeginning())")
                                         .padding(.top, 10)
                                         .padding(.leading, 6)
                                         .padding()

@@ -85,7 +85,7 @@ class CowriterVM: ObservableObject {
                 currentMessage = newMessage
                 chat.addToMessages(newMessage)
                 // token count for userMessage
-                chat.tokenUsage += Int32(Utils.tokenizer(userMessage))
+                chat.tokenUsage += Int32(userMessage.tokenize())
                 currentChat = chat
             } else {
                 let newChat = Chat(context: context)
@@ -95,7 +95,7 @@ class CowriterVM: ObservableObject {
                 newChat.ownerId = ""
                 newChat.messages = [newMessage]
                 // initial token count for userMessage + system message
-                newChat.tokenUsage += Int32(Utils.tokenizer(userMessage)) + 10
+                newChat.tokenUsage += Int32(userMessage.tokenize()) + 10
                 currentChat = newChat
             }
             
@@ -147,7 +147,7 @@ class CowriterVM: ObservableObject {
                     if let lastMessage = chat.wrappedMessages.last {
                         lastMessage.content = textToDisplay
                     }
-                    chat.tokenUsage += Int32(Utils.tokenizer(textToDisplay))
+                    chat.tokenUsage += Int32(textToDisplay.tokenize())
                     PersistenceController.save()
                 }
                 
@@ -197,7 +197,7 @@ class CowriterVM: ObservableObject {
                     case .success(let data):
                         //                    print("Success! Response data: \(data.choices)")
                         let title = data.choices.first?.text ?? "A chat"
-                        completion(ChatTitle(title: title, token: Utils.tokenizer(message)))
+                        completion(ChatTitle(title: title, token: message.tokenize()))
                     case .failure(let error):
                         print("Error: \(error.localizedDescription)")
                     }
