@@ -33,7 +33,7 @@ struct BubblePromptView: View {
                     ))
                 )
                 .overlay(
-                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.isPrompt)
+                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.wrappedRole == ChatRoleEnum.user.rawValue)
                 )
                 .contentShape(.contextMenuPreview, shape)
                 .clipShape(shape)
@@ -67,7 +67,7 @@ struct BubbleAnswerView: View {
                     answer.isEmpty ? ThreeDotsLoading().scaleEffect(0.5) : nil
                 )
                 .overlay(
-                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.isPrompt)
+                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.wrappedRole == ChatRoleEnum.user.rawValue)
                 )
                 .font(Font.system(.body, design: .serif))
                 .foregroundColor(.darkGrayFont)
@@ -104,7 +104,7 @@ struct BubbleContextMenu: View {
                     systemImage: message.isFavorite ? "star.slash.fill" : "star"
                 )
             }
-            if !message.isPrompt {
+            if message.wrappedRole != ChatRoleEnum.user.rawValue {
                 Divider()
                 Button {
                     

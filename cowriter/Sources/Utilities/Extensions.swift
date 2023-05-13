@@ -60,4 +60,9 @@ extension String {
     func removeNewLines(_ delimiter: String = "") -> String {
         self.replacingOccurrences(of: "\n", with: delimiter)
     }
+    
+    func containsOnlyOneWord() -> Bool {
+        let components = self.components(separatedBy: .whitespaces)
+        return components.count == 1
+    }
 }

@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum ChatRoleEnum: String, Codable {
+    case user = "user"
+    case system = "system"
+    case assistant = "assistant"
+}
+
 enum AppearanceMode: String, CaseIterable, Codable {
     case light, dark, system
     var id: Self { self }

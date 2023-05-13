@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct ChatTitle {
+    var title: String
+    var token: Int
+}
+
 //struct ResultModel: Equatable {
 //    var id: UUID = UUID()
 //    var date: Date = Date()
@@ -18,3 +23,4 @@ import Foundation
 //    var userId: String = ""
 //    var results: [ResultModel]
 //}
+

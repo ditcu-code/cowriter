@@ -15,6 +15,6 @@ class FavoritesVM: ObservableObject {
     }
     
     func getAllFavorites() {
-        allFavorites = Message.getFavoritesResult()
+        allFavorites = Message.getFavoritesMessage()
     }
 }

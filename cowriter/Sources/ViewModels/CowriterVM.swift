@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 import CoreData
-import GPT3_Tokenizer
 import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
@@ -56,18 +55,18 @@ class CowriterVM: ObservableObject {
         task = Task {
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
-                .init(role: "system", content: "My name is Cowriter, your kindly writing assistant"),
+                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your kindly writing assistant"),
             ]
             
             func createNewMessage(
                 _ userMessage: String = self.userMessage,
-                isPrompt: Bool = true
+                role: ChatRoleEnum = .user
             ) -> Message {
                 let message = Message(context: context)
                 message.id = UUID()
                 message.date = Date()
                 message.content = userMessage
-                message.isPrompt = isPrompt
+                message.role = role.rawValue
                 
                 return message
             }
@@ -86,7 +85,7 @@ class CowriterVM: ObservableObject {
                 currentMessage = newMessage
                 chat.addToMessages(newMessage)
                 // token count for userMessage
-                chat.usage += Int32(Utils.tokenizer(userMessage))
+                chat.tokenUsage += Int32(Utils.tokenizer(userMessage))
                 currentChat = chat
             } else {
                 let newChat = Chat(context: context)
@@ -96,7 +95,7 @@ class CowriterVM: ObservableObject {
                 newChat.ownerId = ""
                 newChat.messages = [newMessage]
                 // initial token count for userMessage + system message
-                newChat.usage += Int32(Utils.tokenizer(userMessage)) + 10
+                newChat.tokenUsage += Int32(Utils.tokenizer(userMessage)) + 10
                 currentChat = newChat
             }
             
@@ -107,10 +106,10 @@ class CowriterVM: ObservableObject {
             
             /// The defer keyword in Swift is used to execute code just before a function or a block of code returns.
             defer {
-                if let chat = currentChat, chat.title == nil {
-                    self.getChatTitle(messages: chat.wrappedMessages, completion: { result in
+                if let chat = currentChat, let message = chat.wrappedMessages.first?.content, chat.title == nil {
+                    self.getChatTitle(prompt: message, completion: { result in
                         chat.title = result.title.removeNewLines()
-                        chat.usage += Int32(result.token)
+                        chat.tokenUsage += Int32(result.token)
                     })
                 }
                 withAnimation {
@@ -122,9 +121,9 @@ class CowriterVM: ObservableObject {
             }
             
             if let chat = chat {
-                messages += chat.wrappedMessages.map { .init(role: $0.isPrompt ? "user" : "assistant", content: $0.wrappedContent) }
+                messages += chat.wrappedMessages.map { .init(role: $0.wrappedRole, content: $0.wrappedContent) }
             } else {
-                messages.append(.init(role: "user", content: userMessage))
+                messages.append(.init(role: ChatRoleEnum.user.rawValue, content: userMessage))
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
@@ -136,7 +135,7 @@ class CowriterVM: ObservableObject {
             do {
                 if let chat = chat ?? currentChat {
                     // create empty message prompt as container to accomodate future completed message
-                    let newMessage = createNewMessage("", isPrompt: false)
+                    let newMessage = createNewMessage("", role: .assistant)
                     currentMessage = newMessage
                     chat.addToMessages(newMessage)
                     
@@ -148,7 +147,7 @@ class CowriterVM: ObservableObject {
                     if let lastMessage = chat.wrappedMessages.last {
                         lastMessage.content = textToDisplay
                     }
-                    chat.usage += Int32(Utils.tokenizer(textToDisplay))
+                    chat.tokenUsage += Int32(Utils.tokenizer(textToDisplay))
                     PersistenceController.save()
                 }
                 
@@ -186,29 +185,27 @@ class CowriterVM: ObservableObject {
         }
     }
     
-    func getChatTitle(messages: [Message], completion: @escaping (ChatTitle) -> Void) {
-        var title = ""
-        var message = ""
-        
-        if let prompt = messages.first?.content, let answer = messages[1].content {
-            let messageString = "Human: \(prompt)\n\nAI: \(answer)\n\n\nchat title is about "
-            message = messageString
-        }
-        let raw = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, max_tokens: 8)
-        let dictionary = Utils.toDictionary(raw)
-        
-        APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionary) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    //                    print("Success! Response data: \(data.choices)")
-                    title = data.choices.first?.text ?? "A chat"
-                    completion(ChatTitle(title: title, token: Utils.tokenizer(message)))
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+    func getChatTitle(prompt: String, completion: @escaping (ChatTitle) -> Void) {
+        guard prompt.containsOnlyOneWord() else {
+            let message = "He: \"\(prompt)\"\n\n\nHe asked for "
+            let rawRequest = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, temperature: 0, max_tokens: 8)
+            let dictionaryRequest = Utils.toDictionary(rawRequest)
+            
+            APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionaryRequest) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let data):
+                        //                    print("Success! Response data: \(data.choices)")
+                        let title = data.choices.first?.text ?? "A chat"
+                        completion(ChatTitle(title: title, token: Utils.tokenizer(message)))
+                    case .failure(let error):
+                        print("Error: \(error.localizedDescription)")
+                    }
                 }
             }
+            return
         }
+        completion(ChatTitle(title: prompt, token: 0))
     }
     
     func removeChat(at offsets: IndexSet) {
@@ -240,9 +237,4 @@ class CowriterVM: ObservableObject {
         }
     }
     
-}
-
-struct ChatTitle {
-    var title: String
-    var token: Int
 }

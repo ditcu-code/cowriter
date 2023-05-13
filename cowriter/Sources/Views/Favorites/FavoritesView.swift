@@ -36,7 +36,7 @@ struct FavoritesView: View {
                     ScrollView {
                         ForEach(list) { message in
                             let isLastMessage = message.wrappedId == list.last?.wrappedId
-                            let isPrompt = message.isPrompt
+                            let isPrompt = message.wrappedRole == ChatRoleEnum.user.rawValue
                             
                             if isPrompt {
                                 BubblePromptView(message: message, prompt: message.wrappedContent)

@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum ChatRoleEnum: String, Codable   {
-    case user = "user"
-    case system = "system"
-    case assistant = "assistant"
-}
-
 struct ChatMessageType: Codable {
     var role, content: String
 }
