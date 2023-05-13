@@ -31,7 +31,6 @@ class CowriterVM: ObservableObject {
     private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
-    private let gpt3Tokenizer = GPT3Tokenizer()
     private let context = PersistenceController.viewContext
     
     init() {
@@ -79,16 +78,15 @@ class CowriterVM: ObservableObject {
             
             withAnimation {
                 self.isLoading = true
+                self.textToDisplay = ""
             }
-            
-            self.textToDisplay = ""
             
             if let chat = chat {
                 let newMessage = createNewMessage()
                 currentMessage = newMessage
                 chat.addToMessages(newMessage)
                 // token count for userMessage
-                chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count)
+                chat.usage += Int32(Utils.tokenizer(userMessage))
                 currentChat = chat
             } else {
                 let newChat = Chat(context: context)
@@ -98,7 +96,7 @@ class CowriterVM: ObservableObject {
                 newChat.ownerId = ""
                 newChat.messages = [newMessage]
                 // initial token count for userMessage + system message
-                newChat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: userMessage).count) + 10
+                newChat.usage += Int32(Utils.tokenizer(userMessage)) + 10
                 currentChat = newChat
             }
             
@@ -150,7 +148,7 @@ class CowriterVM: ObservableObject {
                     if let lastMessage = chat.wrappedMessages.last {
                         lastMessage.content = textToDisplay
                     }
-                    chat.usage += Int32(gpt3Tokenizer.encoder.enconde(text: textToDisplay).count)
+                    chat.usage += Int32(Utils.tokenizer(textToDisplay))
                     PersistenceController.save()
                 }
                 
@@ -205,7 +203,7 @@ class CowriterVM: ObservableObject {
                 case .success(let data):
                     //                    print("Success! Response data: \(data.choices)")
                     title = data.choices.first?.text ?? "A chat"
-                    completion(ChatTitle(title: title, token: self.gpt3Tokenizer.encoder.enconde(text: message).count))
+                    completion(ChatTitle(title: title, token: Utils.tokenizer(message)))
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
                 }

@@ -7,19 +7,30 @@
 
 import Foundation
 import NaturalLanguage
+import GPT3_Tokenizer
 
 class Utils {
+    static let languageRecognizer = NLLanguageRecognizer()
     
     static func detectLanguage(for string: String) -> String {
-        let detector = NLLanguageRecognizer()
-        detector.processString(string)
+        languageRecognizer.processString(string)
         
-        guard let languageCode = detector.dominantLanguage?.rawValue else {
+        guard let languageCode = languageRecognizer.dominantLanguage?.rawValue,
+              let localizedString = Locale(identifier: languageCode).localizedString(forLanguageCode: languageCode) else {
             return ""
         }
         
-        let locale = Locale(identifier: languageCode)
-        return locale.localizedString(forLanguageCode: languageCode) ?? ""
+        return localizedString
+    }
+    
+    static func getLocaleFromText(_ text: String) -> Locale {
+        languageRecognizer.processString(text)
+        
+        guard let languageCode = languageRecognizer.dominantLanguage?.rawValue else {
+            return Locale.current
+        }
+        
+        return Locale(identifier: languageCode)
     }
     
     static func toDictionary(_ any: Any) -> [String: Any] {
@@ -47,6 +58,11 @@ class Utils {
             result.removeFirst()
         }
         return result
+    }
+    
+    static func tokenizer(_ text: String) -> Int {
+        let gpt3Tokenizer = GPT3Tokenizer()
+        return gpt3Tokenizer.encoder.enconde(text: text).count
     }
     
 }
