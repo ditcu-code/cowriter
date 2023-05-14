@@ -11,8 +11,6 @@ import Combine
 struct SettingView: View {
     @ObservedObject var appData = AppData()
     @State private var showSubscriptionSheet: Bool = false
-    @State private var selectedPlan: PlanEnum = PlanEnum.annual
-    @State private var key: String = ""
     
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
@@ -21,6 +19,8 @@ struct SettingView: View {
     
     var body: some View {
         List {
+            ProfileView()
+            
             subscriptionSection
             
             Section("Preference") {
@@ -99,7 +99,7 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(appData: AppData())
             .environmentObject({ () -> PurchaseManager in
                 let envObj = PurchaseManager(entitlementManager: EntitlementManager())
                 return envObj

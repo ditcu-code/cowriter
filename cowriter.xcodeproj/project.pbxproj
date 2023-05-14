@@ -22,6 +22,11 @@
 		0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A655129DD25C1003457DF /* Assets.xcassets */; };
 		0E6A655729DD25C1003457DF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655629DD25C1003457DF /* Persistence.swift */; };
 		0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */; };
+		0E7227272A11138C00FADE9C /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7227252A11138C00FADE9C /* User+CoreDataClass.swift */; };
+		0E7227282A11138C00FADE9C /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */; };
+		0E72272B2A11142100FADE9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272A2A11142100FADE9C /* ProfileView.swift */; };
+		0E72272D2A11155D00FADE9C /* ProfileViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272C2A11155D00FADE9C /* ProfileViewVM.swift */; };
+		0E72272F2A112DAA00FADE9C /* AppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272E2A112DAA00FADE9C /* AppVM.swift */; };
 		0E7C414029F95CE50075B638 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* ChatView.swift */; };
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
 		0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */; };
@@ -79,6 +84,11 @@
 		0E6A655629DD25C1003457DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0E6A655929DD25C1003457DF /* cowriter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cowriter.xcdatamodel; sourceTree = "<group>"; };
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E7227252A11138C00FADE9C /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0E72272A2A11142100FADE9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0E72272C2A11155D00FADE9C /* ProfileViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVM.swift; sourceTree = "<group>"; };
+		0E72272E2A112DAA00FADE9C /* AppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVM.swift; sourceTree = "<group>"; };
 		0E7C413F29F95CE50075B638 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatViews.swift; sourceTree = "<group>"; };
 		0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterToolbarView.swift; sourceTree = "<group>"; };
@@ -200,9 +210,12 @@
 		0E6A656429DD27E1003457DF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0E7227292A1113E500FADE9C /* StoreKit */,
 				0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
+				0E72272C2A11155D00FADE9C /* ProfileViewVM.swift */,
+				0E72272E2A112DAA00FADE9C /* AppVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -234,10 +247,21 @@
 				0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */,
 				0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */,
 				0EF164B429F2EC8700CC35B1 /* Message+CoreDataProperties.swift */,
+				0E7227252A11138C00FADE9C /* User+CoreDataClass.swift */,
+				0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */,
 				0E6A655629DD25C1003457DF /* Persistence.swift */,
 				0E6A655829DD25C1003457DF /* cowriter.xcdatamodeld */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0E7227292A1113E500FADE9C /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
+				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
+			);
+			path = StoreKit;
 			sourceTree = "<group>";
 		};
 		0E91DD2A2A08D3CC005041BA /* ChatView */ = {
@@ -342,8 +366,7 @@
 			children = (
 				0EE845F82A0667BC0025060F /* SubscriptionView.swift */,
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
-				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
-				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
+				0E72272A2A11142100FADE9C /* ProfileView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -433,6 +456,7 @@
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
 				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
+				0E7227282A11138C00FADE9C /* User+CoreDataProperties.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
@@ -440,6 +464,7 @@
 				0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */,
 				0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
+				0E72272D2A11155D00FADE9C /* ProfileViewVM.swift in Sources */,
 				0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */,
 				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* APIRequest.swift in Sources */,
@@ -461,6 +486,7 @@
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0ECC7BFE29DD4EE1002A6B7F /* GrammarVM.swift in Sources */,
 				0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */,
+				0E72272B2A11142100FADE9C /* ProfileView.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
 				0E0A637229ED9F3C00DB7540 /* MagicButton.swift in Sources */,
 				0EF164B829F2EC8700CC35B1 /* Message+CoreDataProperties.swift in Sources */,
@@ -468,10 +494,12 @@
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
+				0E7227272A11138C00FADE9C /* User+CoreDataClass.swift in Sources */,
 				0EE845FF2A066A960025060F /* _Shapes.swift in Sources */,
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
 				0E7C414029F95CE50075B638 /* ChatView.swift in Sources */,
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
+				0E72272F2A112DAA00FADE9C /* AppVM.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* FavoritesView.swift in Sources */,
 				0EB86DDC29FEE107005B5EE1 /* AsisstView.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,

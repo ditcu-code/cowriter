@@ -10,23 +10,6 @@ import SwiftUI
 import GPT3_Tokenizer
 import NaturalLanguage
 
-fileprivate struct FontModifier: ViewModifier {
-    var font: Font
-    var color: Color
-    
-    func body(content: Content) -> some View {
-        content
-            .font(font)
-            .foregroundColor(color)
-    }
-}
-
-extension View {
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
-            return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
-    }
-}
-
 extension UIScreen{
     static let screenWidth = UIScreen.main.bounds.size.width
     static let screenHeight = UIScreen.main.bounds.size.height
@@ -105,5 +88,49 @@ extension String {
     func capitalizedByLanguage() -> String {
         let local = self.locale()
         return self.capitalized(with: local)
+    }
+}
+
+extension Date {
+    func toMonthYearString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter.string(from: self)
+    }
+}
+
+extension View {
+    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
+        return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
+    }
+    func onFirstAppear(_ action: @escaping () -> ()) -> some View {
+        modifier(FirstAppear(action: action))
+    }
+}
+
+fileprivate struct FontModifier: ViewModifier {
+    var font: Font
+    var color: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .font(font)
+            .foregroundColor(color)
+    }
+}
+
+fileprivate struct FirstAppear: ViewModifier {
+    let action: () -> ()
+    
+    // Use this to only fire your block one time
+    @State private var hasAppeared = false
+    
+    func body(content: Content) -> some View {
+        // And then, track it here
+        content.onAppear {
+            guard !hasAppeared else { return }
+            hasAppeared = true
+            action()
+        }
     }
 }
