@@ -51,10 +51,10 @@ enum PlanEnum: String, CaseIterable {
         }
     }
     
-    var title: String {
+    var title: String? {
         switch self {
         case .annual:
-            return "Rp990.000"
+            return nil
         case .monthly:
             return "7 DAY FREE TRIAL"
         }

@@ -10,8 +10,9 @@ import StoreKit
 
 struct ItemPlanView: View {
     @Binding var selectedProduct: Product?
-    @State private var monthlyTotal: Decimal?
     @EnvironmentObject private var purchaseManager: PurchaseManager
+    
+    @State private var monthlyTotal: Decimal?
     
     private let outerShape = RoundedRectangle(cornerRadius: 8)
     
@@ -87,9 +88,9 @@ struct ItemPlanView: View {
     }
 }
 
-//struct ItemPlanView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ItemPlanView()
-//            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
-//    }
-//}
+struct ItemPlanView_Previews: PreviewProvider {
+    static var previews: some View {
+        ItemPlanView(selectedProduct: .constant(nil))
+            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
+    }
+}

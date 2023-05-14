@@ -10,7 +10,8 @@ import SwiftUI
 struct CowriterView: View {
     @StateObject var vm: CowriterVM = CowriterVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
-    private var sideBarWidth: CGFloat = UIScreen.screenWidth - 100
+    
+    private let sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
@@ -70,7 +71,9 @@ struct CowriterView: View {
                 CowriterToolbarView(vm: vm, width: sideBarWidth)
             }
             .task {
-                purchaseManager.loadProducts()
+                if purchaseManager.products.isEmpty {
+                    purchaseManager.loadProducts()
+                }
             }
             .animation(.linear, value: isActive)
         }
@@ -80,5 +83,6 @@ struct CowriterView: View {
 struct CowriterView_Previews: PreviewProvider {
     static var previews: some View {
         CowriterView()
+            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
     }
 }

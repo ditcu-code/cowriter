@@ -23,9 +23,9 @@ struct cowriterApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .dynamicTypeSize(.small...)
                 .dynamicTypeSize(...DynamicTypeSize.large)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(entitlementManager)
                 .environmentObject(purchaseManager)
                 .task {

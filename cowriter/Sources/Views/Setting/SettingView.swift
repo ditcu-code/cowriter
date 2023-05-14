@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct SettingView: View {
+    @ObservedObject var appData = AppData()
     @State private var showSubscriptionSheet: Bool = false
     @State private var selectedPlan: PlanEnum = PlanEnum.annual
     @State private var key: String = ""
@@ -16,7 +17,6 @@ struct SettingView: View {
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
-    @ObservedObject var appData = AppData()
     private let mode = ["light", "dark", "system"]
     
     var body: some View {
