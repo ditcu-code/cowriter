@@ -10,6 +10,7 @@ import SwiftUI
 struct BubblePromptView: View {
     @ObservedObject var message: Message
     var prompt: String
+    
     private let shape = CustomRoundedRectangle(
         topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
     )
@@ -50,6 +51,7 @@ struct BubblePromptView: View {
 struct BubbleAnswerView: View {
     @StateObject var message: Message
     var answer: String
+    
     private let shape = CustomRoundedRectangle(
         topLeft: 3, topRight: 12, bottomLeft: 12, bottomRight: 12
     )
@@ -86,7 +88,7 @@ struct BubbleAnswerView: View {
     }
 }
 
-struct BubbleContextMenu: View {
+fileprivate struct BubbleContextMenu: View {
     @StateObject var message: Message
     
     var body: some View {
@@ -116,7 +118,7 @@ struct BubbleContextMenu: View {
     }
 }
 
-struct BubbleFavoriteFlag: View {
+fileprivate struct BubbleFavoriteFlag: View {
     var isFavorite: Bool = false
     var isPrompt: Bool
     
@@ -140,12 +142,19 @@ struct BubbleFavoriteFlag: View {
     }
 }
 
-//struct BubbleChatViews_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            BubblePromptView(message: Message(), prompt: "Hello")
-//            BubbleAnswerView(message: Message(), answer: "")
-//            Spacer()
-//        }.background(.gray)
-//    }
-//}
+struct BubbleChatViews_Previews: PreviewProvider {
+    static var previews: some View {
+        let moc = PersistenceController.shared.container.viewContext
+        let message = Message(context: moc)
+        
+        VStack {
+            BubblePromptView(message: message, prompt: "How are you")
+            BubbleAnswerView(message: message, answer: "I am fine")
+            Spacer()
+        }
+        .onAppear{
+            message.content = "Hello"
+        }
+        .background(.gray)
+    }
+}
