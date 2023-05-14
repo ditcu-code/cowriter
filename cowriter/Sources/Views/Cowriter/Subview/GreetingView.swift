@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct GreetingView: View {
+    @StateObject var vm = ProfileVM()
     @State private var greeting1: String? = nil
     @State private var greeting2: String? = nil
-    @ObservedObject var appData = AppData()
     
     var body: some View {
         HStack {
@@ -43,9 +43,8 @@ struct GreetingView: View {
     private let firstGreetings: [String] = [
         "Good day!",
         "Hi there!",
-        "Hello!",
+        "Hello! 👋🏼",
         "Greetings!",
-        "Hi! 👋🏼",
         "Welcome!"
     ]
     
@@ -69,38 +68,30 @@ struct GreetingView: View {
     ]
     
     private func startGreetingsAnimation() {
-        guard !appData.greetingViewIsAnimating else { return }
-        AppData.setGreetingViewIsAnimating(true)
-        
-        let dispatchGroup = DispatchGroup()
+        guard greeting1 == nil else { return }
+
+        var finalFirstGreetings = firstGreetings
+        finalFirstGreetings.append("Hi, \(vm.user?.wrappedName ?? "Human")!")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            greeting1 = firstGreetings.randomElement()!
+            greeting1 = finalFirstGreetings.randomElement()!
         }
         
         var randomGreetings: [String] = Array(Set(greetings.shuffled().prefix(2)))
         randomGreetings.append(lastGreetings.randomElement()!)
         
         randomGreetings.enumerated().forEach { index, greeting in
-            dispatchGroup.enter()
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 3 + Double(index * 5) ) {
                 /// 3 10 17 24
                 greeting2 = greeting
                 if randomGreetings.last != greeting {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
                         greeting2 = nil
-                        dispatchGroup.leave()
                     }
-                } else {
-                    dispatchGroup.leave()
                 }
             }
         }
-        
-        dispatchGroup.notify(queue: DispatchQueue.main) {
-            AppData.setGreetingViewIsAnimating(false)
-        }
+
     }
 }
 
