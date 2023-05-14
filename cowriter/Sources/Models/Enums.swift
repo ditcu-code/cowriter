@@ -24,7 +24,7 @@ enum AppearanceMode: String, CaseIterable, Codable {
         case .dark:
             return "moon.circle"
         case .system:
-            return "globe"
+            return "moon.stars"
         }
     }
 }

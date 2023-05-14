@@ -10,8 +10,9 @@ import Foundation
 class ProfileVM: ObservableObject {
     private var context = PersistenceController.viewContext
     
-    @Published var name = ""
     @Published var user: User?
+    
+    @Published var name: String = ""
     @Published var isProfileTap = false
     
     init() {
@@ -19,10 +20,11 @@ class ProfileVM: ObservableObject {
     }
     
     func getUser() {
-        let result = User.fetchFirstUser(in: context)
-        
-        user = result
-        name = user?.wrappedName ?? "Human1"
+        if let result = User.fetchFirstUser(in: context) {
+            user = result
+            guard let user = user else { return }
+            name = user.wrappedName
+        }
     }
     
     func changeName() {

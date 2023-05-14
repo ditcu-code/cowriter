@@ -20,18 +20,42 @@ struct SettingView: View {
     var body: some View {
         List {
             ProfileView()
-            
             subscriptionSection
             
-            Section("Preference") {
-                Picker(selection: appData.$preferredColorScheme) {
-                    ForEach(AppearanceMode.allCases, id: \.self) { item in
-                        Label(item.rawValue.capitalized, systemImage: item.icon)
-                            .labelStyle(.iconOnly)
-                            .tag(item)
-                    }
+            Section {
+                appearanceSetting
+                
+                Button {
+                    
                 } label: {
-                    Text("Theme")
+                    LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "Restore Purchase")
+                }
+                
+                Button {
+                    
+                } label: {
+                    LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "Support")
+                }
+                
+            }
+            
+            Section {
+                Button {
+                    
+                } label: {
+                    Text("Terms and Condition").font(.footnote)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("Privacy Policy").font(.footnote)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("About Us").font(.footnote)
                 }
             }
             
@@ -50,6 +74,31 @@ struct SettingView: View {
                 }
             }
             
+        }
+    }
+    
+    private var appearanceSetting: some View {
+        Menu {
+            Picker(selection: appData.$preferredColorScheme) {
+                ForEach(AppearanceMode.allCases, id: \.self) { item in
+                    Label(item.rawValue.capitalized, systemImage: item.icon)
+                        .font(.callout).tag(item)
+                }
+            } label: {}
+        } label: {
+            HStack {
+                LabelSetting(
+                    icon: appData.preferredColorScheme.icon,
+                    color: .init(white: 0.2),
+                    label: "Appearance"
+                )
+                Spacer()
+                HStack {
+                    Text(appData.preferredColorScheme.rawValue.capitalized)
+                        .font(.subheadline).foregroundColor(.darkGrayFont)
+                    Image(systemName: "chevron.up.chevron.down")
+                }
+            }
         }
     }
     
@@ -94,7 +143,6 @@ struct SettingView: View {
                 }
             })
     }
-    
 }
 
 struct SettingView_Previews: PreviewProvider {
@@ -108,5 +156,27 @@ struct SettingView_Previews: PreviewProvider {
                 let envObj = EntitlementManager()
                 return envObj
             }())
+    }
+}
+
+fileprivate struct LabelSetting: View {
+    var icon: String
+    var color: Color
+    var label: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .resizable()
+                .scaledToFit().padding(7)
+                .frame(width: 30, height: 30)
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(color.opacity(0.9))
+                )
+                .padding(.trailing, 5)
+            Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
+        }
     }
 }

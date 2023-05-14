@@ -211,11 +211,11 @@
 			isa = PBXGroup;
 			children = (
 				0E7227292A1113E500FADE9C /* StoreKit */,
+				0E72272E2A112DAA00FADE9C /* AppVM.swift */,
 				0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
-				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 				0E72272C2A11155D00FADE9C /* ProfileVM.swift */,
-				0E72272E2A112DAA00FADE9C /* AppVM.swift */,
+				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject var vm: ProfileVM = ProfileVM()
-    @FocusState var nameFocus
+    @StateObject private var vm: ProfileVM = ProfileVM()
+    @FocusState private var nameFocus
     
     var body: some View {
+        let joinDate = vm.user?.joinDate ?? Date()
         HStack() {
             Image(systemName: "person").padding(.horizontal, 5)
             VStack(alignment: .leading, spacing: 0) {
                 TextField("Your name", text: $vm.name)
                     .onSubmit {
                         vm.changeName()
+                        print("user", vm.user)
                     }
                     .focused($nameFocus)
-                Text("Joined \(vm.user!.wrappedJoinDate.toMonthYearString())")
+                Text("Joined \(joinDate.toMonthYearString())")
                     .font(.footnote)
                     .foregroundColor(.defaultFont)
             }
