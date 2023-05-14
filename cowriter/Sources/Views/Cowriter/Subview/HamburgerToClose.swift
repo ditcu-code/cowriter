@@ -10,10 +10,10 @@ import SwiftUI
 struct HamburgerToClose: View {
     @ObservedObject var vm: CowriterVM
     
-    var width: CGFloat = 22
-    var height: CGFloat = 1.5
-    var degrees: Double = 45
-    var corner: CGFloat = 2
+    private let width: CGFloat = 22
+    private let height: CGFloat = 1.5
+    private let degrees: Double = 45
+    private let corner: CGFloat = 2
     
     var body: some View {
         VStack(spacing: 6) {
