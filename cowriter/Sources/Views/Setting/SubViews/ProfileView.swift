@@ -19,7 +19,6 @@ struct ProfileView: View {
                 TextField("Your name", text: $vm.name)
                     .onSubmit {
                         vm.changeName()
-                        print("user", vm.user)
                     }
                     .focused($nameFocus)
                 Text("Joined \(joinDate.toMonthYearString())")
