@@ -18,11 +18,10 @@ extension Chat {
     
     @NSManaged public var id: UUID?
     @NSManaged public var title: String?
-    @NSManaged public var ownerId: String?
     @NSManaged public var tokenUsage: Int32
     
     @NSManaged public var messages: NSSet?
-    
+    @NSManaged public var owner: User?
     
     public var wrappedId: UUID {
         id ?? UUID()
@@ -30,10 +29,6 @@ extension Chat {
     
     public var wrappedTitle: String {
         title ?? "Cowriter"
-    }
-    
-    public var wrappedOwnerId: String {
-        ownerId ?? "Unknown ownerId"
     }
     
     public var wrappedUsage: Int {
@@ -81,34 +76,3 @@ extension Chat : Identifiable {
     }
     
 }
-//
-//extension Chat {
-//    
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Chat> {
-//        return NSFetchRequest<Chat>(entityName: "Chat")
-//    }
-//    
-//    @NSManaged public var id: UUID?
-//    @NSManaged public var title: String?
-//    @NSManaged public var ownerId: String?
-//    @NSManaged public var tokenUsage: Int32
-//    
-//    @NSManaged public var messages: NSSet?
-//}
-//
-//
-//extension Message {
-//    
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Message> {
-//        return NSFetchRequest<Message>(entityName: "Message")
-//    }
-//    
-//    @NSManaged public var id: UUID?
-//    @NSManaged public var date: Date?
-//    @NSManaged public var role: String?
-//    @NSManaged public var ownerId: String?
-//    @NSManaged public var content: String?
-//    @NSManaged public var isFavorite: Bool
-//    
-//    @NSManaged public var chat: Chat?
-//}

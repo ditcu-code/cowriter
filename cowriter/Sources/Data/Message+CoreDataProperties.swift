@@ -24,6 +24,7 @@ extension Message {
     @NSManaged public var isFavorite: Bool
     
     @NSManaged public var chat: Chat?
+    @NSManaged public var owner: User?
     
     
     public var wrappedId: UUID {

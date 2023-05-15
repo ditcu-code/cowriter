@@ -92,7 +92,7 @@ class CowriterVM: ObservableObject {
                 let newMessage = createNewMessage()
                 currentMessage = newMessage
                 newChat.id = UUID()
-                newChat.ownerId = ""
+                newChat.owner = User.fetchFirstUser(in: context)
                 newChat.messages = [newMessage]
                 // initial token count for userMessage + system message
                 newChat.tokenUsage += Int32(userMessage.tokenize()) + 10
