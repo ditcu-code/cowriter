@@ -7,21 +7,9 @@
 
 import Foundation
 import NaturalLanguage
+import GPT3_Tokenizer
 
 class Utils {
-    
-    static func detectLanguage(for string: String) -> String {
-        let detector = NLLanguageRecognizer()
-        detector.processString(string)
-        
-        guard let languageCode = detector.dominantLanguage?.rawValue else {
-            return ""
-        }
-        
-        let locale = Locale(identifier: languageCode)
-        return locale.localizedString(forLanguageCode: languageCode) ?? ""
-    }
-    
     static func toDictionary(_ any: Any) -> [String: Any] {
         var dictionary: [String: Any] = [:]
         let mirror = Mirror(reflecting: any)
@@ -40,14 +28,5 @@ class Utils {
         
         return dictionary
     }
-    
-    static func removeNewlineAtBeginning(_ str: String) -> String {
-        var result = str
-        while result.first == "\n" {
-            result.removeFirst()
-        }
-        return result
-    }
-    
 }
 

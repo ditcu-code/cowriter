@@ -7,14 +7,8 @@
 
 import Foundation
 import SwiftUI
-
-extension View {
-    
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
-            return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
-    }
-    
-}
+import GPT3_Tokenizer
+import NaturalLanguage
 
 extension UIScreen{
     static let screenWidth = UIScreen.main.bounds.size.width
@@ -45,7 +39,76 @@ extension AnyTransition {
     }
 }
 
-struct FontModifier: ViewModifier {
+extension String {
+    func removeNewLines(_ delimiter: String = "") -> String {
+        self.replacingOccurrences(of: "\n", with: delimiter)
+    }
+    
+    func containsOneWord() -> Bool {
+        let components = self.components(separatedBy: .whitespaces)
+        return components.count == 1
+    }
+    
+    func tokenize() -> Int {
+        let gpt3Tokenizer = GPT3Tokenizer()
+        return gpt3Tokenizer.encoder.enconde(text: self).count
+    }
+    
+    func removeNewlineAtBeginning() -> String {
+        var result = self
+        while result.first == "\n" {
+            result.removeFirst()
+        }
+        return result
+    }
+    
+    func locale() -> Locale {
+        let detector = NLLanguageRecognizer()
+        detector.processString(self)
+        
+        guard let languageCode = detector.dominantLanguage?.rawValue else {
+            return Locale.current
+        }
+        
+        return Locale(identifier: languageCode)
+    }
+    
+    func language() -> String {
+        let detector = NLLanguageRecognizer()
+        detector.processString(self)
+        
+        guard let languageCode = detector.dominantLanguage?.rawValue,
+              let localizedString = Locale(identifier: languageCode).localizedString(forLanguageCode: languageCode) else {
+            return ""
+        }
+        
+        return localizedString
+    }
+    
+    func capitalizedByLanguage() -> String {
+        let local = self.locale()
+        return self.capitalized(with: local)
+    }
+}
+
+extension Date {
+    func toMonthYearString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter.string(from: self)
+    }
+}
+
+extension View {
+    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
+        return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
+    }
+    func onFirstAppear(_ action: @escaping () -> ()) -> some View {
+        modifier(FirstAppear(action: action))
+    }
+}
+
+fileprivate struct FontModifier: ViewModifier {
     var font: Font
     var color: Color
     
@@ -56,8 +119,18 @@ struct FontModifier: ViewModifier {
     }
 }
 
-extension String {
-    func removeNewLines(_ delimiter: String = "") -> String {
-        self.replacingOccurrences(of: "\n", with: delimiter)
+fileprivate struct FirstAppear: ViewModifier {
+    let action: () -> ()
+    
+    // Use this to only fire your block one time
+    @State private var hasAppeared = false
+    
+    func body(content: Content) -> some View {
+        // And then, track it here
+        content.onAppear {
+            guard !hasAppeared else { return }
+            hasAppeared = true
+            action()
+        }
     }
 }

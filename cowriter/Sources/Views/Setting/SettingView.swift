@@ -9,29 +9,53 @@ import SwiftUI
 import Combine
 
 struct SettingView: View {
+    @ObservedObject var appData = AppData()
     @State private var showSubscriptionSheet: Bool = false
-    @State private var selectedPlan: PlanEnum = PlanEnum.annual
-    @State private var key: String = ""
     
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
-    @ObservedObject var appData = AppData()
     private let mode = ["light", "dark", "system"]
     
     var body: some View {
         List {
+            ProfileView()
             subscriptionSection
             
-            Section("Preference") {
-                Picker(selection: appData.$preferredColorScheme) {
-                    ForEach(AppearanceMode.allCases, id: \.self) { item in
-                        Label(item.rawValue.capitalized, systemImage: item.icon)
-                            .labelStyle(.iconOnly)
-                            .tag(item)
-                    }
+            Section {
+                appearanceSetting
+                
+                Button {
+                    
                 } label: {
-                    Text("Theme")
+                    LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "Restore Purchase")
+                }
+                
+                Button {
+                    
+                } label: {
+                    LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "Support")
+                }
+                
+            }
+            
+            Section {
+                Button {
+                    
+                } label: {
+                    Text("Terms and Condition").font(.footnote)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("Privacy Policy").font(.footnote)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("About Us").font(.footnote)
                 }
             }
             
@@ -51,8 +75,30 @@ struct SettingView: View {
             }
             
         }
-        .task {
-            purchaseManager.loadProducts()
+    }
+    
+    private var appearanceSetting: some View {
+        Menu {
+            Picker(selection: appData.$preferredColorScheme) {
+                ForEach(AppearanceMode.allCases, id: \.self) { item in
+                    Label(item.rawValue.capitalized, systemImage: item.icon)
+                        .font(.callout).tag(item)
+                }
+            } label: {}
+        } label: {
+            HStack {
+                LabelSetting(
+                    icon: appData.preferredColorScheme.icon,
+                    color: .init(white: 0.2),
+                    label: "Appearance"
+                )
+                Spacer()
+                HStack {
+                    Text(appData.preferredColorScheme.rawValue.capitalized)
+                        .font(.subheadline).foregroundColor(.darkGrayFont)
+                    Image(systemName: "chevron.up.chevron.down")
+                }
+            }
         }
     }
     
@@ -97,12 +143,11 @@ struct SettingView: View {
                 }
             })
     }
-    
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(appData: AppData())
             .environmentObject({ () -> PurchaseManager in
                 let envObj = PurchaseManager(entitlementManager: EntitlementManager())
                 return envObj
@@ -111,5 +156,27 @@ struct SettingView_Previews: PreviewProvider {
                 let envObj = EntitlementManager()
                 return envObj
             }())
+    }
+}
+
+fileprivate struct LabelSetting: View {
+    var icon: String
+    var color: Color
+    var label: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .resizable()
+                .scaledToFit().padding(7)
+                .frame(width: 30, height: 30)
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(color.opacity(0.9))
+                )
+                .padding(.trailing, 5)
+            Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
+        }
     }
 }

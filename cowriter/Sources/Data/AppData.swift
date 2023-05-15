@@ -9,18 +9,15 @@ import Foundation
 import SwiftUI
 
 class AppData: ObservableObject {
-    @AppStorage(AppStorageEnum.hasFirstLaunched.rawValue) var hasFirstLaunched: Bool = false
-    @AppStorage(AppStorageEnum.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
+    @AppStorage(AppStorageKey.hasFirstLaunched.rawValue) var hasFirstLaunched: Bool = false
+    @AppStorage(AppStorageKey.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
     
     static func setHasFirstLaunched(_ value: Bool) {
-        UserDefaults.standard.set(value, forKey: AppStorageEnum.hasFirstLaunched.rawValue)
-    }
-    static func setPreferredColorScheme(_ value: AppearanceMode) {
-        UserDefaults.standard.set(value, forKey: AppStorageEnum.preferredColorScheme.rawValue)
+        UserDefaults.standard.set(value, forKey: AppStorageKey.hasFirstLaunched.rawValue)
     }
 }
 
-enum AppStorageEnum: String {
+enum AppStorageKey: String {
     case hasFirstLaunched
     case preferredColorScheme
 }

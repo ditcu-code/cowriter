@@ -27,10 +27,10 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentCloudKitContainer
+    let container: NSPersistentContainer
 
-    init(inMemory: Bool = true) {
-        container = NSPersistentCloudKitContainer(name: "cowriter")
+    init(inMemory: Bool = false) {
+        container = NSPersistentContainer(name: "cowriter")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -43,7 +43,6 @@ struct PersistenceController {
     }
     
    static func save() {
-        
         if viewContext.hasChanges {
             do {
                 try viewContext.save()

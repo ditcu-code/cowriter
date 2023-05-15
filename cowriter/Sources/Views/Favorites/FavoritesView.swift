@@ -19,8 +19,7 @@ struct FavoritesView: View {
             ).ignoresSafeArea()
             VStack {
                 if let list = vm.allFavorites {
-                    //                let filteredList = list.filter { $0.isFavorite }
-                    
+
                     if list.isEmpty {
                         HStack {
                             Spacer()
@@ -35,20 +34,20 @@ struct FavoritesView: View {
                     }
                     
                     ScrollView {
-                        ForEach(list) { result in
-                            let isLastResult = result.wrappedId == list.last?.wrappedId
-                            let isPrompt = result.isPrompt
+                        ForEach(list) { message in
+                            let isLastMessage = message.wrappedId == list.last?.wrappedId
+                            let isPrompt = message.wrappedRole == ChatRoleEnum.user.rawValue
                             
                             if isPrompt {
-                                BubblePromptView(result: result, prompt: result.wrappedMessage)
+                                BubblePromptView(message: message, prompt: message.wrappedContent)
                             } else {
                                 BubbleAnswerView(
-                                    result: result,
-                                    answer: result.wrappedMessage
+                                    message: message,
+                                    answer: message.wrappedContent
                                 )
                             }
                             
-                            if isLastResult {
+                            if isLastMessage {
                                 Spacer()
                             }
                         }.animation(.linear, value: list.count)

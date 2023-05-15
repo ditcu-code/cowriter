@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct BubblePromptView: View {
-    @ObservedObject var result: ResultType
+    @ObservedObject var message: Message
     var prompt: String
+    
     private let shape = CustomRoundedRectangle(
         topLeft: 12, topRight: 3, bottomLeft: 12, bottomRight: 12
     )
@@ -33,12 +34,12 @@ struct BubblePromptView: View {
                     ))
                 )
                 .overlay(
-                    BubbleFavoriteFlag(isFavorite: result.isFavorite, isPrompt: result.isPrompt)
+                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.wrappedRole == ChatRoleEnum.user.rawValue)
                 )
                 .contentShape(.contextMenuPreview, shape)
                 .clipShape(shape)
                 .contextMenu {
-                    BubbleContextMenu(result: result)
+                    BubbleContextMenu(message: message)
                 }
         }
         .padding(.horizontal)
@@ -48,8 +49,9 @@ struct BubblePromptView: View {
 }
 
 struct BubbleAnswerView: View {
-    @StateObject var result: ResultType
+    @StateObject var message: Message
     var answer: String
+    
     private let shape = CustomRoundedRectangle(
         topLeft: 3, topRight: 12, bottomLeft: 12, bottomRight: 12
     )
@@ -67,14 +69,14 @@ struct BubbleAnswerView: View {
                     answer.isEmpty ? ThreeDotsLoading().scaleEffect(0.5) : nil
                 )
                 .overlay(
-                    BubbleFavoriteFlag(isFavorite: result.isFavorite, isPrompt: result.isPrompt)
+                    BubbleFavoriteFlag(isFavorite: message.isFavorite, isPrompt: message.wrappedRole == ChatRoleEnum.user.rawValue)
                 )
                 .font(Font.system(.body, design: .serif))
                 .foregroundColor(.darkGrayFont)
                 .contentShape(.contextMenuPreview, shape)
                 .clipShape(shape)
                 .contextMenu {
-                    BubbleContextMenu(result: result)
+                    BubbleContextMenu(message: message)
                 }
             Spacer(minLength: 50)
         }
@@ -86,25 +88,25 @@ struct BubbleAnswerView: View {
     }
 }
 
-struct BubbleContextMenu: View {
-    @StateObject var result: ResultType
+fileprivate struct BubbleContextMenu: View {
+    @StateObject var message: Message
     
     var body: some View {
         Group {
             Button {
-                UIPasteboard.general.setValue(result.message ?? "", forPasteboardType: "public.plain-text")
+                UIPasteboard.general.setValue(message.content ?? "", forPasteboardType: "public.plain-text")
             } label: {
                 Label("Copy", systemImage: "doc.on.doc")
             }
             Button {
-                result.isFavorite.toggle()
+                message.isFavorite.toggle()
             } label: {
                 Label(
-                    result.isFavorite ? "Unfavorite" : "Favorite",
-                    systemImage: result.isFavorite ? "star.slash.fill" : "star"
+                    message.isFavorite ? "Unfavorite" : "Favorite",
+                    systemImage: message.isFavorite ? "star.slash.fill" : "star"
                 )
             }
-            if !result.isPrompt {
+            if message.wrappedRole != ChatRoleEnum.user.rawValue {
                 Divider()
                 Button {
                     
@@ -116,7 +118,7 @@ struct BubbleContextMenu: View {
     }
 }
 
-struct BubbleFavoriteFlag: View {
+fileprivate struct BubbleFavoriteFlag: View {
     var isFavorite: Bool = false
     var isPrompt: Bool
     
@@ -140,12 +142,19 @@ struct BubbleFavoriteFlag: View {
     }
 }
 
-//struct BubbleChatViews_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            BubblePromptView(result: ResultType(), prompt: "Hello")
-//            BubbleAnswerView(result: ResultType(), answer: "")
-//            Spacer()
-//        }.background(.gray)
-//    }
-//}
+struct BubbleChatViews_Previews: PreviewProvider {
+    static var previews: some View {
+        let moc = PersistenceController.shared.container.viewContext
+        let message = Message(context: moc)
+        
+        VStack {
+            BubblePromptView(message: message, prompt: "How are you")
+            BubbleAnswerView(message: message, answer: "I am fine")
+            Spacer()
+        }
+        .onAppear{
+            message.content = "Hello"
+        }
+        .background(.gray)
+    }
+}

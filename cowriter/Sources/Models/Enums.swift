@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum ChatRoleEnum: String, Codable {
+    case user = "user"
+    case system = "system"
+    case assistant = "assistant"
+}
+
 enum AppearanceMode: String, CaseIterable, Codable {
     case light, dark, system
     var id: Self { self }
@@ -18,7 +24,7 @@ enum AppearanceMode: String, CaseIterable, Codable {
         case .dark:
             return "moon.circle"
         case .system:
-            return "globe"
+            return "moon.stars"
         }
     }
 }
@@ -45,10 +51,10 @@ enum PlanEnum: String, CaseIterable {
         }
     }
     
-    var title: String {
+    var title: String? {
         switch self {
         case .annual:
-            return "Rp990.000"
+            return nil
         case .monthly:
             return "7 DAY FREE TRIAL"
         }

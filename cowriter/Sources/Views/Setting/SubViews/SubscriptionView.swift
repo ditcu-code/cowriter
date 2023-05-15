@@ -10,9 +10,9 @@ import StoreKit
 
 struct SubscriptionView: View {
     @Binding var isShowSheet: Bool
-    @State private var selectedProduct: Product?
-    
     @EnvironmentObject private var purchaseManager: PurchaseManager
+    
+    @State private var selectedProduct: Product?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -65,8 +65,9 @@ struct SubscriptionView: View {
     }
 }
 
-//struct SubscriptionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SubscriptionView(isShowSheet: .constant(true))
-//    }
-//}
+struct SubscriptionView_Previews: PreviewProvider {
+    static var previews: some View {
+        SubscriptionView(isShowSheet: .constant(true))
+            .environmentObject(PurchaseManager.init(entitlementManager: EntitlementManager()))
+    }
+}

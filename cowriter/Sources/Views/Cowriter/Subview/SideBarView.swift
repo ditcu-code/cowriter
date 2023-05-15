@@ -9,68 +9,17 @@ import SwiftUI
 
 struct SideBarView: View {
     @ObservedObject var vm: CowriterVM
-    @State private var showSubscriptionSheet: Bool = false
-    @EnvironmentObject private var entitlementManager: EntitlementManager
     var width: CGFloat
     
+    @State private var showSubscriptionSheet: Bool = false
+    
     var body: some View {
-        let hasReachedLimit = vm.allChats.count >= 3
-        let isPro = entitlementManager.hasPro
-        
         ZStack(alignment: .topLeading) {
             CustomRoundedRectangle(bottomRight: 12)
                 .fill(.background)
                 .edgesIgnoringSafeArea(.top)
             
-            VStack(alignment: .leading) {
-                if !vm.allChats.isEmpty {
-                    Text("Chats").bold()
-                } else {
-                    EmptyChatView()
-                }
-                List {
-                    ForEach(vm.allChats, id: \.self) { item in
-                        let isActiveChat = vm.currentChat == item
-                        HStack {
-                            Text(item.wrappedTitle)
-                                .lineLimit(1)
-                                .foregroundColor(.grayFont)
-                                .font(Font.system(.body, design: .serif))
-                            Spacer()
-                            if isActiveChat {
-                                Circle()
-                                    .frame(width: 9, height: 9)
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.currentChat = item
-                            vm.closeSideBar()
-                        }
-                    }.onDelete(perform: vm.removeChat)
-                }.listStyle(.plain)
-                
-                
-                if vm.currentChat != nil || vm.allChats.isEmpty {
-                    Spacer()
-                    Button {
-                        if hasReachedLimit && !isPro {
-                            showSubscriptionSheet.toggle()
-                        } else {
-                            vm.currentChat = nil
-                            vm.closeSideBar()
-                            vm.errorMessage = ""
-                            vm.favoriteFilterIsOn = false
-                        }
-                    } label: {
-                        Spacer()
-                        Label("New chat", systemImage: "plus").font(.headline)
-                        Spacer()
-                    }.buttonStyle(.bordered)
-                }
-                
-            }.padding()
+            ListChat(vm: vm, showSubscriptionSheet: $showSubscriptionSheet)
         }
         .transition(.move(edge: .leading))
         .frame(width: width)
@@ -97,13 +46,75 @@ struct SideBarView: View {
     }
 }
 
-struct SideBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SideBarView(vm: CowriterVM(), width: UIScreen.screenWidth - 100)
+fileprivate struct ListChat: View {
+    @ObservedObject var vm: CowriterVM
+    @EnvironmentObject private var entitlementManager: EntitlementManager
+    
+    @State private var editMode: EditMode = .inactive
+    @State private var isEditing: Bool = false
+    @Binding var showSubscriptionSheet: Bool
+    
+    var body: some View {
+        let hasReachedLimit = vm.allChats.count >= 1
+        let isPro = entitlementManager.hasPro
+        
+        VStack(alignment: .leading) {
+            if !vm.allChats.isEmpty {
+                HStack {
+                    Text("Chats").bold()
+                    Spacer()
+                    Button("Edit") {
+                        isEditing.toggle()
+                    }
+                }
+            } else {
+                EmptyChatView()
+            }
+            List {
+                ForEach(vm.allChats, id: \.self) { item in
+                    let isActiveChat = vm.currentChat == item
+                    HStack {
+                        Text(item.wrappedTitle)
+                            .lineLimit(1)
+                            .foregroundColor(.grayFont)
+                            .font(Font.system(.body, design: .serif))
+                        Spacer()
+                        if isActiveChat {
+                            Circle()
+                                .frame(width: 9, height: 9)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        vm.currentChat = item
+                        vm.closeSideBar()
+                    }
+                }.onDelete(perform: editMode == .active ? vm.removeChat : nil)
+            }
+            .listStyle(.plain)
+            .id(editMode.isEditing.description)
+            .environment(\.editMode, $editMode)
+            .onChange(of: isEditing, perform: { isEditing in
+                editMode = isEditing ? .active : .inactive
+            })
+            
+            Spacer()
+            NewChatButton {
+                if hasReachedLimit && !isPro {
+                    showSubscriptionSheet.toggle()
+                } else {
+                    vm.currentChat = nil
+                    vm.closeSideBar()
+                    vm.errorMessage = ""
+                    vm.favoriteFilterIsOn = false
+                }
+            }
+        }.padding()
     }
 }
 
-struct EmptyChatView: View {
+fileprivate struct EmptyChatView: View {
     var body: some View {
         HStack {
             Spacer()
@@ -118,5 +129,24 @@ struct EmptyChatView: View {
             }.foregroundColor(.gray.opacity(0.7))
             Spacer()
         }
+    }
+}
+
+fileprivate struct NewChatButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action){
+            Spacer()
+            Label("New chat", systemImage: "plus").font(.headline)
+            Spacer()
+        }.buttonStyle(.bordered)
+    }
+}
+
+struct SideBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SideBarView(vm: CowriterVM(), width: UIScreen.screenWidth - 100)
+            .environmentObject(EntitlementManager())
     }
 }
