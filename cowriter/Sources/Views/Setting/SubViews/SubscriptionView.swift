@@ -44,6 +44,7 @@ struct SubscriptionView: View {
                 
                 Button {
                     purchaseManager.restorePurchases()
+                    isShowSheet.toggle()
                 } label: {
                     Text("Restore purchase")
                         .font(.footnote)

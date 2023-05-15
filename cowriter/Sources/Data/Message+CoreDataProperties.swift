@@ -19,6 +19,7 @@ extension Message {
     @NSManaged public var id: UUID?
     @NSManaged public var date: Date?
     @NSManaged public var role: String?
+    @NSManaged public var ownerId: String?
     @NSManaged public var content: String?
     @NSManaged public var isFavorite: Bool
     
@@ -35,6 +36,10 @@ extension Message {
     
     public var wrappedRole: String {
         role ?? "Unknown role"
+    }
+    
+    public var wrappedOwnerId: String {
+        ownerId ?? "Unknown ownerId"
     }
     
     public var wrappedContent: String {

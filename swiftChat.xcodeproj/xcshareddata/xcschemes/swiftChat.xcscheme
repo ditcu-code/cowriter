@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-               BuildableName = "cowriter.app"
-               BlueprintName = "cowriter"
-               ReferencedContainer = "container:cowriter.xcodeproj">
+               BuildableName = "swiftChat.app"
+               BlueprintName = "swiftChat"
+               ReferencedContainer = "container:swiftChat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,17 +44,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-            BuildableName = "cowriter.app"
-            BlueprintName = "cowriter"
-            ReferencedContainer = "container:cowriter.xcodeproj">
+            BuildableName = "swiftChat.app"
+            BlueprintName = "swiftChat"
+            ReferencedContainer = "container:swiftChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <LocationScenarioReference
-         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-         referenceType = "1">
-      </LocationScenarioReference>
       <StoreKitConfigurationFileReference
-         identifier = "../../cowriter/MainConfiguration.storekit">
+         identifier = "../../cowriter/Sources/Data/SwiftChatStoreKit.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
@@ -68,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-            BuildableName = "cowriter.app"
-            BlueprintName = "cowriter"
-            ReferencedContainer = "container:cowriter.xcodeproj">
+            BuildableName = "swiftChat.app"
+            BlueprintName = "swiftChat"
+            ReferencedContainer = "container:swiftChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
