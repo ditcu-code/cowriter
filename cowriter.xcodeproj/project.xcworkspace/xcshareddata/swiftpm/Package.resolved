@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "alamofireeventsource",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JuniperPhoton/AlamofireEventSource",
+      "state" : {
+        "revision" : "fb2064e4907f6f38debaa5cc136f390722c33f22",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "gpt3-tokenizer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aespinilla/GPT3-Tokenizer.git",
+      "state" : {
+        "revision" : "cadab0d19a1602cc505493990a9fc4810d8e3070",
+        "version" : "0.1.2"
+      }
+    },
+    {
+      "identity" : "itextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/benjaminsage/iTextField",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1064f3ecb3fb36fc2e38b24d4986299d193b4951"
+      }
+    },
+    {
+      "identity" : "photonopenaikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JuniperPhoton/PhotonOpenAIKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b0e02df225291c803162855087ff4d805e97ef32"
+      }
+    }
+  ],
+  "version" : 2
+}

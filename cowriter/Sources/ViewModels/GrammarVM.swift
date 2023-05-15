@@ -25,7 +25,7 @@ class GrammarVM: ObservableObject {
     
     func check() {
         loading = true
-        textLang = Utils.detectLanguage(for: inputText)
+        textLang = inputText.language()
         let raw = CompletionRequestType(prompt: insertGrammarText(inputText))
         let dictionary = Utils.toDictionary(raw)
         
@@ -34,7 +34,6 @@ class GrammarVM: ObservableObject {
                 switch result {
                 case .success(let data):
                     print("Success! Response data: \(data)")
-                    
                     self.loading.toggle()
                     self.responseCompletion = data.self
                     
@@ -48,7 +47,7 @@ class GrammarVM: ObservableObject {
     
     func rephrase() {
         loading = true
-        textLang = Utils.detectLanguage(for: inputText)
+        textLang = inputText.language()
         let raw = ChatRequestType(messages: [ChatMessageType(role: "user", content: insertRephraseText(inputText))])
         let dictionary = Utils.toDictionary(raw)
         
@@ -57,7 +56,6 @@ class GrammarVM: ObservableObject {
                 switch result {
                 case .success(let data):
                     print("Success! Response data: \(data)")
-                    
                     self.loading.toggle()
                     self.responseChat = data.self
                     

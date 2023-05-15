@@ -10,23 +10,20 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @ObservedObject var appData = AppData()
+    
     var body: some View {
-        TabView {
-            CowriterView()
-                .tabItem {
-                    Label("Cowriter", systemImage: "timelapse")
-                }
-            
-            GrammarView()
-                .tabItem {
-                    Label("Grammar", systemImage: "checkmark.circle")
-                }
-            
-            HistoryView()
-                .tabItem {
-                    Label("History", systemImage: "clock.arrow.circlepath")
-                }
+        CowriterView().preferredColorScheme(selectedColorScheme)
+    }
+    
+    private var selectedColorScheme: ColorScheme? {
+        switch appData.preferredColorScheme {
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        case .system:
+            return nil
         }
     }
 }

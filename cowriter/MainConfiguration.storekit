@@ -1,0 +1,98 @@
+{
+  "identifier" : "0BDB4E82",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "6448862293",
+      "localizations" : [
+        {
+          "description" : "Unlimited chats",
+          "displayName" : "Monthly Subscription ",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "month.sub.test",
+      "referenceName" : "monthly.sub",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6447877850",
+    "_developerTeamID" : "474XANH3RF",
+    "_lastSynchronizedDate" : 705406836.11231196
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21338156",
+      "localizations" : [
+
+      ],
+      "name" : "Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "89.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6448935775",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited chats for a year",
+              "displayName" : "CowriterPro (1 Year)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "pro.annual.sub.test",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "pro.annual.sub",
+          "subscriptionGroupID" : "21338156",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "8.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6448935439",
+          "introductoryOffer" : {
+            "internalID" : "839A13AF",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Unlimited chats for a month",
+              "displayName" : "CowriterPro (1 Month)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "pro.monthly.sub.test",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "pro.monthly.sub",
+          "subscriptionGroupID" : "21338156",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

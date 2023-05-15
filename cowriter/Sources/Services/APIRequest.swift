@@ -29,7 +29,8 @@ class APIRequest {
                    method: .post,
                    parameters: body,
                    encoding: JSONEncoding.prettyPrinted,
-                   headers: headers)
+                   headers: headers
+        )
         .validate()
         .responseDecodable(of: dataModel, decoder: decoder) { response in
             switch response.result {
@@ -41,52 +42,3 @@ class APIRequest {
         }
     }
 }
-
-//class APIRequest {
-//    static func postRequestWithToken<T: Codable>(
-//        url: URL,
-//        dataModel: T.Type,
-//        body: [String: Any],
-//        completion: @escaping (Result<T, Error>) -> Void
-//    ) {
-//
-//        let token = Keychain.getApiKey() ?? ""
-//        var request = URLRequest(url: url)
-//
-//        request.httpMethod = "POST"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//
-//        do {
-//            let jsonData = try JSONSerialization.data(withJSONObject: body)
-//            request.httpBody = jsonData
-//            print(body)
-//        } catch {
-//            completion(.failure(error))
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//            if let error = error {
-//                completion(.failure(error))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(NSError(domain: "No data returned", code: 0, userInfo: nil)))
-//                return
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let responseObject = try decoder.decode(T.self, from: data)
-//                completion(.success(responseObject))
-//            } catch {
-//                completion(.failure(error))
-//            }
-//        }.resume()
-//    }
-//
-//}
