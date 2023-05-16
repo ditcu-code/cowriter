@@ -59,4 +59,18 @@ extension Message : Identifiable {
         return items
     }
     
+    static func deleteMessage(message: Message) {
+        let context = PersistenceController.viewContext
+        context.delete(message)
+        
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+                // Deletion successful
+            } catch {
+                // Error handling for saving context
+            }
+        }
+    }
+
 }

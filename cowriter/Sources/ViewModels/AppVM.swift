@@ -14,21 +14,25 @@ class AppVM: ObservableObject {
     private let cloudkitData = PublicDataCloudKit()
     
     func createNewUser() {
-        if User.isZero(in: context) {
-            let newUser = User(context: self.context)
-            newUser.joinDate = Date()
-            
-            CKContainer.default().fetchUserRecordID(completionHandler: { (recordId, error) in
-                if let name = recordId?.recordName {
-                    print("iCloud ID: " + name)
-                    newUser.id = name
-                }
-                else if let error = error {
-                    print(error.localizedDescription)
-                    newUser.id = UUID().uuidString
-                }
-                PersistenceController.save()
-            })
+        User.isZero(in: context) { isZero in
+            if isZero {
+                let newUser = User(context: self.context)
+                newUser.joinDate = Date()
+                
+                CKContainer.default().fetchUserRecordID(completionHandler: { (recordId, error) in
+                    if let name = recordId?.recordName {
+                        print("iCloud ID: " + name)
+                        newUser.id = name
+                    }
+                    else if let error = error {
+                        print(error.localizedDescription)
+                        newUser.id = UUID().uuidString
+                    }
+                    PersistenceController.save()
+                })
+            } else {
+                print("User already available")
+            }
         }
     }
     

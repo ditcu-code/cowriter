@@ -28,7 +28,7 @@ extension Chat {
     }
     
     public var wrappedTitle: String {
-        title ?? "Cowriter"
+        title ?? "SwiftChat"
     }
     
     public var wrappedUsage: Int {
@@ -72,6 +72,28 @@ extension Chat : Identifiable {
         } catch {
             print(error.localizedDescription)
             return []
+        }
+    }
+    
+    static func deleteChat(chat: Chat) {
+       let context = PersistenceController.viewContext
+        let messages = chat.messages?.allObjects as? [Message]
+        
+        // Delete all messages related to the chat
+        if let messages = messages {
+            for message in messages {
+                Message.deleteMessage(message: message)
+            }
+        }
+        
+        // Delete the chat itself
+        context.delete(chat)
+        
+        do {
+            try context.save()
+            // Deletion successful
+        } catch {
+            // Error handling for saving context
         }
     }
     

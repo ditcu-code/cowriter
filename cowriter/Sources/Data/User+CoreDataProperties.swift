@@ -56,16 +56,16 @@ extension User {
 
 extension User: Identifiable {
     
-    public static func isZero(in context: NSManagedObjectContext) -> Bool {
+    public static func isZero(in context: NSManagedObjectContext, completion: @escaping (Bool) -> Void) {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.resultType = .countResultType
         
         do {
             let count = try context.count(for: fetchRequest)
-            return count == 0
+            completion(count == 0)
         } catch {
             print("Error fetching user count: \(error)")
-            return true
+            completion(true)
         }
     }
     

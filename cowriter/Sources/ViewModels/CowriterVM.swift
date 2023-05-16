@@ -52,10 +52,10 @@ class CowriterVM: ObservableObject {
     func request(_ chat: Chat?) {
         cancel()
         task = Task {
-            var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
-                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your kindly writing assistant"),
+                .init(role: ChatRoleEnum.system.rawValue, content: "My name is SwiftChat, your simple, fast and smart assistant"),
             ]
             
             func createNewMessage(
@@ -110,6 +110,7 @@ class CowriterVM: ObservableObject {
                     self.getChatTitle(prompt: message, completion: { result in
                         chat.title = result.title.capitalized.removeNewLines()
                         chat.tokenUsage += Int32(result.token)
+                        PersistenceController.save()
                     })
                 }
                 withAnimation {
@@ -212,7 +213,7 @@ class CowriterVM: ObservableObject {
         for index in offsets {
             Task {
                 let chat = self.allChats[index]
-                PersistenceController.viewContext.delete(chat)
+                Chat.deleteChat(chat: chat)
                 DispatchQueue.main.async {
                     self.getAllChats()
                     self.currentChat = nil
