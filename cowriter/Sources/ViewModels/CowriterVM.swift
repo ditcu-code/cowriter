@@ -27,7 +27,6 @@ class CowriterVM: ObservableObject {
     @Published var isFocusOnPrompter: Bool = false
     @Published var favoriteFilterIsOn: Bool = false
     
-    private var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getApiKey() ?? "", withAdaptor: AlamofireAdaptor())
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
     private let context = PersistenceController.viewContext
@@ -53,6 +52,7 @@ class CowriterVM: ObservableObject {
     func request(_ chat: Chat?) {
         cancel()
         task = Task {
+            var client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your kindly writing assistant"),

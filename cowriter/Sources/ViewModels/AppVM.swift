@@ -10,6 +10,8 @@ import CloudKit
 
 class AppVM: ObservableObject {
     private let context = PersistenceController.viewContext
+    private let appData = AppData()
+    private let cloudkitData = PublicDataCloudKit()
     
     func createNewUser() {
         if User.isZero(in: context) {
@@ -28,5 +30,10 @@ class AppVM: ObservableObject {
                 PersistenceController.save()
             })
         }
+    }
+    
+    func initialCheck() {
+        createNewUser()
+        cloudkitData.fetchMyObjects()
     }
 }

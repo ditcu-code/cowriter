@@ -9,15 +9,21 @@ import Foundation
 import SwiftUI
 
 class AppData: ObservableObject {
-    @AppStorage(AppStorageKey.hasFirstLaunched.rawValue) var hasFirstLaunched: Bool = false
+    static let shared = AppData()
+    @AppStorage(AppStorageKey.setupCompleted.rawValue) var setupCompleted: Bool = false
+    @AppStorage(AppStorageKey.titleModifiedDate.rawValue) var titleModifiedDate: String = ""
     @AppStorage(AppStorageKey.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
     
-    static func setHasFirstLaunched(_ value: Bool) {
-        UserDefaults.standard.set(value, forKey: AppStorageKey.hasFirstLaunched.rawValue)
+    static func setSetupCompleted(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: AppStorageKey.setupCompleted.rawValue)
+    }
+    static func setTitleModifiedDate(_ value: Date) {
+        UserDefaults.standard.set(value.description, forKey: AppStorageKey.titleModifiedDate.rawValue)
     }
 }
 
 enum AppStorageKey: String {
-    case hasFirstLaunched
+    case setupCompleted
+    case titleModifiedDate
     case preferredColorScheme
 }

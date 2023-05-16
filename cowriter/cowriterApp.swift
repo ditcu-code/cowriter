@@ -33,7 +33,7 @@ struct cowriterApp: App {
                     await purchaseManager.updatePurchasedProducts()
                 }
                 .onFirstAppear {
-                    vm.createNewUser()
+                    vm.initialCheck()
                 }
         }
     }

@@ -55,7 +55,7 @@ fileprivate struct ListChat: View {
     @Binding var showSubscriptionSheet: Bool
     
     var body: some View {
-        let hasReachedLimit = vm.allChats.count >= 1
+        let hasReachedLimit = vm.allChats.count >= 3
         let isPro = entitlementManager.hasPro
         
         VStack(alignment: .leading) {

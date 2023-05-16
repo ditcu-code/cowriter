@@ -14,6 +14,7 @@
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
 		0E4812E32A128BC90043A235 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */; };
+		0E4813022A129EE70043A235 /* PublicDataCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicDataCloudKit.swift */; };
 		0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */; };
 		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
 		0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */; };
@@ -76,6 +77,7 @@
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		0E4812E12A122E910043A235 /* swiftChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftChat.entitlements; sourceTree = "<group>"; };
 		0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = SwiftChatStoreKit.storekit; path = cowriter/Sources/Data/SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
+		0E4813012A129EE70043A235 /* PublicDataCloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataCloudKit.swift; sourceTree = "<group>"; };
 		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* swiftChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4813002A129ED00043A235 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				0E4813012A129EE70043A235 /* PublicDataCloudKit.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +253,7 @@
 		0E6A656729DD2923003457DF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0E4813002A129ED00043A235 /* CloudKit */,
 				0EE546DC2A0E787E0036C0EB /* AppData.swift */,
 				0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */,
 				0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */,
@@ -464,6 +475,7 @@
 				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
 				0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */,
 				0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */,
+				0E4813022A129EE70043A235 /* PublicDataCloudKit.swift in Sources */,
 				0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E72272D2A11155D00FADE9C /* ProfileVM.swift in Sources */,

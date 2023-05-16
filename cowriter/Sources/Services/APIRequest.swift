@@ -15,7 +15,7 @@ class APIRequest {
         body: [String: Any],
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        let token = Keychain.getApiKey() ?? ""
+        let token = Keychain.getSwift() ?? ""
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
