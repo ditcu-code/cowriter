@@ -16,12 +16,11 @@ extension Message {
         return NSFetchRequest<Message>(entityName: "Message")
     }
     
-    @NSManaged public var id: UUID?
-    @NSManaged public var date: Date?
-    @NSManaged public var role: String?
-    @NSManaged public var ownerId: String?
     @NSManaged public var content: String?
+    @NSManaged public var date: Date?
+    @NSManaged public var id: UUID?
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var role: String?
     
     @NSManaged public var chat: Chat?
     @NSManaged public var owner: User?
@@ -39,9 +38,6 @@ extension Message {
         role ?? "Unknown role"
     }
     
-    public var wrappedOwnerId: String {
-        ownerId ?? "Unknown ownerId"
-    }
     
     public var wrappedContent: String {
         content ?? "Unknown content"
@@ -72,5 +68,5 @@ extension Message : Identifiable {
             }
         }
     }
-
+    
 }

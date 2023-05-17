@@ -19,6 +19,7 @@ extension User {
     @NSManaged public var id: String?
     @NSManaged public var joinDate: Date?
     @NSManaged public var name: String?
+    @NSManaged public var totalUsage: Int32
     
     @NSManaged public var chats: Chat?
     @NSManaged public var messages: Message?
@@ -39,24 +40,42 @@ extension User {
 
 // MARK: Generated accessors for chats
 extension User {
-
+    
     @objc(addChatsObject:)
     @NSManaged public func addToChats(_ value: Chat)
-
+    
     @objc(removeChatsObject:)
     @NSManaged public func removeFromChats(_ value: Chat)
-
+    
     @objc(addChats:)
     @NSManaged public func addToChats(_ values: NSSet)
-
+    
     @objc(removeChats:)
     @NSManaged public func removeFromChats(_ values: NSSet)
+    
+}
 
+// MARK: Generated accessors for messages
+extension User {
+    
+    @objc(addMessagesObject:)
+    @NSManaged public func addToMessages(_ value: Message)
+    
+    @objc(removeMessagesObject:)
+    @NSManaged public func removeFromMessages(_ value: Message)
+    
+    @objc(addMessages:)
+    @NSManaged public func addToMessages(_ values: NSSet)
+    
+    @objc(removeMessages:)
+    @NSManaged public func removeFromMessages(_ values: NSSet)
+    
 }
 
 extension User: Identifiable {
     
-    public static func isZero(in context: NSManagedObjectContext, completion: @escaping (Bool) -> Void) {
+    public static func isZero(completion: @escaping (Bool) -> Void) {
+        let context = PersistenceController.viewContext
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.resultType = .countResultType
         
@@ -69,7 +88,8 @@ extension User: Identifiable {
         }
     }
     
-    public static func fetchFirstUser(in context: NSManagedObjectContext) -> User? {
+    public static func fetchFirstUser() -> User? {
+        let context = PersistenceController.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
         request.fetchLimit = 1
         

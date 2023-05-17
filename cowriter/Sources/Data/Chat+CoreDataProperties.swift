@@ -18,7 +18,6 @@ extension Chat {
     
     @NSManaged public var id: UUID?
     @NSManaged public var title: String?
-    @NSManaged public var tokenUsage: Int32
     
     @NSManaged public var messages: NSSet?
     @NSManaged public var owner: User?
@@ -29,10 +28,6 @@ extension Chat {
     
     public var wrappedTitle: String {
         title ?? "SwiftChat"
-    }
-    
-    public var wrappedUsage: Int {
-        Int(tokenUsage)
     }
     
     public var wrappedMessages: [Message] {
@@ -76,7 +71,7 @@ extension Chat : Identifiable {
     }
     
     static func deleteChat(chat: Chat) {
-       let context = PersistenceController.viewContext
+        let context = PersistenceController.viewContext
         let messages = chat.messages?.allObjects as? [Message]
         
         // Delete all messages related to the chat
@@ -87,13 +82,15 @@ extension Chat : Identifiable {
         }
         
         // Delete the chat itself
-        context.delete(chat)
-        
-        do {
-            try context.save()
-            // Deletion successful
-        } catch {
-            // Error handling for saving context
+        DispatchQueue.main.async {
+            context.delete(chat)
+            
+            do {
+                try context.save()
+                // Deletion successful
+            } catch {
+                // Error handling for saving context
+            }
         }
     }
     
