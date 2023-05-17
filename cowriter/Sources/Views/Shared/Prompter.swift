@@ -14,7 +14,7 @@ struct Prompter: View {
     var body: some View {
         HStack {
             iTextField(
-                "Tell SwiftChat to...",
+                "Tell Swift to...",
                 text: $vm.userMessage,
                 isEditing: $vm.isFocusOnPrompter
             )
