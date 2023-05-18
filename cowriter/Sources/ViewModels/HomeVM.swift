@@ -90,7 +90,7 @@ class HomeVM: ObservableObject {
                 currentMessage = newMessage
                 chat.addToMessages(newMessage)
                 // token count for userMessage
-                chat.owner?.totalUsage = Int32(userMessage.tokenize())
+                chat.owner?.totalUsage += Int32(userMessage.tokenize())
                 currentChat = chat
             } else {
                 let newChat = Chat(context: context)
