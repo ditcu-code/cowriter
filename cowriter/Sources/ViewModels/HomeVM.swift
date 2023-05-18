@@ -232,6 +232,10 @@ class HomeVM: ObservableObject {
         self.cloudKitData.fetchSwiftKey()
     }
     
+    func updateUsage() async {
+        await self.cloudKitData.updateUsage()
+    }
+    
     // UI
     
     func closeSideBar() {

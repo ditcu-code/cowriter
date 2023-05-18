@@ -12,78 +12,82 @@ class PublicCloudKitService {
     private let container: CKContainer
     private let database: CKDatabase
     private let appData = AppData.self
-    private let user: User?
+    private let profile = ProfileManager()
+    
+    private let usageRecordType: String = "UserUsageType"
     
     init() {
         container = CKContainer.default()
         database = container.publicCloudDatabase
-        user = User.fetchFirstUser()
     }
     
-    func createUsage() {
-        if let userId = user?.id, let totalUsage = user?.totalUsage {
-            let record = CKRecord(recordType: "UserUsageType", recordID: CKRecord.ID(recordName: "Usage_Of_\(userId)"))
-            record.setValue(NSNumber(value: totalUsage), forKey: "totalUsage")
-            database.save(record) { record, saveError in
-                if let saveError = saveError {
-                    // Handle the save error
-                    print("Error saving record: \(saveError.localizedDescription)")
-                } else {
-                    // The record was saved successfully
-                    print("Record saved successfully!")
-                }
+    func getRecordName() -> String? {
+        if let user = profile.user, let userId = user.id {
+            return "Usage_Of_\(userId)"
+        }
+        return nil
+    }
+    
+    func createUsage() async {
+        if let user = profile.user, let recordName = getRecordName() {
+            let record = CKRecord(recordType: usageRecordType, recordID: CKRecord.ID(recordName: recordName))
+            record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: "totalUsage")
+            do {
+                try await database.save(record)
+                // The record was saved successfully
+                print("UserUsage >> Successfully created!")
+            } catch let saveError {
+                // Handle the save error
+                print("UserUsage >> Error creation: \(saveError.localizedDescription)")
             }
         }
     }
     
-    //    func modifyUsage(_ usage: Int = 0) {
-    //        if let userId = user?.id {
-    //            database.fetch(withRecordID: CKRecord.ID(recordName: "Usage-of-\(userId)")) { record, error in
-    //                if let error = error {
-    //                    // Handle the error
-    ////                    self.createUsage()
-    //                    print("Error fetching record: \(error.localizedDescription)")
-    //                } else if let record = record {
-    //                    // Modify the desired fields or values of the record
-    //                    let lastGiven = record["lastGiven"]
-    //                    let prevUsage = record["totalUsage"] as? Int ?? 0
-    //                    record.setValue(prevUsage + usage, forKey: "")
+    func updateUsage() async {
+        if let user = profile.user, let recordName = getRecordName() {
+            do {
+                let record = try await database.record(for: CKRecord.ID(recordName: recordName))
+                // Modify the desired fields or values of the record
+                //                let lastGiven = record1["lastGiven"]
+                let prevUsage = record["totalUsage"] as? Int ?? 0
+                record.setValue(prevUsage + user.wrappedTotalUsage, forKey: "totalUsage")
+                // Save the modified record back to CloudKit
+                do {
+                    try await self.database.save(record)
+                    // The record was saved successfully
+                    print("UserUsage >> Successfully updated!")
+                } catch let saveError {
+                    // Handle the save error
+                    print("UserUsage >> Error update: \(saveError.localizedDescription)")
+                }
+            } catch let error {
+                // Handle the error
+                print("UserUsage >> Error fetching latest usage: \(error.localizedDescription)")
+                await self.createUsage()
+            }
+        }
+    }
+    
+    //    func haveReachedLimit() {
+    //        self.createUsage()
+    //        if let user = user {
+    //            let dailyQuota = 500
+    //            let maxDailyUsage = 2000
+    //            let days = user.joinDate?.countDays(to: Date()) ?? 0
+    //            let totalQuota = dailyQuota * (days + 1) // 5000
+    //            //
+    //            let quota = totalQuota - Int(user.totalUsage) // 4500
     //
-    //                    // Save the modified record back to CloudKit
-    //                    self.database.save(record) { (savedRecord, saveError) in
-    //                        if let saveError = saveError {
-    //                            // Handle the save error
-    //                            print("Error saving record: \(saveError.localizedDescription)")
-    //                        } else {
-    //                            // The record was saved successfully
-    //                            print("Record saved successfully!")
-    //                        }
-    //                    }
-    //                }
-    //            }
+    //            let quotaGiven = quota > maxDailyUsage ? maxDailyUsage : quota ///
+    //            print("quota", quota, user)
     //        }
     //    }
-    
-//    func haveReachedLimit() {
-        //        self.createUsage()
-        //        if let user = user {
-        //            let dailyQuota = 500
-        //            let maxDailyUsage = 2000
-        //            let days = user.joinDate?.countDays(to: Date()) ?? 0
-        //            let totalQuota = dailyQuota * (days + 1) // 5000
-        //            //
-        //            let quota = totalQuota - Int(user.totalUsage) // 4500
-        //
-        //            let quotaGiven = quota > maxDailyUsage ? maxDailyUsage : quota ///
-        //            print("quota", quota, user)
-        //        }
-//    }
     
     func fetchSwiftKey() {
         let recordID = CKRecord.ID(recordName: "swiftKey")
         database.fetch(withRecordID: recordID) { record, error in
             guard let record = record, let modificationDate = record.modificationDate else {
-                print("Error fetch")
+                print("SwiftKey >> Error fetch")
                 return
             }
             

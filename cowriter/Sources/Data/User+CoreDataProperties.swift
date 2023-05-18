@@ -36,6 +36,10 @@ extension User {
         name ?? "Unknown name"
     }
     
+    public var wrappedTotalUsage: Int {
+        Int(totalUsage)
+    }
+    
 }
 
 // MARK: Generated accessors for chats
