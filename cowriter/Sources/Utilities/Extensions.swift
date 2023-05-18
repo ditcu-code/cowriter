@@ -97,6 +97,18 @@ extension Date {
         formatter.dateFormat = "MMMM yyyy"
         return formatter.string(from: self)
     }
+    
+    func countDays(to endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: self, to: endDate)
+        
+        guard let days = components.day else {
+            return 0 // Could not calculate the number of days
+        }
+        
+        return abs(days) // Return the absolute value of days
+    }
+    
 }
 
 extension View {
