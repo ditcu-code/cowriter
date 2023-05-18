@@ -14,6 +14,7 @@
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
 		0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B52A16305A00C4D78F /* GreetingVM.swift */; };
+		0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B72A16428800C4D78F /* WelcomeService.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
 		0E4812E32A128BC90043A235 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */; };
 		0E4813022A129EE70043A235 /* PublicDataCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicDataCloudKit.swift */; };
@@ -30,7 +31,6 @@
 		0E7227282A11138C00FADE9C /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */; };
 		0E72272B2A11142100FADE9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272A2A11142100FADE9C /* ProfileView.swift */; };
 		0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272C2A11155D00FADE9C /* ProfileManager.swift */; };
-		0E72272F2A112DAA00FADE9C /* AppVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272E2A112DAA00FADE9C /* AppVM.swift */; };
 		0E7C414029F95CE50075B638 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* ChatView.swift */; };
 		0E800E492A16222100C82D68 /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E800E482A16222100C82D68 /* WelcomeVM.swift */; };
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
@@ -80,6 +80,7 @@
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0E1502B22A16276A00C4D78F /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		0E1502B52A16305A00C4D78F /* GreetingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVM.swift; sourceTree = "<group>"; };
+		0E1502B72A16428800C4D78F /* WelcomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeService.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		0E4812E12A122E910043A235 /* swiftChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftChat.entitlements; sourceTree = "<group>"; };
 		0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = SwiftChatStoreKit.storekit; path = cowriter/Sources/Data/SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
@@ -98,7 +99,6 @@
 		0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0E72272A2A11142100FADE9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0E72272C2A11155D00FADE9C /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
-		0E72272E2A112DAA00FADE9C /* AppVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVM.swift; sourceTree = "<group>"; };
 		0E7C413F29F95CE50075B638 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0E800E482A16222100C82D68 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
 		0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatViews.swift; sourceTree = "<group>"; };
@@ -248,7 +248,6 @@
 			children = (
 				0E1502B42A16304A00C4D78F /* Home */,
 				0E7227292A1113E500FADE9C /* StoreKit */,
-				0E72272E2A112DAA00FADE9C /* AppVM.swift */,
 				0EC312E629E80C1B00C9FE68 /* CowriterVM.swift */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0ECC7BFD29DD4EE1002A6B7F /* GrammarVM.swift */,
@@ -273,6 +272,7 @@
 				0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */,
 				0ECC7C0729DDBC92002A6B7F /* Keychain.swift */,
 				0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */,
+				0E1502B72A16428800C4D78F /* WelcomeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -536,6 +536,7 @@
 				0E0A637229ED9F3C00DB7540 /* MagicButton.swift in Sources */,
 				0EF164B829F2EC8700CC35B1 /* Message+CoreDataProperties.swift in Sources */,
 				0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */,
+				0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* CowriterVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
@@ -544,7 +545,6 @@
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
 				0E7C414029F95CE50075B638 /* ChatView.swift in Sources */,
 				0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */,
-				0E72272F2A112DAA00FADE9C /* AppVM.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* FavoritesView.swift in Sources */,
 				0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */,
 				0EB86DDC29FEE107005B5EE1 /* AsisstView.swift in Sources */,
