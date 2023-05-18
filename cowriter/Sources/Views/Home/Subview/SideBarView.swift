@@ -102,6 +102,7 @@ fileprivate struct ListChat: View {
             Spacer()
             NewChatButton {
                 if hasReachedLimit && !isPro {
+                    vm.isFocusOnPrompter = false
                     showSubscriptionSheet.toggle()
                 } else {
                     vm.currentChat = nil
