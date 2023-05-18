@@ -1,6 +1,6 @@
 //
-//  CowriterToolbarView.swift
-//  cowriter
+//  swiftChatToolbarView.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 08/05/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeToolbar: ToolbarContent {
-    @ObservedObject var vm: CowriterVM
+    @ObservedObject var vm: HomeVM
     var width: CGFloat
     
     var body: some ToolbarContent {
@@ -70,7 +70,7 @@ struct HomeToolbar: ToolbarContent {
 }
 
 fileprivate struct ToolbarTrailing<T: View, U: View>: View {
-    @StateObject var vm: CowriterVM
+    @StateObject var vm: HomeVM
     var width: CGFloat
     let destinationView: T
     let labelView: U

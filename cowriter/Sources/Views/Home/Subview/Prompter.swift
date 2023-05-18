@@ -1,6 +1,6 @@
 //
 //  Prompter.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 15/04/23.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import iTextField
 
 struct Prompter: View {
-    @StateObject var vm: CowriterVM
+    @StateObject var vm: HomeVM
     
     var body: some View {
         HStack {
@@ -52,6 +52,6 @@ struct Prompter: View {
 
 struct PrompterView_Previews: PreviewProvider {
     static var previews: some View {
-        Prompter(vm: CowriterVM())
+        Prompter(vm: HomeVM())
     }
 }

@@ -1,6 +1,6 @@
 //
-//  CowriterLogo.swift
-//  cowriter
+//  swiftChatLogo.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 15/04/23.
 //
@@ -12,8 +12,8 @@ struct CowriterLogo: View {
     
     var body: some View {
         HStack(spacing: isPro ? 0 : -5) {
-            Text("SwiftChat").customFont(48, .grayFont)
-            Text(isPro ? "pro" : ".").customFont(48, .blue)
+            Text("SwiftChat").gillFont(48, .grayFont)
+            Text(isPro ? "pro" : ".").gillFont(48, .blue)
         }
     }
 }

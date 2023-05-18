@@ -1,6 +1,6 @@
 //
 //  SubscriptionView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //

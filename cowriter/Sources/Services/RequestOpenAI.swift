@@ -1,6 +1,6 @@
 //
 //  APIRequest.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/04/23.
 //
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class APIRequest {
+class RequestOpenAI {
     static func postRequestWithToken<T: Codable>(
         url: URL,
         dataModel: T.Type,

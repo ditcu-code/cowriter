@@ -1,6 +1,6 @@
 //
-//  CowriterVM.swift
-//  cowriter
+//  swiftChatVM.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 13/04/23.
 //
@@ -11,7 +11,7 @@ import CoreData
 import PhotonOpenAIKit
 import PhotonOpenAIAlamofireAdaptor
 
-class CowriterVM: ObservableObject {
+class HomeVM: ObservableObject {
     @Published var userMessage: String = "" /// prompt
     @Published var textToDisplay: String = "" /// answer
     
@@ -193,7 +193,7 @@ class CowriterVM: ObservableObject {
             let rawRequest = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, temperature: 0, max_tokens: 8)
             let dictionaryRequest = Utils.toDictionary(rawRequest)
             
-            APIRequest.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionaryRequest) { result in
+            RequestOpenAI.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionaryRequest) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):

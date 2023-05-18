@@ -1,6 +1,6 @@
 //
 //  ProfileViewVM.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 14/05/23.
 //

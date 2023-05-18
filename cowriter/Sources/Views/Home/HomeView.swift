@@ -1,6 +1,6 @@
 //
-//  CowriterView.swift
-//  cowriter
+//  swiftChatView.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var vm: CowriterVM = CowriterVM()
+    @StateObject var vm: HomeVM = HomeVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
     private let sideBarWidth: CGFloat = UIScreen.screenWidth - 100

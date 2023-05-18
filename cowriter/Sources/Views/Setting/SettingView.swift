@@ -1,6 +1,6 @@
 //
 //  SettingView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 05/05/23.
 //

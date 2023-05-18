@@ -1,6 +1,6 @@
 //
 //  Chat.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 26/04/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
-    @ObservedObject var vm: CowriterVM
+    @ObservedObject var vm: HomeVM
     @Namespace private var bottomID
     @State private var isScrolled: Bool = false
     
@@ -72,6 +72,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(vm: CowriterVM())
+        ChatView(vm: HomeVM())
     }
 }

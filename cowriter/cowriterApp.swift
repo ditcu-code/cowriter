@@ -1,6 +1,6 @@
 //
-//  cowriterApp.swift
-//  cowriter
+//  swiftChatApp.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 05/04/23.
 //
