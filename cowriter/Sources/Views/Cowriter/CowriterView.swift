@@ -67,6 +67,7 @@ struct CowriterView: View {
                 CowriterToolbarView(vm: vm, width: sideBarWidth)
             }
             .task {
+                vm.getTheKey()
                 if purchaseManager.products.isEmpty {
                     purchaseManager.loadProducts()
                 }

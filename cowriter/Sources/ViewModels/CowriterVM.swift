@@ -30,7 +30,7 @@ class CowriterVM: ObservableObject {
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
     private let context = PersistenceController.viewContext
-    private let cloudKitData = PublicDataCloudKit()
+    private let cloudKitData = PublicCloudKitService()
     
     init() {
         getAllChats()
@@ -221,6 +221,11 @@ class CowriterVM: ObservableObject {
                 }
             }
         }
+    }
+    
+    // triggered on task
+    func getTheKey() {
+        self.cloudKitData.fetchSwiftKey()
     }
     
     // UI

@@ -51,7 +51,6 @@ struct WelcomeView: View {
             }
             .onChange(of: vm.step, perform: { newValue in
                 vm.playWelcomeSentences()
-                print("fetchFirstUser", User.fetchFirstUser()?.id ?? User())
             })
             .onAppear {
                 vm.firstAppear()

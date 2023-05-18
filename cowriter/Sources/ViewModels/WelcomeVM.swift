@@ -12,6 +12,7 @@ class WelcomeVM: ObservableObject {
     @Published var welcomeText: String?
     @Published var step: Int = -1
     
+    private let cloudKitService = PublicCloudKitService()
     private let welcomeService = WelcomeService()
     
     private let welcomeSentences = [
@@ -35,13 +36,13 @@ class WelcomeVM: ObservableObject {
     func startNextStep() {
         if welcomeText == welcomeSentences[step] {
             step += 1
-        }
-        
-        User.isEmpty() { emptyUser in
-            if emptyUser {
-                self.welcomeService.createNewUser()
-            } else {
-                print("User already available!")
+            
+            User.isEmpty() { emptyUser in
+                if emptyUser {
+                    self.welcomeService.createNewUser()
+                } else {
+                    print("User already available!")
+                }
             }
         }
     }
