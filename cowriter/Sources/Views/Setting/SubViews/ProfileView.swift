@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject private var vm: ProfileVM = ProfileVM()
+    @StateObject private var vm: ProfileManager = ProfileManager()
     @FocusState private var nameFocus
     
     var body: some View {

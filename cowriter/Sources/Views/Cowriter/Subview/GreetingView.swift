@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct GreetingView: View {
-    @StateObject var vm = ProfileVM()
-    @State private var greeting1: String? = nil
-    @State private var greeting2: String? = nil
+    @StateObject var profile = ProfileManager()
+    @StateObject var vm = GreetingVM()
     
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                if let unwrappedText: String = greeting1 {
+                if let unwrappedText: String = vm.greeting1 {
                     Text(unwrappedText).bold()
                         .font(Font.system(.title3, design: .serif))
                         .foregroundColor(.defaultFont)
                         .transition(.moveAndFade)
                 }
                 
-                if let unwrappedText: String = greeting2 {
+                if let unwrappedText: String = vm.greeting2 {
                     Text(unwrappedText).bold()
                         .font(Font.system(.title2, design: .serif))
                         .foregroundColor(.grayFont)
@@ -34,64 +33,10 @@ struct GreetingView: View {
         }
         .padding()
         .padding(.horizontal)
-        .animation(.interpolatingSpring(stiffness: 60, damping: 12), value: [greeting1, greeting2])
+        .animation(.interpolatingSpring(stiffness: 60, damping: 12), value: [vm.greeting1, vm.greeting2])
         .onAppear {
-            startGreetingsAnimation()
+            vm.startGreetingsAnimation(profileName: profile.user?.wrappedName)
         }
-    }
-    
-    private let firstGreetings: [String] = [
-        "Good day!",
-        "Hi there!",
-        "Hello! 👋🏼",
-        "Greetings!",
-        "Welcome!"
-    ]
-    
-    private let greetings: [String] = [
-        "How can I assist you with your writing today?",
-        "Your pair programming here",
-        "Need any help with editing or proofreading your writing?",
-        "Need any recipe ideas or cooking tips?",
-        "Want to take a moment to reflect on your personal growth?",
-        "Ready to take your productivity to the next level?"
-    ]
-    
-    private let lastGreetings: [String] = [
-        "Is there anything I can help you with?",
-        "What can I do for you today?",
-        "What brings you here today?",
-        "Is there anything you'd like to chat about?",
-        "What can I help?",
-        "What do you need assistance with?",
-        "Let's get started!"
-    ]
-    
-    private func startGreetingsAnimation() {
-        guard greeting1 == nil else { return }
-
-        var finalFirstGreetings = firstGreetings
-        finalFirstGreetings.append("Hi, \(vm.user?.wrappedName ?? "Human")!")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            greeting1 = finalFirstGreetings.randomElement()!
-        }
-        
-        var randomGreetings: [String] = Array(Set(greetings.shuffled().prefix(2)))
-        randomGreetings.append(lastGreetings.randomElement()!)
-        
-        randomGreetings.enumerated().forEach { index, greeting in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3 + Double(index * 5) ) {
-                /// 3 10 17 24
-                greeting2 = greeting
-                if randomGreetings.last != greeting {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
-                        greeting2 = nil
-                    }
-                }
-            }
-        }
-
     }
 }
 

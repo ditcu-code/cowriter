@@ -7,11 +7,10 @@
 
 import Foundation
 
-class ProfileVM: ObservableObject {
+class ProfileManager: ObservableObject {
     private var context = PersistenceController.viewContext
     
     @Published var user: User?
-    
     @Published var name: String = ""
     @Published var isProfileTap = false
     
