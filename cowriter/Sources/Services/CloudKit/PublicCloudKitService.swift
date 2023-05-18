@@ -12,7 +12,6 @@ class PublicCloudKitService {
     private let container: CKContainer
     private let database: CKDatabase
     private let appData = AppData.self
-    private let profile = ProfileManager()
     
     private let usageRecordType: String = "UserUsageType"
     
@@ -21,30 +20,15 @@ class PublicCloudKitService {
         database = container.publicCloudDatabase
     }
     
-    func getRecordName() -> String? {
-        if let user = profile.user, let userId = user.id {
+    func getRecordName(_ userId: String?) -> String? {
+        if let userId = userId {
             return "Usage_Of_\(userId)"
         }
         return nil
     }
     
-    func createUsage() async {
-        if let user = profile.user, let recordName = getRecordName() {
-            let record = CKRecord(recordType: usageRecordType, recordID: CKRecord.ID(recordName: recordName))
-            record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: "totalUsage")
-            do {
-                try await database.save(record)
-                // The record was saved successfully
-                print("UserUsage >> Successfully created!")
-            } catch let saveError {
-                // Handle the save error
-                print("UserUsage >> Error creation: \(saveError.localizedDescription)")
-            }
-        }
-    }
-    
-    func updateUsage() async {
-        if let user = profile.user, let recordName = getRecordName() {
+    func updateUsage(user: User) async {
+        if let recordName = getRecordName(user.id) {
             do {
                 let record = try await database.record(for: CKRecord.ID(recordName: recordName))
                 // Modify the desired fields or values of the record
@@ -63,7 +47,22 @@ class PublicCloudKitService {
             } catch let error {
                 // Handle the error
                 print("UserUsage >> Error fetching latest usage: \(error.localizedDescription)")
-                await self.createUsage()
+                await self.createUsage(user)
+            }
+        }
+    }
+    
+    func createUsage(_ user: User) async {
+        if let recordName = getRecordName(user.id) {
+            let record = CKRecord(recordType: usageRecordType, recordID: CKRecord.ID(recordName: recordName))
+            record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: "totalUsage")
+            do {
+                try await database.save(record)
+                // The record was saved successfully
+                print("UserUsage >> Successfully created!")
+            } catch let saveError {
+                // Handle the save error
+                print("UserUsage >> Error creation: \(saveError.localizedDescription)")
             }
         }
     }

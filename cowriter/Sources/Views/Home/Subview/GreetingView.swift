@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GreetingView: View {
-    @StateObject var profile = ProfileManager()
+    @ObservedObject var parentVm: HomeVM
     @StateObject var vm = GreetingVM()
     
     var body: some View {
@@ -33,15 +33,18 @@ struct GreetingView: View {
         }
         .padding()
         .padding(.horizontal)
-        .animation(.interpolatingSpring(stiffness: 60, damping: 12), value: [vm.greeting1, vm.greeting2])
+        .animation(
+            .interpolatingSpring(stiffness: 60, damping: 12),
+            value: [vm.greeting1, vm.greeting2]
+        )
         .onAppear {
-            vm.startGreetingsAnimation(profileName: profile.user?.wrappedName)
+            vm.startGreetingsAnimation(profileName: parentVm.currentUser?.wrappedName)
         }
     }
 }
 
 struct GreetingView_Previews: PreviewProvider {
     static var previews: some View {
-        GreetingView()
+        GreetingView(parentVm: HomeVM())
     }
 }

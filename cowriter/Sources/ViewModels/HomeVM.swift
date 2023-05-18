@@ -20,6 +20,7 @@ class HomeVM: ObservableObject {
     
     @Published var allChats: [Chat] = []
     @Published var currentChat: Chat?
+    @Published var currentUser: User?
     
     // UI
     @Published var showSideBar: Bool = false
@@ -29,6 +30,7 @@ class HomeVM: ObservableObject {
     
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
+    
     private let context = PersistenceController.viewContext
     private let cloudKitData = PublicCloudKitService()
     private let profile = ProfileManager()
@@ -36,7 +38,13 @@ class HomeVM: ObservableObject {
     private let systemName = "Swift"
     
     init() {
-        getAllChats()
+        if currentUser == nil {
+            currentUser = profile.user
+        }
+        
+        if allChats.isEmpty {
+            getAllChats()
+        }
         cancellable = NotificationCenter.default.publisher(for: NSManagedObjectContext.didSaveObjectsNotification, object: nil)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
@@ -57,8 +65,8 @@ class HomeVM: ObservableObject {
         cancel()
         task = Task {
             let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            let name = currentUser?.wrappedName
             var currentMessage: Message? = nil
-            let name = profile.user?.name
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your casual, fast and smart assistant", name: systemName)
             ]
@@ -133,7 +141,6 @@ class HomeVM: ObservableObject {
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
-            print("messages", messages)
             let stream = client.chatCompletion.stream(request: chatRequest) { response in
                 response.choices.first?.delta.content ?? ""
             }
@@ -201,7 +208,6 @@ class HomeVM: ObservableObject {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        //                    print("Success! Response data: \(data.choices)")
                         let title = data.choices.first?.text ?? "A chat"
                         completion(ChatTitle(title: title, token: message.tokenize()))
                     case .failure(let error):
@@ -233,7 +239,9 @@ class HomeVM: ObservableObject {
     }
     
     func updateUsage() async {
-        await self.cloudKitData.updateUsage()
+        if let user = currentUser {
+            await self.cloudKitData.updateUsage(user: user)
+        }
     }
     
     // UI

@@ -35,7 +35,7 @@ struct HomeView: View {
                         Spacer()
                         
                         if isActive {
-                            GreetingView()
+                            GreetingView(parentVm: vm)
                         } else {
                             ChatView(vm: vm)
                         }
