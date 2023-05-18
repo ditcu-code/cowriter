@@ -17,6 +17,10 @@ class WelcomeVM: ObservableObject {
         "I primarily support English, and understand and generate responses in other languages to some extent but quality and accuracy may vary."
     ]
     
+    func firstAppear() {
+        step == -1 ? step += 1 : nil
+    }
+    
     func isWelcomeTextMatching() -> Bool {
         if let text = welcomeText {
             return welcomeSentences.contains(text)
@@ -41,7 +45,7 @@ class WelcomeVM: ObservableObject {
     func playWelcomeSentences() {
         welcomeText = nil
         guard step != welcomeSentences.count else {
-            setupCompleted()
+            self.setupCompleted()
             return
         }
         

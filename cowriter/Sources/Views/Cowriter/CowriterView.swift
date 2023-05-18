@@ -24,11 +24,7 @@ struct CowriterView: View {
         
         NavigationView {
             ZStack {
-                LinearGradient(
-                    colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ).ignoresSafeArea()
+                DefaultBackground()
                 
                 HStack {
                     if vm.showSideBar {

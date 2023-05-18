@@ -12,7 +12,6 @@ struct ContentView: View {
     @ObservedObject var appData = AppData()
     
     var body: some View {
-//        CowriterView().preferredColorScheme(selectedColorScheme)
         if appData.setupCompleted {
             CowriterView().preferredColorScheme(selectedColorScheme)
         } else {

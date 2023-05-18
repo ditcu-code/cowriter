@@ -12,6 +12,7 @@
 		0E0A9D5629E9BFDB00D7BEC5 /* CowriterLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
+		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
 		0E4812E32A128BC90043A235 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */; };
 		0E4813022A129EE70043A235 /* PublicDataCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicDataCloudKit.swift */; };
@@ -76,6 +77,7 @@
 		0E0A9D5529E9BFDB00D7BEC5 /* CowriterLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterLogo.swift; sourceTree = "<group>"; };
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		0E1502B22A16276A00C4D78F /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		0E4812E12A122E910043A235 /* swiftChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftChat.entitlements; sourceTree = "<group>"; };
 		0E4812E22A128BC90043A235 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = SwiftChatStoreKit.storekit; path = cowriter/Sources/Data/SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
@@ -358,6 +360,7 @@
 				0E0A637129ED9F3C00DB7540 /* MagicButton.swift */,
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
+				0E1502B22A16276A00C4D78F /* DefaultBackground.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				0E6A655729DD25C1003457DF /* Persistence.swift in Sources */,
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
 				0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */,
+				0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */,
 				0ECC7C0029DD4F1D002A6B7F /* GrammarModel.swift in Sources */,
 				0E48131F2A15ECB70043A235 /* WelcomeView.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,

@@ -8,27 +8,23 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @ObservedObject var vm = WelcomeVM()
+    @StateObject var vm = WelcomeVM()
     @ObservedObject var appData = AppData()
     
     var body: some View {
-        let textMatch = vm.isWelcomeTextMatching()
+        let isTextMatch = vm.isWelcomeTextMatching()
         
         ZStack(alignment: .bottom) {
-            LinearGradient(
-                colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
-                startPoint: .top,
-                endPoint: .bottom
-            ).ignoresSafeArea()
+            DefaultBackground()
             
             HStack {
-                if textMatch {
+                if isTextMatch {
                     Text("Tap anywhere to continue")
                         .font(.caption)
                         .foregroundColor(.defaultFont)
                         .padding(.vertical, 20)
                 }
-            }.animation(.linear(duration: 0.5), value: textMatch)
+            }.animation(.linear, value: isTextMatch)
             
             VStack {
                 Spacer()
@@ -39,7 +35,6 @@ struct WelcomeView: View {
                                 .font(Font.system(.title3, design: .serif))
                                 .foregroundColor(.darkGrayFont)
                                 .transition(.moveAndFade)
-                                .animation(.linear, value: vm.welcomeText)
                         }
                         Spacer()
                     }.frame(maxHeight: 200)
@@ -49,6 +44,7 @@ struct WelcomeView: View {
             }
             .padding()
             .padding(.horizontal)
+            .animation(.linear, value: vm.welcomeText)
             .contentShape(Rectangle())
             .onTapGesture {
                 vm.startNextStep()
@@ -57,7 +53,7 @@ struct WelcomeView: View {
                 vm.playWelcomeSentences()
             })
             .onAppear {
-                vm.step == -1 ? vm.step += 1 : nil
+                vm.firstAppear()
             }
         }
     }
