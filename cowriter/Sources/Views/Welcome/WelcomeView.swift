@@ -33,7 +33,7 @@ struct WelcomeView: View {
                         if let unwrappedText: String = vm.welcomeText {
                             Text(unwrappedText).bold()
                                 .font(Font.system(.title3, design: .serif))
-                                .foregroundColor(.darkGrayFont)
+                                .foregroundColor(.grayFont)
                                 .transition(.moveAndFade)
                         }
                         Spacer()
