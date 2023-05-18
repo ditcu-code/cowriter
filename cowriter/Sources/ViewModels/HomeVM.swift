@@ -31,6 +31,9 @@ class HomeVM: ObservableObject {
     private var cancellable: AnyCancellable?
     private let context = PersistenceController.viewContext
     private let cloudKitData = PublicCloudKitService()
+    private let profile = ProfileManager()
+    
+    private let systemName = "Swift"
     
     init() {
         getAllChats()
@@ -55,8 +58,9 @@ class HomeVM: ObservableObject {
         task = Task {
             let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             var currentMessage: Message? = nil
+            let name = profile.user?.name
             var messages: [ChatCompletion.Request.Message] = [
-                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your simple, fast and smart assistant"),
+                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your casual, fast and smart assistant", name: systemName)
             ]
             
             func createNewMessage(
@@ -123,13 +127,13 @@ class HomeVM: ObservableObject {
             }
             
             if let chat = chat {
-                messages += chat.wrappedMessages.map { .init(role: $0.wrappedRole, content: $0.wrappedContent) }
+                messages += chat.wrappedMessages.map { .init(role: $0.wrappedRole, content: $0.wrappedContent, name: $0.wrappedRole == ChatRoleEnum.user.rawValue ? name : systemName)}
             } else {
-                messages.append(.init(role: ChatRoleEnum.user.rawValue, content: userMessage))
+                messages.append(.init(role: ChatRoleEnum.user.rawValue, content: userMessage, name: name))
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
-            
+            print("messages", messages)
             let stream = client.chatCompletion.stream(request: chatRequest) { response in
                 response.choices.first?.delta.content ?? ""
             }

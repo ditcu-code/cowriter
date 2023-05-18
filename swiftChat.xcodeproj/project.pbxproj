@@ -36,8 +36,8 @@
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
 		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
-		0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */; };
 		0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC312E629E80C1B00C9FE68 /* HomeVM.swift */; };
+		0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */; };
 		0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */; };
 		0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */; };
 		0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0729DDBC92002A6B7F /* Keychain.swift */; };
@@ -126,8 +126,8 @@
 			files = (
 				0E91DD362A092213005041BA /* iTextField in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
-				0EB8ABFA29ED229900B882DA /* PhotonOpenAIKit in Frameworks */,
 				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
+				0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,9 +379,9 @@
 			name = swiftChat;
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
-				0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */,
 				0E91DD352A092213005041BA /* iTextField */,
 				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
+				0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* swiftChat.app */;
@@ -413,9 +413,9 @@
 			mainGroup = 0E6A654129DD25C0003457DF;
 			packageReferences = (
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 				0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */,
 				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
+				0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -723,9 +723,9 @@
 				kind = branch;
 			};
 		};
-		0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
+		0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JuniperPhoton/PhotonOpenAIKit";
+			repositoryURL = "https://github.com/ditcu-code/PhotonOpenAIKit";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -752,9 +752,9 @@
 			package = 0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */;
 			productName = iTextField;
 		};
-		0EB8ABF929ED229900B882DA /* PhotonOpenAIKit */ = {
+		0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0EB8ABF829ED229800B882DA /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;
+			package = 0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;
 			productName = PhotonOpenAIKit;
 		};
 		0EE49DFF29E482060058DB14 /* Alamofire */ = {
