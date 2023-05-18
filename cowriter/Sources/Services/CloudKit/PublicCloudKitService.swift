@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-class PublicDataCloudKit {
+class PublicCloudKitService {
     private let container: CKContainer
     private let database: CKDatabase
     private let appData = AppData.self
@@ -79,7 +79,7 @@ class PublicDataCloudKit {
         //        }
 //    }
     
-    func fetchMyObjects() {
+    func fetchSwiftKey() {
         let recordID = CKRecord.ID(recordName: "swiftKey")
         database.fetch(withRecordID: recordID) { record, error in
             guard let record = record, let modificationDate = record.modificationDate else {
@@ -92,7 +92,6 @@ class PublicDataCloudKit {
             if self.appData.shared.titleModifiedDate != modificationDate.description {
                 Keychain.saveSwift(title: title) { result in
                     self.appData.setTitleModifiedDate(modificationDate)
-                    self.appData.setSetupCompleted(result)
                 }
             }
         }

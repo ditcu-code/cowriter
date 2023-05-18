@@ -1,14 +1,14 @@
 //
-//  CowriterView.swift
-//  cowriter
+//  swiftChatView.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
 
 import SwiftUI
 
-struct CowriterView: View {
-    @StateObject var vm: CowriterVM = CowriterVM()
+struct HomeView: View {
+    @StateObject var vm: HomeVM = HomeVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
     private let sideBarWidth: CGFloat = UIScreen.screenWidth - 100
@@ -64,9 +64,10 @@ struct CowriterView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
-                CowriterToolbarView(vm: vm, width: sideBarWidth)
+                HomeToolbar(vm: vm, width: sideBarWidth)
             }
             .task {
+                vm.getTheKey()
                 if purchaseManager.products.isEmpty {
                     purchaseManager.loadProducts()
                 }
@@ -78,7 +79,7 @@ struct CowriterView: View {
 
 struct CowriterView_Previews: PreviewProvider {
     static var previews: some View {
-        CowriterView()
+        HomeView()
             .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
     }
 }

@@ -1,6 +1,6 @@
 //
 //  APISecurity.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 05/04/23.
 //
@@ -9,7 +9,6 @@ import Foundation
 import Security
 
 class Keychain {
-    
     static func saveSwift(title: String, completion: @escaping (Bool) -> Void) {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -74,22 +73,4 @@ class Keychain {
             return nil
         }
     }
-    
-    static func deleteSwift(completion: @escaping (Bool) -> Void) {
-        let keychainQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.swiftChat.secret",
-            kSecAttrAccount as String: "mySwift"
-        ]
-        
-        let status = SecItemDelete(keychainQuery as CFDictionary)
-        if status == errSecSuccess {
-            completion(true)
-        } else {
-            print(status)
-            completion(false)
-        }
-    }
-
-    
 }

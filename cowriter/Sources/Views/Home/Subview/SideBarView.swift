@@ -1,6 +1,6 @@
 //
 //  SidebarView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SideBarView: View {
-    @ObservedObject var vm: CowriterVM
+    @ObservedObject var vm: HomeVM
     var width: CGFloat
     
     @State private var showSubscriptionSheet: Bool = false
@@ -37,7 +37,7 @@ struct SideBarView: View {
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SwiftChatLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
                     SubscriptionView(isShowSheet: $showSubscriptionSheet)
                 }
             }
@@ -47,7 +47,7 @@ struct SideBarView: View {
 }
 
 fileprivate struct ListChat: View {
-    @ObservedObject var vm: CowriterVM
+    @ObservedObject var vm: HomeVM
     @EnvironmentObject private var entitlementManager: EntitlementManager
     
     @State private var editMode: EditMode = .inactive
@@ -146,7 +146,7 @@ fileprivate struct NewChatButton: View {
 
 struct SideBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarView(vm: CowriterVM(), width: UIScreen.screenWidth - 100)
+        SideBarView(vm: HomeVM(), width: UIScreen.screenWidth - 100)
             .environmentObject(EntitlementManager())
     }
 }

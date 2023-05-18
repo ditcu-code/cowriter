@@ -1,6 +1,6 @@
 //
 //  User+CoreDataProperties.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 14/05/23.
 //
@@ -74,7 +74,7 @@ extension User {
 
 extension User: Identifiable {
     
-    public static func isZero(completion: @escaping (Bool) -> Void) {
+    public static func isEmpty(completion: @escaping (Bool) -> Void) {
         let context = PersistenceController.viewContext
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.resultType = .countResultType
@@ -91,16 +91,30 @@ extension User: Identifiable {
     public static func fetchFirstUser() -> User? {
         let context = PersistenceController.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "joinDate", ascending: true)]
         request.fetchLimit = 1
+        
+        do {
+            let users = try context.fetch(request)
+            return users.first
+        } catch {
+            print("Error fetching first user: \(error)")
+            return nil
+        }
+    }
+    
+    public static func fetchAll() -> [User]? {
+        let context = PersistenceController.viewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
         
         do {
             let results = try context.fetch(request)
             print(results.first.debugDescription)
-            return results.first
+            return results
             
         } catch {
             print("Error fetching first user: \(error.localizedDescription)")
-            return nil
+            return []
         }
     }
     

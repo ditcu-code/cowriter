@@ -1,14 +1,14 @@
 //
 //  HamburgerToClose.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 28/04/23.
 //
 
 import SwiftUI
 
-struct HamburgerToClose: View {
-    @ObservedObject var vm: CowriterVM
+struct Hamburger: View {
+    @ObservedObject var vm: HomeVM
     
     private let width: CGFloat = 22
     private let height: CGFloat = 1.5
@@ -42,6 +42,6 @@ struct HamburgerToClose: View {
 
 struct HamburgerToClose_Previews: PreviewProvider {
     static var previews: some View {
-        HamburgerToClose(vm: CowriterVM())
+        Hamburger(vm: HomeVM())
     }
 }
