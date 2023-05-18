@@ -1,6 +1,6 @@
 //
 //  ChatModel.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 15/04/23.
 //
@@ -32,4 +32,10 @@ class ChatResponseChatType: Codable {
     var created: Int
     var usage: ChatUsageType
     var choices: [ChatChoicesType]
+}
+
+// used in list of chats
+struct ChatTitle {
+    var title: String
+    var token: Int
 }

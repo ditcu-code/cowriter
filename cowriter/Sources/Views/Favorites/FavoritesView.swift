@@ -1,6 +1,6 @@
 //
 //  HistoryView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
@@ -12,14 +12,11 @@ struct FavoritesView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [.gray.opacity(0.15), .gray.opacity(0.25)],
-                startPoint: .top,
-                endPoint: .bottom
-            ).ignoresSafeArea()
+            DefaultBackground()
+            
             VStack {
                 if let list = vm.allFavorites {
-
+                    
                     if list.isEmpty {
                         HStack {
                             Spacer()

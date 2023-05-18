@@ -1,6 +1,6 @@
 //
 //  ItemPlanView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //
@@ -54,7 +54,7 @@ struct ItemPlanView: View {
                     VStack {
                         HStack {
                             Spacer()
-                            if plan.discount != nil {
+                            if !isMonthlyPlan {
                                 Triangle()
                                     .fill(isSelected ? .blue : .gray.opacity(0.5))
                                     .frame(width: 40, height: 40)

@@ -1,6 +1,6 @@
 //
 //  Enums.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //
@@ -30,8 +30,8 @@ enum AppearanceMode: String, CaseIterable, Codable {
 }
 
 enum PlanEnum: String, CaseIterable {
-    case annual = "pro.annual.sub.test"
-    case monthly = "pro.monthly.sub.test"
+    case annual = "pro.annual.sub.v1"
+    case monthly = "pro.monthly.sub.v1"
     
     var recurring: String {
         switch self {
@@ -60,12 +60,4 @@ enum PlanEnum: String, CaseIterable {
         }
     }
     
-    var discount: String? {
-        switch self {
-        case .annual:
-            return "Rp1.188.000"
-        case .monthly:
-            return nil
-        }
-    }
 }

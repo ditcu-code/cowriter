@@ -1,6 +1,6 @@
 //
 //  Message+CoreDataProperties.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 21/04/23.
 //
@@ -16,13 +16,14 @@ extension Message {
         return NSFetchRequest<Message>(entityName: "Message")
     }
     
-    @NSManaged public var id: UUID?
-    @NSManaged public var date: Date?
-    @NSManaged public var role: String?
     @NSManaged public var content: String?
+    @NSManaged public var date: Date?
+    @NSManaged public var id: UUID?
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var role: String?
     
     @NSManaged public var chat: Chat?
+    @NSManaged public var owner: User?
     
     
     public var wrappedId: UUID {
@@ -36,6 +37,7 @@ extension Message {
     public var wrappedRole: String {
         role ?? "Unknown role"
     }
+    
     
     public var wrappedContent: String {
         content ?? "Unknown content"
@@ -51,6 +53,20 @@ extension Message : Identifiable {
         request.predicate = NSPredicate(format: "isFavorite == true")
         guard let items = try? context.fetch(request) else { return nil }
         return items
+    }
+    
+    static func deleteMessage(message: Message) {
+        let context = PersistenceController.viewContext
+        context.delete(message)
+        
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+                // Deletion successful
+            } catch {
+                // Error handling for saving context
+            }
+        }
     }
     
 }
