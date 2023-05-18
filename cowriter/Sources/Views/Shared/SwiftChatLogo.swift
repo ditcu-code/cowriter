@@ -1,5 +1,5 @@
 //
-//  swiftChatLogo.swift
+//  SwiftChatLogo.swift
 //  swiftChat
 //
 //  Created by Aditya Cahyo on 15/04/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CowriterLogo: View {
+struct SwiftChatLogo: View {
     var isPro: Bool = false
     
     var body: some View {
@@ -20,6 +20,6 @@ struct CowriterLogo: View {
 
 struct CowriterLogo_Previews: PreviewProvider {
     static var previews: some View {
-        CowriterLogo(isPro: true)
+        SwiftChatLogo(isPro: true)
     }
 }

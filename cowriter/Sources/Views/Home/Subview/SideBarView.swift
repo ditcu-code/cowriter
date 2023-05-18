@@ -37,7 +37,7 @@ struct SideBarView: View {
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SwiftChatLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
                     SubscriptionView(isShowSheet: $showSubscriptionSheet)
                 }
             }

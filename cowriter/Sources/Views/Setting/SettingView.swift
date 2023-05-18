@@ -69,7 +69,9 @@ struct SettingView: View {
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SwiftChatLogo(isPro: true)
+                        .padding(.top, 100)
+                        .padding(.bottom, 75)
                     SubscriptionView(isShowSheet: $showSubscriptionSheet)
                 }
             }
@@ -111,7 +113,7 @@ struct SettingView: View {
                     isPro ? Spacer() : nil
                     VStack(alignment: isPro ? .center : .leading) {
                         if isPro {
-                            CowriterLogo(isPro: true)
+                            SwiftChatLogo(isPro: true)
                         } else {
                             Text("Free Plan").bold().tracking(0.5)
                         }
