@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CowriterToolbarView: ToolbarContent {
+struct HomeToolbar: ToolbarContent {
     @ObservedObject var vm: CowriterVM
     var width: CGFloat
     
@@ -16,7 +16,7 @@ struct CowriterToolbarView: ToolbarContent {
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
                     if vm.showToolbar {
-                        HamburgerToClose(vm: vm)
+                        Hamburger(vm: vm)
                             .transition(
                                 .move(edge: .leading)
                                 .combined(with: .opacity)

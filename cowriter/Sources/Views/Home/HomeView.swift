@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CowriterView: View {
+struct HomeView: View {
     @StateObject var vm: CowriterVM = CowriterVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
@@ -64,7 +64,7 @@ struct CowriterView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
-                CowriterToolbarView(vm: vm, width: sideBarWidth)
+                HomeToolbar(vm: vm, width: sideBarWidth)
             }
             .task {
                 vm.getTheKey()
@@ -79,7 +79,7 @@ struct CowriterView: View {
 
 struct CowriterView_Previews: PreviewProvider {
     static var previews: some View {
-        CowriterView()
+        HomeView()
             .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
     }
 }

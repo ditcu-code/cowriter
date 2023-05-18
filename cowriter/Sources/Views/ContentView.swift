@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         if appData.setupCompleted {
-            CowriterView().preferredColorScheme(selectedColorScheme)
+            HomeView().preferredColorScheme(selectedColorScheme)
         } else {
             WelcomeView()
         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HamburgerToClose: View {
+struct Hamburger: View {
     @ObservedObject var vm: CowriterVM
     
     private let width: CGFloat = 22
@@ -42,6 +42,6 @@ struct HamburgerToClose: View {
 
 struct HamburgerToClose_Previews: PreviewProvider {
     static var previews: some View {
-        HamburgerToClose(vm: CowriterVM())
+        Hamburger(vm: CowriterVM())
     }
 }

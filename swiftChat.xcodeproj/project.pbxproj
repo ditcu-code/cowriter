@@ -34,7 +34,7 @@
 		0E7C414029F95CE50075B638 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* ChatView.swift */; };
 		0E800E492A16222100C82D68 /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E800E482A16222100C82D68 /* WelcomeVM.swift */; };
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
-		0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */; };
+		0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */; };
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
 		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
@@ -55,7 +55,7 @@
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
 		0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */; };
-		0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* CowriterView.swift */; };
+		0EE49E0529E6C0600058DB14 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* HomeView.swift */; };
 		0EE49E0829E6C0FA0058DB14 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */; };
 		0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */; };
 		0EE546DB2A0D05F00036C0EB /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */; };
@@ -65,7 +65,7 @@
 		0EE845FB2A0669740025060F /* ItemPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FA2A0669740025060F /* ItemPlanView.swift */; };
 		0EE845FD2A0669F70025060F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FC2A0669F70025060F /* Enums.swift */; };
 		0EE845FF2A066A960025060F /* _Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE845FE2A066A960025060F /* _Shapes.swift */; };
-		0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */; };
+		0EEC231129FC30E00052AA05 /* Hamburger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEC231029FC30E00052AA05 /* Hamburger.swift */; };
 		0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */; };
 		0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */; };
 		0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */; };
@@ -102,7 +102,7 @@
 		0E7C413F29F95CE50075B638 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0E800E482A16222100C82D68 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
 		0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatViews.swift; sourceTree = "<group>"; };
-		0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterToolbarView.swift; sourceTree = "<group>"; };
+		0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbar.swift; sourceTree = "<group>"; };
 		0E91DD2F2A08D517005041BA /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		0EB86DDB29FEE107005B5EE1 /* AsisstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsisstView.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		0ECC7C0C29DEAB54002A6B7F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
 		0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotsLoading.swift; sourceTree = "<group>"; };
-		0EE49E0429E6C0600058DB14 /* CowriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterView.swift; sourceTree = "<group>"; };
+		0EE49E0429E6C0600058DB14 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		0EE49E0B29E6DCFF0058DB14 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		0EE845FA2A0669740025060F /* ItemPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPlanView.swift; sourceTree = "<group>"; };
 		0EE845FC2A0669F70025060F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0EE845FE2A066A960025060F /* _Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Shapes.swift; sourceTree = "<group>"; };
-		0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerToClose.swift; sourceTree = "<group>"; };
+		0EEC231029FC30E00052AA05 /* Hamburger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hamburger.swift; sourceTree = "<group>"; };
 		0EF164B129F2EC8700CC35B1 /* Chat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataClass.swift"; path = "cowriter/Sources/Data/Chat+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		0EF164B229F2EC8700CC35B1 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataProperties.swift"; path = "cowriter/Sources/Data/Chat+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		0EF164B329F2EC8700CC35B1 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Message+CoreDataClass.swift"; path = "cowriter/Sources/Data/Message+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -234,7 +234,7 @@
 				0E6A654F29DD25C0003457DF /* ContentView.swift */,
 				0ECC7C0E29DEC309002A6B7F /* Shared */,
 				0E48131D2A15ECA20043A235 /* Welcome */,
-				0EE49E0329E6C04C0058DB14 /* Cowriter */,
+				0EE49E0329E6C04C0058DB14 /* Home */,
 				0EE845F42A0528E60025060F /* Setting */,
 				0EE49E0629E6C0E90058DB14 /* Favorites */,
 				0EB86DDA29FEE0D6005B5EE1 /* Assist */,
@@ -333,10 +333,10 @@
 			isa = PBXGroup;
 			children = (
 				0E91DD2A2A08D3CC005041BA /* ChatView */,
-				0EEC231029FC30E00052AA05 /* HamburgerToClose.swift */,
+				0EEC231029FC30E00052AA05 /* Hamburger.swift */,
 				0E380FBA2A069420002F0B2E /* SideBarView.swift */,
 				0E91DD2F2A08D517005041BA /* GreetingView.swift */,
-				0E91DD2D2A08D4D2005041BA /* CowriterToolbarView.swift */,
+				0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -376,13 +376,13 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		0EE49E0329E6C04C0058DB14 /* Cowriter */ = {
+		0EE49E0329E6C04C0058DB14 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0EB8ABFE29ED46DC00B882DA /* Subview */,
-				0EE49E0429E6C0600058DB14 /* CowriterView.swift */,
+				0EE49E0429E6C0600058DB14 /* HomeView.swift */,
 			);
-			path = Cowriter;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		0EE49E0629E6C0E90058DB14 /* Favorites */ = {
@@ -502,10 +502,10 @@
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
 				0E800E492A16222100C82D68 /* WelcomeVM.swift in Sources */,
 				0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */,
-				0EEC231129FC30E00052AA05 /* HamburgerToClose.swift in Sources */,
+				0EEC231129FC30E00052AA05 /* Hamburger.swift in Sources */,
 				0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */,
 				0E4813022A129EE70043A235 /* PublicCloudKitService.swift in Sources */,
-				0E91DD2E2A08D4D2005041BA /* CowriterToolbarView.swift in Sources */,
+				0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */,
 				0E0A637029ED9E1400DB7540 /* RefreshButton.swift in Sources */,
@@ -514,7 +514,7 @@
 				0ECC7BFC29DD4D7D002A6B7F /* GrammarActionsView.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,
-				0EE49E0529E6C0600058DB14 /* CowriterView.swift in Sources */,
+				0EE49E0529E6C0600058DB14 /* HomeView.swift in Sources */,
 				0EE546DB2A0D05F00036C0EB /* FavoritesVM.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
 				0EB8AC0029ED6DEE00B882DA /* CowriterModel.swift in Sources */,
