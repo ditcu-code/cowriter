@@ -30,6 +30,7 @@ class CowriterVM: ObservableObject {
     private var task: Task<Void, Never>? = nil
     private var cancellable: AnyCancellable?
     private let context = PersistenceController.viewContext
+    private let cloudKitData = PublicDataCloudKit()
     
     init() {
         getAllChats()
@@ -55,7 +56,7 @@ class CowriterVM: ObservableObject {
             let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
-                .init(role: ChatRoleEnum.system.rawValue, content: "My name is SwiftChat, your simple, fast and smart assistant"),
+                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your simple, fast and smart assistant"),
             ]
             
             func createNewMessage(
@@ -85,17 +86,17 @@ class CowriterVM: ObservableObject {
                 currentMessage = newMessage
                 chat.addToMessages(newMessage)
                 // token count for userMessage
-                chat.tokenUsage += Int32(userMessage.tokenize())
+                chat.owner?.totalUsage = Int32(userMessage.tokenize())
                 currentChat = chat
             } else {
                 let newChat = Chat(context: context)
                 let newMessage = createNewMessage()
                 currentMessage = newMessage
                 newChat.id = UUID()
-                newChat.owner = User.fetchFirstUser(in: context)
+                newChat.owner = User.fetchFirstUser()
                 newChat.messages = [newMessage]
                 // initial token count for userMessage + system message
-                newChat.tokenUsage += Int32(userMessage.tokenize()) + 10
+                newChat.owner?.totalUsage += Int32(userMessage.tokenize()) + 10
                 currentChat = newChat
             }
             
@@ -109,7 +110,7 @@ class CowriterVM: ObservableObject {
                 if let chat = currentChat, let message = chat.wrappedMessages.first?.content, chat.title == nil {
                     self.getChatTitle(prompt: message, completion: { result in
                         chat.title = result.title.capitalized.removeNewLines()
-                        chat.tokenUsage += Int32(result.token)
+                        chat.owner?.totalUsage += Int32(result.token)
                         PersistenceController.save()
                     })
                 }
@@ -148,7 +149,7 @@ class CowriterVM: ObservableObject {
                     if let lastMessage = chat.wrappedMessages.last {
                         lastMessage.content = textToDisplay
                     }
-                    chat.tokenUsage += Int32(textToDisplay.tokenize())
+                    chat.owner?.totalUsage += Int32(textToDisplay.tokenize())
                     PersistenceController.save()
                 }
                 

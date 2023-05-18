@@ -20,7 +20,7 @@ class ProfileVM: ObservableObject {
     }
     
     func getUser() {
-        if let result = User.fetchFirstUser(in: context) {
+        if let result = User.fetchFirstUser() {
             user = result
             guard let user = user else { return }
             name = user.wrappedName

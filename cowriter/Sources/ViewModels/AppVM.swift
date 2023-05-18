@@ -14,7 +14,7 @@ class AppVM: ObservableObject {
     private let cloudkitData = PublicDataCloudKit()
     
     func createNewUser() {
-        User.isZero(in: context) { isZero in
+        User.isZero() { isZero in
             if isZero {
                 let newUser = User(context: self.context)
                 newUser.joinDate = Date()
@@ -31,13 +31,14 @@ class AppVM: ObservableObject {
                     PersistenceController.save()
                 })
             } else {
-                print("User already available")
+                print("User already available!")
             }
         }
     }
     
     func initialCheck() {
         createNewUser()
+        cloudkitData.createUsage()
         cloudkitData.fetchMyObjects()
     }
 }

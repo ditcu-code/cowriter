@@ -9,11 +9,15 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var appData = AppData()
     
     var body: some View {
-        CowriterView().preferredColorScheme(selectedColorScheme)
+//        CowriterView().preferredColorScheme(selectedColorScheme)
+        if appData.setupCompleted {
+            CowriterView().preferredColorScheme(selectedColorScheme)
+        } else {
+            WelcomeView()
+        }
     }
     
     private var selectedColorScheme: ColorScheme? {
