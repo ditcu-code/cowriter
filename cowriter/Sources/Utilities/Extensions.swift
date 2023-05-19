@@ -1,14 +1,12 @@
 //
 //  Extensions.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
 
-import Foundation
 import SwiftUI
 import GPT3_Tokenizer
-import NaturalLanguage
 
 extension UIScreen{
     static let screenWidth = UIScreen.main.bounds.size.width
@@ -62,33 +60,6 @@ extension String {
         return result
     }
     
-    func locale() -> Locale {
-        let detector = NLLanguageRecognizer()
-        detector.processString(self)
-        
-        guard let languageCode = detector.dominantLanguage?.rawValue else {
-            return Locale.current
-        }
-        
-        return Locale(identifier: languageCode)
-    }
-    
-    func language() -> String {
-        let detector = NLLanguageRecognizer()
-        detector.processString(self)
-        
-        guard let languageCode = detector.dominantLanguage?.rawValue,
-              let localizedString = Locale(identifier: languageCode).localizedString(forLanguageCode: languageCode) else {
-            return ""
-        }
-        
-        return localizedString
-    }
-    
-    func capitalizedByLanguage() -> String {
-        let local = self.locale()
-        return self.capitalized(with: local)
-    }
 }
 
 extension Date {
@@ -97,10 +68,27 @@ extension Date {
         formatter.dateFormat = "MMMM yyyy"
         return formatter.string(from: self)
     }
+    
+    func countDays(to endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: self, to: endDate)
+        
+        guard let days = components.day else {
+            return 0 // Could not calculate the number of days
+        }
+        
+        return abs(days) // Return the absolute value of days
+    }
+    
+    func isPast() -> Bool {
+        let currentDate = Date()
+        return self < currentDate
+    }
+    
 }
 
 extension View {
-    func customFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
+    func gillFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
         return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
     }
     func onFirstAppear(_ action: @escaping () -> ()) -> some View {

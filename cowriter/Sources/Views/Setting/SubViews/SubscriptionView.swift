@@ -1,6 +1,6 @@
 //
 //  SubscriptionView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //
@@ -44,6 +44,7 @@ struct SubscriptionView: View {
                 
                 Button {
                     purchaseManager.restorePurchases()
+                    isShowSheet.toggle()
                 } label: {
                     Text("Restore purchase")
                         .font(.footnote)
@@ -60,6 +61,11 @@ struct SubscriptionView: View {
             }.padding()
             
             Spacer()
+        }
+        .task {
+            if purchaseManager.products.isEmpty {
+                purchaseManager.loadProducts()
+            }
         }
         .dynamicTypeSize(.medium)
     }

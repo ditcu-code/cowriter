@@ -1,6 +1,6 @@
 //
-//  cowriterApp.swift
-//  cowriter
+//  swiftChatApp.swift
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 05/04/23.
 //
@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct cowriterApp: App {
-    @ObservedObject var vm = AppVM()
     let persistenceController = PersistenceController.shared
     @StateObject private var entitlementManager: EntitlementManager
     @StateObject private var purchaseManager: PurchaseManager
@@ -31,9 +30,6 @@ struct cowriterApp: App {
                 .environmentObject(purchaseManager)
                 .task {
                     await purchaseManager.updatePurchasedProducts()
-                }
-                .onFirstAppear {
-                    vm.createNewUser()
                 }
         }
     }

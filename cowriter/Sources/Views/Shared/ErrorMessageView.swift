@@ -1,6 +1,6 @@
 //
 //  ErrorMessageView.swift
-//  cowriter
+//  swiftChat
 //
 //  Created by Aditya Cahyo on 30/04/23.
 //
@@ -13,7 +13,7 @@ struct ErrorMessageView: View {
     var body: some View {
         HStack {
             Image(systemName: "exclamationmark.triangle.fill")
-            Text(message)
+            Text(message).font(.subheadline)
             Spacer()
         }
         .foregroundColor(.pink.opacity(0.75))
