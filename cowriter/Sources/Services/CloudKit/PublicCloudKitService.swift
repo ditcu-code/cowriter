@@ -102,4 +102,27 @@ class PublicCloudKitService {
         }
     }
     
+    func sendSupportMessage(_ support: CustSupport) async {
+        let record = CKRecord(recordType: "CustSupportType")
+        record.setValue(support.user.wrappedName, forKey: "userName")
+        record.setValue(support.user.wrappedId, forKey: "userId")
+        record.setValue(support.content, forKey: "content")
+        record.setValue(support.email, forKey: "email")
+        record.setValue(support.subject, forKey: "subject")
+        
+        do {
+            try await database.save(record)
+            // The record was saved successfully
+            print("SupportMessage >> Successfully sent!")
+        } catch let saveError {
+            // Handle the save error
+            print("SupportMessage >> Error creation: \(saveError.localizedDescription)")
+        }
+    }
+    
+}
+
+struct CustSupport {
+    var subject, email, content: String
+    var user: User
 }

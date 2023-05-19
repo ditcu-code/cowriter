@@ -10,29 +10,27 @@ import Combine
 
 struct SettingView: View {
     @ObservedObject var appData = AppData()
-    @State private var showSubscriptionSheet: Bool = false
+    @StateObject var vm = SettingVM()
     
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
-    private let mode = ["light", "dark", "system"]
-    
     var body: some View {
         List {
-            ProfileView()
+            ProfileView(vm: vm)
             subscriptionSection
             
             Section {
                 appearanceSetting
                 
                 Button {
-                    
+                    purchaseManager.restorePurchases()
                 } label: {
                     LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "Restore Purchase")
                 }
                 
                 Button {
-                    
+                    vm.showSupportSheet = true
                 } label: {
                     LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "Support")
                 }
@@ -61,10 +59,10 @@ struct SettingView: View {
             
         }
         .navigationTitle("Setting")
-        .sheet(isPresented: $showSubscriptionSheet) {
+        .sheet(isPresented: $vm.showSubscriptionSheet) {
             
             if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             } else {
@@ -72,10 +70,45 @@ struct SettingView: View {
                     SwiftChatLogo(isPro: true)
                         .padding(.top, 100)
                         .padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
                 }
             }
             
+        }
+        
+        .sheet(isPresented: $vm.showSupportSheet) {
+            NavigationView {
+                VStack {
+                    TextField("Subject", text: $vm.subject)
+                    Divider()
+                    TextField("Email", text: $vm.email)
+                        .textContentType(.emailAddress)
+                    Divider()
+                    ZStack {
+                        TextEditor(text: $vm.content)
+                            .foregroundColor(Color.gray)
+                    }
+                }
+                .navigationTitle("Support")
+                .navigationBarTitleDisplayMode(.inline)
+                .padding()
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Send") {
+                            Task {
+                                await vm.sendSupportMessage()
+                                vm.showSupportSheet = false
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Back") {
+                            vm.showSupportSheet = false
+                        }
+                    }
+                }
+            }
+
         }
     }
     
@@ -121,10 +154,10 @@ struct SettingView: View {
                             .font(.footnote)
                             .foregroundColor(.defaultFont)
                         
-                        if !isPro && !purchaseManager.products.isEmpty {
+                        if !isPro {
                             Divider()
                             Button {
-                                showSubscriptionSheet.toggle()
+                                vm.showSubscriptionSheet.toggle()
                             } label: {
                                 Text("Upgrade to Pro")
                                     .bold()
@@ -141,7 +174,7 @@ struct SettingView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    isPro ? nil : showSubscriptionSheet.toggle()
+                    isPro ? nil : vm.showSubscriptionSheet.toggle()
                 }
             })
     }
@@ -179,6 +212,27 @@ fileprivate struct LabelSetting: View {
                 )
                 .padding(.trailing, 5)
             Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
+        }
+    }
+}
+
+class SettingVM: ObservableObject {
+    @Published var showSupportSheet = false
+    @Published var showSubscriptionSheet = false
+    
+    @Published var subject: String = ""
+    @Published var email: String = ""
+    @Published var content: String = "Write something here..."
+    
+    @Published var profileManager = ProfileManager()
+    
+    private let cloudKitData = PublicCloudKitService()
+    
+    func sendSupportMessage() async {
+        if let user = profileManager.user {
+            await cloudKitData.sendSupportMessage(
+                CustSupport(subject: subject, email: email, content: content, user: user)
+            )
         }
     }
 }
