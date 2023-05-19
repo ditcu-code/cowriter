@@ -106,14 +106,15 @@ fileprivate struct BubbleContextMenu: View {
                     systemImage: message.isFavorite ? "star.slash.fill" : "star"
                 )
             }
-            if message.wrappedRole != ChatRoleEnum.user.rawValue {
-                Divider()
-                Button {
-                    
-                } label: {
-                    Label("Regenerate", systemImage: "arrow.clockwise")
-                }
-            }
+            
+//            if message.wrappedRole != ChatRoleEnum.user.rawValue {
+//                Divider()
+//                Button {
+//
+//                } label: {
+//                    Label("Regenerate", systemImage: "arrow.clockwise")
+//                }
+//            }
         }
     }
 }

@@ -35,6 +35,8 @@
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
 		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
+		0EB96A2E2A17CCA700019353 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2D2A17CCA700019353 /* SettingVM.swift */; };
+		0EB96A302A17CCDE00019353 /* LabelSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */; };
 		0EC2B6B62A168767007AECE8 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */; };
 		0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC312E629E80C1B00C9FE68 /* HomeVM.swift */; };
 		0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */; };
@@ -93,7 +95,9 @@
 		0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbar.swift; sourceTree = "<group>"; };
 		0E91DD2F2A08D517005041BA /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
-		0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
+		0EB96A2D2A17CCA700019353 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
+		0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSetting.swift; sourceTree = "<group>"; };
+		0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
 		0EC312E629E80C1B00C9FE68 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionsModel.swift; sourceTree = "<group>"; };
 		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 			children = (
 				0EE845F72A0667910025060F /* SubViews */,
 				0EE845F52A0529020025060F /* SettingView.swift */,
+				0EB96A2D2A17CCA700019353 /* SettingVM.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				0EE845F82A0667BC0025060F /* SubscriptionView.swift */,
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
 				0E72272A2A11142100FADE9C /* ProfileView.swift */,
+				0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				0EEC231129FC30E00052AA05 /* Hamburger.swift in Sources */,
 				0EE845F92A0667BC0025060F /* SubscriptionView.swift in Sources */,
 				0E4813022A129EE70043A235 /* PublicCloudKitService.swift in Sources */,
+				0EB96A2E2A17CCA700019353 /* SettingVM.swift in Sources */,
 				0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */,
@@ -475,6 +482,7 @@
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */,
 				0E72272B2A11142100FADE9C /* ProfileView.swift in Sources */,
+				0EB96A302A17CCDE00019353 /* LabelSetting.swift in Sources */,
 				0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */,
 				0EF164B829F2EC8700CC35B1 /* Message+CoreDataProperties.swift in Sources */,
 				0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */,

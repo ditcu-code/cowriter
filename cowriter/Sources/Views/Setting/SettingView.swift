@@ -39,22 +39,22 @@ struct SettingView: View {
             
             Section {
                 Button {
-                    
+                    vm.openLinkTermsAndCondition()
                 } label: {
                     Text("Terms and Condition").font(.footnote)
                 }
                 
                 Button {
-                    
+                    vm.openLinkPrivacyPolicy()
                 } label: {
                     Text("Privacy Policy").font(.footnote)
                 }
                 
-                Button {
-                    
-                } label: {
-                    Text("About Us").font(.footnote)
-                }
+//                Button {
+//                    
+//                } label: {
+//                    Text("About Us").font(.footnote)
+//                }
             }
             
         }
@@ -191,48 +191,5 @@ struct SettingView_Previews: PreviewProvider {
                 let envObj = EntitlementManager()
                 return envObj
             }())
-    }
-}
-
-fileprivate struct LabelSetting: View {
-    var icon: String
-    var color: Color
-    var label: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .resizable()
-                .scaledToFit().padding(7)
-                .frame(width: 30, height: 30)
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(color.opacity(0.9))
-                )
-                .padding(.trailing, 5)
-            Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
-        }
-    }
-}
-
-class SettingVM: ObservableObject {
-    @Published var showSupportSheet = false
-    @Published var showSubscriptionSheet = false
-    
-    @Published var subject: String = ""
-    @Published var email: String = ""
-    @Published var content: String = "Write something here..."
-    
-    @Published var profileManager = ProfileManager()
-    
-    private let cloudKitData = PublicCloudKitService()
-    
-    func sendSupportMessage() async {
-        if let user = profileManager.user {
-            await cloudKitData.sendSupportMessage(
-                CustSupport(subject: subject, email: email, content: content, user: user)
-            )
-        }
     }
 }
