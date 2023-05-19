@@ -11,15 +11,13 @@ struct SideBarView: View {
     @ObservedObject var vm: HomeVM
     var width: CGFloat
     
-    @State private var showSubscriptionSheet: Bool = false
-    
     var body: some View {
         ZStack(alignment: .topLeading) {
             CustomRoundedRectangle(bottomRight: 12)
                 .fill(.background)
                 .edgesIgnoringSafeArea(.top)
             
-            ListChat(vm: vm, showSubscriptionSheet: $showSubscriptionSheet)
+            ListChat(vm: vm)
         }
         .transition(.move(edge: .leading))
         .frame(width: width)
@@ -29,20 +27,6 @@ struct SideBarView: View {
                 vm.favoriteFilterIsOn.toggle()
             }
         })
-        .sheet(isPresented: $showSubscriptionSheet) {
-            
-            if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $showSubscriptionSheet)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            } else {
-                VStack {
-                    SwiftChatLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
-                }
-            }
-            
-        }
     }
 }
 
@@ -52,7 +36,6 @@ fileprivate struct ListChat: View {
     
     @State private var editMode: EditMode = .inactive
     @State private var isEditing: Bool = false
-    @Binding var showSubscriptionSheet: Bool
     
     var body: some View {
         let hasReachedLimit = vm.allChats.count >= 3
@@ -103,7 +86,7 @@ fileprivate struct ListChat: View {
             NewChatButton {
                 if hasReachedLimit && !isPro {
                     vm.isFocusOnPrompter = false
-                    showSubscriptionSheet.toggle()
+                    vm.showSubscriptionSheet.toggle()
                 } else {
                     vm.currentChat = nil
                     vm.closeSideBar()

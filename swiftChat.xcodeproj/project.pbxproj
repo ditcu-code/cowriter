@@ -35,6 +35,7 @@
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
 		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
+		0EC2B6B62A168767007AECE8 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */; };
 		0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC312E629E80C1B00C9FE68 /* HomeVM.swift */; };
 		0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */; };
 		0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */; };
@@ -92,6 +93,7 @@
 		0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbar.swift; sourceTree = "<group>"; };
 		0E91DD2F2A08D517005041BA /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
+		0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
 		0EC312E629E80C1B00C9FE68 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionsModel.swift; sourceTree = "<group>"; };
 		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		0E7227292A1113E500FADE9C /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
+				0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */,
 				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
 				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 			);
@@ -429,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
+				0EC2B6B62A168767007AECE8 /* SwiftChatStoreKit.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

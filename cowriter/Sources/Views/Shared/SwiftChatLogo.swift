@@ -12,8 +12,8 @@ struct SwiftChatLogo: View {
     
     var body: some View {
         HStack(spacing: isPro ? 0 : -5) {
-            Text("SwiftChat").gillFont(48, .grayFont)
-            Text(isPro ? "pro" : ".").gillFont(48, .blue)
+            Text("Swift").gillFont(48, .grayFont)
+            Text(isPro ? "Pro" : ".").gillFont(48, .blue)
         }
     }
 }

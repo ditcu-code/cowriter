@@ -80,6 +80,11 @@ extension Date {
         return abs(days) // Return the absolute value of days
     }
     
+    func isPast() -> Bool {
+        let currentDate = Date()
+        return self < currentDate
+    }
+    
 }
 
 extension View {

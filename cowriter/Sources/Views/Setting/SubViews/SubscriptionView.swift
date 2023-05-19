@@ -62,6 +62,11 @@ struct SubscriptionView: View {
             
             Spacer()
         }
+        .task {
+            if purchaseManager.products.isEmpty {
+                purchaseManager.loadProducts()
+            }
+        }
         .dynamicTypeSize(.medium)
     }
 }

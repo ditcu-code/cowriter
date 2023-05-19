@@ -66,16 +66,24 @@ struct HomeView: View {
             .toolbar {
                 HomeToolbar(vm: vm, width: sideBarWidth)
             }
-            .task {
-                if purchaseManager.products.isEmpty {
-                    purchaseManager.loadProducts()
-                }
-            }
             .task(priority: .background) {
                 vm.getTheKey()
-                await vm.updateUsage()
             }
             .animation(.linear, value: isActive)
+        }
+        .sheet(isPresented: $vm.showSubscriptionSheet) {
+            
+            if #available(iOS 16.0, *) {
+                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            } else {
+                VStack {
+                    SwiftChatLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
+                }
+            }
+            
         }
     }
 }

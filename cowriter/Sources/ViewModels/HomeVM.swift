@@ -17,6 +17,7 @@ class HomeVM: ObservableObject {
     
     @Published var errorMessage: String = ""
     @Published var isLoading = false
+    @Published var showSubscriptionSheet = false
     
     @Published var allChats: [Chat] = []
     @Published var currentChat: Chat?
@@ -70,6 +71,12 @@ class HomeVM: ObservableObject {
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your casual, fast and smart assistant", name: systemName)
             ]
+            
+            if AppData().reachedLimit && !EntitlementManager().hasPro {
+                errorMessage = "You have reached your daily usage limit. Upgrade to the pro version to enjoy unlimited messaging."
+                self.showSubscriptionSheet = true
+                return
+            }
             
             func createNewMessage(
                 _ userMessage: String = self.userMessage,
@@ -162,6 +169,7 @@ class HomeVM: ObservableObject {
                     }
                     chat.owner?.totalUsage += Int32(textToDisplay.tokenize())
                     PersistenceController.save()
+                    await updateUsage()
                 }
                 
                 // delete prev error message if last req is success
@@ -200,7 +208,7 @@ class HomeVM: ObservableObject {
     
     func getChatTitle(prompt: String, completion: @escaping (ChatTitle) -> Void) {
         guard prompt.containsOneWord() else {
-            let message = "He: \"\(prompt)\"\n\n\nHe asked for "
+            let message = "\"\(prompt)\"\n\n\nTopic: "
             let rawRequest = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, temperature: 0, max_tokens: 8)
             let dictionaryRequest = Utils.toDictionary(rawRequest)
             
