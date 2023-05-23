@@ -73,12 +73,12 @@
 		0E1502B52A16305A00C4D78F /* GreetingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVM.swift; sourceTree = "<group>"; };
 		0E1502B72A16428800C4D78F /* WelcomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeService.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
-		0E4812E12A122E910043A235 /* swiftChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftChat.entitlements; sourceTree = "<group>"; };
+		0E4812E12A122E910043A235 /* cowriter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cowriter.entitlements; sourceTree = "<group>"; };
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
 		0E48131E2A15ECB70043A235 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
-		0E6A654A29DD25C0003457DF /* swiftChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E6A655129DD25C1003457DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
-				0E4812E12A122E910043A235 /* swiftChat.entitlements */,
+				0E4812E12A122E910043A235 /* cowriter.entitlements */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
 			);
@@ -174,7 +174,7 @@
 		0E6A654B29DD25C0003457DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E6A654A29DD25C0003457DF /* swiftChat.app */,
+				0E6A654A29DD25C0003457DF /* cowriter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,9 +370,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E6A654929DD25C0003457DF /* swiftChat */ = {
+		0E6A654929DD25C0003457DF /* cowriter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "swiftChat" */;
+			buildConfigurationList = 0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */;
 			buildPhases = (
 				0E6A654629DD25C0003457DF /* Sources */,
 				0E6A654729DD25C0003457DF /* Frameworks */,
@@ -382,7 +382,7 @@
 			);
 			dependencies = (
 			);
-			name = swiftChat;
+			name = cowriter;
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0E91DD352A092213005041BA /* iTextField */,
@@ -390,7 +390,7 @@
 				0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */,
 			);
 			productName = cowriter;
-			productReference = 0E6A654A29DD25C0003457DF /* swiftChat.app */;
+			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -408,7 +408,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "swiftChat" */;
+			buildConfigurationList = 0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "cowriter" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -427,7 +427,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E6A654929DD25C0003457DF /* swiftChat */,
+				0E6A654929DD25C0003457DF /* cowriter */,
 			);
 		};
 /* End PBXProject section */
@@ -624,7 +624,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = swiftChat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cowriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -632,7 +632,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swift AI Chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -644,7 +644,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.swiftChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -660,7 +660,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = swiftChat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cowriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -668,7 +668,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swift AI Chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -680,7 +680,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.swiftChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -694,7 +694,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "swiftChat" */ = {
+		0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "cowriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E6A655C29DD25C1003457DF /* Debug */,
@@ -703,7 +703,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "swiftChat" */ = {
+		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E6A655F29DD25C1003457DF /* Debug */,

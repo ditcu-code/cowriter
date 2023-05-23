@@ -1,6 +1,6 @@
 //
 //  LogoView.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 15/04/23.
 //

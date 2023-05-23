@@ -1,6 +1,6 @@
 //
 //  FavoritesVM.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 11/05/23.
 //

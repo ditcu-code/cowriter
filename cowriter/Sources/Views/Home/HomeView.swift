@@ -1,6 +1,6 @@
 //
-//  swiftChatView.swift
-//  swiftChat
+//  cowriterView.swift
+//  cowriter
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //

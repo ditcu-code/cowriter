@@ -1,6 +1,6 @@
 //
 //  HamburgerToClose.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 28/04/23.
 //

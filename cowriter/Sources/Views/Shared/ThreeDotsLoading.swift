@@ -1,6 +1,6 @@
 //
 //  ThreeDotsLoading.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //

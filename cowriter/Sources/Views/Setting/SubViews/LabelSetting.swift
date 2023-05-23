@@ -1,6 +1,6 @@
 //
 //  LabelSetting.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 19/05/23.
 //

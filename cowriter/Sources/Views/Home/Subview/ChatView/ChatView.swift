@@ -1,6 +1,6 @@
 //
 //  Chat.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 26/04/23.
 //

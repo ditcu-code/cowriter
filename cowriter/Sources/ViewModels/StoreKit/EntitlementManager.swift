@@ -1,6 +1,6 @@
 //
 //  EntitlementManager.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 09/05/23.
 //
