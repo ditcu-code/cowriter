@@ -9,7 +9,7 @@
   "settings" : {
     "_applicationInternalID" : "6449455105",
     "_developerTeamID" : "474XANH3RF",
-    "_lastSynchronizedDate" : 706540539.07505906
+    "_lastSynchronizedDate" : 706547676.14209795
   },
   "subscriptionGroups" : [
     {
@@ -56,7 +56,7 @@
           "groupNumber" : 2,
           "internalID" : "6449463710",
           "introductoryOffer" : {
-            "internalID" : "E5E5C0D5",
+            "internalID" : "4FFF828D",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
@@ -64,7 +64,7 @@
           "localizations" : [
             {
               "description" : "Unlimited chats for a month",
-              "displayName" : "Swift Pro (1 Month)",
+              "displayName" : "Cowriter Pro (1 Month)",
               "locale" : "en_GB"
             }
           ],
