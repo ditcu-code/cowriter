@@ -49,12 +49,8 @@
             ReferencedContainer = "container:cowriter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <LocationScenarioReference
-         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-         referenceType = "1">
-      </LocationScenarioReference>
       <StoreKitConfigurationFileReference
-         identifier = "../../cowriter/MainConfiguration.storekit">
+         identifier = "../../cowriter/Sources/ViewModels/StoreKit/Cowriter.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction

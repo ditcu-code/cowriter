@@ -39,10 +39,10 @@
     {
       "identity" : "photonopenaikit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JuniperPhoton/PhotonOpenAIKit",
+      "location" : "https://github.com/ditcu-code/PhotonOpenAIKit",
       "state" : {
         "branch" : "main",
-        "revision" : "b0e02df225291c803162855087ff4d805e97ef32"
+        "revision" : "c27308dc784d2a67e48be6d54ddf198278638ac4"
       }
     }
   ],

@@ -40,10 +40,11 @@ struct SubscriptionView: View {
                     Text("Continue").bold()
                         .padding(.vertical, 5)
                     Spacer()
-                }.buttonStyle(.borderedProminent).tint(.blue)
+                }.buttonStyle(.borderedProminent).tint(.accentColor)
                 
                 Button {
                     purchaseManager.restorePurchases()
+                    isShowSheet.toggle()
                 } label: {
                     Text("Restore purchase")
                         .font(.footnote)
@@ -60,6 +61,11 @@ struct SubscriptionView: View {
             }.padding()
             
             Spacer()
+        }
+        .task {
+            if purchaseManager.products.isEmpty {
+                purchaseManager.loadProducts()
+            }
         }
         .dynamicTypeSize(.medium)
     }

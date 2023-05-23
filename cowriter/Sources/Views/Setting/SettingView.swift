@@ -10,29 +10,27 @@ import Combine
 
 struct SettingView: View {
     @ObservedObject var appData = AppData()
-    @State private var showSubscriptionSheet: Bool = false
+    @StateObject var vm = SettingVM()
     
     @EnvironmentObject private var entitlementManager: EntitlementManager
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
-    private let mode = ["light", "dark", "system"]
-    
     var body: some View {
         List {
-            ProfileView()
+            ProfileView(vm: vm)
             subscriptionSection
             
             Section {
                 appearanceSetting
                 
                 Button {
-                    
+                    purchaseManager.restorePurchases()
                 } label: {
                     LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "Restore Purchase")
                 }
                 
                 Button {
-                    
+                    vm.showSupportSheet = true
                 } label: {
                     LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "Support")
                 }
@@ -41,39 +39,76 @@ struct SettingView: View {
             
             Section {
                 Button {
-                    
+                    vm.openLinkTermsAndCondition()
                 } label: {
                     Text("Terms and Condition").font(.footnote)
                 }
                 
                 Button {
-                    
+                    vm.openLinkPrivacyPolicy()
                 } label: {
                     Text("Privacy Policy").font(.footnote)
                 }
                 
-                Button {
-                    
-                } label: {
-                    Text("About Us").font(.footnote)
-                }
+//                Button {
+//                    
+//                } label: {
+//                    Text("About Us").font(.footnote)
+//                }
             }
             
         }
         .navigationTitle("Setting")
-        .sheet(isPresented: $showSubscriptionSheet) {
+        .sheet(isPresented: $vm.showSubscriptionSheet) {
             
             if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    CowriterLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $showSubscriptionSheet)
+                    LogoView(isPro: true)
+                        .padding(.top, 100)
+                        .padding(.bottom, 75)
+                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
                 }
             }
             
+        }
+        
+        .sheet(isPresented: $vm.showSupportSheet) {
+            NavigationView {
+                VStack {
+                    TextField("Subject", text: $vm.subject)
+                    Divider()
+                    TextField("Email", text: $vm.email)
+                        .textContentType(.emailAddress)
+                    Divider()
+                    ZStack {
+                        TextEditor(text: $vm.content)
+                            .foregroundColor(Color.gray)
+                    }
+                }
+                .navigationTitle("Support")
+                .navigationBarTitleDisplayMode(.inline)
+                .padding()
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Send") {
+                            Task {
+                                await vm.sendSupportMessage()
+                                vm.showSupportSheet = false
+                            }
+                        }
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Back") {
+                            vm.showSupportSheet = false
+                        }
+                    }
+                }
+            }
+
         }
     }
     
@@ -111,7 +146,7 @@ struct SettingView: View {
                     isPro ? Spacer() : nil
                     VStack(alignment: isPro ? .center : .leading) {
                         if isPro {
-                            CowriterLogo(isPro: true)
+                            LogoView(isPro: true)
                         } else {
                             Text("Free Plan").bold().tracking(0.5)
                         }
@@ -119,15 +154,15 @@ struct SettingView: View {
                             .font(.footnote)
                             .foregroundColor(.defaultFont)
                         
-                        if !isPro && !purchaseManager.products.isEmpty {
+                        if !isPro {
                             Divider()
                             Button {
-                                showSubscriptionSheet.toggle()
+                                vm.showSubscriptionSheet.toggle()
                             } label: {
                                 Text("Upgrade to Pro")
                                     .bold()
-                                    .font(.footnote)
-                                    .foregroundColor(.blue)
+                                    .font(.subheadline)
+                                    .foregroundColor(.accentColor)
                                     .padding(.top, 5)
                             }
                         }
@@ -139,7 +174,7 @@ struct SettingView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    isPro ? nil : showSubscriptionSheet.toggle()
+                    isPro ? nil : vm.showSubscriptionSheet.toggle()
                 }
             })
     }
@@ -156,27 +191,5 @@ struct SettingView_Previews: PreviewProvider {
                 let envObj = EntitlementManager()
                 return envObj
             }())
-    }
-}
-
-fileprivate struct LabelSetting: View {
-    var icon: String
-    var color: Color
-    var label: String
-    
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .resizable()
-                .scaledToFit().padding(7)
-                .frame(width: 30, height: 30)
-                .foregroundColor(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(color.opacity(0.9))
-                )
-                .padding(.trailing, 5)
-            Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
-        }
     }
 }

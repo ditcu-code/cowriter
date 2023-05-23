@@ -33,3 +33,17 @@ class ChatResponseChatType: Codable {
     var usage: ChatUsageType
     var choices: [ChatChoicesType]
 }
+
+// used in list of chats
+struct ChatTitle {
+    var title: String
+    var token: Int
+}
+
+enum UserUsageKeys: String, Codable {
+    case recordType = "UserUsageType"
+    case totalUsage = "totalUsage"
+    case givenDate = "givenDate"
+    case givenQuota = "givenQuota"
+}
+

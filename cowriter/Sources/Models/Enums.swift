@@ -30,8 +30,8 @@ enum AppearanceMode: String, CaseIterable, Codable {
 }
 
 enum PlanEnum: String, CaseIterable {
-    case annual = "pro.annual.sub.test"
-    case monthly = "pro.monthly.sub.test"
+    case annual = "cowriter.pro.annual.v1"
+    case monthly = "cowriter.pro.monthly.v1"
     
     var recurring: String {
         switch self {
@@ -60,12 +60,4 @@ enum PlanEnum: String, CaseIterable {
         }
     }
     
-    var discount: String? {
-        switch self {
-        case .annual:
-            return "Rp1.188.000"
-        case .monthly:
-            return nil
-        }
-    }
 }

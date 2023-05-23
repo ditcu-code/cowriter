@@ -1,0 +1,84 @@
+{
+  "identifier" : "DEDD66E4",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6449455105",
+    "_developerTeamID" : "474XANH3RF",
+    "_lastSynchronizedDate" : 706540539.07505906
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21343188",
+      "localizations" : [
+
+      ],
+      "name" : "Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "59.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6449463700",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited chats for a year",
+              "displayName" : "Cowriter Pro (1 Year)",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "cowriter.pro.annual.v1",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Pro - Annual Subscription ",
+          "subscriptionGroupID" : "21343188",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6449463710",
+          "introductoryOffer" : {
+            "internalID" : "E5E5C0D5",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Unlimited chats for a month",
+              "displayName" : "Swift Pro (1 Month)",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "cowriter.pro.monthly.v1",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Pro - Monthly Subscription",
+          "subscriptionGroupID" : "21343188",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
