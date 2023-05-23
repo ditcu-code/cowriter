@@ -1,6 +1,6 @@
 //
 //  WelcomeVM.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 18/05/23.
 //
@@ -16,8 +16,8 @@ class WelcomeVM: ObservableObject {
     private let welcomeService = WelcomeService()
     
     private let welcomeSentences = [
-        "I am Swift AI, your friendly and efficient personal to make your life easier by helping with tasks, answering questions, and providing solutions at lightning speed.",
-        "I primarily support English, and understand and generate responses in other languages to some extent but quality and accuracy may vary."
+        "I'm Cowriter, your helpful writing assistant. I'm here to assist you in crafting exceptional written content. Let's collaborate and bring your ideas to life!",
+        "I speak multiple languages, including English. Feel free to let me know which language you prefer to use, and I'll do my best to assist you!"
     ]
     
     // triggered onAppear

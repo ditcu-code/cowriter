@@ -1,6 +1,6 @@
 //
-//  swiftChatView.swift
-//  swiftChat
+//  cowriterView.swift
+//  cowriter
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
@@ -68,6 +68,7 @@ struct HomeView: View {
             }
             .task(priority: .background) {
                 vm.getTheKey()
+                await vm.updateUsage()
             }
             .animation(.linear, value: isActive)
         }
@@ -79,7 +80,7 @@ struct HomeView: View {
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    SwiftChatLogo(isPro: true).padding(.top, 100).padding(.bottom, 75)
+                    LogoView(isPro: true).padding(.top, 100).padding(.bottom, 75)
                     SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
                 }
             }

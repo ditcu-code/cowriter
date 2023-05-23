@@ -1,6 +1,6 @@
 //
 //  DefaultBackground.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 18/05/23.
 //

@@ -1,6 +1,6 @@
 //
 //  GreetingView.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 08/05/23.
 //

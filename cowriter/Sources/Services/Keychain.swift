@@ -1,6 +1,6 @@
 //
 //  APISecurity.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 05/04/23.
 //
@@ -12,7 +12,7 @@ class Keychain {
     static func saveSwift(title: String, completion: @escaping (Bool) -> Void) {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.swiftChat.secret",
+            kSecAttrService as String: "com.ditcu.cowriter.key",
             kSecAttrAccount as String: "mySwift",
             kSecValueData as String: title.data(using: .utf8)!,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
@@ -34,7 +34,7 @@ class Keychain {
     static func updateSwift(title: String, completion: @escaping (Bool) -> Void) {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.swiftChat.secret",
+            kSecAttrService as String: "com.ditcu.cowriter.key",
             kSecAttrAccount as String: "mySwift"
         ]
         
@@ -53,7 +53,7 @@ class Keychain {
     static func getSwift() -> String? {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.swiftChat.secret",
+            kSecAttrService as String: "com.ditcu.cowriter.key",
             kSecAttrAccount as String: "mySwift",
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne,

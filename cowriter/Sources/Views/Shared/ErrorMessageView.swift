@@ -1,6 +1,6 @@
 //
 //  ErrorMessageView.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 30/04/23.
 //

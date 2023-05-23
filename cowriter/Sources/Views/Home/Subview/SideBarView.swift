@@ -1,6 +1,6 @@
 //
 //  SidebarView.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 06/05/23.
 //
@@ -65,7 +65,7 @@ fileprivate struct ListChat: View {
                         if isActiveChat {
                             Circle()
                                 .frame(width: 9, height: 9)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                     .contentShape(Rectangle())

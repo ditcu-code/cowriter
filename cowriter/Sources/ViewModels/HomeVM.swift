@@ -1,6 +1,6 @@
 //
-//  swiftChatVM.swift
-//  swiftChat
+//  cowriterVM.swift
+//  cowriter
 //
 //  Created by Aditya Cahyo on 13/04/23.
 //
@@ -35,8 +35,10 @@ class HomeVM: ObservableObject {
     private let context = PersistenceController.viewContext
     private let cloudKitData = PublicCloudKitService()
     private let profile = ProfileManager()
+    private let appData = AppData()
+    private let entitlementManager = EntitlementManager()
     
-    private let systemName = "Swift"
+    private let systemName = "Cowriter"
     
     init() {
         if currentUser == nil {
@@ -66,13 +68,13 @@ class HomeVM: ObservableObject {
         cancel()
         task = Task {
             let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
-            let name = currentUser?.wrappedName
+            let userName = currentUser?.wrappedName.firstWord
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
-                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Swift AI, your casual, fast and smart assistant", name: systemName)
+                .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your AI writing assistant", name: systemName)
             ]
             
-            if AppData().reachedLimit && !EntitlementManager().hasPro {
+            if appData.reachedLimit && !entitlementManager.hasPro {
                 errorMessage = "You have reached your daily usage limit. Upgrade to the pro version to enjoy unlimited messaging."
                 self.showSubscriptionSheet = true
                 return
@@ -142,9 +144,9 @@ class HomeVM: ObservableObject {
             }
             
             if let chat = chat {
-                messages += chat.wrappedMessages.map { .init(role: $0.wrappedRole, content: $0.wrappedContent, name: $0.wrappedRole == ChatRoleEnum.user.rawValue ? name : systemName)}
+                messages += chat.wrappedMessages.map { .init(role: $0.wrappedRole, content: $0.wrappedContent, name: $0.wrappedRole == ChatRoleEnum.user.rawValue ? userName : systemName)}
             } else {
-                messages.append(.init(role: ChatRoleEnum.user.rawValue, content: userMessage, name: name))
+                messages.append(.init(role: ChatRoleEnum.user.rawValue, content: userMessage, name: userName))
             }
             
             let chatRequest = ChatCompletion.Request(.init(messages: messages))
@@ -181,7 +183,7 @@ class HomeVM: ObservableObject {
                 
             } catch {
                 if let chat = currentChat {
-                    if chat.wrappedMessages.count == 1 {
+                    if chat.wrappedMessages.count <= 2 {
                         context.delete(chat)
                         currentChat = nil
                     } else if let currentMessage = currentMessage {

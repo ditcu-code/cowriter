@@ -1,6 +1,6 @@
 //
 //  BubbleChatViews.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 08/05/23.
 //
@@ -26,8 +26,8 @@ struct BubblePromptView: View {
                 .background(
                     shape.fill(LinearGradient(
                         gradient: Gradient(colors: [
-                            Color.init(red: 0.3, green: 0.5, blue: 0.7),
-                            Color.init(red: 0.1, green: 0.3, blue: 0.5)
+                            Color.init(red: 0.25, green: 0.25, blue: 0.25),
+                            Color.init(red: 0.4, green: 0.4, blue: 0.4)
                         ]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
@@ -130,7 +130,7 @@ fileprivate struct BubbleFavoriteFlag: View {
                     Spacer()
                 }
                 Triangle()
-                    .fill(isFavorite ? (isPrompt ? .white : .blue) : .clear)
+                    .fill(isFavorite ? (isPrompt ? .white : .accentColor) : .clear)
                     .opacity(0.75)
                     .frame(width: 23, height: 23)
                     .rotationEffect(.degrees(isPrompt ? -90 : .zero))

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-               BuildableName = "swiftChat.app"
-               BlueprintName = "swiftChat"
-               ReferencedContainer = "container:swiftChat.xcodeproj">
+               BuildableName = "cowriter.app"
+               BlueprintName = "cowriter"
+               ReferencedContainer = "container:cowriter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,13 +44,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-            BuildableName = "swiftChat.app"
-            BlueprintName = "swiftChat"
-            ReferencedContainer = "container:swiftChat.xcodeproj">
+            BuildableName = "cowriter.app"
+            BlueprintName = "cowriter"
+            ReferencedContainer = "container:cowriter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../SwiftChatStoreKit.storekit">
+         identifier = "../../cowriter/Sources/ViewModels/StoreKit/Cowriter.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0E6A654929DD25C0003457DF"
-            BuildableName = "swiftChat.app"
-            BlueprintName = "swiftChat"
-            ReferencedContainer = "container:swiftChat.xcodeproj">
+            BuildableName = "cowriter.app"
+            BlueprintName = "cowriter"
+            ReferencedContainer = "container:cowriter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

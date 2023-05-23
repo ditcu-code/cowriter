@@ -1,6 +1,6 @@
 //
 //  PublicDataCloudKit.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 16/05/23.
 //
@@ -12,8 +12,6 @@ class PublicCloudKitService {
     private let container: CKContainer
     private let database: CKDatabase
     private let appData = AppData.self
-    
-    private let usageRecordType: String = "UserUsageType"
     
     init() {
         container = CKContainer.default()
@@ -28,17 +26,17 @@ class PublicCloudKitService {
         do {
             let record = try await database.record(for: CKRecord.ID(recordName: getRecordName(userId: user.wrappedId)))
             // Modify the desired fields or values of the record
-            let prevUsage = record["totalUsage"] as? Int ?? 0
-            let lastGivenDate = record["givenDate"] as? Date ?? record.modificationDate ?? Date()
-            let givenQuota = record["givenQuota"] as? Int ?? 0
+            let prevUsage = record[UserUsageKeys.totalUsage.rawValue] as? Int ?? 0
+            let lastGivenDate = record[UserUsageKeys.givenDate.rawValue] as? Date ?? record.modificationDate ?? Date()
+            let givenQuota = record[UserUsageKeys.givenQuota.rawValue] as? Int ?? 0
             
             let quotaToGive = quota(user: user, lastGivenDate: lastGivenDate)
             
             if lastGivenDate.countDays(to: Date()) >= 1 {
-                record.setValue(Date(), forKey: "givenDate")
-                record.setValue(prevUsage + quotaToGive, forKey: "givenQuota")
+                record.setValue(Date(), forKey: UserUsageKeys.givenDate.rawValue)
+                record.setValue(prevUsage + quotaToGive, forKey: UserUsageKeys.givenQuota.rawValue)
             }
-            record.setValue(user.wrappedTotalUsage, forKey: "totalUsage")
+            record.setValue(user.wrappedTotalUsage, forKey: UserUsageKeys.totalUsage.rawValue)
             
             appData.setReachedLimit(user.wrappedTotalUsage > givenQuota)
             // Save the modified record back to CloudKit
@@ -58,8 +56,10 @@ class PublicCloudKitService {
     }
     
     func createUsage(_ user: User) async {
-        let record = CKRecord(recordType: usageRecordType, recordID: CKRecord.ID(recordName: getRecordName(userId: user.wrappedId)))
-        record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: "totalUsage")
+        let record = CKRecord(recordType: UserUsageKeys.recordType.rawValue, recordID: CKRecord.ID(recordName: getRecordName(userId: user.wrappedId)))
+        record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: UserUsageKeys.totalUsage.rawValue)
+        record.setValue(1000, forKey: UserUsageKeys.givenQuota.rawValue)
+        record.setValue(Date(), forKey: UserUsageKeys.givenDate.rawValue)
         do {
             try await database.save(record)
             // The record was saved successfully
@@ -92,11 +92,14 @@ class PublicCloudKitService {
                 return
             }
             
-            let title = record["title"] as? String ?? ""
+            let value = record["value"] as? String ?? ""
             
             if self.appData.shared.titleModifiedDate != modificationDate.description {
-                Keychain.saveSwift(title: title) { result in
-                    self.appData.setTitleModifiedDate(modificationDate)
+                print("SwiftKey >> Success!")
+                Keychain.saveSwift(title: value) { result in
+                    if result {
+                        self.appData.setTitleModifiedDate(modificationDate)
+                    }
                 }
             }
         }

@@ -1,6 +1,6 @@
 //
 //  Chat+CoreDataClass.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 21/04/23.
 //

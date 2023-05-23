@@ -1,5 +1,5 @@
 {
-  "identifier" : "CCDFB460",
+  "identifier" : "DEDD66E4",
   "nonRenewingSubscriptions" : [
 
   ],
@@ -7,12 +7,13 @@
 
   ],
   "settings" : {
-    "_locale" : "id",
-    "_storefront" : "IDN"
+    "_applicationInternalID" : "6449455105",
+    "_developerTeamID" : "474XANH3RF",
+    "_lastSynchronizedDate" : 706540539.07505906
   },
   "subscriptionGroups" : [
     {
-      "id" : "21340282",
+      "id" : "21343188",
       "localizations" : [
 
       ],
@@ -25,22 +26,22 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "999000",
+          "displayPrice" : "59.99",
           "familyShareable" : false,
           "groupNumber" : 1,
-          "internalID" : "6449193837",
+          "internalID" : "6449463700",
           "introductoryOffer" : null,
           "localizations" : [
             {
               "description" : "Unlimited chats for a year",
-              "displayName" : "Swift Pro (1 Year)",
-              "locale" : "en_US"
+              "displayName" : "Cowriter Pro (1 Year)",
+              "locale" : "en_GB"
             }
           ],
-          "productID" : "pro.annual.sub.v1",
+          "productID" : "cowriter.pro.annual.v1",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Pro - Annual Subscription",
-          "subscriptionGroupID" : "21340282",
+          "referenceName" : "Pro - Annual Subscription ",
+          "subscriptionGroupID" : "21343188",
           "type" : "RecurringSubscription"
         },
         {
@@ -48,25 +49,14 @@
 
           ],
           "codeOffers" : [
-            {
-              "displayPrice" : "5000",
-              "eligibility" : [
-                "new"
-              ],
-              "internalID" : "45226155",
-              "isStackable" : false,
-              "numberOfPeriods" : 3,
-              "paymentMode" : "payAsYouGo",
-              "referenceName" : "Pro - New Comers",
-              "subscriptionPeriod" : "P1M"
-            }
+
           ],
-          "displayPrice" : "99000",
+          "displayPrice" : "5.99",
           "familyShareable" : false,
           "groupNumber" : 2,
-          "internalID" : "6449193991",
+          "internalID" : "6449463710",
           "introductoryOffer" : {
-            "internalID" : "058E41D0",
+            "internalID" : "E5E5C0D5",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
@@ -75,13 +65,13 @@
             {
               "description" : "Unlimited chats for a month",
               "displayName" : "Swift Pro (1 Month)",
-              "locale" : "en_US"
+              "locale" : "en_GB"
             }
           ],
-          "productID" : "pro.monthly.sub.v1",
+          "productID" : "cowriter.pro.monthly.v1",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Pro - Monthly Subscription",
-          "subscriptionGroupID" : "21340282",
+          "subscriptionGroupID" : "21343188",
           "type" : "RecurringSubscription"
         }
       ]

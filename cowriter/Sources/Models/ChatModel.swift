@@ -1,6 +1,6 @@
 //
 //  ChatModel.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 15/04/23.
 //
@@ -39,3 +39,11 @@ struct ChatTitle {
     var title: String
     var token: Int
 }
+
+enum UserUsageKeys: String, Codable {
+    case recordType = "UserUsageType"
+    case totalUsage = "totalUsage"
+    case givenDate = "givenDate"
+    case givenQuota = "givenQuota"
+}
+

@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 12/04/23.
 //
@@ -58,6 +58,11 @@ extension String {
             result.removeFirst()
         }
         return result
+    }
+    
+    var firstWord: String? {
+        let components = self.components(separatedBy: CharacterSet.whitespaces)
+        return components.first
     }
     
 }

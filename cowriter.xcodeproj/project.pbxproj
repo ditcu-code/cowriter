@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E0A9D5629E9BFDB00D7BEC5 /* SwiftChatLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* SwiftChatLogo.swift */; };
+		0E0A9D5629E9BFDB00D7BEC5 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
 		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
@@ -17,6 +17,7 @@
 		0E4813022A129EE70043A235 /* PublicCloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicCloudKitService.swift */; };
 		0E48131F2A15ECB70043A235 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E48131E2A15ECB70043A235 /* WelcomeView.swift */; };
 		0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */; };
+		0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */; };
 		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
 		0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
@@ -37,7 +38,6 @@
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
 		0EB96A2E2A17CCA700019353 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2D2A17CCA700019353 /* SettingVM.swift */; };
 		0EB96A302A17CCDE00019353 /* LabelSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */; };
-		0EC2B6B62A168767007AECE8 /* SwiftChatStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */; };
 		0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC312E629E80C1B00C9FE68 /* HomeVM.swift */; };
 		0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */; };
 		0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */; };
@@ -66,19 +66,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E0A9D5529E9BFDB00D7BEC5 /* SwiftChatLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChatLogo.swift; sourceTree = "<group>"; };
+		0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		0E1502B22A16276A00C4D78F /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		0E1502B52A16305A00C4D78F /* GreetingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVM.swift; sourceTree = "<group>"; };
 		0E1502B72A16428800C4D78F /* WelcomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeService.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
-		0E4812E12A122E910043A235 /* swiftChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swiftChat.entitlements; sourceTree = "<group>"; };
+		0E4812E12A122E910043A235 /* cowriter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cowriter.entitlements; sourceTree = "<group>"; };
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
 		0E48131E2A15ECB70043A235 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cowriter.storekit; sourceTree = "<group>"; };
 		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
-		0E6A654A29DD25C0003457DF /* swiftChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
 		0E6A654F29DD25C0003457DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E6A655129DD25C1003457DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		0EB96A2D2A17CCA700019353 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSetting.swift; sourceTree = "<group>"; };
-		0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftChatStoreKit.storekit; sourceTree = SOURCE_ROOT; };
 		0EC312E629E80C1B00C9FE68 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionsModel.swift; sourceTree = "<group>"; };
 		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
-				0E4812E12A122E910043A235 /* swiftChat.entitlements */,
+				0E4812E12A122E910043A235 /* cowriter.entitlements */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
 			);
@@ -174,7 +174,7 @@
 		0E6A654B29DD25C0003457DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E6A654A29DD25C0003457DF /* swiftChat.app */,
+				0E6A654A29DD25C0003457DF /* cowriter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,7 +278,7 @@
 		0E7227292A1113E500FADE9C /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				0EC2B6B52A168767007AECE8 /* SwiftChatStoreKit.storekit */,
+				0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */,
 				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
 				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 			);
@@ -320,7 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				0EE845FE2A066A960025060F /* _Shapes.swift */,
-				0E0A9D5529E9BFDB00D7BEC5 /* SwiftChatLogo.swift */,
+				0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */,
 				0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */,
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
@@ -370,9 +370,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E6A654929DD25C0003457DF /* swiftChat */ = {
+		0E6A654929DD25C0003457DF /* cowriter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "swiftChat" */;
+			buildConfigurationList = 0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */;
 			buildPhases = (
 				0E6A654629DD25C0003457DF /* Sources */,
 				0E6A654729DD25C0003457DF /* Frameworks */,
@@ -382,7 +382,7 @@
 			);
 			dependencies = (
 			);
-			name = swiftChat;
+			name = cowriter;
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0E91DD352A092213005041BA /* iTextField */,
@@ -390,7 +390,7 @@
 				0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */,
 			);
 			productName = cowriter;
-			productReference = 0E6A654A29DD25C0003457DF /* swiftChat.app */;
+			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -408,7 +408,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "swiftChat" */;
+			buildConfigurationList = 0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "cowriter" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -427,7 +427,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E6A654929DD25C0003457DF /* swiftChat */,
+				0E6A654929DD25C0003457DF /* cowriter */,
 			);
 		};
 /* End PBXProject section */
@@ -438,7 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
-				0EC2B6B62A168767007AECE8 /* SwiftChatStoreKit.storekit in Resources */,
+				0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,7 +494,7 @@
 				0EE845FF2A066A960025060F /* _Shapes.swift in Sources */,
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
 				0E7C414029F95CE50075B638 /* ChatView.swift in Sources */,
-				0E0A9D5629E9BFDB00D7BEC5 /* SwiftChatLogo.swift in Sources */,
+				0E0A9D5629E9BFDB00D7BEC5 /* LogoView.swift in Sources */,
 				0EE49E0829E6C0FA0058DB14 /* FavoritesView.swift in Sources */,
 				0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
@@ -624,7 +624,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = swiftChat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cowriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -632,7 +632,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swift AI Chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -644,7 +644,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.swiftChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -660,7 +660,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = swiftChat.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cowriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -668,7 +668,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Swift AI Chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -680,7 +680,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.swiftChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -694,7 +694,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "swiftChat" */ = {
+		0E6A654529DD25C0003457DF /* Build configuration list for PBXProject "cowriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E6A655C29DD25C1003457DF /* Debug */,
@@ -703,7 +703,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "swiftChat" */ = {
+		0E6A655E29DD25C1003457DF /* Build configuration list for PBXNativeTarget "cowriter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E6A655F29DD25C1003457DF /* Debug */,

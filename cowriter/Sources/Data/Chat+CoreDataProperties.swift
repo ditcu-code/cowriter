@@ -1,6 +1,6 @@
 //
 //  Chat+CoreDataProperties.swift
-//  swiftChat
+//  cowriter
 //
 //  Created by Aditya Cahyo on 21/04/23.
 //
@@ -27,7 +27,7 @@ extension Chat {
     }
     
     public var wrappedTitle: String {
-        title ?? "SwiftChat"
+        title ?? "A Chat"
     }
     
     public var wrappedMessages: [Message] {
