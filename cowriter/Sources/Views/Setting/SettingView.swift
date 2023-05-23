@@ -67,7 +67,7 @@ struct SettingView: View {
                     .presentationDragIndicator(.visible)
             } else {
                 VStack {
-                    SwiftChatLogo(isPro: true)
+                    LogoView(isPro: true)
                         .padding(.top, 100)
                         .padding(.bottom, 75)
                     SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
@@ -146,7 +146,7 @@ struct SettingView: View {
                     isPro ? Spacer() : nil
                     VStack(alignment: isPro ? .center : .leading) {
                         if isPro {
-                            SwiftChatLogo(isPro: true)
+                            LogoView(isPro: true)
                         } else {
                             Text("Free Plan").bold().tracking(0.5)
                         }
@@ -161,8 +161,8 @@ struct SettingView: View {
                             } label: {
                                 Text("Upgrade to Pro")
                                     .bold()
-                                    .font(.footnote)
-                                    .foregroundColor(.blue)
+                                    .font(.subheadline)
+                                    .foregroundColor(.accentColor)
                                     .padding(.top, 5)
                             }
                         }

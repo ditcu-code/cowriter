@@ -65,7 +65,7 @@ fileprivate struct ListChat: View {
                         if isActiveChat {
                             Circle()
                                 .frame(width: 9, height: 9)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         }
                     }
                     .contentShape(Rectangle())

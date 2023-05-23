@@ -60,6 +60,11 @@ extension String {
         return result
     }
     
+    var firstWord: String? {
+        let components = self.components(separatedBy: CharacterSet.whitespaces)
+        return components.first
+    }
+    
 }
 
 extension Date {

@@ -14,7 +14,7 @@ struct Prompter: View {
     var body: some View {
         HStack {
             iTextField(
-                "Tell Swift to...",
+                "Tell Cowriter to...",
                 text: $vm.userMessage,
                 isEditing: $vm.isFocusOnPrompter
             )
@@ -36,7 +36,7 @@ struct Prompter: View {
             .padding(.horizontal)
             if vm.isLoading {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .progressViewStyle(CircularProgressViewStyle())
                     .padding(.horizontal, 10)
             }
         }

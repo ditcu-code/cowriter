@@ -22,10 +22,10 @@ class GreetingVM: ObservableObject {
     
     private let greetings: [String] = [
         "How can I assist you with your writing today?",
-        "Your pair programming here",
+//        "Your pair programming here",
         "Need any help with editing or proofreading your writing?",
         "Need any recipe ideas or cooking tips?",
-        "Want to take a moment to reflect on your personal growth?",
+//        "Want to take a moment to reflect on your personal growth?",
         "Ready to take your productivity to the next level?"
     ]
     
@@ -33,7 +33,7 @@ class GreetingVM: ObservableObject {
         "Is there anything I can help you with?",
         "What can I do for you today?",
         "What brings you here today?",
-        "Is there anything you'd like to chat about?",
+//        "Is there anything you'd like to chat about?",
         "What can I help?",
         "What do you need assistance with?",
         "Let's get started!"

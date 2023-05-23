@@ -31,6 +31,6 @@ struct LabelSetting: View {
 
 struct LabelSetting_Previews: PreviewProvider {
     static var previews: some View {
-        LabelSetting(icon: "sun", color: .blue, label: "Hello")
+        LabelSetting(icon: "sun", color: .accentColor, label: "Hello")
     }
 }
