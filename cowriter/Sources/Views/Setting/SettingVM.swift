@@ -28,12 +28,12 @@ class SettingVM: ObservableObject {
     }
     
     func openLinkTermsAndCondition() {
-        guard let url = URL(string: "https://bit.ly/swiftaichat-termsandcondition") else { return }
+        guard let url = URL(string: "https://bit.ly/cowriter-termsandcondition") else { return }
         UIApplication.shared.open(url)
     }
     
     func openLinkPrivacyPolicy() {
-        guard let url = URL(string: "https://bit.ly/swiftaichat-privacy-policy") else { return }
+        guard let url = URL(string: "https://bit.ly/cowriter-privacy-policy") else { return }
         UIApplication.shared.open(url)
     }
     
