@@ -17,6 +17,7 @@ class AppData: ObservableObject {
     @AppStorage(AppStorageKey.linkPrivacyPolicy.rawValue) var linkPrivacyPolicy: String = ""
     @AppStorage(AppStorageKey.linkTermsConditions.rawValue) var linkTermsConditions: String = ""
     @AppStorage(AppStorageKey.linkAboutUs.rawValue) var linkAboutUs: String = ""
+    @AppStorage(AppStorageKey.linkSupport.rawValue) var linkSupport: String = ""
     
     static func setSetupCompleted(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: AppStorageKey.setupCompleted.rawValue)
@@ -37,4 +38,5 @@ enum AppStorageKey: String {
     case linkPrivacyPolicy
     case linkTermsConditions
     case linkAboutUs
+    case linkSupport
 }

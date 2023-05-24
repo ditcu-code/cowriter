@@ -15,7 +15,7 @@ class RequestOpenAI {
         body: [String: Any],
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        let token = Keychain.getSwift() ?? ""
+        let token = CowriterLinks.getSwift() ?? ""
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",

@@ -42,7 +42,7 @@
 		0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */; };
 		0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */; };
 		0ECC7C0629DDA552002A6B7F /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */; };
-		0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0729DDBC92002A6B7F /* Keychain.swift */; };
+		0ECC7C0829DDBC92002A6B7F /* CowriterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0729DDBC92002A6B7F /* CowriterLinks.swift */; };
 		0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */; };
 		0ECC7C0D29DEAB54002A6B7F /* RequestOpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */; };
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
@@ -101,7 +101,7 @@
 		0EC312E629E80C1B00C9FE68 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		0ECC7C0229DD921A002A6B7F /* CompletionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionsModel.swift; sourceTree = "<group>"; };
 		0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
-		0ECC7C0729DDBC92002A6B7F /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		0ECC7C0729DDBC92002A6B7F /* CowriterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowriterLinks.swift; sourceTree = "<group>"; };
 		0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOpenAI.swift; sourceTree = "<group>"; };
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			children = (
 				0E4813002A129ED00043A235 /* CloudKit */,
 				0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */,
-				0ECC7C0729DDBC92002A6B7F /* Keychain.swift */,
+				0ECC7C0729DDBC92002A6B7F /* CowriterLinks.swift */,
 				0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */,
 				0E1502B72A16428800C4D78F /* WelcomeService.swift */,
 			);
@@ -464,7 +464,7 @@
 				0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */,
 				0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */,
 				0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */,
-				0ECC7C0829DDBC92002A6B7F /* Keychain.swift in Sources */,
+				0ECC7C0829DDBC92002A6B7F /* CowriterLinks.swift in Sources */,
 				0ECC7C0D29DEAB54002A6B7F /* RequestOpenAI.swift in Sources */,
 				0E6A655A29DD25C1003457DF /* cowriter.xcdatamodeld in Sources */,
 				0EE49E0C29E6DCFF0058DB14 /* Extensions.swift in Sources */,

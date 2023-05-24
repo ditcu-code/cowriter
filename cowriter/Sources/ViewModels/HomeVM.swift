@@ -67,7 +67,7 @@ class HomeVM: ObservableObject {
     func request(_ chat: Chat?) {
         cancel()
         task = Task {
-            let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            let client: PhotonAIClient? = PhotonAIClient(apiKey: CowriterLinks.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             let userName = currentUser?.wrappedName.firstWord
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
@@ -244,8 +244,8 @@ class HomeVM: ObservableObject {
     }
     
     // triggered on task
-    func getTheKey() {
-        self.cloudKitData.fetchSwiftKey()
+    func getAssets() async {
+        await self.cloudKitData.fetchAssets()
     }
     
     func updateUsage() async {

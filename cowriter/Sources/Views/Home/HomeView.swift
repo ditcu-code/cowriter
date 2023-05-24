@@ -67,7 +67,7 @@ struct HomeView: View {
                 HomeToolbar(vm: vm, width: sideBarWidth)
             }
             .task(priority: .background) {
-                vm.getTheKey()
+                await vm.getAssets()
                 await vm.updateUsage()
             }
             .animation(.linear, value: isActive)
