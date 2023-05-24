@@ -14,6 +14,9 @@ class AppData: ObservableObject {
     @AppStorage(AppStorageKey.reachedLimit.rawValue) var reachedLimit: Bool = false
     @AppStorage(AppStorageKey.titleModifiedDate.rawValue) var titleModifiedDate: String = ""
     @AppStorage(AppStorageKey.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
+    @AppStorage(AppStorageKey.linkPrivacyPolicy.rawValue) var linkPrivacyPolicy: String = ""
+    @AppStorage(AppStorageKey.linkTermsConditions.rawValue) var linkTermsConditions: String = ""
+    @AppStorage(AppStorageKey.linkAboutUs.rawValue) var linkAboutUs: String = ""
     
     static func setSetupCompleted(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: AppStorageKey.setupCompleted.rawValue)
@@ -31,4 +34,7 @@ enum AppStorageKey: String {
     case reachedLimit
     case titleModifiedDate
     case preferredColorScheme
+    case linkPrivacyPolicy
+    case linkTermsConditions
+    case linkAboutUs
 }
