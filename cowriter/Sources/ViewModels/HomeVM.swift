@@ -60,7 +60,13 @@ class HomeVM: ObservableObject {
     }
     
     func getAllChats() {
-        allChats = Chat.getAll()
+        let chats = Chat.getAll()
+
+        let sortedChats = chats.sorted {
+            ($0.latestMessageDate ?? Date.distantPast) > ($1.latestMessageDate ?? Date.distantPast)
+        }
+
+        allChats = sortedChats
     }
     
     @MainActor
