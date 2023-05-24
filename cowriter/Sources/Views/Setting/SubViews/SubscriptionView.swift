@@ -26,7 +26,15 @@ struct SubscriptionView: View {
                     .foregroundColor(.grayFont)
             }.padding()
             
-            ItemPlanView(selectedProduct: $selectedProduct)
+            if purchaseManager.isLoading {
+                HStack {
+                    Spacer()
+                    CircularLoading()
+                    Spacer()
+                }
+            } else {
+                ItemPlanView(selectedProduct: $selectedProduct)
+            }
             
             VStack(spacing: 0) {
                 

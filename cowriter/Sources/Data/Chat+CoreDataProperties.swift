@@ -30,6 +30,10 @@ extension Chat {
         title ?? "A Chat"
     }
     
+    public var latestMessageDate: Date? {
+        return wrappedMessages.last?.wrappedDate
+    }
+    
     public var wrappedMessages: [Message] {
         let set = messages as? Set<Message> ?? []
         

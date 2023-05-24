@@ -18,6 +18,7 @@ class SettingVM: ObservableObject {
     @Published var profileManager = ProfileManager()
     
     private let cloudKitData = PublicCloudKitService()
+    private let appData = AppData()
     
     func sendSupportMessage() async {
         if let user = profileManager.user {
@@ -28,17 +29,17 @@ class SettingVM: ObservableObject {
     }
     
     func openLinkTermsAndCondition() {
-        guard let url = URL(string: "https://bit.ly/cowriter-termsconditions") else { return }
+        guard let url = URL(string: appData.linkTermsConditions) else { return }
         UIApplication.shared.open(url)
     }
     
     func openLinkPrivacyPolicy() {
-        guard let url = URL(string: "https://bit.ly/cowriter-privacypolicy") else { return }
+        guard let url = URL(string: appData.linkPrivacyPolicy) else { return }
         UIApplication.shared.open(url)
     }
     
     func openLinkAboutUs() {
-        guard let url = URL(string: "https://bit.ly/3BT09h9") else { return }
+        guard let url = URL(string: appData.linkAboutUs) else { return }
         UIApplication.shared.open(url)
     }
     

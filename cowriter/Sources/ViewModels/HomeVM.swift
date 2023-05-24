@@ -60,14 +60,20 @@ class HomeVM: ObservableObject {
     }
     
     func getAllChats() {
-        allChats = Chat.getAll()
+        let chats = Chat.getAll()
+
+        let sortedChats = chats.sorted {
+            ($0.latestMessageDate ?? Date.distantPast) > ($1.latestMessageDate ?? Date.distantPast)
+        }
+
+        allChats = sortedChats
     }
     
     @MainActor
     func request(_ chat: Chat?) {
         cancel()
         task = Task {
-            let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            let client: PhotonAIClient? = PhotonAIClient(apiKey: CowriterLinks.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             let userName = currentUser?.wrappedName.firstWord
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
@@ -244,8 +250,8 @@ class HomeVM: ObservableObject {
     }
     
     // triggered on task
-    func getTheKey() {
-        self.cloudKitData.fetchSwiftKey()
+    func getAssets() async {
+        await self.cloudKitData.fetchAssets()
     }
     
     func updateUsage() async {

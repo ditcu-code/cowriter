@@ -15,6 +15,7 @@ class PurchaseManager: ObservableObject {
     
     @Published private(set) var products: [Product] = []
     @Published private(set) var purchasedProductIDs = Set<String>()
+    @Published private(set) var isLoading: Bool = false
     
     private let entitlementManager: EntitlementManager
     private var productsLoaded = false
@@ -88,8 +89,10 @@ class PurchaseManager: ObservableObject {
     
     func loadProducts() {
         _ = Task<Void, Never> {
+            self.isLoading = true
             do {
                 try await self.loadProducts()
+                self.isLoading = false
             } catch {
                 print(error)
             }

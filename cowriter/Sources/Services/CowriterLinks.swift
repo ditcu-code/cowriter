@@ -8,22 +8,21 @@
 import Foundation
 import Security
 
-class Keychain {
-    static func saveSwift(title: String, completion: @escaping (Bool) -> Void) {
+class CowriterLinks {
+    static func saveLink(url: String, completion: @escaping (Bool) -> Void) {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.cowriter.key",
+            kSecAttrService as String: "com.ditcu.cowriter",
             kSecAttrAccount as String: "mySwift",
-            kSecValueData as String: title.data(using: .utf8)!,
+            kSecValueData as String: url.data(using: .utf8)!,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
-            kSecAttrSynchronizable as String: kCFBooleanTrue!
         ]
         
         let status = SecItemAdd(keychainQuery as CFDictionary, nil)
         if status == errSecSuccess {
             completion(true)
         } else if status == errSecDuplicateItem {
-            updateSwift(title: title) { result in
+            updateLink(title: url) { result in
                 completion(result)
             }
         } else {
@@ -31,10 +30,10 @@ class Keychain {
         }
     }
     
-    static func updateSwift(title: String, completion: @escaping (Bool) -> Void) {
+    static func updateLink(title: String, completion: @escaping (Bool) -> Void) {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.cowriter.key",
+            kSecAttrService as String: "com.ditcu.cowriter",
             kSecAttrAccount as String: "mySwift"
         ]
         
@@ -53,11 +52,10 @@ class Keychain {
     static func getSwift() -> String? {
         let keychainQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: "com.ditcu.cowriter.key",
+            kSecAttrService as String: "com.ditcu.cowriter",
             kSecAttrAccount as String: "mySwift",
             kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrSynchronizable as String: kCFBooleanTrue!
         ]
         
         var result: AnyObject?
