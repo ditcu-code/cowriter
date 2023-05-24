@@ -50,11 +50,11 @@ struct SettingView: View {
                     Text("Privacy Policy").font(.footnote)
                 }
                 
-//                Button {
-//                    
-//                } label: {
-//                    Text("About Us").font(.footnote)
-//                }
+                Button {
+                    vm.openLinkAboutUs()
+                } label: {
+                    Text("About Us").font(.footnote)
+                }
             }
             
         }

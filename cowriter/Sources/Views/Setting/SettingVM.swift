@@ -28,12 +28,17 @@ class SettingVM: ObservableObject {
     }
     
     func openLinkTermsAndCondition() {
-        guard let url = URL(string: "https://bit.ly/cowriter-termsandcondition") else { return }
+        guard let url = URL(string: "https://bit.ly/cowriter-termsconditions") else { return }
         UIApplication.shared.open(url)
     }
     
     func openLinkPrivacyPolicy() {
-        guard let url = URL(string: "https://bit.ly/cowriter-privacy-policy") else { return }
+        guard let url = URL(string: "https://bit.ly/cowriter-privacypolicy") else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    func openLinkAboutUs() {
+        guard let url = URL(string: "https://bit.ly/3BT09h9") else { return }
         UIApplication.shared.open(url)
     }
     
