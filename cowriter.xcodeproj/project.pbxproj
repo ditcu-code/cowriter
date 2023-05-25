@@ -144,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				0E1502B52A16305A00C4D78F /* GreetingVM.swift */,
+				0EC312E629E80C1B00C9FE68 /* HomeVM.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -232,7 +233,6 @@
 			children = (
 				0E1502B42A16304A00C4D78F /* Home */,
 				0E7227292A1113E500FADE9C /* StoreKit */,
-				0EC312E629E80C1B00C9FE68 /* HomeVM.swift */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0E800E482A16222100C82D68 /* WelcomeVM.swift */,
 				0EB96A2D2A17CCA700019353 /* SettingVM.swift */,
