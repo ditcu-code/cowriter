@@ -33,7 +33,9 @@ struct ItemPlanView: View {
                                 .font(.footnote)
                                 .foregroundColor(.defaultFont)
                             HStack {
-                                Text(isMonthlyPlan ? plan.title! : product.displayPrice).font(.headline)
+                                Text(product.displayPrice)
+                                    .font(.headline)
+                                    .scaleEffect(1.1)
                                 if let disc = monthlyTotal, !isMonthlyPlan {
                                     Text(disc.formatted(product.priceFormatStyle))
                                         .font(.footnote)

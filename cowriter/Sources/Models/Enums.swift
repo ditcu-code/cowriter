@@ -62,7 +62,7 @@ enum PlanEnum: String, CaseIterable {
         case .annual:
             return "/ month, billed annualy"
         case .monthly:
-            return "/ month after 1 week"
+            return "/ month after 1 week free trial"
         }
     }
     

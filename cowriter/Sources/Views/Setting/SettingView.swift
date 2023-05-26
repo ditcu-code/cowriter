@@ -48,18 +48,16 @@ struct SettingView: View {
         .navigationTitle("Setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
             
-            if #available(iOS 16.0, *) {
+            //            if #available(iOS 16.0, *) {
+            //                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
+            //                    .presentationDetents([.medium])
+            //                    .presentationDragIndicator(.visible)
+            //            } else {
+            VStack {
+                LogoView(isPro: true).padding(.vertical, 100)
                 SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            } else {
-                VStack {
-                    LogoView(isPro: true)
-                        .padding(.top, 100)
-                        .padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                }
             }
+            //            }
             
         }
         
