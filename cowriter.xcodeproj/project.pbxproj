@@ -46,6 +46,10 @@
 		0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */; };
 		0ECC7C0D29DEAB54002A6B7F /* RequestOpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */; };
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
+		0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDA606F2A1FB2D5005181A8 /* Ink */; };
+		0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60732A1FB9D7005181A8 /* WebView.swift */; };
+		0EDA60772A1FD44A005181A8 /* MarkdownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */; };
+		0EDA60792A1FD484005181A8 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60782A1FD484005181A8 /* MarkdownView.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
 		0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */; };
 		0EE49E0529E6C0600058DB14 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* HomeView.swift */; };
@@ -105,6 +109,9 @@
 		0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOpenAI.swift; sourceTree = "<group>"; };
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
+		0EDA60732A1FB9D7005181A8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownVM.swift; sourceTree = "<group>"; };
+		0EDA60782A1FD484005181A8 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotsLoading.swift; sourceTree = "<group>"; };
 		0EE49E0429E6C0600058DB14 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -130,6 +137,7 @@
 			files = (
 				0E91DD362A092213005041BA /* iTextField in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
+				0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */,
 				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
 				0ECC0D632A16602E00AEC835 /* PhotonOpenAIKit in Frameworks */,
 			);
@@ -142,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				0E1502B52A16305A00C4D78F /* GreetingVM.swift */,
+				0EC312E629E80C1B00C9FE68 /* HomeVM.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -228,9 +237,9 @@
 		0E6A656429DD27E1003457DF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0EDA60752A1FD438005181A8 /* Setting */,
 				0E1502B42A16304A00C4D78F /* Home */,
 				0E7227292A1113E500FADE9C /* StoreKit */,
-				0EC312E629E80C1B00C9FE68 /* HomeVM.swift */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0E800E482A16222100C82D68 /* WelcomeVM.swift */,
 				0E72272C2A11155D00FADE9C /* ProfileManager.swift */,
@@ -325,8 +334,18 @@
 				0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */,
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E1502B22A16276A00C4D78F /* DefaultBackground.swift */,
+				0EDA60732A1FB9D7005181A8 /* WebView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		0EDA60752A1FD438005181A8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0EB96A2D2A17CCA700019353 /* SettingVM.swift */,
+				0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		0EE49E0329E6C04C0058DB14 /* Home */ = {
@@ -351,7 +370,6 @@
 			children = (
 				0EE845F72A0667910025060F /* SubViews */,
 				0EE845F52A0529020025060F /* SettingView.swift */,
-				0EB96A2D2A17CCA700019353 /* SettingVM.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -363,6 +381,7 @@
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
 				0E72272A2A11142100FADE9C /* ProfileView.swift */,
 				0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */,
+				0EDA60782A1FD484005181A8 /* MarkdownView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -388,6 +407,7 @@
 				0E91DD352A092213005041BA /* iTextField */,
 				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
 				0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */,
+				0EDA606F2A1FB2D5005181A8 /* Ink */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
@@ -422,6 +442,7 @@
 				0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */,
 				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
+				0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -452,6 +473,7 @@
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
 				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
+				0EDA60792A1FD484005181A8 /* MarkdownView.swift in Sources */,
 				0E7227282A11138C00FADE9C /* User+CoreDataProperties.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
@@ -490,6 +512,7 @@
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
+				0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */,
 				0E7227272A11138C00FADE9C /* User+CoreDataClass.swift in Sources */,
 				0EE845FF2A066A960025060F /* _Shapes.swift in Sources */,
 				0E91DD302A08D517005041BA /* GreetingView.swift in Sources */,
@@ -499,6 +522,7 @@
 				0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
 				0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */,
+				0EDA60772A1FD44A005181A8 /* MarkdownVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +763,14 @@
 				kind = branch;
 			};
 		};
+		0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
 		0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -764,6 +796,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;
 			productName = PhotonOpenAIKit;
+		};
+		0EDA606F2A1FB2D5005181A8 /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
 		};
 		0EE49DFF29E482060058DB14 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

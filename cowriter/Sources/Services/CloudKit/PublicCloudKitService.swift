@@ -110,7 +110,7 @@ class PublicCloudKitService {
             
             UserDefaults.standard.set(linkAboutUs, forKey: AppStorageKey.linkAboutUs.rawValue)
             UserDefaults.standard.set(linkPrivacyPolicy, forKey: AppStorageKey.linkPrivacyPolicy.rawValue)
-            UserDefaults.standard.set(linkTermsConditions, forKey: AppStorageKey.linkTermsConditions.rawValue)
+            UserDefaults.standard.set(linkTermsConditions, forKey: AppStorageKey.linkTermsAndConditions.rawValue)
             
             CowriterLinks.saveLink(url: linkSupport) {result in
                 print("Assets >> Success is \(result)!")
@@ -137,6 +137,23 @@ class PublicCloudKitService {
         } catch let saveError {
             // Handle the save error
             print("SupportMessage >> Error creation: \(saveError.localizedDescription)")
+        }
+    }
+    
+    func fetchMarkdown(type: MarkdownEnum) async -> String  {
+        let recordID = CKRecord.ID(recordName: type.rawValue)
+        do {
+            let record = try await database.record(for: recordID)
+            let markdown = record["markdown"] as? String ?? ""
+            return markdown
+        } catch let error {
+            print("FetchMarkdown >> \(error.localizedDescription)")
+            return """
+            
+            ### Oops! It seems like you're having connection issues. Please check your internet connection or you can try again by opening the following link:
+            [\(type.desc)](\(UserDefaults.standard.string(forKey: "link" + type.rawValue.capitalizingFirstLetter)!))
+            
+            """
         }
     }
     

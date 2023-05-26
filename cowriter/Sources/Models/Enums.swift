@@ -13,6 +13,21 @@ enum ChatRoleEnum: String, Codable {
     case assistant = "assistant"
 }
 
+enum MarkdownEnum: String, CaseIterable {
+    case termsAndConditions, privacyPolicy, aboutUs
+    
+    var desc: String {
+        switch self {
+        case .termsAndConditions:
+            return "Terms and Conditions"
+        case .privacyPolicy:
+            return "Privacy Policy"
+        case .aboutUs:
+            return "About Us"
+        }
+    }
+}
+
 enum AppearanceMode: String, CaseIterable, Codable {
     case light, dark, system
     var id: Self { self }
@@ -47,7 +62,7 @@ enum PlanEnum: String, CaseIterable {
         case .annual:
             return "/ month, billed annualy"
         case .monthly:
-            return "/ month after 1 week"
+            return "/ month after 1 week free trial"
         }
     }
     

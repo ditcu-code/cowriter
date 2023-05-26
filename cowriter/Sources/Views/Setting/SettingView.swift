@@ -18,6 +18,7 @@ struct SettingView: View {
     var body: some View {
         List {
             ProfileView(vm: vm)
+            
             subscriptionSection
             
             Section {
@@ -38,22 +39,8 @@ struct SettingView: View {
             }
             
             Section {
-                Button {
-                    vm.openLinkTermsAndCondition()
-                } label: {
-                    Text("Terms and Condition").font(.footnote)
-                }
-                
-                Button {
-                    vm.openLinkPrivacyPolicy()
-                } label: {
-                    Text("Privacy Policy").font(.footnote)
-                }
-                
-                Button {
-                    vm.openLinkAboutUs()
-                } label: {
-                    Text("About Us").font(.footnote)
+                ForEach(MarkdownEnum.allCases, id: \.rawValue) { markdown in
+                    MarkdownView(type: markdown)
                 }
             }
             
@@ -61,18 +48,16 @@ struct SettingView: View {
         .navigationTitle("Setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
             
-            if #available(iOS 16.0, *) {
+            //            if #available(iOS 16.0, *) {
+            //                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
+            //                    .presentationDetents([.medium])
+            //                    .presentationDragIndicator(.visible)
+            //            } else {
+            VStack {
+                LogoView(isPro: true).padding(.vertical, 100)
                 SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            } else {
-                VStack {
-                    LogoView(isPro: true)
-                        .padding(.top, 100)
-                        .padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                }
             }
+            //            }
             
         }
         
@@ -108,7 +93,6 @@ struct SettingView: View {
                     }
                 }
             }
-
         }
     }
     

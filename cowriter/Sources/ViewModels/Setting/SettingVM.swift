@@ -28,19 +28,4 @@ class SettingVM: ObservableObject {
         }
     }
     
-    func openLinkTermsAndCondition() {
-        guard let url = URL(string: appData.linkTermsConditions) else { return }
-        UIApplication.shared.open(url)
-    }
-    
-    func openLinkPrivacyPolicy() {
-        guard let url = URL(string: appData.linkPrivacyPolicy) else { return }
-        UIApplication.shared.open(url)
-    }
-    
-    func openLinkAboutUs() {
-        guard let url = URL(string: appData.linkAboutUs) else { return }
-        UIApplication.shared.open(url)
-    }
-    
 }
