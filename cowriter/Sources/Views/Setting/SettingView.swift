@@ -18,6 +18,7 @@ struct SettingView: View {
     var body: some View {
         List {
             ProfileView(vm: vm)
+            
             subscriptionSection
             
             Section {
@@ -38,22 +39,8 @@ struct SettingView: View {
             }
             
             Section {
-                Button {
-                    vm.openLinkTermsAndCondition()
-                } label: {
-                    Text("Terms and Condition").font(.footnote)
-                }
-                
-                Button {
-                    vm.openLinkPrivacyPolicy()
-                } label: {
-                    Text("Privacy Policy").font(.footnote)
-                }
-                
-                Button {
-                    vm.openLinkAboutUs()
-                } label: {
-                    Text("About Us").font(.footnote)
+                ForEach(MarkdownEnum.allCases, id: \.rawValue) { markdown in
+                    MarkdownView(type: markdown)
                 }
             }
             
@@ -108,7 +95,6 @@ struct SettingView: View {
                     }
                 }
             }
-
         }
     }
     

@@ -52,19 +52,14 @@ extension String {
         return gpt3Tokenizer.encoder.enconde(text: self).count
     }
     
-    func removeNewlineAtBeginning() -> String {
-        var result = self
-        while result.first == "\n" {
-            result.removeFirst()
-        }
-        return result
-    }
-    
     var firstWord: String? {
         let components = self.components(separatedBy: CharacterSet.whitespaces)
         return components.first
     }
     
+    var capitalizingFirstLetter: String {
+        return prefix(1).capitalized + dropFirst()
+    }
 }
 
 extension Date {
