@@ -17,7 +17,6 @@ struct LegalView: View {
                 WebViewURL(url: type.link)
                     .id(reloadWebView)
             }
-            .navigationTitle(type.desc)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
