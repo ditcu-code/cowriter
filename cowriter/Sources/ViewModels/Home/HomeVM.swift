@@ -15,7 +15,7 @@ class HomeVM: ObservableObject {
     @Published var userMessage: String = "" /// prompt
     @Published var textToDisplay: String = "" /// answer
     
-    @Published var errorMessage: String = ""
+    @Published var errorMessage: String?
     @Published var isLoading = false
     @Published var showSubscriptionSheet = false
     
@@ -80,6 +80,14 @@ class HomeVM: ObservableObject {
                 .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your AI writing assistant", name: systemName)
             ]
             
+            if !appData.loggedInIcloud {
+                errorMessage = "Important iCloud Login Required: To unlock the full potential of our app, please ensure you are logged into iCloud in your device settings. Don't miss out on the seamless and synced experience."
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                    self.errorMessage = nil
+                }
+                return
+            }
+            
             if appData.reachedLimit && !entitlementManager.hasPro {
                 errorMessage = "You have reached your daily usage limit. Upgrade to the pro version to enjoy unlimited messaging."
                 self.showSubscriptionSheet = true
@@ -143,7 +151,7 @@ class HomeVM: ObservableObject {
                 }
                 withAnimation {
                     self.isLoading = false
-                    if self.errorMessage.isEmpty {
+                    if self.errorMessage == nil {
                         self.userMessage = ""
                     }
                 }
@@ -181,7 +189,7 @@ class HomeVM: ObservableObject {
                 }
                 
                 // delete prev error message if last req is success
-                if !self.errorMessage.isEmpty {
+                if self.errorMessage != nil {
                     withAnimation {
                         errorMessage = ""
                     }

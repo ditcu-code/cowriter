@@ -40,9 +40,9 @@ struct HomeView: View {
                             ChatView(vm: vm)
                         }
                         
-                        if !vm.errorMessage.isEmpty {
-                            ErrorMessageView(message: vm.errorMessage)
-                        }
+                        ErrorMessageView(message: vm.errorMessage)
+                            .animation(.linear, value: vm.errorMessage)
+                        
                         Spacer()
                         
                         Prompter(vm: vm)

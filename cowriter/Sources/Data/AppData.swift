@@ -10,6 +10,7 @@ import SwiftUI
 
 class AppData: ObservableObject {
     static let shared = AppData()
+    @AppStorage(AppStorageKey.loggedInIcloud.rawValue) var loggedInIcloud: Bool = false
     @AppStorage(AppStorageKey.setupCompleted.rawValue) var setupCompleted: Bool = false
     @AppStorage(AppStorageKey.reachedLimit.rawValue) var reachedLimit: Bool = false
     @AppStorage(AppStorageKey.titleModifiedDate.rawValue) var titleModifiedDate: String = ""
@@ -20,6 +21,9 @@ class AppData: ObservableObject {
         .aboutUs.link
     @AppStorage(AppStorageKey.linkSupport.rawValue) var linkSupport: String = ""
     
+    static func setLoggedInIcloud(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: AppStorageKey.loggedInIcloud.rawValue)
+    }
     static func setSetupCompleted(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: AppStorageKey.setupCompleted.rawValue)
     }
@@ -32,6 +36,7 @@ class AppData: ObservableObject {
 }
 
 enum AppStorageKey: String {
+    case loggedInIcloud
     case setupCompleted
     case reachedLimit
     case titleModifiedDate

@@ -63,10 +63,28 @@ class PublicCloudKitService {
         do {
             try await database.save(record)
             // The record was saved successfully
+            appData.setLoggedInIcloud(true)
             print("UserUsage >> Successfully created!")
         } catch let saveError {
             // Handle the save error
+            if saveError.localizedDescription.contains("CREATE operation not permitted") {
+                appData.setLoggedInIcloud(false)
+            }
             print("UserUsage >> Error creation: \(saveError.localizedDescription)")
+        }
+    }
+    
+    func checkIcloudLogin(completion: @escaping (Bool) -> Void) {
+        container.accountStatus { (accountStatus, error) in
+            switch accountStatus {
+            case .couldNotDetermine, .restricted, .noAccount, .temporarilyUnavailable:
+                print("Check Icloud >> Could not determine")
+                completion(false)
+            case .available:
+                completion(true)
+            @unknown default:
+                print("Check Icloud >> Error future")
+            }
         }
     }
     

@@ -39,7 +39,7 @@ struct ChatView: View {
                         } else {
                             BubbleAnswerView(
                                 message: message,
-                                answer: (isLastMessage && vm.errorMessage.isEmpty && vm.isLoading) ?
+                                answer: (isLastMessage && vm.errorMessage == nil && vm.isLoading) ?
                                 vm.textToDisplay : message.wrappedContent
                             )
                         }
