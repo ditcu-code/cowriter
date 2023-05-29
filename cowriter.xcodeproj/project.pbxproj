@@ -48,8 +48,7 @@
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
 		0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDA606F2A1FB2D5005181A8 /* Ink */; };
 		0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60732A1FB9D7005181A8 /* WebView.swift */; };
-		0EDA60772A1FD44A005181A8 /* MarkdownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */; };
-		0EDA60792A1FD484005181A8 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60782A1FD484005181A8 /* MarkdownView.swift */; };
+		0EDA60792A1FD484005181A8 /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60782A1FD484005181A8 /* LegalView.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
 		0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */; };
 		0EE49E0529E6C0600058DB14 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* HomeView.swift */; };
@@ -110,8 +109,7 @@
 		0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOpenAI.swift; sourceTree = "<group>"; };
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
 		0EDA60732A1FB9D7005181A8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownVM.swift; sourceTree = "<group>"; };
-		0EDA60782A1FD484005181A8 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		0EDA60782A1FD484005181A8 /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalView.swift; sourceTree = "<group>"; };
 		0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotsLoading.swift; sourceTree = "<group>"; };
 		0EE49E0429E6C0600058DB14 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				0EB96A2D2A17CCA700019353 /* SettingVM.swift */,
-				0EDA60762A1FD44A005181A8 /* MarkdownVM.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -381,7 +378,7 @@
 				0EE845FA2A0669740025060F /* ItemPlanView.swift */,
 				0E72272A2A11142100FADE9C /* ProfileView.swift */,
 				0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */,
-				0EDA60782A1FD484005181A8 /* MarkdownView.swift */,
+				0EDA60782A1FD484005181A8 /* LegalView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -473,7 +470,7 @@
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
 				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
-				0EDA60792A1FD484005181A8 /* MarkdownView.swift in Sources */,
+				0EDA60792A1FD484005181A8 /* LegalView.swift in Sources */,
 				0E7227282A11138C00FADE9C /* User+CoreDataProperties.swift in Sources */,
 				0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */,
 				0ECC7C0329DD921A002A6B7F /* CompletionsModel.swift in Sources */,
@@ -522,7 +519,6 @@
 				0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */,
 				0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */,
 				0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */,
-				0EDA60772A1FD44A005181A8 /* MarkdownVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

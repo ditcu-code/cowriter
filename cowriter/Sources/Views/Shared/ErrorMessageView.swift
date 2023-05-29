@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct ErrorMessageView: View {
-    var message: String
+    var message: String?
     
     var body: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-            Text(message).font(.subheadline)
-            Spacer()
+        if let text = message {
+            HStack {
+                Image(systemName: "exclamationmark.triangle.fill")
+                Text(text).font(.subheadline)
+                Spacer()
+            }
+            .foregroundColor(.pink.opacity(0.75))
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.pink.opacity(0.1))
+            )
+            .padding(.horizontal)
+            .padding(.top, 10)
+            .transition(.move(edge: .bottom))
         }
-        .foregroundColor(.pink.opacity(0.75))
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.pink.opacity(0.1))
-        )
-        .padding(.horizontal)
-        .padding(.top, 10)
-        .transition(.move(edge: .bottom))
     }
 }
 

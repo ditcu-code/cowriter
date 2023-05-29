@@ -40,25 +40,14 @@ struct SettingView: View {
             
             Section {
                 ForEach(MarkdownEnum.allCases, id: \.rawValue) { markdown in
-                    MarkdownView(type: markdown)
+                    LegalView(type: markdown)
                 }
             }
             
         }
         .navigationTitle("Setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
-            
-            //            if #available(iOS 16.0, *) {
-            //                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            //                    .presentationDetents([.medium])
-            //                    .presentationDragIndicator(.visible)
-            //            } else {
-            VStack {
-                LogoView(isPro: true).padding(.vertical, 100)
-                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            }
-            //            }
-            
+            SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
         }
         
         .sheet(isPresented: $vm.showSupportSheet) {

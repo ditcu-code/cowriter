@@ -40,9 +40,9 @@ struct HomeView: View {
                             ChatView(vm: vm)
                         }
                         
-                        if !vm.errorMessage.isEmpty {
-                            ErrorMessageView(message: vm.errorMessage)
-                        }
+                        ErrorMessageView(message: vm.errorMessage)
+                            .animation(.linear, value: vm.errorMessage)
+                        
                         Spacer()
                         
                         Prompter(vm: vm)
@@ -73,18 +73,7 @@ struct HomeView: View {
             .animation(.linear, value: isActive)
         }
         .sheet(isPresented: $vm.showSubscriptionSheet) {
-            
-            //            if #available(iOS 16.0, *) {
-            //                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            //                    .presentationDetents([.medium])
-            //                    .presentationDragIndicator(.visible)
-            //            } else {
-            VStack {
-                LogoView(isPro: true).padding(.vertical, 100)
-                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            }
-            //            }
-            
+            SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
         }
     }
 }

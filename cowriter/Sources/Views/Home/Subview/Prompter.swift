@@ -34,6 +34,7 @@ struct Prompter: View {
             ))
             .foregroundColor(.darkGrayFont)
             .padding(.horizontal)
+            .padding(.vertical, 10)
             if vm.isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())

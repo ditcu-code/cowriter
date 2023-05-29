@@ -9,6 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionView: View {
+    var withLogo: Bool
     @Binding var isShowSheet: Bool
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
@@ -18,6 +19,16 @@ struct SubscriptionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            if withLogo {
+                Spacer()
+                HStack {
+                    Spacer()
+                    LogoView(isPro: true)
+                    Spacer()
+                }
+                Spacer()
+            }
+            
             VStack(alignment: .leading, spacing: 3) {
                 Text("Upgrade to Pro")
                     .bold()
@@ -70,8 +81,6 @@ struct SubscriptionView: View {
                     .foregroundColor(.defaultFont)
                 
             }.padding()
-            
-            Spacer()
         }
         .task {
             if purchaseManager.products.isEmpty {
@@ -84,7 +93,7 @@ struct SubscriptionView: View {
 
 struct SubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        SubscriptionView(isShowSheet: .constant(true))
+        SubscriptionView(withLogo: true, isShowSheet: .constant(true))
             .environmentObject(PurchaseManager.init(entitlementManager: EntitlementManager()))
     }
 }
