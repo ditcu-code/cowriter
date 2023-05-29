@@ -53,12 +53,8 @@ struct SettingView: View {
             //                    .presentationDetents([.medium])
             //                    .presentationDragIndicator(.visible)
             //            } else {
-            VStack {
-                LogoView(isPro: true).padding(.vertical, 100)
-                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            }
+            SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
             //            }
-            
         }
         
         .sheet(isPresented: $vm.showSupportSheet) {
