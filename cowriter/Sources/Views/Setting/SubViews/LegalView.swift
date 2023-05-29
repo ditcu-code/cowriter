@@ -14,8 +14,7 @@ struct LegalView: View {
     var body: some View {
         NavigationLink {
             VStack {
-                WebViewURL(url: type.link)
-                    .id(reloadWebView)
+                WebView(url: type.link).id(reloadWebView)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

@@ -47,14 +47,7 @@ struct SettingView: View {
         }
         .navigationTitle("Setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
-            
-            //            if #available(iOS 16.0, *) {
-            //                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-            //                    .presentationDetents([.medium])
-            //                    .presentationDragIndicator(.visible)
-            //            } else {
             SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
-            //            }
         }
         
         .sheet(isPresented: $vm.showSupportSheet) {
