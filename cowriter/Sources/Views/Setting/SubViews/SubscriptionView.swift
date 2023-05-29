@@ -20,11 +20,13 @@ struct SubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if withLogo {
+                Spacer()
                 HStack {
                     Spacer()
-                    LogoView(isPro: true).padding(.vertical, 160)
+                    LogoView(isPro: true)
                     Spacer()
                 }
+                Spacer()
             }
             
             VStack(alignment: .leading, spacing: 3) {
@@ -79,8 +81,6 @@ struct SubscriptionView: View {
                     .foregroundColor(.defaultFont)
                 
             }.padding()
-            
-            Spacer()
         }
         .task {
             if purchaseManager.products.isEmpty {
