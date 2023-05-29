@@ -7,29 +7,21 @@
 
 import SwiftUI
 
-struct MarkdownView: View {
-    @StateObject var vm = MarkdownVM()
+struct LegalView: View {
+    @State private var reloadWebView = false
     var type: MarkdownEnum
     
     var body: some View {
         NavigationLink {
             VStack {
-                if vm.loadingMarkdown {
-                    CircularLoading()
-                } else {
-                    WebView(htmlContent: vm.markdownContent)
-                        .task {
-                            await vm.fetchMarkdownContent(type: type)
-                        }
-                }
+                WebViewURL(url: type.link)
+                    .id(reloadWebView)
             }
             .navigationTitle(type.desc)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        Task {
-                            await vm.fetchMarkdownContent(type: type)
-                        }
+                        reloadWebView.toggle()
                     } label: {
                         Label("", systemImage: "arrow.clockwise")
                             .font(.subheadline)

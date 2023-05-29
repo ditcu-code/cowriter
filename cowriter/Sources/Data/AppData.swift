@@ -14,9 +14,10 @@ class AppData: ObservableObject {
     @AppStorage(AppStorageKey.reachedLimit.rawValue) var reachedLimit: Bool = false
     @AppStorage(AppStorageKey.titleModifiedDate.rawValue) var titleModifiedDate: String = ""
     @AppStorage(AppStorageKey.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
-    @AppStorage(AppStorageKey.linkPrivacyPolicy.rawValue) var linkPrivacyPolicy: String = "https://bit.ly/cowriter-privacypolicy"
-    @AppStorage(AppStorageKey.linkTermsAndConditions.rawValue) var linkTermsAndConditions: String = "https://bit.ly/cowriter-termsconditions"
-    @AppStorage(AppStorageKey.linkAboutUs.rawValue) var linkAboutUs: String = "https://bit.ly/3BT09h9"
+    @AppStorage(AppStorageKey.linkPrivacyPolicy.rawValue) var linkPrivacyPolicy: String = MarkdownEnum.privacyPolicy.link
+    @AppStorage(AppStorageKey.linkTermsAndConditions.rawValue) var linkTermsAndConditions: String = MarkdownEnum.termsAndConditions.link
+    @AppStorage(AppStorageKey.linkAboutUs.rawValue) var linkAboutUs: String = MarkdownEnum
+        .aboutUs.link
     @AppStorage(AppStorageKey.linkSupport.rawValue) var linkSupport: String = ""
     
     static func setSetupCompleted(_ value: Bool) {

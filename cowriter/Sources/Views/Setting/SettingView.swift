@@ -40,7 +40,7 @@ struct SettingView: View {
             
             Section {
                 ForEach(MarkdownEnum.allCases, id: \.rawValue) { markdown in
-                    MarkdownView(type: markdown)
+                    LegalView(type: markdown)
                 }
             }
             

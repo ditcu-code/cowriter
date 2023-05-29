@@ -140,23 +140,6 @@ class PublicCloudKitService {
         }
     }
     
-    func fetchMarkdown(type: MarkdownEnum) async -> String  {
-        let recordID = CKRecord.ID(recordName: type.rawValue)
-        do {
-            let record = try await database.record(for: recordID)
-            let markdown = record["markdown"] as? String ?? ""
-            return markdown
-        } catch let error {
-            print("FetchMarkdown >> \(error.localizedDescription)")
-            return """
-            
-            ### Oops! It seems like you're having connection issues. Please check your internet connection or you can try again by opening the following link:
-            [\(type.desc)](\(UserDefaults.standard.string(forKey: "link" + type.rawValue.capitalizingFirstLetter)!))
-            
-            """
-        }
-    }
-    
 }
 
 struct CustSupport {

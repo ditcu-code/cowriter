@@ -26,6 +26,17 @@ enum MarkdownEnum: String, CaseIterable {
             return "About Us"
         }
     }
+    
+    var link: String {
+        switch self {
+        case .termsAndConditions:
+            return "https://bit.ly/cowriter-termsconditions"
+        case .privacyPolicy:
+            return "https://bit.ly/cowriter-privacypolicy"
+        case .aboutUs:
+            return "https://bit.ly/3BT09h9"
+        }
+    }
 }
 
 enum AppearanceMode: String, CaseIterable, Codable {
