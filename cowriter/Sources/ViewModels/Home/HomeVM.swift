@@ -81,7 +81,7 @@ class HomeVM: ObservableObject {
             ]
             
             if !appData.loggedInIcloud {
-                errorMessage = "Important iCloud Login Required: To unlock the full potential of our app, please ensure you are logged into iCloud in your device settings. Don't miss out on the seamless and synced experience."
+                errorMessage = "iCloud Login Required: To unlock the full potential of our app, please ensure you are logged into iCloud in your device settings. Don't miss out on the seamless and synced experience."
                 DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
                     self.errorMessage = nil
                 }

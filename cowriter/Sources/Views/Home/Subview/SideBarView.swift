@@ -90,7 +90,7 @@ fileprivate struct ListChat: View {
                 } else {
                     vm.currentChat = nil
                     vm.closeSideBar()
-                    vm.errorMessage = ""
+                    vm.errorMessage = nil
                     vm.favoriteFilterIsOn = false
                 }
             }

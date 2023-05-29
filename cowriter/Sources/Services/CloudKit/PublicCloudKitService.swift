@@ -43,6 +43,7 @@ class PublicCloudKitService {
             do {
                 try await self.database.save(record)
                 // The record was saved successfully
+                appData.setLoggedInIcloud(true)
                 print("UserUsage >> Successfully updated!")
             } catch let saveError {
                 // Handle the save error
