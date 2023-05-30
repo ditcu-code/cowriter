@@ -58,7 +58,7 @@ struct ChatView: View {
                     }
                 })
                 .onReceive(vm.$textToDisplay.throttle(for: 0.25, scheduler: DispatchQueue.main, latest: true)) { output in
-                    vm.textToDisplay = output
+//                    vm.textToDisplay = output
                     if !isScrolled {
                         withAnimation {
                             scrollView.scrollTo(bottomID, anchor: .bottom)

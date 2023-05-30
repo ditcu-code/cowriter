@@ -47,7 +47,8 @@ struct Prompter: View {
                 .fill(.background)
                 .frame(height: 38)
         )
-        .padding()
+        .padding(.horizontal)
+        .padding(.bottom, 10)
     }
 }
 

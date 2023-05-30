@@ -16,6 +16,7 @@ struct LegalView: View {
             VStack {
                 WebView(url: type.link).id(reloadWebView)
             }
+            .navigationTitle("Cowriter")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
