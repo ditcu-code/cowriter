@@ -59,7 +59,7 @@ class PublicCloudKitService {
     func createUsage(_ user: User) async {
         let record = CKRecord(recordType: UserUsageKeys.recordType.rawValue, recordID: CKRecord.ID(recordName: getRecordName(userId: user.wrappedId)))
         record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: UserUsageKeys.totalUsage.rawValue)
-        record.setValue(1000, forKey: UserUsageKeys.givenQuota.rawValue)
+        record.setValue(500, forKey: UserUsageKeys.givenQuota.rawValue)
         record.setValue(Date(), forKey: UserUsageKeys.givenDate.rawValue)
         do {
             try await database.save(record)
@@ -94,7 +94,7 @@ class PublicCloudKitService {
             return 0
         }
         let dailyQuota = 500
-        let maxDailyUsage = 1500
+        let maxDailyUsage = 1000
         let days = user.wrappedJoinDate.countDays(to: Date())
         let totalQuota = dailyQuota * (days + 1) // 5000
         let quota = totalQuota - Int(user.wrappedTotalUsage) // 4500

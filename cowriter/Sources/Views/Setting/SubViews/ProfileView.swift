@@ -13,6 +13,7 @@ struct ProfileView: View {
     
     var body: some View {
         let joinDate = vm.profileManager.user?.joinDate ?? Date()
+        
         HStack() {
             Image(systemName: "person").padding(.horizontal, 5)
             VStack(alignment: .leading, spacing: 0) {

@@ -191,7 +191,7 @@ class HomeVM: ObservableObject {
                 // delete prev error message if last req is success
                 if self.errorMessage != nil {
                     withAnimation {
-                        errorMessage = ""
+                        errorMessage = nil
                     }
                 }
                 
