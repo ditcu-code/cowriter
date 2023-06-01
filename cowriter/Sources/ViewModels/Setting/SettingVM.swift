@@ -18,6 +18,7 @@ class SettingVM: ObservableObject {
     @Published var profileManager = ProfileManager()
     
     private let cloudKitData = PublicCloudKitService()
+    private let appData = AppData()
     
     func sendSupportMessage() async {
         if let user = profileManager.user {
@@ -25,16 +26,6 @@ class SettingVM: ObservableObject {
                 CustSupport(subject: subject, email: email, content: content, user: user)
             )
         }
-    }
-    
-    func openLinkTermsAndCondition() {
-        guard let url = URL(string: "https://bit.ly/swiftaichat-termsandcondition") else { return }
-        UIApplication.shared.open(url)
-    }
-    
-    func openLinkPrivacyPolicy() {
-        guard let url = URL(string: "https://bit.ly/swiftaichat-privacy-policy") else { return }
-        UIApplication.shared.open(url)
     }
     
 }

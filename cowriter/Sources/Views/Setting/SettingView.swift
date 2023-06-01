@@ -18,6 +18,7 @@ struct SettingView: View {
     var body: some View {
         List {
             ProfileView(vm: vm)
+            
             subscriptionSection
             
             Section {
@@ -38,42 +39,15 @@ struct SettingView: View {
             }
             
             Section {
-                Button {
-                    vm.openLinkTermsAndCondition()
-                } label: {
-                    Text("Terms and Condition").font(.footnote)
+                ForEach(MarkdownEnum.allCases, id: \.rawValue) { markdown in
+                    LegalView(type: markdown)
                 }
-                
-                Button {
-                    vm.openLinkPrivacyPolicy()
-                } label: {
-                    Text("Privacy Policy").font(.footnote)
-                }
-                
-//                Button {
-//                    
-//                } label: {
-//                    Text("About Us").font(.footnote)
-//                }
             }
             
         }
         .navigationTitle("Setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
-            
-            if #available(iOS 16.0, *) {
-                SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            } else {
-                VStack {
-                    LogoView(isPro: true)
-                        .padding(.top, 100)
-                        .padding(.bottom, 75)
-                    SubscriptionView(isShowSheet: $vm.showSubscriptionSheet)
-                }
-            }
-            
+            SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
         }
         
         .sheet(isPresented: $vm.showSupportSheet) {
@@ -108,7 +82,6 @@ struct SettingView: View {
                     }
                 }
             }
-
         }
     }
     

@@ -15,7 +15,7 @@ class HomeVM: ObservableObject {
     @Published var userMessage: String = "" /// prompt
     @Published var textToDisplay: String = "" /// answer
     
-    @Published var errorMessage: String = ""
+    @Published var errorMessage: String?
     @Published var isLoading = false
     @Published var showSubscriptionSheet = false
     
@@ -60,19 +60,33 @@ class HomeVM: ObservableObject {
     }
     
     func getAllChats() {
-        allChats = Chat.getAll()
+        let chats = Chat.getAll()
+
+        let sortedChats = chats.sorted {
+            ($0.latestMessageDate ?? Date.distantPast) > ($1.latestMessageDate ?? Date.distantPast)
+        }
+
+        allChats = sortedChats
     }
     
     @MainActor
     func request(_ chat: Chat?) {
         cancel()
         task = Task {
-            let client: PhotonAIClient? = PhotonAIClient(apiKey: Keychain.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            let client: PhotonAIClient? = PhotonAIClient(apiKey: CowriterLinks.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
             let userName = currentUser?.wrappedName.firstWord
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
                 .init(role: ChatRoleEnum.system.rawValue, content: "My name is Cowriter, your AI writing assistant", name: systemName)
             ]
+            
+            if !appData.loggedInIcloud {
+                errorMessage = "iCloud Login Required: To unlock the full potential of our app, please ensure you are logged into iCloud in your device settings. Don't miss out on the seamless and synced experience."
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                    self.errorMessage = nil
+                }
+                return
+            }
             
             if appData.reachedLimit && !entitlementManager.hasPro {
                 errorMessage = "You have reached your daily usage limit. Upgrade to the pro version to enjoy unlimited messaging."
@@ -137,7 +151,7 @@ class HomeVM: ObservableObject {
                 }
                 withAnimation {
                     self.isLoading = false
-                    if self.errorMessage.isEmpty {
+                    if self.errorMessage == nil {
                         self.userMessage = ""
                     }
                 }
@@ -175,9 +189,9 @@ class HomeVM: ObservableObject {
                 }
                 
                 // delete prev error message if last req is success
-                if !self.errorMessage.isEmpty {
+                if self.errorMessage != nil {
                     withAnimation {
-                        errorMessage = ""
+                        errorMessage = nil
                     }
                 }
                 
@@ -244,8 +258,8 @@ class HomeVM: ObservableObject {
     }
     
     // triggered on task
-    func getTheKey() {
-        self.cloudKitData.fetchSwiftKey()
+    func getAssets() async {
+        await self.cloudKitData.fetchAssets()
     }
     
     func updateUsage() async {

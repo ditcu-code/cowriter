@@ -39,7 +39,7 @@ struct ChatView: View {
                         } else {
                             BubbleAnswerView(
                                 message: message,
-                                answer: (isLastMessage && vm.errorMessage.isEmpty && vm.isLoading) ?
+                                answer: (isLastMessage && vm.errorMessage == nil && vm.isLoading) ?
                                 vm.textToDisplay : message.wrappedContent
                             )
                         }
@@ -58,7 +58,7 @@ struct ChatView: View {
                     }
                 })
                 .onReceive(vm.$textToDisplay.throttle(for: 0.25, scheduler: DispatchQueue.main, latest: true)) { output in
-                    vm.textToDisplay = output
+//                    vm.textToDisplay = output
                     if !isScrolled {
                         withAnimation {
                             scrollView.scrollTo(bottomID, anchor: .bottom)

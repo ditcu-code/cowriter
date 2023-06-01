@@ -43,6 +43,7 @@ class PublicCloudKitService {
             do {
                 try await self.database.save(record)
                 // The record was saved successfully
+                appData.setLoggedInIcloud(true)
                 print("UserUsage >> Successfully updated!")
             } catch let saveError {
                 // Handle the save error
@@ -58,50 +59,85 @@ class PublicCloudKitService {
     func createUsage(_ user: User) async {
         let record = CKRecord(recordType: UserUsageKeys.recordType.rawValue, recordID: CKRecord.ID(recordName: getRecordName(userId: user.wrappedId)))
         record.setValue(NSNumber(value: user.wrappedTotalUsage), forKey: UserUsageKeys.totalUsage.rawValue)
-        record.setValue(1000, forKey: UserUsageKeys.givenQuota.rawValue)
+        record.setValue(500, forKey: UserUsageKeys.givenQuota.rawValue)
         record.setValue(Date(), forKey: UserUsageKeys.givenDate.rawValue)
         do {
             try await database.save(record)
             // The record was saved successfully
+            appData.setLoggedInIcloud(true)
             print("UserUsage >> Successfully created!")
         } catch let saveError {
             // Handle the save error
+            if saveError.localizedDescription.contains("CREATE operation not permitted") {
+                appData.setLoggedInIcloud(false)
+            }
             print("UserUsage >> Error creation: \(saveError.localizedDescription)")
         }
     }
     
-    func quota(user: User, lastGivenDate: Date) -> Int {// besok
+    func checkIcloudLogin(completion: @escaping (Bool) -> Void) {
+        container.accountStatus { (accountStatus, error) in
+            switch accountStatus {
+            case .couldNotDetermine, .restricted, .noAccount, .temporarilyUnavailable:
+                print("Check Icloud >> Could not determine")
+                completion(false)
+            case .available:
+                completion(true)
+            @unknown default:
+                print("Check Icloud >> Error future")
+            }
+        }
+    }
+    
+    func quota(user: User, lastGivenDate: Date) -> Int {
         guard lastGivenDate.isPast() else {
             return 0
         }
         let dailyQuota = 500
-        let maxDailyUsage = 1500
+        let maxDailyUsage = 1000
         let days = user.wrappedJoinDate.countDays(to: Date())
         let totalQuota = dailyQuota * (days + 1) // 5000
         let quota = totalQuota - Int(user.wrappedTotalUsage) // 4500
         let quotaGiven = quota > maxDailyUsage ? maxDailyUsage : quota
-
+        
         return quotaGiven
     }
     
-    func fetchSwiftKey() {
-        let recordID = CKRecord.ID(recordName: "swiftKey")
-        database.fetch(withRecordID: recordID) { record, error in
-            guard let record = record, let modificationDate = record.modificationDate else {
-                print("SwiftKey >> Error fetch")
-                return
+    func fetchAssets() async {
+        let recordID = CKRecord.ID(recordName: "assetVersion")
+        do {
+            let record = try await database.record(for: recordID)
+            let modificationDate = record.modificationDate
+            
+            if let modifiedDate = modificationDate, self.appData.shared.titleModifiedDate != modifiedDate.description {
+                print("Assets >> Success!")
+                await self.fetchLinks(modifiedDate)
+            }
+        } catch let error {
+            print("SwiftKey >> Error fetch assets: \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchLinks(_ date: Date) async {
+        let recordID = CKRecord.ID(recordName: "links")
+        do {
+            let record = try await database.record(for: recordID)
+            let linkSupport = record["linkSupport"] as? String ?? ""
+            let linkAboutUs = record["linkAboutUs"] as? String ?? ""
+            let linkPrivacyPolicy = record["linkPrivacyPolicy"] as? String ?? ""
+            let linkTermsConditions = record["linkTermsConditions"] as? String ?? ""
+            
+            UserDefaults.standard.set(linkAboutUs, forKey: AppStorageKey.linkAboutUs.rawValue)
+            UserDefaults.standard.set(linkPrivacyPolicy, forKey: AppStorageKey.linkPrivacyPolicy.rawValue)
+            UserDefaults.standard.set(linkTermsConditions, forKey: AppStorageKey.linkTermsAndConditions.rawValue)
+            
+            CowriterLinks.saveLink(url: linkSupport) {result in
+                print("Assets >> Success is \(result)!")
+                self.appData.setTitleModifiedDate(date)
             }
             
-            let value = record["value"] as? String ?? ""
-            
-            if self.appData.shared.titleModifiedDate != modificationDate.description {
-                print("SwiftKey >> Success!")
-                Keychain.saveSwift(title: value) { result in
-                    if result {
-                        self.appData.setTitleModifiedDate(modificationDate)
-                    }
-                }
-            }
+        } catch let error {
+            print("SwiftKey >> Error fetch swift: \(error.localizedDescription)")
         }
     }
     

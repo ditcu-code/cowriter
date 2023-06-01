@@ -9,13 +9,26 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionView: View {
+    var withLogo: Bool
     @Binding var isShowSheet: Bool
     @EnvironmentObject private var purchaseManager: PurchaseManager
     
     @State private var selectedProduct: Product?
     
+    private let disclaimerText = "Your annual or monthly subscription will automatically renew until you choose to cancel it. Cancel any time in the App Store; your subscription will then cease at the end of the current term. By subscribingg, you agree to our [Terms And Conditions](https://bit.ly/cowriter-termsconditions), [Privacy Policy](https://bit.ly/cowriter-privacypolicy)"
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            if withLogo {
+                Spacer()
+                HStack {
+                    Spacer()
+                    LogoView(isPro: true)
+                    Spacer()
+                }
+                Spacer()
+            }
+            
             VStack(alignment: .leading, spacing: 3) {
                 Text("Upgrade to Pro")
                     .bold()
@@ -26,7 +39,15 @@ struct SubscriptionView: View {
                     .foregroundColor(.grayFont)
             }.padding()
             
-            ItemPlanView(selectedProduct: $selectedProduct)
+            if purchaseManager.isLoading {
+                HStack {
+                    Spacer()
+                    CircularLoading()
+                    Spacer()
+                }
+            } else {
+                ItemPlanView(selectedProduct: $selectedProduct)
+            }
             
             VStack(spacing: 0) {
                 
@@ -53,14 +74,13 @@ struct SubscriptionView: View {
                 .padding(.vertical, 10)
                 .tint(.darkGrayFont)
                 
-                Text("Your annual or monthly subscription will automatically renew until you choose to cancel it. Cancel any time in the App Store at no additional cost; your subscription will then cease at the end of the current term.")
+                Text(.init(disclaimerText))
                     .font(.caption2)
+                    .scaleEffect(0.9)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.defaultFont)
                 
             }.padding()
-            
-            Spacer()
         }
         .task {
             if purchaseManager.products.isEmpty {
@@ -73,7 +93,7 @@ struct SubscriptionView: View {
 
 struct SubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        SubscriptionView(isShowSheet: .constant(true))
+        SubscriptionView(withLogo: true, isShowSheet: .constant(true))
             .environmentObject(PurchaseManager.init(entitlementManager: EntitlementManager()))
     }
 }

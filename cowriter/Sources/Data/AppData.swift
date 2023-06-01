@@ -10,11 +10,20 @@ import SwiftUI
 
 class AppData: ObservableObject {
     static let shared = AppData()
+    @AppStorage(AppStorageKey.loggedInIcloud.rawValue) var loggedInIcloud: Bool = false
     @AppStorage(AppStorageKey.setupCompleted.rawValue) var setupCompleted: Bool = false
     @AppStorage(AppStorageKey.reachedLimit.rawValue) var reachedLimit: Bool = false
     @AppStorage(AppStorageKey.titleModifiedDate.rawValue) var titleModifiedDate: String = ""
     @AppStorage(AppStorageKey.preferredColorScheme.rawValue) var preferredColorScheme: AppearanceMode = AppearanceMode.system
+    @AppStorage(AppStorageKey.linkPrivacyPolicy.rawValue) var linkPrivacyPolicy: String = MarkdownEnum.privacyPolicy.link
+    @AppStorage(AppStorageKey.linkTermsAndConditions.rawValue) var linkTermsAndConditions: String = MarkdownEnum.termsAndConditions.link
+    @AppStorage(AppStorageKey.linkAboutUs.rawValue) var linkAboutUs: String = MarkdownEnum
+        .aboutUs.link
+    @AppStorage(AppStorageKey.linkSupport.rawValue) var linkSupport: String = ""
     
+    static func setLoggedInIcloud(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: AppStorageKey.loggedInIcloud.rawValue)
+    }
     static func setSetupCompleted(_ value: Bool) {
         UserDefaults.standard.set(value, forKey: AppStorageKey.setupCompleted.rawValue)
     }
@@ -27,8 +36,13 @@ class AppData: ObservableObject {
 }
 
 enum AppStorageKey: String {
+    case loggedInIcloud
     case setupCompleted
     case reachedLimit
     case titleModifiedDate
     case preferredColorScheme
+    case linkPrivacyPolicy
+    case linkTermsAndConditions
+    case linkAboutUs
+    case linkSupport
 }
