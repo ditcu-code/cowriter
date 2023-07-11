@@ -30,6 +30,9 @@ struct Prompter: View {
                                     .font(Font.system(.body, design: .serif))
                                     .padding(.horizontal)
                                     .foregroundColor(.gray)
+                                    .onTapGesture {
+                                        hasFocus = true
+                                    }
                                 Spacer()
                             }
                         }
