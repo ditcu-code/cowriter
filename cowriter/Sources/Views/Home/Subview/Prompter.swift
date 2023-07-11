@@ -9,11 +9,13 @@ import SwiftUI
 
 struct Prompter: View {
     @StateObject var vm: HomeVM
+    @FocusState var hasFocus: Bool
 
     var body: some View {
         HStack(alignment: .bottom) {
             ScrollView {
                 TextEditor(text: $vm.userMessage)
+                    .focused($hasFocus)
                     .padding(.horizontal)
                     .frame(maxHeight: 200)
                     .background(
@@ -21,6 +23,23 @@ struct Prompter: View {
                             .fill(.background)
                             .frame(minHeight: 36)
                     )
+                    .overlay {
+                        if !hasFocus && vm.userMessage.isEmpty {
+                            HStack {
+                                Text("Tell Cowriter to...")
+                                    .font(Font.system(.body, design: .serif))
+                                    .padding(.horizontal)
+                                    .foregroundColor(.gray)
+                                Spacer()
+                            }
+                        }
+                    }
+                    .onChange(of: vm.prompterHasFocus) {
+                        hasFocus = $0
+                    }
+                    .onChange(of: hasFocus) {
+                        vm.prompterHasFocus = $0
+                    }
             }.fixedSize(horizontal: false, vertical: true)
             SendButton(loading: vm.isLoading) {
                 if !vm.isLoading {
@@ -30,7 +49,6 @@ struct Prompter: View {
                         vm.request(vm.currentChat)
                     }
                 }
-                vm.isFocusOnPrompter = true
             }
             .frame(height: 36)
             .padding(.leading, 5)
