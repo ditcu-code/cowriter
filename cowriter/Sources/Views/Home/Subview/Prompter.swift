@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
-import iTextField
 
 struct Prompter: View {
     @StateObject var vm: HomeVM
-    
+
     var body: some View {
-        HStack {
-            iTextField(
-                "Tell Cowriter to...",
-                text: $vm.userMessage,
-                isEditing: $vm.isFocusOnPrompter
-            )
-            .onReturn {
+        HStack(alignment: .bottom) {
+            TextEditor(text: $vm.userMessage)
+                .padding(.horizontal)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.background)
+                        .frame(minHeight: 36)
+                )
+                .fixedSize(horizontal: false, vertical: true)
+            SendButton(loading: vm.isLoading) {
                 if !vm.isLoading {
                     if vm.currentChat == nil {
                         vm.request(nil)
@@ -28,25 +30,11 @@ struct Prompter: View {
                 }
                 vm.isFocusOnPrompter = true
             }
-            .fontFromUIFont(UIFont(
-                descriptor: UIFont.systemFont(ofSize: 15).fontDescriptor.withDesign(.serif)!,
-                size: 15
-            ))
-            .foregroundColor(.darkGrayFont)
-            .padding(.horizontal)
-            .padding(.vertical, 10)
-            if vm.isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .padding(.horizontal, 10)
-            }
+            .frame(height: 36)
+            .padding(.leading, 5)
         }
+
         .animation(.linear, value: vm.isLoading)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.background)
-                .frame(height: 38)
-        )
         .padding(.horizontal)
         .padding(.bottom, 10)
     }
@@ -55,5 +43,6 @@ struct Prompter: View {
 struct PrompterView_Previews: PreviewProvider {
     static var previews: some View {
         Prompter(vm: HomeVM())
+            .background(.gray)
     }
 }

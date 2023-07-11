@@ -13,6 +13,7 @@
 		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
 		0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B52A16305A00C4D78F /* GreetingVM.swift */; };
 		0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B72A16428800C4D78F /* WelcomeService.swift */; };
+		0E18BF642A5D6E5F00079480 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18BF632A5D6E5F00079480 /* SendButton.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
 		0E4813022A129EE70043A235 /* PublicCloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicCloudKitService.swift */; };
 		0E48131F2A15ECB70043A235 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E48131E2A15ECB70043A235 /* WelcomeView.swift */; };
@@ -75,6 +76,7 @@
 		0E1502B22A16276A00C4D78F /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		0E1502B52A16305A00C4D78F /* GreetingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVM.swift; sourceTree = "<group>"; };
 		0E1502B72A16428800C4D78F /* WelcomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeService.swift; sourceTree = "<group>"; };
+		0E18BF632A5D6E5F00079480 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		0E4812E12A122E910043A235 /* cowriter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cowriter.entitlements; sourceTree = "<group>"; };
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E1502B22A16276A00C4D78F /* DefaultBackground.swift */,
 				0EDA60732A1FB9D7005181A8 /* WebView.swift */,
+				0E18BF632A5D6E5F00079480 /* SendButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E18BF642A5D6E5F00079480 /* SendButton.swift in Sources */,
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
 				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
