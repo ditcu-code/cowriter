@@ -12,14 +12,16 @@ struct Prompter: View {
 
     var body: some View {
         HStack(alignment: .bottom) {
-            TextEditor(text: $vm.userMessage)
-                .padding(.horizontal)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(.background)
-                        .frame(minHeight: 36)
-                )
-                .fixedSize(horizontal: false, vertical: true)
+            ScrollView {
+                TextEditor(text: $vm.userMessage)
+                    .padding(.horizontal)
+                    .frame(maxHeight: 200)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(.background)
+                            .frame(minHeight: 36)
+                    )
+            }.fixedSize(horizontal: false, vertical: true)
             SendButton(loading: vm.isLoading) {
                 if !vm.isLoading {
                     if vm.currentChat == nil {

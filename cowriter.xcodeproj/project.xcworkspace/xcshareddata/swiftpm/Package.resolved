@@ -37,15 +37,6 @@
       }
     },
     {
-      "identity" : "itextfield",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/benjaminsage/iTextField",
-      "state" : {
-        "branch" : "master",
-        "revision" : "1064f3ecb3fb36fc2e38b24d4986299d193b4951"
-      }
-    },
-    {
       "identity" : "photonopenaikit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ditcu-code/PhotonOpenAIKit",
