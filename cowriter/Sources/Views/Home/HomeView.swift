@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var vm: HomeVM = HomeVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
+    var iPadScreen: Bool
     
     private let sideBarWidth: CGFloat = UIScreen.screenWidth - 100
     
@@ -17,17 +18,21 @@ struct HomeView: View {
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor.systemGray
         ]
+        iPadScreen = UIDevice.current.localizedModel == "iPad"
     }
     
     var body: some View {
         let isActive = vm.currentChat == nil
         
         NavigationView {
+            if iPadScreen {
+                ListChat(vm: vm)
+            }
             ZStack {
                 DefaultBackground()
                 
                 HStack {
-                    if vm.showSideBar {
+                    if vm.showSideBar && !iPadScreen {
                         SideBarView(vm: vm, width: sideBarWidth)
                     }
                     
@@ -64,7 +69,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(vm.showSideBar ? "" : vm.currentChat?.wrappedTitle ?? "")
             .toolbar {
-                HomeToolbar(vm: vm, width: sideBarWidth)
+                HomeToolbar(vm: vm, width: sideBarWidth, showHamburger: !iPadScreen)
             }
             .task(priority: .background) {
                 await vm.getAssets()

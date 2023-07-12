@@ -10,12 +10,13 @@ import SwiftUI
 struct HomeToolbar: ToolbarContent {
     @ObservedObject var vm: HomeVM
     var width: CGFloat
+    var showHamburger: Bool = true
     
     var body: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
-                    if vm.showToolbar {
+                    if vm.showToolbar && showHamburger {
                         Hamburger(vm: vm)
                             .transition(
                                 .move(edge: .leading)
