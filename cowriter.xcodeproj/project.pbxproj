@@ -13,6 +13,8 @@
 		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
 		0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B52A16305A00C4D78F /* GreetingVM.swift */; };
 		0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B72A16428800C4D78F /* WelcomeService.swift */; };
+		0E18BF642A5D6E5F00079480 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18BF632A5D6E5F00079480 /* SendButton.swift */; };
+		0E18BF6A2A5F16CB00079480 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18BF692A5F16CB00079480 /* ListChat.swift */; };
 		0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E380FBA2A069420002F0B2E /* SideBarView.swift */; };
 		0E4813022A129EE70043A235 /* PublicCloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4813012A129EE70043A235 /* PublicCloudKitService.swift */; };
 		0E48131F2A15ECB70043A235 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E48131E2A15ECB70043A235 /* WelcomeView.swift */; };
@@ -34,7 +36,6 @@
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
 		0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */; };
 		0E91DD302A08D517005041BA /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2F2A08D517005041BA /* GreetingView.swift */; };
-		0E91DD362A092213005041BA /* iTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 0E91DD352A092213005041BA /* iTextField */; };
 		0EB86DD329FE5F41005B5EE1 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */; };
 		0EB96A2E2A17CCA700019353 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2D2A17CCA700019353 /* SettingVM.swift */; };
 		0EB96A302A17CCDE00019353 /* LabelSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB96A2F2A17CCDE00019353 /* LabelSetting.swift */; };
@@ -75,6 +76,8 @@
 		0E1502B22A16276A00C4D78F /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		0E1502B52A16305A00C4D78F /* GreetingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingVM.swift; sourceTree = "<group>"; };
 		0E1502B72A16428800C4D78F /* WelcomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeService.swift; sourceTree = "<group>"; };
+		0E18BF632A5D6E5F00079480 /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
+		0E18BF692A5F16CB00079480 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
 		0E380FBA2A069420002F0B2E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		0E4812E12A122E910043A235 /* cowriter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cowriter.entitlements; sourceTree = "<group>"; };
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
@@ -133,7 +136,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E91DD362A092213005041BA /* iTextField in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
 				0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */,
 				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
@@ -151,6 +153,15 @@
 				0EC312E629E80C1B00C9FE68 /* HomeVM.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		0E18BF682A5F16B500079480 /* SideBarView */ = {
+			isa = PBXGroup;
+			children = (
+				0E380FBA2A069420002F0B2E /* SideBarView.swift */,
+				0E18BF692A5F16CB00079480 /* ListChat.swift */,
+			);
+			path = SideBarView;
 			sourceTree = "<group>";
 		};
 		0E4813002A129ED00043A235 /* CloudKit */ = {
@@ -304,10 +315,10 @@
 		0EB8ABFE29ED46DC00B882DA /* Subview */ = {
 			isa = PBXGroup;
 			children = (
+				0E18BF682A5F16B500079480 /* SideBarView */,
 				0E91DD2A2A08D3CC005041BA /* ChatView */,
 				0EEC231029FC30E00052AA05 /* Hamburger.swift */,
 				0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */,
-				0E380FBA2A069420002F0B2E /* SideBarView.swift */,
 				0E91DD2F2A08D517005041BA /* GreetingView.swift */,
 				0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */,
 			);
@@ -333,6 +344,7 @@
 				0EB86DD229FE5F41005B5EE1 /* ErrorMessageView.swift */,
 				0E1502B22A16276A00C4D78F /* DefaultBackground.swift */,
 				0EDA60732A1FB9D7005181A8 /* WebView.swift */,
+				0E18BF632A5D6E5F00079480 /* SendButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -401,7 +413,6 @@
 			name = cowriter;
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
-				0E91DD352A092213005041BA /* iTextField */,
 				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
 				0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */,
 				0EDA606F2A1FB2D5005181A8 /* Ink */,
@@ -436,7 +447,6 @@
 			mainGroup = 0E6A654129DD25C0003457DF;
 			packageReferences = (
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */,
 				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 				0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */,
@@ -467,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E18BF642A5D6E5F00079480 /* SendButton.swift in Sources */,
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
 				0EF164B729F2EC8700CC35B1 /* Message+CoreDataClass.swift in Sources */,
@@ -497,6 +508,7 @@
 				0E6A655029DD25C0003457DF /* ContentView.swift in Sources */,
 				0E380FBB2A069420002F0B2E /* SideBarView.swift in Sources */,
 				0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */,
+				0E18BF6A2A5F16CB00079480 /* ListChat.swift in Sources */,
 				0E48131F2A15ECB70043A235 /* WelcomeView.swift in Sources */,
 				0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */,
 				0EF164B529F2EC8700CC35B1 /* Chat+CoreDataClass.swift in Sources */,
@@ -671,7 +683,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -707,7 +719,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -743,14 +755,6 @@
 				minimumVersion = 0.1.2;
 			};
 		};
-		0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/benjaminsage/iTextField";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		0ECC0D612A16602E00AEC835 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ditcu-code/PhotonOpenAIKit";
@@ -782,11 +786,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
 			productName = "GPT3 Tokenizer";
-		};
-		0E91DD352A092213005041BA /* iTextField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0E91DD312A09211C005041BA /* XCRemoteSwiftPackageReference "iTextField" */;
-			productName = iTextField;
 		};
 		0ECC0D622A16602E00AEC835 /* PhotonOpenAIKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -26,7 +26,7 @@ class HomeVM: ObservableObject {
     // UI
     @Published var showSideBar: Bool = false
     @Published var showToolbar: Bool = false
-    @Published var isFocusOnPrompter: Bool = false
+    @Published var prompterHasFocus: Bool = false
     @Published var favoriteFilterIsOn: Bool = false
     
     private var task: Task<Void, Never>? = nil
@@ -279,8 +279,8 @@ class HomeVM: ObservableObject {
     }
     
     func removePrompterFocus() {
-        if isFocusOnPrompter {
-            self.isFocusOnPrompter = false
+        if prompterHasFocus {
+            self.prompterHasFocus = false
         }
     }
     

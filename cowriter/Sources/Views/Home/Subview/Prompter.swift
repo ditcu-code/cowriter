@@ -6,19 +6,45 @@
 //
 
 import SwiftUI
-import iTextField
 
 struct Prompter: View {
     @StateObject var vm: HomeVM
-    
+    @FocusState var hasFocus: Bool
+
     var body: some View {
-        HStack {
-            iTextField(
-                "Tell Cowriter to...",
-                text: $vm.userMessage,
-                isEditing: $vm.isFocusOnPrompter
-            )
-            .onReturn {
+        HStack(alignment: .bottom) {
+            ScrollView {
+                TextEditor(text: $vm.userMessage)
+                    .focused($hasFocus)
+                    .padding(.horizontal, 10)
+                    .frame(maxHeight: 200)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(.background)
+                            .frame(minHeight: 36)
+                    )
+                    .overlay {
+                        if !hasFocus && vm.userMessage.isEmpty {
+                            HStack {
+                                Text("Tell Cowriter to...")
+                                    .font(Font.system(.body, design: .serif))
+                                    .padding(.horizontal, 10)
+                                    .foregroundColor(.gray)
+                                    .onTapGesture {
+                                        hasFocus = true
+                                    }
+                                Spacer()
+                            }
+                        }
+                    }
+                    .onChange(of: vm.prompterHasFocus) {
+                        hasFocus = $0
+                    }
+                    .onChange(of: hasFocus) {
+                        vm.prompterHasFocus = $0
+                    }
+            }.fixedSize(horizontal: false, vertical: true)
+            SendButton(loading: vm.isLoading) {
                 if !vm.isLoading {
                     if vm.currentChat == nil {
                         vm.request(nil)
@@ -26,27 +52,12 @@ struct Prompter: View {
                         vm.request(vm.currentChat)
                     }
                 }
-                vm.isFocusOnPrompter = true
             }
-            .fontFromUIFont(UIFont(
-                descriptor: UIFont.systemFont(ofSize: 15).fontDescriptor.withDesign(.serif)!,
-                size: 15
-            ))
-            .foregroundColor(.darkGrayFont)
-            .padding(.horizontal)
-            .padding(.vertical, 10)
-            if vm.isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .padding(.horizontal, 10)
-            }
+            .frame(height: 36)
+            .padding(.leading, 5)
         }
+
         .animation(.linear, value: vm.isLoading)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.background)
-                .frame(height: 38)
-        )
         .padding(.horizontal)
         .padding(.bottom, 10)
     }
@@ -55,5 +66,6 @@ struct Prompter: View {
 struct PrompterView_Previews: PreviewProvider {
     static var previews: some View {
         Prompter(vm: HomeVM())
+            .background(.gray)
     }
 }
