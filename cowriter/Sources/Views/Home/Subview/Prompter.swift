@@ -17,6 +17,7 @@ struct Prompter: View {
                 TextEditor(text: $vm.userMessage)
                     .focused($hasFocus)
                     .padding(.horizontal, 10)
+                    .font(Font.system(.body, design: .serif))
                     .frame(maxHeight: 200)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
