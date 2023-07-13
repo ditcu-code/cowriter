@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0A01B92A5FDC0C008EE5D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E0A01BB2A5FDC0C008EE5D8 /* Localizable.strings */; };
 		0E0A9D5629E9BFDB00D7BEC5 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
@@ -70,6 +71,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0A01BA2A5FDC0C008EE5D8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0E0A01BC2A5FDC10008EE5D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompter.swift; sourceTree = "<group>"; };
 		0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -261,6 +264,7 @@
 			children = (
 				0E6A655129DD25C1003457DF /* Assets.xcassets */,
 				0E6A655B29DD25C1003457DF /* Info.plist */,
+				0E0A01BB2A5FDC0C008EE5D8 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -443,6 +447,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 0E6A654129DD25C0003457DF;
 			packageReferences = (
@@ -466,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
+				0E0A01B92A5FDC0C008EE5D8 /* Localizable.strings in Resources */,
 				0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +541,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0E0A01BB2A5FDC0C008EE5D8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E0A01BA2A5FDC0C008EE5D8 /* zh-Hans */,
+				0E0A01BC2A5FDC10008EE5D8 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0E6A655C29DD25C1003457DF /* Debug */ = {

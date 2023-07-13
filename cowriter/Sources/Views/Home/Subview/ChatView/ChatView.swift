@@ -22,7 +22,7 @@ struct ChatView: View {
                 if activeList.isEmpty {
                     HStack {
                         Spacer()
-                        Text("No favorites in this chat")
+                        Text("no_favorites_in_chat")
                             .foregroundColor(.defaultFont)
                             .padding(.vertical, 100)
                         Spacer()

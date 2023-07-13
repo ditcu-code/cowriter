@@ -28,7 +28,7 @@ struct ItemPlanView: View {
                         Label("", systemImage: isSelected ? "record.circle.fill" : "circle")
                             .foregroundColor(isSelected ? .accentColor : .gray.opacity(0.5))
                         VStack(alignment: .leading, spacing: 5) {
-                            Text(plan.recurring.uppercased())
+                            Text(NSLocalizedString("annual", comment: ""))
                                 .tracking(2)
                                 .font(.footnote)
                                 .foregroundColor(.defaultFont)
@@ -43,7 +43,7 @@ struct ItemPlanView: View {
                                         .foregroundColor(.defaultFont)
                                 }
                             }
-                            Text("\(isMonthlyPlan ? product.displayPrice : (product.price / 12).formatted(product.priceFormatStyle)) \(plan.desc)")
+                            Text("\(isMonthlyPlan ? product.displayPrice : (product.price / 12).formatted(product.priceFormatStyle)) \(NSLocalizedString(plan.desc, comment: ""))")
                                 .font(.subheadline)
                                 .foregroundColor(.grayFont)
                         }
