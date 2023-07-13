@@ -16,7 +16,7 @@ struct Prompter: View {
             ScrollView {
                 TextEditor(text: $vm.userMessage)
                     .focused($hasFocus)
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, 12)
                     .font(Font.system(.body, design: .serif))
                     .frame(maxHeight: 200)
                     .background(
@@ -29,7 +29,7 @@ struct Prompter: View {
                             HStack {
                                 Text("Tell Cowriter to...")
                                     .font(Font.system(.body, design: .serif))
-                                    .padding(.horizontal, 10)
+                                    .padding(.horizontal, 16)
                                     .foregroundColor(.gray)
                                     .onTapGesture {
                                         hasFocus = true
@@ -57,7 +57,6 @@ struct Prompter: View {
             .frame(height: 36)
             .padding(.leading, 5)
         }
-
         .animation(.linear, value: vm.isLoading)
         .padding(.horizontal)
         .padding(.bottom, 10)
