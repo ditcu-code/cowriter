@@ -27,7 +27,7 @@ struct SendButton: View {
                                 .font(.footnote)
                                 .foregroundColor(.white)
                         }
-                    }.frame(width: 30)
+                    }.frame(width: 36)
             })
     }
 }
