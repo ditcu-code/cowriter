@@ -24,7 +24,7 @@ struct LabelSetting: View {
                         .fill(color.opacity(0.9))
                 )
                 .padding(.trailing, 5)
-            Text(label).font(.subheadline).foregroundColor(.darkGrayFont)
+            Text(NSLocalizedString(label, comment: "")).font(.subheadline).foregroundColor(.darkGrayFont)
         }
     }
 }

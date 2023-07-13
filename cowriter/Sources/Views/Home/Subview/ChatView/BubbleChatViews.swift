@@ -96,13 +96,13 @@ fileprivate struct BubbleContextMenu: View {
             Button {
                 UIPasteboard.general.setValue(message.content ?? "", forPasteboardType: "public.plain-text")
             } label: {
-                Label("Copy", systemImage: "doc.on.doc")
+                Label("copy", systemImage: "doc.on.doc")
             }
             Button {
                 message.isFavorite.toggle()
             } label: {
                 Label(
-                    message.isFavorite ? "Unfavorite" : "Favorite",
+                    message.isFavorite ? "unfavorite" : "favorite",
                     systemImage: message.isFavorite ? "star.slash.fill" : "star"
                 )
             }

@@ -21,9 +21,9 @@ struct ListChat: View {
         VStack(alignment: .leading) {
             if !vm.allChats.isEmpty {
                 HStack {
-                    Text("Chats").bold()
+                    Text("chats").bold()
                     Spacer()
-                    Button("Edit") {
+                    Button("edit") {
                         isEditing.toggle()
                     }
                 }
@@ -85,7 +85,7 @@ fileprivate struct EmptyChatView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 75)
-                Text("No Chats Yet!").font(.headline)
+                Text("no_chats_yet").font(.headline)
                 Spacer()
             }.foregroundColor(.gray.opacity(0.7))
             Spacer()
@@ -99,7 +99,7 @@ fileprivate struct NewChatButton: View {
     var body: some View {
         Button(action: action){
             Spacer()
-            Label("New chat", systemImage: "plus").font(.headline)
+            Label("new_chat", systemImage: "plus").font(.headline)
             Spacer()
         }.buttonStyle(.bordered)
     }

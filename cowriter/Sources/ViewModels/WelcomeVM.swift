@@ -16,8 +16,8 @@ class WelcomeVM: ObservableObject {
     private let welcomeService = WelcomeService()
     
     private let welcomeSentences = [
-        "I'm Cowriter, your helpful writing assistant. I'm here to assist you in crafting exceptional written content. Let's collaborate and bring your ideas to life!",
-        "I speak multiple languages, including English. Feel free to let me know which language you prefer to use, and I'll do my best to assist you!"
+        NSLocalizedString("introduction_message", comment: ""),
+        NSLocalizedString("language_message", comment: ""),
     ]
     
     // triggered onAppear

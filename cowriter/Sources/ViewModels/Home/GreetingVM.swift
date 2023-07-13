@@ -13,30 +13,27 @@ class GreetingVM: ObservableObject {
     @Published var greeting2: String?
     
     private let firstGreetings: [String] = [
-        "Good day!",
-        "Hi there!",
-        "Hello! 👋🏼",
-        "Greetings!",
-        "Welcome!"
+        NSLocalizedString("good_day", comment: ""),
+        NSLocalizedString("hi_there", comment: ""),
+        NSLocalizedString("hello", comment: ""),
+        NSLocalizedString("greetings", comment: ""),
+        NSLocalizedString("welcome", comment: "")
     ]
     
     private let greetings: [String] = [
-        "How can I assist you with your writing today?",
-//        "Your pair programming here",
-        "Need any help with editing or proofreading your writing?",
-        "Need any recipe ideas or cooking tips?",
-//        "Want to take a moment to reflect on your personal growth?",
-        "Ready to take your productivity to the next level?"
+        NSLocalizedString("help_question_1", comment: ""),
+        NSLocalizedString("help_question_2", comment: ""),
+        NSLocalizedString("help_question_3", comment: ""),
+        NSLocalizedString("help_question_4", comment: ""),
+        NSLocalizedString("help_question_5", comment: "")
     ]
-    
+
     private let lastGreetings: [String] = [
-        "Is there anything I can help you with?",
-        "What can I do for you today?",
-        "What brings you here today?",
-//        "Is there anything you'd like to chat about?",
-        "What can I help?",
-        "What do you need assistance with?",
-        "Let's get started!"
+        NSLocalizedString("get_started", comment: ""),
+        NSLocalizedString("writing_assistance", comment: ""),
+        NSLocalizedString("editing_proofreading_help", comment: ""),
+        NSLocalizedString("recipe_cooking_assistance", comment: ""),
+        NSLocalizedString("productivity_next_level", comment: "")
     ]
     
     func startGreetingsAnimation(profileName: String?) {
@@ -66,4 +63,3 @@ class GreetingVM: ObservableObject {
         }
     }
 }
-

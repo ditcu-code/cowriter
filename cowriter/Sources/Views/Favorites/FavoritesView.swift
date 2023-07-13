@@ -20,7 +20,7 @@ struct FavoritesView: View {
                     if list.isEmpty {
                         HStack {
                             Spacer()
-                            Text("Looks like you haven't favorited any messages")
+                            Text("no_favorites_messages")
                                 .multilineTextAlignment(.center)
                                 .font(.subheadline)
                                 .foregroundColor(.defaultFont)
@@ -51,7 +51,7 @@ struct FavoritesView: View {
                     }
                 }
             }
-        }.navigationBarTitle("Favorites")
+        }.navigationBarTitle("favorites")
     }
 }
 
