@@ -1,36 +1,13 @@
 //
-//  SidebarView.swift
+//  ListChat.swift
 //  cowriter
 //
-//  Created by Aditya Cahyo on 06/05/23.
+//  Created by Aditya Cahyo on 13/07/23.
 //
 
 import SwiftUI
 
-struct SideBarView: View {
-    @ObservedObject var vm: HomeVM
-    var width: CGFloat
-    
-    var body: some View {
-        ZStack(alignment: .topLeading) {
-            CustomRoundedRectangle(bottomRight: 12)
-                .fill(.background)
-                .edgesIgnoringSafeArea(.top)
-            
-            ListChat(vm: vm)
-        }
-        .transition(.move(edge: .leading))
-        .frame(width: width)
-        .offset(x: vm.showSideBar ? width / 2 : 0)
-        .onChange(of: vm.currentChat, perform: { newValue in
-            if vm.favoriteFilterIsOn {
-                vm.favoriteFilterIsOn.toggle()
-            }
-        })
-    }
-}
-
-fileprivate struct ListChat: View {
+struct ListChat: View {
     @ObservedObject var vm: HomeVM
     @EnvironmentObject private var entitlementManager: EntitlementManager
     
@@ -44,9 +21,9 @@ fileprivate struct ListChat: View {
         VStack(alignment: .leading) {
             if !vm.allChats.isEmpty {
                 HStack {
-                    Text("Chats").bold()
+                    Text("chats").bold()
                     Spacer()
-                    Button("Edit") {
+                    Button("edit") {
                         isEditing.toggle()
                     }
                 }
@@ -85,7 +62,7 @@ fileprivate struct ListChat: View {
             Spacer()
             NewChatButton {
                 if hasReachedLimit && !isPro {
-                    vm.isFocusOnPrompter = false
+                    vm.prompterHasFocus = false
                     vm.showSubscriptionSheet.toggle()
                 } else {
                     vm.currentChat = nil
@@ -108,7 +85,7 @@ fileprivate struct EmptyChatView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 75)
-                Text("No Chats Yet!").font(.headline)
+                Text("no_chats_yet").font(.headline)
                 Spacer()
             }.foregroundColor(.gray.opacity(0.7))
             Spacer()
@@ -122,15 +99,14 @@ fileprivate struct NewChatButton: View {
     var body: some View {
         Button(action: action){
             Spacer()
-            Label("New chat", systemImage: "plus").font(.headline)
+            Label("new_chat", systemImage: "plus").font(.headline)
             Spacer()
         }.buttonStyle(.bordered)
     }
 }
 
-struct SideBarView_Previews: PreviewProvider {
+struct ListChat_Previews: PreviewProvider {
     static var previews: some View {
-        SideBarView(vm: HomeVM(), width: UIScreen.screenWidth - 100)
-            .environmentObject(EntitlementManager())
+        ListChat(vm: HomeVM())
     }
 }

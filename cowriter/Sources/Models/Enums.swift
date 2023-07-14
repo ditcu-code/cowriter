@@ -19,11 +19,11 @@ enum MarkdownEnum: String, CaseIterable {
     var desc: String {
         switch self {
         case .termsAndConditions:
-            return "Terms and Conditions"
+            return "terms_and_conditions"
         case .privacyPolicy:
-            return "Privacy Policy"
+            return "privacy_policy"
         case .aboutUs:
-            return "About Us"
+            return "about_us"
         }
     }
     
@@ -71,18 +71,9 @@ enum PlanEnum: String, CaseIterable {
     var desc: String {
         switch self {
         case .annual:
-            return "/ month, billed annualy"
+            return "annual_desc"
         case .monthly:
-            return "/ month after 1 week free trial"
-        }
-    }
-    
-    var title: String? {
-        switch self {
-        case .annual:
-            return nil
-        case .monthly:
-            return "7 DAY FREE TRIAL"
+            return "monthly_desc"
         }
     }
     

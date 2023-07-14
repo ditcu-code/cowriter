@@ -10,7 +10,7 @@ import SwiftUI
 struct LegalView: View {
     @State private var reloadWebView = false
     var type: MarkdownEnum
-    
+
     var body: some View {
         NavigationLink {
             VStack {
@@ -29,7 +29,7 @@ struct LegalView: View {
                 }
             }
         } label: {
-            Text(type.desc)
+            Text(NSLocalizedString(type.desc, comment: ""))
                 .font(.footnote)
                 .foregroundColor(.darkGrayFont)
         }

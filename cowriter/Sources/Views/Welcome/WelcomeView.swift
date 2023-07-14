@@ -13,6 +13,7 @@ struct WelcomeView: View {
     
     var body: some View {
         let isTextMatch = vm.isWelcomeTextMatching()
+        let iPadScreen = UIDevice.current.localizedModel == "iPad"
         
         ZStack(alignment: .bottom) {
             DefaultBackground()
@@ -32,7 +33,7 @@ struct WelcomeView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         if let unwrappedText: String = vm.welcomeText {
                             Text(unwrappedText).bold()
-                                .font(Font.system(.title3, design: .serif))
+                                .font(Font.system(iPadScreen ? .largeTitle : .title3, design: .serif))
                                 .foregroundColor(.grayFont)
                                 .transition(.moveAndFade)
                         }
@@ -45,6 +46,7 @@ struct WelcomeView: View {
             .padding()
             .padding(.horizontal)
             .animation(.linear, value: vm.welcomeText)
+            .frame(maxWidth: 720)
             .contentShape(Rectangle())
             .onTapGesture {
                 vm.startNextStep()

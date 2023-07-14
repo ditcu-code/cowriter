@@ -5,10 +5,10 @@
 //  Created by Aditya Cahyo on 12/04/23.
 //
 
-import SwiftUI
 import GPT3_Tokenizer
+import SwiftUI
 
-extension UIScreen{
+extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.size.width
     static let screenHeight = UIScreen.main.bounds.size.height
     static let screenSize = UIScreen.main.bounds.size
@@ -39,7 +39,7 @@ extension AnyTransition {
 
 extension String {
     func removeNewLines(_ delimiter: String = "") -> String {
-        self.replacingOccurrences(of: "\n", with: delimiter)
+        replacingOccurrences(of: "\n", with: delimiter)
     }
     
     func containsOneWord() -> Bool {
@@ -65,7 +65,12 @@ extension String {
 extension Date {
     func toMonthYearString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
+        let preferredLanguage = Locale.preferredLanguages.first ?? "en"
+        if preferredLanguage.hasPrefix("zh") {
+            formatter.dateFormat = "yyyy年M月"
+        } else {
+            formatter.dateFormat = "MMMM yyyy"
+        }
         return formatter.string(from: self)
     }
     
@@ -84,19 +89,19 @@ extension Date {
         let currentDate = Date()
         return self < currentDate
     }
-    
 }
 
 extension View {
     func gillFont(_ size: CGFloat = 17, _ color: Color = Color.darkGrayFont) -> some View {
-        return self.modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
+        return modifier(FontModifier(font: Font.custom("Gill Sans", size: size, relativeTo: .body), color: color))
     }
+
     func onFirstAppear(_ action: @escaping () -> ()) -> some View {
         modifier(FirstAppear(action: action))
     }
 }
 
-fileprivate struct FontModifier: ViewModifier {
+private struct FontModifier: ViewModifier {
     var font: Font
     var color: Color
     
@@ -107,7 +112,7 @@ fileprivate struct FontModifier: ViewModifier {
     }
 }
 
-fileprivate struct FirstAppear: ViewModifier {
+private struct FirstAppear: ViewModifier {
     let action: () -> ()
     
     // Use this to only fire your block one time

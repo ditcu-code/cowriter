@@ -5,8 +5,8 @@
 //  Created by Aditya Cahyo on 05/05/23.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct SettingView: View {
     @ObservedObject var appData = AppData()
@@ -27,15 +27,14 @@ struct SettingView: View {
                 Button {
                     purchaseManager.restorePurchases()
                 } label: {
-                    LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "Restore Purchase")
+                    LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "restore_purchase")
                 }
                 
                 Button {
                     vm.showSupportSheet = true
                 } label: {
-                    LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "Support")
+                    LabelSetting(icon: "questionmark.bubble", color: .grayFont, label: "support")
                 }
-                
             }
             
             Section {
@@ -43,9 +42,8 @@ struct SettingView: View {
                     LegalView(type: markdown)
                 }
             }
-            
         }
-        .navigationTitle("Setting")
+        .navigationTitle("setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
             SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
         }
@@ -53,9 +51,9 @@ struct SettingView: View {
         .sheet(isPresented: $vm.showSupportSheet) {
             NavigationView {
                 VStack {
-                    TextField("Subject", text: $vm.subject)
+                    TextField("title", text: $vm.subject)
                     Divider()
-                    TextField("Email", text: $vm.email)
+                    TextField("email", text: $vm.email)
                         .textContentType(.emailAddress)
                     Divider()
                     ZStack {
@@ -63,12 +61,12 @@ struct SettingView: View {
                             .foregroundColor(Color.gray)
                     }
                 }
-                .navigationTitle("Support")
+                .navigationTitle("support")
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Send") {
+                        Button("send") {
                             Task {
                                 await vm.sendSupportMessage()
                                 vm.showSupportSheet = false
@@ -76,7 +74,7 @@ struct SettingView: View {
                         }
                     }
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("Back") {
+                        Button("title") {
                             vm.showSupportSheet = false
                         }
                     }
@@ -89,7 +87,7 @@ struct SettingView: View {
         Menu {
             Picker(selection: appData.$preferredColorScheme) {
                 ForEach(AppearanceMode.allCases, id: \.self) { item in
-                    Label(item.rawValue.capitalized, systemImage: item.icon)
+                    Label(NSLocalizedString(item.rawValue, comment: ""), systemImage: item.icon)
                         .font(.callout).tag(item)
                 }
             } label: {}
@@ -98,12 +96,13 @@ struct SettingView: View {
                 LabelSetting(
                     icon: appData.preferredColorScheme.icon,
                     color: .init(white: 0.2),
-                    label: "Appearance"
-                )
+                    label: "appearance")
                 Spacer()
                 HStack {
-                    Text(appData.preferredColorScheme.rawValue.capitalized)
-                        .font(.subheadline).foregroundColor(.darkGrayFont)
+                    Text(NSLocalizedString(
+                        appData.preferredColorScheme.rawValue, comment: "")
+                    )
+                    .font(.subheadline).foregroundColor(.darkGrayFont)
                     Image(systemName: "chevron.up.chevron.down")
                 }
             }
@@ -114,16 +113,16 @@ struct SettingView: View {
         let isPro = entitlementManager.hasPro
         
         return (
-            Section("Subscription") {
+            Section("subscription") {
                 HStack {
                     isPro ? Spacer() : nil
                     VStack(alignment: isPro ? .center : .leading) {
                         if isPro {
                             LogoView(isPro: true)
                         } else {
-                            Text("Free Plan").bold().tracking(0.5)
+                            Text("free_plan").bold().tracking(0.5)
                         }
-                        Text("\(isPro ? "Unlimited" : "Limited") chats")
+                        Text(isPro ? "limited_chats" : "unlimited_chats")
                             .font(.footnote)
                             .foregroundColor(.defaultFont)
                         
@@ -132,7 +131,7 @@ struct SettingView: View {
                             Button {
                                 vm.showSubscriptionSheet.toggle()
                             } label: {
-                                Text("Upgrade to Pro")
+                                Text("upgrade_to_pro")
                                     .bold()
                                     .font(.subheadline)
                                     .foregroundColor(.accentColor)

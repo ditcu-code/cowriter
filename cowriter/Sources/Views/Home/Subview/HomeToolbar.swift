@@ -10,12 +10,13 @@ import SwiftUI
 struct HomeToolbar: ToolbarContent {
     @ObservedObject var vm: HomeVM
     var width: CGFloat
+    var showHamburger: Bool = true
     
     var body: some ToolbarContent {
         Group {
             ToolbarItem(placement: .navigationBarLeading) {
                 ZStack {
-                    if vm.showToolbar {
+                    if vm.showToolbar && showHamburger {
                         Hamburger(vm: vm)
                             .transition(
                                 .move(edge: .leading)
@@ -39,7 +40,7 @@ struct HomeToolbar: ToolbarContent {
                     Button {
                         vm.favoriteFilterIsOn.toggle()
                     } label: {
-                        Label("Favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
+                        Label("favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
                             .labelStyle(.iconOnly)
                             .offset(x: vm.showSideBar ? width / 2 : 0)
                             .transition(.move(edge: .trailing).combined(with: .opacity))
@@ -52,7 +53,7 @@ struct HomeToolbar: ToolbarContent {
                         vm: vm,
                         width: width,
                         destinationView: FavoritesView(),
-                        labelView: Label("Favorites", systemImage: "star")
+                        labelView: Label("favorites", systemImage: "star")
                     )
                 }
             }
@@ -62,7 +63,7 @@ struct HomeToolbar: ToolbarContent {
                     vm: vm,
                     width: width,
                     destinationView: SettingView(),
-                    labelView: Label("Setting", systemImage: "gearshape")
+                    labelView: Label("setting", systemImage: "gearshape")
                 )
             }
         }
