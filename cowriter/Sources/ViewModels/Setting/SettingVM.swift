@@ -13,7 +13,7 @@ class SettingVM: ObservableObject {
     
     @Published var subject: String = ""
     @Published var email: String = ""
-    @Published var content: String = NSLocalizedString("write_something_here", comment: "")
+    @Published var content: String = NSLocalizedString("_write_something_here", comment: "")
     
     @Published var profileManager = ProfileManager()
     
