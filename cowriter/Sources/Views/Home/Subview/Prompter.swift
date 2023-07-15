@@ -46,6 +46,8 @@ struct Prompter: View {
                     }
             }.fixedSize(horizontal: false, vertical: true)
             SendButton(loading: vm.isLoading) {
+                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                impactHeavy.impactOccurred()
                 if !vm.isLoading {
                     if vm.currentChat == nil {
                         vm.request(nil)

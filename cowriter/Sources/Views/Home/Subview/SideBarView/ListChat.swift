@@ -61,6 +61,8 @@ struct ListChat: View {
             
             Spacer()
             NewChatButton {
+                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                impactHeavy.impactOccurred()
                 if hasReachedLimit && !isPro {
                     vm.prompterHasFocus = false
                     vm.showSubscriptionSheet.toggle()
