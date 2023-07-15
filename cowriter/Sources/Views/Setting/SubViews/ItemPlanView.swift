@@ -28,7 +28,7 @@ struct ItemPlanView: View {
                         Label("", systemImage: isSelected ? "record.circle.fill" : "circle")
                             .foregroundColor(isSelected ? .accentColor : .gray.opacity(0.5))
                         VStack(alignment: .leading, spacing: 5) {
-                            Text(NSLocalizedString("annual", comment: ""))
+                            Text(NSLocalizedString("_annual", comment: ""))
                                 .tracking(2)
                                 .font(.footnote)
                                 .foregroundColor(.defaultFont)

@@ -13,12 +13,12 @@ struct ProfileView: View {
     
     var body: some View {
         let joinDate = vm.profileManager.user?.joinDate ?? Date()
-        let joinedDateString = String(format: NSLocalizedString("joined_date", comment: ""), joinDate.toMonthYearString())
+        let joinedDateString = String(format: NSLocalizedString("_joined_date", comment: ""), joinDate.toMonthYearString())
         
         HStack() {
             Image(systemName: "person").padding(.horizontal, 5)
             VStack(alignment: .leading, spacing: 0) {
-                TextField("your_name", text: $vm.profileManager.name)
+                TextField("_your_name", text: $vm.profileManager.name)
                     .onSubmit {
                         vm.profileManager.changeName()
                     }

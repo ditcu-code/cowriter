@@ -13,27 +13,27 @@ class GreetingVM: ObservableObject {
     @Published var greeting2: String?
     
     private let firstGreetings: [String] = [
-        NSLocalizedString("good_day", comment: ""),
-        NSLocalizedString("hi_there", comment: ""),
-        NSLocalizedString("hello", comment: ""),
-        NSLocalizedString("greetings", comment: ""),
-        NSLocalizedString("welcome", comment: "")
+        NSLocalizedString("_good_day", comment: ""),
+        NSLocalizedString("_hi_there", comment: ""),
+        NSLocalizedString("_hello", comment: ""),
+        NSLocalizedString("_greetings", comment: ""),
+        NSLocalizedString("_welcome", comment: "")
     ]
     
     private let greetings: [String] = [
-        NSLocalizedString("help_question_1", comment: ""),
-        NSLocalizedString("help_question_2", comment: ""),
-        NSLocalizedString("help_question_3", comment: ""),
-        NSLocalizedString("help_question_4", comment: ""),
-        NSLocalizedString("help_question_5", comment: "")
+        NSLocalizedString("_help_question_1", comment: ""),
+        NSLocalizedString("_help_question_2", comment: ""),
+        NSLocalizedString("_help_question_3", comment: ""),
+        NSLocalizedString("_help_question_4", comment: ""),
+        NSLocalizedString("_help_question_5", comment: "")
     ]
 
     private let lastGreetings: [String] = [
-        NSLocalizedString("get_started", comment: ""),
-        NSLocalizedString("writing_assistance", comment: ""),
-        NSLocalizedString("editing_proofreading_help", comment: ""),
-        NSLocalizedString("recipe_cooking_assistance", comment: ""),
-        NSLocalizedString("productivity_next_level", comment: "")
+        NSLocalizedString("_get_started", comment: ""),
+        NSLocalizedString("_writing_assistance", comment: ""),
+        NSLocalizedString("_editing_proofreading_help", comment: ""),
+        NSLocalizedString("_recipe_cooking_assistance", comment: ""),
+        NSLocalizedString("_productivity_next_level", comment: "")
     ]
     
     func startGreetingsAnimation(profileName: String?) {

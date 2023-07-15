@@ -40,7 +40,7 @@ struct HomeToolbar: ToolbarContent {
                     Button {
                         vm.favoriteFilterIsOn.toggle()
                     } label: {
-                        Label("favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
+                        Label("_favorites", systemImage: vm.favoriteFilterIsOn ? "star.bubble.fill" : "star.bubble")
                             .labelStyle(.iconOnly)
                             .offset(x: vm.showSideBar ? width / 2 : 0)
                             .transition(.move(edge: .trailing).combined(with: .opacity))
@@ -53,7 +53,7 @@ struct HomeToolbar: ToolbarContent {
                         vm: vm,
                         width: width,
                         destinationView: FavoritesView(),
-                        labelView: Label("favorites", systemImage: "star")
+                        labelView: Label("_favorites", systemImage: "star")
                     )
                 }
             }
@@ -63,7 +63,7 @@ struct HomeToolbar: ToolbarContent {
                     vm: vm,
                     width: width,
                     destinationView: SettingView(),
-                    labelView: Label("setting", systemImage: "gearshape")
+                    labelView: Label("_setting", systemImage: "gearshape")
                 )
             }
         }
