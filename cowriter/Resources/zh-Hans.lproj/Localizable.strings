@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   cowriter
 
@@ -7,40 +7,40 @@
 */
 
 /* Welcome */
-"_introduction_message" = "我是 Cowriter，您的有益写作助手。我将协助您打造出色的文字内容。让我们合作，将您的创意付诸实现吧！";
-"_language_message" = "我可以使用多种语言，包括英语。请告诉我您希望使用的语言，我将尽力帮助您！";
+"_introduction_message" = "嘿！我是 Cowriter，你的写作助手。我会帮你打造绝赞的文字内容。咱们一起合作，把你的创意变成现实吧！";
+"_language_message" = "我会说很多语言，包括英语。告诉我你想用哪种语言，我会尽力帮你！";
 
 /* Home */
-"_prompt_placeholder" = "在这里输入...";
+"_prompt_placeholder" = "在这里输入点什么...";
 
 /* Greeting */
 
-"_good_day" = "美好的一天！";
+"_good_day" = "哈喽！美好的一天呀！";
 "_hi_there" = "嗨！";
 "_hello" = "你好！ 👋🏼";
 "_greetings" = "问候！";
-"_welcome" = "欢迎！";
+"_welcome" = "欢迎欢迎！";
 
-"_help_question_1" = "有什么我可以帮到你的吗？";
-"_help_question_2" = "我今天能为您做什么？";
-"_help_question_3" = "您今天来这里有什么事情？";
-"_help_question_4" = "我能帮你什么忙吗？";
-"_help_question_5" = "您需要什么样的帮助？";
+"_help_question_1" = "有什么我可以帮你的吗？";
+"_help_question_2" = "我今天能为你做什么？";
+"_help_question_3" = "你来了这里有啥事儿呀？";
+"_help_question_4" = "我能帮你忙点啥嘛？";
+"_help_question_5" = "需要我帮你啥样的？";
 
-"_get_started" = "让我们开始吧！";
-"_writing_assistance" = "今天我如何帮助您的写作？";
-"_editing_proofreading_help" = "需要帮助编辑或校对您的写作吗？";
-"_recipe_cooking_assistance" = "需要任何食谱或烹饪技巧吗？";
-"_productivity_next_level" = "准备将您的生产力提升到下一个级别吗？";
+"_get_started" = "咱们走起吧！";
+"_writing_assistance" = "今天我能怎么帮你写作？";
+"_editing_proofreading_help" = "需要我帮你编辑或校对文字吗？";
+"_recipe_cooking_assistance" = "需要什么食谱或烹饪技巧嘛？";
+"_productivity_next_level" = "准备把你的效率提升到新水平了嘛？";
 
 /* Setting */
 
 "_setting" = "设置";
-"_upgrade_to_pro" = "升级至专业版";
+"_upgrade_to_pro" = "升级成专业版";
 "_appearance" = "外观";
 "_restore_purchase" = "恢复购买";
-"_support" = "支持";
-"_free_plan" = "免费计划";
+"_support" = "求助";
+"_free_plan" = "免费方案";
 "_limited_chats" = "有限聊天";
 "_unlimited_chats" = "无限聊天";
 "_subscription" = "订阅";
@@ -48,42 +48,43 @@
 "_privacy_policy" = "隐私政策";
 "_about_us" = "关于我们";
 "_system" = "系统";
-"_light" = "明亮";
-"_dark" = "暗黑";
-"_joined_date" = "%@ 加入";
+"_light" = "亮亮的";
+"_dark" = "黑黑的";
+"_joined_date" = "加入日期：%@";
 "_your_name" = "你的名字";
 
 "_title" = "标题";
 "_email" = "电子邮件";
-"_send" = "发送";
-"_back" = "返回";
+"_send" = "发一发";
+"_back" = "回去";
 
-"_write_something_here" = "在此处写些内容...";
+"_write_something_here" = "在这儿写点啥内容...";
 
-"_no_chats_yet" = "暂无聊天记录！";
-"_new_chat" = "新聊天";
-"_favorites" = "收藏";
-"_no_favorites_messages" = "您还没有收藏任何消息";
-"no_favorites_in_chat" = "此聊天中没有收藏夹";
+"_no_chats_yet" = "还没有聊天记录呢！";
+"_new_chat" = "来一起聊天";
+"_favorites" = "喜欢的";
+"_no_favorites_messages" = "你还没喜欢过任何消息呢";
+"no_favorites_in_chat" = "这个聊天里还没有收藏哦";
 "_copy" = "复制";
-"_favorite" = "收藏";
-"_unfavorite" = "取消收藏";
-"_edit" = "编辑";
+"_favorite" = "喜欢";
+"_unfavorite" = "不喜欢了";
+"_edit" = "改一改";
 "_chats" = "聊天";
 
 /* ErrorMessage */
 
-"_usage_limit_reached" = "您已达到每日使用限制。升级到专业版以享受无限消息功能。";
-"_icloud_login_required" = "需要iCloud登录：为了充分发挥我们应用的功能，请确保您在设备设置中已登录iCloud。不要错过无缝同步的体验。";
-"_too_many_requests" = "哎呀，您发送了太多请求！稍作休息，稍后再试，好吗？";
-"_connection_issues" = "糟糕！似乎您遇到了连接问题。请检查您的互联网连接，然后稍后再试。";
+"_usage_limit_reached" = "你今天使用次数已经达到限制了。升级成专业版，享受无限消息功能吧！";
+"_icloud_login_required" = "需要登录 iCloud：为了充分发挥我们应用的功能，请确保在设备设置里已经登录了 iCloud 哦。别错过无缝同步的体验！";
+"_too_many_requests" = "哎呀，你发的请求太多啦！稍微歇一歇，等一下再试试吧！";
+"_connection_issues" = "糟糕！好像有网络连接问题。检查一下你的互联网连接，稍后再试试吧。";
 
 /* Subscription */
 
-"_subscription_auto_renewal" = "您的年度或月度订阅将自动续订，直到您选择取消。随时在应用商店中取消；您的订阅将在当前期限结束时终止。通过订阅，即表示您同意我们的[条款和条件](https://bit.ly/cowriter-termsconditions)，[隐私政策](https://bit.ly/cowriter-privacypolicy)";
-"_unlimited_anytime" = "无限聊天。随时使用。";
+"_subscription_auto_renewal" = "你的年度或月度订阅会自动续费，除非你选择取消。你可以随时在应用商店里取消订阅；订阅会在当前订阅期结束时停止。通过订阅，表示你同意我们的[条款和条件](https://bit.ly/cowriter-termsconditions)和[隐私政策](https://bit.ly/cowriter-privacypolicy)";
+"_unlimited_anytime" = "无限聊天。随时随地尽情使用。";
 "_continue" = "继续";
-"_annual" = "年度的";
+"_annual" = "年度";
 "_monthly" = "月度";
 "_annual_desc" = "/ 月，按年计费";
 "_monthly_desc" = "/ 月，免费试用一周后";
+
