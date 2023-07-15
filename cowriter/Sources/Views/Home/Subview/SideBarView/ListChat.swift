@@ -21,7 +21,7 @@ struct ListChat: View {
         VStack(alignment: .leading) {
             if !vm.allChats.isEmpty {
                 HStack {
-                    Text("chats").bold()
+                    Text("_chats").bold()
                     Spacer()
                     Button("_edit") {
                         isEditing.toggle()

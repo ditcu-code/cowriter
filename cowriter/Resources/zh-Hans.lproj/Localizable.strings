@@ -69,7 +69,7 @@
 "_favorite" = "收藏";
 "_unfavorite" = "取消收藏";
 "_edit" = "编辑";
-"chats" = "聊天";
+"_chats" = "聊天";
 
 /* ErrorMessage */
 
