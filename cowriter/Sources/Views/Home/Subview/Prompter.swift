@@ -27,7 +27,7 @@ struct Prompter: View {
                     .overlay {
                         if !hasFocus && vm.userMessage.isEmpty {
                             HStack {
-                                Text("Tell Cowriter to...")
+                                Text("_prompt_placeholder")
                                     .font(Font.system(.body, design: .serif))
                                     .padding(.horizontal, 16)
                                     .foregroundColor(.gray)

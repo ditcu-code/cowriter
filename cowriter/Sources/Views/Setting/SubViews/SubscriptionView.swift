@@ -28,11 +28,11 @@ struct SubscriptionView: View {
             }
             
             VStack(alignment: .leading, spacing: 3) {
-                Text("upgrade_to_pro")
+                Text("_upgrade_to_pro")
                     .bold()
                     .font(.title)
                     .padding(.top, 5)
-                Text("unlimited_anytime")
+                Text("_unlimited_anytime")
                     .font(.footnote)
                     .foregroundColor(.grayFont)
             }.padding()
@@ -55,7 +55,7 @@ struct SubscriptionView: View {
                     }
                 } label: {
                     Spacer()
-                    Text("continue").bold()
+                    Text("_continue").bold()
                         .padding(.vertical, 5)
                     Spacer()
                 }.buttonStyle(.borderedProminent).tint(.accentColor)
@@ -64,14 +64,14 @@ struct SubscriptionView: View {
                     purchaseManager.restorePurchases()
                     isShowSheet.toggle()
                 } label: {
-                    Text("restore_purchase")
+                    Text("_restore_purchase")
                         .font(.footnote)
                         .bold().padding(.vertical, 5)
                 }
                 .padding(.vertical, 10)
                 .tint(.darkGrayFont)
                 
-                Text(.init("subscription_auto_renewal"))
+                Text(.init("_subscription_auto_renewal"))
                     .font(.caption2)
                     .scaleEffect(0.9)
                     .multilineTextAlignment(.center)

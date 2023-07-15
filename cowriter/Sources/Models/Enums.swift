@@ -19,11 +19,11 @@ enum MarkdownEnum: String, CaseIterable {
     var desc: String {
         switch self {
         case .termsAndConditions:
-            return "terms_and_conditions"
+            return "_terms_and_conditions"
         case .privacyPolicy:
-            return "privacy_policy"
+            return "_privacy_policy"
         case .aboutUs:
-            return "about_us"
+            return "_about_us"
         }
     }
     
@@ -62,18 +62,18 @@ enum PlanEnum: String, CaseIterable {
     var recurring: String {
         switch self {
         case .annual:
-            return "annual"
+            return "_annual"
         case .monthly:
-            return "monthly"
+            return "_monthly"
         }
     }
     
     var desc: String {
         switch self {
         case .annual:
-            return "annual_desc"
+            return "_annual_desc"
         case .monthly:
-            return "monthly_desc"
+            return "_monthly_desc"
         }
     }
     

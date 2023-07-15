@@ -23,7 +23,7 @@ struct ListChat: View {
                 HStack {
                     Text("chats").bold()
                     Spacer()
-                    Button("edit") {
+                    Button("_edit") {
                         isEditing.toggle()
                     }
                 }
@@ -85,7 +85,7 @@ fileprivate struct EmptyChatView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 75)
-                Text("no_chats_yet").font(.headline)
+                Text("_no_chats_yet").font(.headline)
                 Spacer()
             }.foregroundColor(.gray.opacity(0.7))
             Spacer()
@@ -99,7 +99,7 @@ fileprivate struct NewChatButton: View {
     var body: some View {
         Button(action: action){
             Spacer()
-            Label("new_chat", systemImage: "plus").font(.headline)
+            Label("_new_chat", systemImage: "plus").font(.headline)
             Spacer()
         }.buttonStyle(.bordered)
     }

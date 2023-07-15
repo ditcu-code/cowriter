@@ -16,8 +16,8 @@ class WelcomeVM: ObservableObject {
     private let welcomeService = WelcomeService()
     
     private let welcomeSentences = [
-        NSLocalizedString("introduction_message", comment: ""),
-        NSLocalizedString("language_message", comment: ""),
+        NSLocalizedString("_introduction_message", comment: ""),
+        NSLocalizedString("_language_message", comment: ""),
     ]
     
     // triggered onAppear
