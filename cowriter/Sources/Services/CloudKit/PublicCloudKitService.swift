@@ -93,8 +93,8 @@ class PublicCloudKitService {
         guard lastGivenDate.isPast() else {
             return 0
         }
-        let dailyQuota = 2000
-        let maxDailyUsage = 4000
+        let dailyQuota = 2500
+        let maxDailyUsage = 5000
         let days = user.wrappedJoinDate.countDays(to: Date())
         let totalQuota = dailyQuota * (days + 1) // 5000
         let quota = totalQuota - Int(user.wrappedTotalUsage) // 4500
