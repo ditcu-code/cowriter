@@ -21,7 +21,7 @@ struct ListChat: View {
         VStack(alignment: .leading) {
             if !vm.allChats.isEmpty {
                 HStack {
-                    Text("chats").bold()
+                    Text("_chats").bold()
                     Spacer()
                     Button("_edit") {
                         isEditing.toggle()
@@ -61,6 +61,8 @@ struct ListChat: View {
             
             Spacer()
             NewChatButton {
+                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                impactHeavy.impactOccurred()
                 if hasReachedLimit && !isPro {
                     vm.prompterHasFocus = false
                     vm.showSubscriptionSheet.toggle()
