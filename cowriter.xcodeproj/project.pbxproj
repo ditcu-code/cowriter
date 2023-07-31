@@ -34,6 +34,8 @@
 		0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272C2A11155D00FADE9C /* ProfileManager.swift */; };
 		0E7C414029F95CE50075B638 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* ChatView.swift */; };
 		0E7ED6482A780B4700014D2B /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0E7ED6472A780B4700014D2B /* Supabase */; };
+		0E7ED64A2A78122A00014D2B /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0E7ED6492A78122900014D2B /* Secrets.xcconfig */; };
+		0E7ED64E2A7813FF00014D2B /* SupabaseCowriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */; };
 		0E800E492A16222100C82D68 /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E800E482A16222100C82D68 /* WelcomeVM.swift */; };
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
 		0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */; };
@@ -103,6 +105,8 @@
 		0E72272A2A11142100FADE9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0E72272C2A11155D00FADE9C /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		0E7C413F29F95CE50075B638 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		0E7ED6492A78122900014D2B /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupabaseCowriter.swift; sourceTree = "<group>"; };
 		0E800E482A16222100C82D68 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
 		0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatViews.swift; sourceTree = "<group>"; };
 		0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbar.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 		0E6A656529DD2803003457DF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0E7ED6492A78122900014D2B /* Secrets.xcconfig */,
 				0E6A655129DD25C1003457DF /* Assets.xcassets */,
 				0E6A655B29DD25C1003457DF /* Info.plist */,
 				0E0A01BB2A5FDC0C008EE5D8 /* Localizable.strings */,
@@ -276,6 +281,7 @@
 		0E6A656629DD2891003457DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0E7ED64C2A7813F100014D2B /* Supabase */,
 				0E4813002A129ED00043A235 /* CloudKit */,
 				0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */,
 				0ECC7C0729DDBC92002A6B7F /* CowriterLinks.swift */,
@@ -309,6 +315,14 @@
 				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 			);
 			path = StoreKit;
+			sourceTree = "<group>";
+		};
+		0E7ED64C2A7813F100014D2B /* Supabase */ = {
+			isa = PBXGroup;
+			children = (
+				0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */,
+			);
+			path = Supabase;
 			sourceTree = "<group>";
 		};
 		0E91DD2A2A08D3CC005041BA /* ChatView */ = {
@@ -478,6 +492,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E7ED64A2A78122A00014D2B /* Secrets.xcconfig in Resources */,
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
 				0E0A01B92A5FDC0C008EE5D8 /* Localizable.strings in Resources */,
 				0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */,
@@ -533,6 +548,7 @@
 				0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */,
 				0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
+				0E7ED64E2A7813FF00014D2B /* SupabaseCowriter.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
 				0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */,
