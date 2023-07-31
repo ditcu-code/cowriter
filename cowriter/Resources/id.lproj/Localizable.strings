@@ -1,0 +1,90 @@
+/*
+  Localizable.strings
+  cowriter
+
+  Created by Aditya Cahyo on 15/07/23.
+  
+*/
+
+/* Welcome */
+"_introduction_message" = "Hai! Aku Cowriter, asisten penulisan yang siap membantumu. Aku akan membantu kamu menghasilkan konten tulisan yang luar biasa. Yuk, kita kerja bareng dan wujudkan ide-idemu!";
+"_language_message" = "Aku bisa menggunakan berbagai bahasa, termasuk Bahasa Inggris. Ceritakan bahasa yang ingin kamu gunakan, dan aku akan berusaha membantu sebaik mungkin!";
+
+/* Home */
+"_prompt_placeholder" = "Minta Cowriter untuk...";
+
+/* Greeting */
+
+"_good_day" = "Halo! Hari yang cerah ya!";
+"_hi_there" = "Hai!";
+"_hello" = "Hai! 👋🏼";
+"_greetings" = "Hai-hai!";
+"_welcome" = "Selamat datang!";
+
+"_help_question_1" = "Ada yang bisa kubantu?";
+"_help_question_2" = "Ada yang perlu kubantu hari ini?";
+"_help_question_3" = "Ada apa nih yang bisa kubantu hari ini?";
+"_help_question_4" = "Aku bisa bantu apa ya?";
+"_help_question_5" = "Kamu butuh bantuan apa nih?";
+
+"_get_started" = "Yuk, mulai sekarang!";
+"_writing_assistance" = "Hari ini aku bisa bantu kamu dalam menulis apa?";
+"_editing_proofreading_help" = "Butuh bantuan editing atau proofreading tulisanmu?";
+"_recipe_cooking_assistance" = "Mau resep atau tips memasak apa?";
+"_productivity_next_level" = "Siap tingkatkan produktivitasmu ke level berikutnya?";
+
+/* Setting */
+
+"_setting" = "Pengaturan";
+"_upgrade_to_pro" = "Upgrade ke Pro";
+"_appearance" = "Tampilan";
+"_restore_purchase" = "Pulihkan Pembelian";
+"_support" = "Bantuan";
+"_free_plan" = "Paket Gratis";
+"_limited_chats" = "Chat Terbatas";
+"_unlimited_chats" = "Chat Tanpa Batas";
+"_subscription" = "Langganan";
+"_terms_and_conditions" = "Syarat dan Ketentuan";
+"_privacy_policy" = "Kebijakan Privasi";
+"_about_us" = "Tentang Kami";
+"_system" = "Sistem";
+"_light" = "Terang";
+"_dark" = "Gelap";
+"_joined_date" = "Bergabung pada %@";
+"_your_name" = "Nama kamu";
+
+"_title" = "Judul";
+"_email" = "Email";
+"_send" = "Kirim";
+"_back" = "Kembali";
+
+"_write_something_here" = "Tulis sesuatu di sini...";
+
+"_no_chats_yet" = "Belum ada obrolan nih!";
+"_new_chat" = "Obrolan Baru";
+"_favorites" = "Favorit";
+"_no_favorites_messages" = "Kamu belum menyimpan pesan apa pun sebagai favorit";
+"no_favorites_in_chat" = "Tidak ada favorit dalam obrolan ini";
+"_copy" = "Salin";
+"_favorite" = "Favorit";
+"_unfavorite" = "Batal Favorit";
+"_edit" = "Edit";
+"_chats" = "Obrolan";
+
+/* ErrorMessage */
+
+"_usage_limit_reached" = "Kamu telah mencapai batas penggunaan harian. Upgrade ke versi Pro untuk menikmati fitur pesan tanpa batas.";
+"_icloud_login_required" = "Diperlukan masuk ke iCloud: Untuk dapat memanfaatkan semua fitur aplikasi, pastikan kamu sudah masuk ke akun iCloud di pengaturan perangkatmu. Jangan lewatkan pengalaman sinkronisasi yang lancar!";
+"_too_many_requests" = "Ups, kamu telah mengirimkan terlalu banyak permintaan sekaligus! Istirahat sejenak, dan coba lagi nanti, ya?";
+"_connection_issues" = "Oh tidak! Sepertinya ada masalah dengan koneksi. Periksa koneksi internetmu, dan coba lagi nanti.";
+
+/* Subscription */
+
+"_subscription_auto_renewal" = "Langganan tahunan atau bulananmu akan diperpanjang secara otomatis hingga kamu memilih untuk membatalkannya. Kamu bisa membatalkannya kapan saja di App Store, dan langgananmu akan berakhir pada akhir periode berlangganan saat ini. Dengan berlangganan, berarti kamu setuju dengan [Syarat dan Ketentuan](https://bit.ly/cowriter-termsconditions) dan [Kebijakan Privasi](https://bit.ly/cowriter-privacypolicy) kami.";
+"_unlimited_anytime" = "Chat tanpa batas. Gunakan kapan saja.";
+"_continue" = "Lanjutkan";
+"_annual" = "Tahunan";
+"_monthly" = "Bulanan";
+"_annual_desc" = "/ bulan, dibayar tahunan";
+"_monthly_desc" = "/ bulan, setelah uji coba gratis 1 minggu";
+

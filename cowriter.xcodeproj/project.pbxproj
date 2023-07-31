@@ -95,6 +95,8 @@
 		0E6A655629DD25C1003457DF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0E6A655929DD25C1003457DF /* cowriter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cowriter.xcdatamodel; sourceTree = "<group>"; };
 		0E6A655B29DD25C1003457DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E70A0432A62E94A00E28A8D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0E70A0442A62EA0F00E28A8D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0E7227252A11138C00FADE9C /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0E7227262A11138C00FADE9C /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0E72272A2A11142100FADE9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -448,6 +450,8 @@
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant",
+				id,
 			);
 			mainGroup = 0E6A654129DD25C0003457DF;
 			packageReferences = (
@@ -548,6 +552,8 @@
 			children = (
 				0E0A01BA2A5FDC0C008EE5D8 /* zh-Hans */,
 				0E0A01BC2A5FDC10008EE5D8 /* en */,
+				0E70A0432A62E94A00E28A8D /* zh-Hant */,
+				0E70A0442A62EA0F00E28A8D /* id */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -693,7 +699,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -729,7 +735,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
