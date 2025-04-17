@@ -14,6 +14,13 @@ extension UIScreen {
     static let screenSize = UIScreen.main.bounds.size
 }
 
+extension Color {
+    static let defaultFont = Color("DefaultFont")
+    static let darkGrayFont = Color("DarkGrayFont")
+    static let grayFont = Color("GrayFont")
+    static let answerBubble = Color("AnswerBubble")
+}
+
 extension AnyTransition {
     static var moveAndFade: AnyTransition {
         .asymmetric(
