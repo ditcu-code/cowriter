@@ -8,7 +8,12 @@
 import Foundation
 
 struct APIEndpoint {
-    static let baseURL = URL(string: "https://api.openai.com/v1")!
+//    static let baseURL = URL(string: "https://api.openai.com/v1")!
+//    
+//    static let chatCompletions = baseURL.appendingPathComponent("/chat/completions")
+//    static let completions = baseURL.appendingPathComponent("/completions")
+    
+    static let baseURL = URL(string: "https://api.deepseek.com/v1")!
     
     static let chatCompletions = baseURL.appendingPathComponent("/chat/completions")
     static let completions = baseURL.appendingPathComponent("/completions")

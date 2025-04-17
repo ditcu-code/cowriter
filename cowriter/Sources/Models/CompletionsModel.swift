@@ -8,14 +8,13 @@
 import Foundation
 
 enum GPTModelType: String, Codable {
-    case threePointFive = "gpt-3.5-turbo"
-    case curie = "text-curie-001"
-    case ada = "text-ada-001"
-    case babbage = "text-babbage-001"
+    case deepseekChat = "deepseek-chat"
+    case deepseekCoder = "deepseek-coder"
+    case deepseekBase = "deepseek-base"
 }
 
 struct CompletionRequestType {
-    var model: String = GPTModelType.curie.rawValue
+    var model: String = GPTModelType.deepseekBase.rawValue
     var prompt: String
     var temperature: Int = 0
     var max_tokens: Int = 1000

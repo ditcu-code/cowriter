@@ -225,7 +225,7 @@ class HomeVM: ObservableObject {
     func getChatTitle(prompt: String, completion: @escaping (ChatTitle) -> Void) {
         guard prompt.containsOneWord() else {
             let message = "\"\(prompt)\"\n\n\nTopic: "
-            let rawRequest = CompletionRequestType(model: GPTModelType.babbage.rawValue, prompt: message, temperature: 0, max_tokens: 8)
+            let rawRequest = CompletionRequestType(model: GPTModelType.deepseekBase.rawValue, prompt: message, temperature: 0, max_tokens: 8)
             let dictionaryRequest = Utils.toDictionary(rawRequest)
             
             RequestOpenAI.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionaryRequest) { result in

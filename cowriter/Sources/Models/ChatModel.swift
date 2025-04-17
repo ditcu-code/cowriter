@@ -12,7 +12,7 @@ struct ChatMessageType: Codable {
 }
 
 struct ChatRequestType {
-    var model: String = GPTModelType.threePointFive.rawValue
+    var model: String = GPTModelType.deepseekChat.rawValue
     var messages: [ChatMessageType]
     var temperature: Double = 0.2
 }
