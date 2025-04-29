@@ -18,7 +18,7 @@ struct Prompter: View {
                     .focused($hasFocus)
                     .padding(.horizontal, 12)
                     .font(Font.system(.body, design: .serif))
-                    .frame(maxHeight: 200)
+                    .frame(minHeight: 36, maxHeight: 200)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
                             .fill(.background)
@@ -44,7 +44,9 @@ struct Prompter: View {
                     .onChange(of: hasFocus) {
                         vm.prompterHasFocus = $0
                     }
-            }.fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(minHeight: 36, maxHeight: 200)
+            .fixedSize(horizontal: false, vertical: true)
             SendButton(loading: vm.isLoading) {
                 let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
                 impactHeavy.impactOccurred()
