@@ -74,6 +74,7 @@ class HomeVM: ObservableObject {
         cancel()
         task = Task {
             let client: PhotonAIClient? = PhotonAIClient(apiKey: CowriterLinks.getSwift() ?? "", withAdaptor: AlamofireAdaptor())
+            print(CowriterLinks.getSwift() ?? "")
             let userName = currentUser?.wrappedName.firstWord
             var currentMessage: Message? = nil
             var messages: [ChatCompletion.Request.Message] = [
@@ -223,25 +224,31 @@ class HomeVM: ObservableObject {
     }
     
     func getChatTitle(prompt: String, completion: @escaping (ChatTitle) -> Void) {
-        guard prompt.containsOneWord() else {
-            let message = "\"\(prompt)\"\n\n\nTopic: "
-            let rawRequest = CompletionRequestType(model: GPTModelType.deepseekBase.rawValue, prompt: message, temperature: 0, max_tokens: 8)
-            let dictionaryRequest = Utils.toDictionary(rawRequest)
-            
-            RequestOpenAI.postRequestWithToken(url: APIEndpoint.completions, dataModel: CompletionResponseType.self, body: dictionaryRequest) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let data):
-                        let title = data.choices.first?.text ?? "A chat"
-                        completion(ChatTitle(title: title, token: message.tokenize()))
-                    case .failure(let error):
-                        print("Error: \(error.localizedDescription)")
-                    }
-                }
-            }
+        // If the prompt is already just one word, use it directly
+        guard !prompt.containsOneWord() else {
+            completion(ChatTitle(title: prompt, token: 0))
             return
         }
-        completion(ChatTitle(title: prompt, token: 0))
+
+        let message = "\"\(prompt)\"\n\n\nTopic: "
+        
+        RequestDeepSeek.postCompletion(
+            prompt: message,
+            model: "deepseek-chat",
+            temperature: 0,
+            maxTokens: 8
+        ) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    let title = response.firstTextChoice()
+                    completion(ChatTitle(title: title.isEmpty ? "A chat" : title, token: message.tokenize()))
+                case .failure(let error):
+                    print("❌ Error in creating title: \(error.localizedDescription)")
+                    completion(ChatTitle(title: "A chat", token: message.tokenize()))
+                }
+            }
+        }
     }
     
     func removeChat(at offsets: IndexSet) {
