@@ -1,4 +1,5 @@
 {
+  "originHash" : "8fc186576c1e914818ce32b4a9eb44988bd738c51f6e13914c4cedf79083281f",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -87,7 +88,7 @@
       "location" : "https://github.com/ditcu-code/PhotonOpenAIKit",
       "state" : {
         "branch" : "main",
-        "revision" : "c27308dc784d2a67e48be6d54ddf198278638ac4"
+        "revision" : "0f8ad20d9316dc9ce60e0b1a105cc4f12e4071ea"
       }
     },
     {
@@ -136,5 +137,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
