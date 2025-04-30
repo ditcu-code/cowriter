@@ -89,6 +89,7 @@
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
 		0E48131E2A15ECB70043A235 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		0E4D7E002DC1329400C80458 /* RequestDeepseek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDeepseek.swift; sourceTree = "<group>"; };
+		0E4D7E032DC22CE600C80458 /* SubPro.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SubPro.storekit; sourceTree = "<group>"; };
 		0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cowriter.storekit; sourceTree = "<group>"; };
 		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
+				0E4D7E032DC22CE600C80458 /* SubPro.storekit */,
 				0E4812E12A122E910043A235 /* cowriter.entitlements */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,

@@ -1,0 +1,166 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "57FCF076",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6449455105",
+    "_developerTeamID" : "474XANH3RF",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 767700342.33228004,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21343188",
+      "localizations" : [
+
+      ],
+      "name" : "Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "59.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6449463700",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "解锁一年无限聊天功能",
+              "displayName" : "Cowriter Pro (1年)",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "Unlock unlimited chat for a year",
+              "displayName" : "Cowriter Pro (1 Year)",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "cowriter.pro.annual.v1",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Pro - Annual Subscription ",
+          "subscriptionGroupID" : "21343188",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+            {
+              "displayPrice" : "0.99",
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "B5EACD10",
+              "isStackable" : true,
+              "numberOfPeriods" : 6,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Launch",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6449463710",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "解锁一个月无限制聊天",
+              "displayName" : "Cowriter Pro (1个月)",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "Unlock unlimited chat for a month",
+              "displayName" : "Cowriter Pro (1 Month)",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "cowriter.pro.monthly.v1",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Pro - Monthly Subscription",
+          "subscriptionGroupID" : "21343188",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
