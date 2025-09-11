@@ -50,7 +50,6 @@
 		0ECC7C0B29DEA6E4002A6B7F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0A29DEA6E4002A6B7F /* Utils.swift */; };
 		0ECC7C0D29DEAB54002A6B7F /* RequestOpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */; };
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
-		0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDA606F2A1FB2D5005181A8 /* Ink */; };
 		0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60732A1FB9D7005181A8 /* WebView.swift */; };
 		0EDA60792A1FD484005181A8 /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60782A1FD484005181A8 /* LegalView.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
@@ -148,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
-				0EDA60702A1FB2D5005181A8 /* Ink in Frameworks */,
 				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
 				0E4D7DFF2DC12F4500C80458 /* PhotonOpenAIKit in Frameworks */,
 			);
@@ -438,7 +436,6 @@
 			packageProductDependencies = (
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
-				0EDA606F2A1FB2D5005181A8 /* Ink */,
 				0E4D7DFE2DC12F4500C80458 /* PhotonOpenAIKit */,
 			);
 			productName = cowriter;
@@ -475,7 +472,6 @@
 			packageReferences = (
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
-				0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */,
 				0E4D7DFD2DC12F4500C80458 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
@@ -817,14 +813,6 @@
 				minimumVersion = 0.1.2;
 			};
 		};
-		0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JohnSundell/Ink";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.0;
-			};
-		};
 		0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -845,11 +833,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
 			productName = "GPT3 Tokenizer";
-		};
-		0EDA606F2A1FB2D5005181A8 /* Ink */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0EDA606E2A1FB2D5005181A8 /* XCRemoteSwiftPackageReference "Ink" */;
-			productName = Ink;
 		};
 		0EE49DFF29E482060058DB14 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
