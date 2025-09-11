@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeChatView: View {
     @StateObject var vm: HomeVM = HomeVM()
     @EnvironmentObject private var purchaseManager: PurchaseManager
     var iPadScreen: Bool
@@ -93,7 +93,7 @@ struct HomeView: View {
 
 struct CowriterView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeChatView()
             .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
     }
 }
