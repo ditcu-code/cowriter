@@ -11,6 +11,8 @@
 		0E0A9D5629E9BFDB00D7BEC5 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5529E9BFDB00D7BEC5 /* LogoView.swift */; };
 		0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5729E9C0AA00D7BEC5 /* Prompter.swift */; };
 		0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A9D5929E9CB3B00D7BEC5 /* ChatModel.swift */; };
+		0E11FD122EB097EB002E2328 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 0E11FD112EB097EB002E2328 /* RevenueCat */; };
+		0E11FD142EB097EB002E2328 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0E11FD132EB097EB002E2328 /* RevenueCatUI */; };
 		0E1502B32A16276A00C4D78F /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B22A16276A00C4D78F /* DefaultBackground.swift */; };
 		0E1502B62A16305A00C4D78F /* GreetingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B52A16305A00C4D78F /* GreetingVM.swift */; };
 		0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1502B72A16428800C4D78F /* WelcomeService.swift */; };
@@ -22,8 +24,6 @@
 		0E4D7DFF2DC12F4500C80458 /* PhotonOpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4D7DFE2DC12F4500C80458 /* PhotonOpenAIKit */; };
 		0E4D7E012DC132AF00C80458 /* RequestDeepseek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D7E002DC1329400C80458 /* RequestDeepseek.swift */; };
 		0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = 0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */; };
-		0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */; };
-		0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */; };
 		0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */; };
 		0E6A654E29DD25C0003457DF /* cowriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654D29DD25C0003457DF /* cowriterApp.swift */; };
 		0E6A655029DD25C0003457DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A654F29DD25C0003457DF /* ContentView.swift */; };
@@ -35,7 +35,6 @@
 		0E72272B2A11142100FADE9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272A2A11142100FADE9C /* ProfileView.swift */; };
 		0E72272D2A11155D00FADE9C /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E72272C2A11155D00FADE9C /* ProfileManager.swift */; };
 		0E7C414029F95CE50075B638 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C413F29F95CE50075B638 /* ChatView.swift */; };
-		0E7ED64E2A7813FF00014D2B /* SupabaseCowriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */; };
 		0E800E492A16222100C82D68 /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E800E482A16222100C82D68 /* WelcomeVM.swift */; };
 		0E91DD2C2A08D400005041BA /* BubbleChatViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */; };
 		0E91DD2E2A08D4D2005041BA /* HomeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */; };
@@ -52,6 +51,7 @@
 		0ECC7C1029DEC31A002A6B7F /* CircularLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */; };
 		0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60732A1FB9D7005181A8 /* WebView.swift */; };
 		0EDA60792A1FD484005181A8 /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA60782A1FD484005181A8 /* LegalView.swift */; };
+		0EDEAD012FFF000100000002 /* RevenueCatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEAD002FFF000100000001 /* RevenueCatService.swift */; };
 		0EE49E0029E482060058DB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0EE49DFF29E482060058DB14 /* Alamofire */; };
 		0EE49E0229E6BD790058DB14 /* ThreeDotsLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */; };
 		0EE49E0529E6C0600058DB14 /* HomeChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE49E0429E6C0600058DB14 /* HomeChatView.swift */; };
@@ -87,9 +87,6 @@
 		0E4813012A129EE70043A235 /* PublicCloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicCloudKitService.swift; sourceTree = "<group>"; };
 		0E48131E2A15ECB70043A235 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		0E4D7E002DC1329400C80458 /* RequestDeepseek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDeepseek.swift; sourceTree = "<group>"; };
-		0E4D7E032DC22CE600C80458 /* SubPro.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SubPro.storekit; sourceTree = "<group>"; };
-		0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cowriter.storekit; sourceTree = "<group>"; };
-		0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
 		0E6A654A29DD25C0003457DF /* cowriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cowriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6A654D29DD25C0003457DF /* cowriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cowriterApp.swift; sourceTree = "<group>"; };
@@ -106,7 +103,6 @@
 		0E72272C2A11155D00FADE9C /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		0E7C413F29F95CE50075B638 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		0E7ED6492A78122900014D2B /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
-		0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupabaseCowriter.swift; sourceTree = "<group>"; };
 		0E800E482A16222100C82D68 /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
 		0E91DD2B2A08D400005041BA /* BubbleChatViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChatViews.swift; sourceTree = "<group>"; };
 		0E91DD2D2A08D4D2005041BA /* HomeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeToolbar.swift; sourceTree = "<group>"; };
@@ -123,6 +119,7 @@
 		0ECC7C0F29DEC31A002A6B7F /* CircularLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoading.swift; sourceTree = "<group>"; };
 		0EDA60732A1FB9D7005181A8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		0EDA60782A1FD484005181A8 /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalView.swift; sourceTree = "<group>"; };
+		0EDEAD002FFF000100000001 /* RevenueCatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatService.swift; sourceTree = "<group>"; };
 		0EE49E0129E6BD790058DB14 /* ThreeDotsLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotsLoading.swift; sourceTree = "<group>"; };
 		0EE49E0429E6C0600058DB14 /* HomeChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChatView.swift; sourceTree = "<group>"; };
 		0EE49E0729E6C0FA0058DB14 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -146,8 +143,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E11FD122EB097EB002E2328 /* RevenueCat in Frameworks */,
 				0EE49E0029E482060058DB14 /* Alamofire in Frameworks */,
 				0E5048EA2A0C1228006E55EF /* GPT3 Tokenizer in Frameworks */,
+				0E11FD142EB097EB002E2328 /* RevenueCatUI in Frameworks */,
 				0E4D7DFF2DC12F4500C80458 /* PhotonOpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,7 +191,6 @@
 		0E6A654129DD25C0003457DF = {
 			isa = PBXGroup;
 			children = (
-				0E4D7E032DC22CE600C80458 /* SubPro.storekit */,
 				0E4812E12A122E910043A235 /* cowriter.entitlements */,
 				0E6A654C29DD25C0003457DF /* cowriter */,
 				0E6A654B29DD25C0003457DF /* Products */,
@@ -258,7 +256,7 @@
 			children = (
 				0EDA60752A1FD438005181A8 /* Setting */,
 				0E1502B42A16304A00C4D78F /* Home */,
-				0E7227292A1113E500FADE9C /* StoreKit */,
+				0E7227292A1113E500FADE9C /* Billing */,
 				0EE546DA2A0D05F00036C0EB /* FavoritesVM.swift */,
 				0E800E482A16222100C82D68 /* WelcomeVM.swift */,
 				0E72272C2A11155D00FADE9C /* ProfileManager.swift */,
@@ -281,12 +279,12 @@
 			isa = PBXGroup;
 			children = (
 				0E4D7E002DC1329400C80458 /* RequestDeepseek.swift */,
-				0E7ED64C2A7813F100014D2B /* Supabase */,
 				0E4813002A129ED00043A235 /* CloudKit */,
 				0ECC7C0529DDA552002A6B7F /* APIEndpoint.swift */,
 				0ECC7C0729DDBC92002A6B7F /* CowriterLinks.swift */,
 				0ECC7C0C29DEAB54002A6B7F /* RequestOpenAI.swift */,
 				0E1502B72A16428800C4D78F /* WelcomeService.swift */,
+				0EDEAD002FFF000100000001 /* RevenueCatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -307,22 +305,12 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		0E7227292A1113E500FADE9C /* StoreKit */ = {
+		0E7227292A1113E500FADE9C /* Billing */ = {
 			isa = PBXGroup;
 			children = (
-				0E55EB2C2A1CF3D500D10E26 /* Cowriter.storekit */,
-				0E5CB96E2A0A0AFF000A0B94 /* PurchaseManager.swift */,
 				0E5CB9722A0A45F3000A0B94 /* EntitlementManager.swift */,
 			);
-			path = StoreKit;
-			sourceTree = "<group>";
-		};
-		0E7ED64C2A7813F100014D2B /* Supabase */ = {
-			isa = PBXGroup;
-			children = (
-				0E7ED64D2A7813FF00014D2B /* SupabaseCowriter.swift */,
-			);
-			path = Supabase;
+			path = Billing;
 			sourceTree = "<group>";
 		};
 		0E91DD2A2A08D3CC005041BA /* ChatView */ = {
@@ -437,6 +425,8 @@
 				0EE49DFF29E482060058DB14 /* Alamofire */,
 				0E5048E92A0C1228006E55EF /* GPT3 Tokenizer */,
 				0E4D7DFE2DC12F4500C80458 /* PhotonOpenAIKit */,
+				0E11FD112EB097EB002E2328 /* RevenueCat */,
+				0E11FD132EB097EB002E2328 /* RevenueCatUI */,
 			);
 			productName = cowriter;
 			productReference = 0E6A654A29DD25C0003457DF /* cowriter.app */;
@@ -450,7 +440,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					0E6A654929DD25C0003457DF = {
 						CreatedOnToolsVersion = 14.2;
@@ -473,6 +463,7 @@
 				0EE49DFE29E482060058DB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0E5048E82A0C1228006E55EF /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				0E4D7DFD2DC12F4500C80458 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */,
+				0E11FD102EB097EB002E2328 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = 0E6A654B29DD25C0003457DF /* Products */;
 			projectDirPath = "";
@@ -490,7 +481,6 @@
 			files = (
 				0E6A655229DD25C1003457DF /* Assets.xcassets in Resources */,
 				0E0A01B92A5FDC0C008EE5D8 /* Localizable.strings in Resources */,
-				0E55EB2D2A1CF3D500D10E26 /* Cowriter.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDEAD012FFF000100000002 /* RevenueCatService.swift in Sources */,
 				0E18BF642A5D6E5F00079480 /* SendButton.swift in Sources */,
 				0EE845FD2A0669F70025060F /* Enums.swift in Sources */,
 				0EE546DD2A0E787E0036C0EB /* AppData.swift in Sources */,
@@ -526,7 +517,6 @@
 				0EE546DB2A0D05F00036C0EB /* FavoritesVM.swift in Sources */,
 				0E4D7E012DC132AF00C80458 /* RequestDeepseek.swift in Sources */,
 				0E0A9D5829E9C0AA00D7BEC5 /* Prompter.swift in Sources */,
-				0E5CB96F2A0A0AFF000A0B94 /* PurchaseManager.swift in Sources */,
 				0EE845FB2A0669740025060F /* ItemPlanView.swift in Sources */,
 				0E0A9D5A29E9CB3B00D7BEC5 /* ChatModel.swift in Sources */,
 				0E6A655729DD25C1003457DF /* Persistence.swift in Sources */,
@@ -544,7 +534,6 @@
 				0EF164B629F2EC8700CC35B1 /* Chat+CoreDataProperties.swift in Sources */,
 				0E1502B82A16428800C4D78F /* WelcomeService.swift in Sources */,
 				0EE845F62A0529020025060F /* SettingView.swift in Sources */,
-				0E7ED64E2A7813FF00014D2B /* SupabaseCowriter.swift in Sources */,
 				0EC312E729E80C1B00C9FE68 /* HomeVM.swift in Sources */,
 				0E5CB9732A0A45F3000A0B94 /* EntitlementManager.swift in Sources */,
 				0EDA60742A1FB9D7005181A8 /* WebView.swift in Sources */,
@@ -636,6 +625,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -693,6 +683,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -701,6 +692,7 @@
 		};
 		0E6A655F29DD25C1003457DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E7ED6492A78122900014D2B /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -711,19 +703,18 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cowriter Chat";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -738,6 +729,7 @@
 		};
 		0E6A656029DD25C1003457DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E7ED6492A78122900014D2B /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -748,19 +740,18 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cowriter/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cowriter;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cowriter Chat";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ditcu.cowriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -797,6 +788,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0E11FD102EB097EB002E2328 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.45.0;
+			};
+		};
 		0E4D7DFD2DC12F4500C80458 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ditcu-code/PhotonOpenAIKit";
@@ -824,6 +823,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E11FD112EB097EB002E2328 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E11FD102EB097EB002E2328 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		0E11FD132EB097EB002E2328 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E11FD102EB097EB002E2328 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
 		0E4D7DFE2DC12F4500C80458 /* PhotonOpenAIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0E4D7DFD2DC12F4500C80458 /* XCRemoteSwiftPackageReference "PhotonOpenAIKit" */;

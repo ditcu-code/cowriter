@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import StoreKit
 
 struct ItemPlanView: View {
-    @Binding var selectedProduct: Product?
-    @EnvironmentObject private var purchaseManager: PurchaseManager
+    @Binding var selectedPackage: PaywallPackage?
+    @EnvironmentObject private var revenueCatService: RevenueCatService
     
     @State private var monthlyTotal: Decimal?
     
@@ -18,10 +17,10 @@ struct ItemPlanView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            ForEach(purchaseManager.products) { product in
-                let plan: PlanEnum = PlanEnum(rawValue: product.id) ?? PlanEnum.annual
-                let isSelected = selectedProduct?.id == plan.rawValue
-                let isMonthlyPlan = product.id == PlanEnum.monthly.rawValue
+            ForEach(revenueCatService.packages) { pkg in
+                let plan: PlanEnum = PlanEnum(rawValue: pkg.id) ?? PlanEnum.annual
+                let isSelected = selectedPackage?.id == plan.rawValue
+                let isMonthlyPlan = pkg.id == PlanEnum.monthly.rawValue
                 
                 VStack {
                     HStack {
@@ -33,17 +32,17 @@ struct ItemPlanView: View {
                                 .font(.footnote)
                                 .foregroundColor(.defaultFont)
                             HStack {
-                                Text(product.displayPrice)
+                                Text(pkg.displayPrice)
                                     .font(.headline)
                                     .scaleEffect(1.1)
                                 if let disc = monthlyTotal, !isMonthlyPlan {
-                                    Text(disc.formatted(product.priceFormatStyle))
+                                    Text(formatCurrency(disc, code: pkg.currencyCode))
                                         .font(.footnote)
                                         .strikethrough()
                                         .foregroundColor(.defaultFont)
                                 }
                             }
-                            Text("\(isMonthlyPlan ? product.displayPrice : (product.price / 12).formatted(product.priceFormatStyle)) \(NSLocalizedString(plan.desc, comment: ""))")
+                            Text("\(isMonthlyPlan ? pkg.displayPrice : formatCurrency(pkg.price / Decimal(12), code: pkg.currencyCode)) \(NSLocalizedString(plan.desc, comment: ""))")
                                 .font(.subheadline)
                                 .foregroundColor(.grayFont)
                         }
@@ -76,24 +75,30 @@ struct ItemPlanView: View {
                         .stroke(isSelected ? Color.accentColor : .gray.opacity(0.2), lineWidth: isSelected ? 2 : 1)
                 )
                 .onTapGesture {
-                    selectedProduct = product
+                    selectedPackage = pkg
                 }
                 .onAppear {
                     if isMonthlyPlan {
-                        monthlyTotal = product.price * 12
+                        monthlyTotal = pkg.price * Decimal(12)
                     } else {
-                        selectedProduct = product
+                        selectedPackage = pkg
                     }
-                    print(product)
                 }
             }
         }.padding(.horizontal)
+    }
+
+    private func formatCurrency(_ value: Decimal, code: String?) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let code = code { formatter.currencyCode = code }
+        return formatter.string(from: NSDecimalNumber(decimal: value)) ?? "\(value)"
     }
 }
 
 struct ItemPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemPlanView(selectedProduct: .constant(nil))
-            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
+        ItemPlanView(selectedPackage: .constant(nil))
+            .environmentObject(RevenueCatService(entitlementManager: EntitlementManager()))
     }
 }

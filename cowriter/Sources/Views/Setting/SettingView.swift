@@ -13,7 +13,7 @@ struct SettingView: View {
     @StateObject var vm = SettingVM()
     
     @EnvironmentObject private var entitlementManager: EntitlementManager
-    @EnvironmentObject private var purchaseManager: PurchaseManager
+    @EnvironmentObject private var revenueCatService: RevenueCatService
     
     var body: some View {
         List {
@@ -25,7 +25,7 @@ struct SettingView: View {
                 appearanceSetting
                 
                 Button {
-                    purchaseManager.restorePurchases()
+                    revenueCatService.restorePurchases()
                 } label: {
                     LabelSetting(icon: "arrow.2.squarepath", color: .defaultFont, label: "_restore_purchase")
                 }
@@ -46,6 +46,10 @@ struct SettingView: View {
         .navigationTitle("_setting")
         .sheet(isPresented: $vm.showSubscriptionSheet) {
             SubscriptionView(withLogo: true, isShowSheet: $vm.showSubscriptionSheet)
+        }
+        .onAppear {
+            // Ensure entitlement reflects latest state when returning to Settings
+            revenueCatService.refreshCustomerInfo()
         }
         
         .sheet(isPresented: $vm.showSupportSheet) {
@@ -155,8 +159,8 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView(appData: AppData())
-            .environmentObject({ () -> PurchaseManager in
-                let envObj = PurchaseManager(entitlementManager: EntitlementManager())
+            .environmentObject({ () -> RevenueCatService in
+                let envObj = RevenueCatService(entitlementManager: EntitlementManager())
                 return envObj
             }())
             .environmentObject({ () -> EntitlementManager in

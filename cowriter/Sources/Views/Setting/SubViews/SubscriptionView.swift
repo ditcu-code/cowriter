@@ -5,15 +5,14 @@
 //  Created by Aditya Cahyo on 06/05/23.
 //
 
-import StoreKit
 import SwiftUI
 
 struct SubscriptionView: View {
     var withLogo: Bool
     @Binding var isShowSheet: Bool
-    @EnvironmentObject private var purchaseManager: PurchaseManager
+    @EnvironmentObject private var revenueCatService: RevenueCatService
     
-    @State private var selectedProduct: Product?
+    @State private var selectedPackage: PaywallPackage?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -37,20 +36,20 @@ struct SubscriptionView: View {
                     .foregroundColor(.grayFont)
             }.padding()
             
-            if purchaseManager.isLoading {
+            if revenueCatService.isLoading {
                 HStack {
                     Spacer()
                     CircularLoading()
                     Spacer()
                 }
             } else {
-                ItemPlanView(selectedProduct: $selectedProduct)
+                ItemPlanView(selectedPackage: $selectedPackage)
             }
             
             VStack(spacing: 0) {
                 Button {
-                    if let product = selectedProduct {
-                        purchaseManager.purchaseProduct(product)
+                    if let pkg = selectedPackage {
+                        revenueCatService.purchasePackage(pkg)
                         isShowSheet.toggle()
                     }
                 } label: {
@@ -61,7 +60,7 @@ struct SubscriptionView: View {
                 }.buttonStyle(.borderedProminent).tint(.accentColor)
                 
                 Button {
-                    purchaseManager.restorePurchases()
+                    revenueCatService.restorePurchases()
                     isShowSheet.toggle()
                 } label: {
                     Text("_restore_purchase")
@@ -80,8 +79,8 @@ struct SubscriptionView: View {
             }.padding()
         }
         .task {
-            if purchaseManager.products.isEmpty {
-                purchaseManager.loadProducts()
+            if revenueCatService.packages.isEmpty {
+                revenueCatService.loadOfferings()
             }
         }
         .dynamicTypeSize(.medium)
@@ -91,6 +90,6 @@ struct SubscriptionView: View {
 struct SubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
         SubscriptionView(withLogo: true, isShowSheet: .constant(true))
-            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
+            .environmentObject(RevenueCatService(entitlementManager: EntitlementManager()))
     }
 }

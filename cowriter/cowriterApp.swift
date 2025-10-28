@@ -11,13 +11,13 @@ import SwiftUI
 struct cowriterApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject private var entitlementManager: EntitlementManager
-    @StateObject private var purchaseManager: PurchaseManager
+    @StateObject private var revenueCatService: RevenueCatService
     
     init() {
         let entitlementManager = EntitlementManager()
-        let purchaseManager = PurchaseManager(entitlementManager: entitlementManager)
+        let rc = RevenueCatService(entitlementManager: entitlementManager)
         self._entitlementManager = StateObject(wrappedValue: entitlementManager)
-        self._purchaseManager = StateObject(wrappedValue: purchaseManager)
+        self._revenueCatService = StateObject(wrappedValue: rc)
     }
     
     var body: some Scene {
@@ -27,11 +27,11 @@ struct cowriterApp: App {
                 .dynamicTypeSize(...DynamicTypeSize.large)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(entitlementManager)
-                .environmentObject(purchaseManager)
+                .environmentObject(revenueCatService)
                 .task {
-                    await purchaseManager.updatePurchasedProducts()
+                    revenueCatService.configureIfPossible()
+                    revenueCatService.refreshCustomerInfo()
                 }
         }
     }
 }
-

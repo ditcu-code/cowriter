@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeChatView: View {
     @StateObject var vm: HomeVM = HomeVM()
-    @EnvironmentObject private var purchaseManager: PurchaseManager
+    @EnvironmentObject private var revenueCatService: RevenueCatService
     var iPadScreen: Bool
     
     private let sideBarWidth: CGFloat = UIScreen.screenWidth - 100
@@ -94,6 +94,6 @@ struct HomeChatView: View {
 struct CowriterView_Previews: PreviewProvider {
     static var previews: some View {
         HomeChatView()
-            .environmentObject(PurchaseManager(entitlementManager: EntitlementManager()))
+            .environmentObject(RevenueCatService(entitlementManager: EntitlementManager()))
     }
 }
